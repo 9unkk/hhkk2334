@@ -159,6 +159,28 @@
       
       
         
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
         <li class="menu-item menu-item-archives">
       
     
@@ -183,6 +205,86 @@
           <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/hexo-next主题优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Trash Can">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Junk Blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/08/hexo-next主题优化/" class="post-title-link" itemprop="url">hexo-next主题优化</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-08 14:14:45 / 修改时间：14:31:55" itemprop="dateCreated datePublished" datetime="2019-08-08T14:14:45+08:00">2019-08-08</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <p>#</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
       
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -233,7 +335,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-07 02:14:09" itemprop="dateModified" datetime="2019-08-07T02:14:09+08:00">2019-08-07</time>
+                <time title="修改时间：2019-08-08 15:10:05" itemprop="dateModified" datetime="2019-08-08T15:10:05+08:00">2019-08-08</time>
               </span>
             
           
@@ -250,10 +352,11 @@
 
       
           
-            <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><h5 id="服务器：centos6-5（默认安装rsyslog）"><a href="#服务器：centos6-5（默认安装rsyslog）" class="headerlink" title="服务器：centos6.5（默认安装rsyslog）"></a>服务器：centos6.5（默认安装rsyslog）</h5><p>IP：192.168.0.101</p>
-<h5 id="客户端：centos6-5"><a href="#客户端：centos6-5" class="headerlink" title="客户端：centos6.5"></a>客户端：centos6.5</h5><p>IP：192.168.0.105</p>
+            <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p><strong>服务器：</strong>centos6.5（默认安装rsyslog）<br>IP：192.168.0.101</p>
+<p><strong>客户端：</strong>centos6.5<br>IP：192.168.0.105</p>
 <p>前提要配置好 服务器 和 客户端 的网络，让它们能上网</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h5 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h5><ol>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p><strong>服务器</strong></p>
+<ol>
 <li>查看 rsyslog 的版本</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rsyslogd -v</span></span><br></pre></td></tr></table></figure>
@@ -261,7 +364,7 @@
 <ol start="2">
 <li>防火墙配置</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/sysconfig/iptables</span></span><br><span class="line">//** 添加如下内容 **//</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 514 -j ACCEPT</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># vim /etc/sysconfig/iptables</span></span><br><span class="line">//** 添加如下内容 **//</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 514 -j ACCEPT</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li>重启防火墙</li>
@@ -345,7 +448,8 @@
 
 </li>
 </ol>
-<h5 id="网页安装-loganalyzer"><a href="#网页安装-loganalyzer" class="headerlink" title="网页安装 loganalyzer"></a>网页安装 loganalyzer</h5><ol>
+<p><strong>网页安装 loganalyzer</strong></p>
+<ol>
 <li>点击 Next</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/ozSn83CImyVOTRG.png" alt="rsylog-2.png"></p>
@@ -449,11 +553,19 @@
                 
               
 
-              <time title="创建时间：2019-08-06 00:18:02 / 修改时间：13:09:52" itemprop="dateCreated datePublished" datetime="2019-08-06T00:18:02+08:00">2019-08-06</time>
+              <time title="创建时间：2019-08-06 00:18:02" itemprop="dateCreated datePublished" datetime="2019-08-06T00:18:02+08:00">2019-08-06</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-08 14:42:17" itemprop="dateModified" datetime="2019-08-08T14:42:17+08:00">2019-08-08</time>
+              </span>
             
           
 
@@ -469,7 +581,7 @@
 
       
           
-            <h1 id="个人博客搭建（hexo-github）"><a href="#个人博客搭建（hexo-github）" class="headerlink" title="个人博客搭建（hexo + github）"></a>个人博客搭建（hexo + github）</h1><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+            <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li><a href="https://dcc.godaddy.com" target="_blank" rel="noopener">购买域名</a></li>
 <li><a href="https://github.com" target="_blank" rel="noopener">创建 github 帐号</a></li>
 <li><a href="https://github.com" target="_blank" rel="noopener">创建 github 帐号</a></li>
@@ -689,7 +801,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -702,7 +814,9 @@
         
           
         
-        <span class="site-state-item-count">1</span>
+          
+        
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
         
       </div>
