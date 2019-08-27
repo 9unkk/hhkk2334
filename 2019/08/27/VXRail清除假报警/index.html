@@ -13,6 +13,15 @@
     
 
     
+        <meta name="description" content="现象
+VXRail 服务器闪黄灯
+VXrail Manager 出现 MYSTIC028005 警报
+
+解决步骤
+登陆到 VXrail Manager，查看是哪个节点报错，并找到相应的主机。
+
+找到对应的主机，选择 “监控” —&amp;gt; “硬件状态” —&amp;gt; “传感器” —&amp;gt; “基线版管理">
+    
 
     <!--Author-->
     
@@ -21,10 +30,19 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Junk Blog">
+        <meta property="og:title" content="VXRail清除假警报">
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="现象
+VXRail 服务器闪黄灯
+VXrail Manager 出现 MYSTIC028005 警报
+
+解决步骤
+登陆到 VXrail Manager，查看是哪个节点报错，并找到相应的主机。
+
+找到对应的主机，选择 “监控” —&amp;gt; “硬件状态” —&amp;gt; “传感器” —&amp;gt; “基线版管理">
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +50,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -51,7 +69,7 @@
 
     <!-- Title -->
     
-    <title>归档 - Junk Blog</title>
+    <title>VXRail清除假警报 - Junk Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -153,114 +171,116 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>归档</h1>
+                <div class="post-heading">
+                    <h1>VXRail清除假警报</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-08-27
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Vxrail/">#Vxrail</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/HCI/">HCI</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/08/27/VXRail清除假报警/">
-        <h1 class="post-title archive">
-            VXRail清除假警报
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-27
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/08/24/linux目录架构/">
-        <h1 class="post-title archive">
-            linux目录架构
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-24
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><ol>
+<li>VXRail 服务器闪黄灯</li>
+<li>VXrail Manager 出现 MYSTIC028005 警报</li>
+</ol>
+<h3 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h3><ol>
+<li><p>登陆到 VXrail Manager，查看是哪个节点报错，并找到相应的主机。</p>
+</li>
+<li><p>找到对应的主机，选择 “监控” —&gt; “硬件状态” —&gt; “传感器” —&gt; “基线版管理控制器”</p>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2019/08/27/mScTquMZtzaJViY.png" alt="vxrail-1.png"></p>
+<ol start="3">
+<li>展开“基线版管理控制器”，找到 BMC 地址</li>
+</ol>
+<p><img src="https://i.loli.net/2019/08/27/HDFBwSVA5Mb1lgY.png" alt="vxrail-2.png"></p>
+<ol start="4">
+<li>登陆到 BMC，在 dashboard 界面找到 “Sensor Monitoring”。服务状态全是绿的，说明服务正常运行，出现的警告是假警告</li>
+</ol>
+<p><img src="https://i.loli.net/2019/08/27/8cfRl3DGVzsIdqM.png" alt="vxrail-3.png"></p>
+<ol start="5">
+<li>清除 BMC 的日志</li>
+</ol>
+<p><img src="https://i.loli.net/2019/08/27/RdbFHfMcj1Y4X3r.png" alt="vxrail-5.png"></p>
+<p><img src="https://i.loli.net/2019/08/27/n4I8zxomXvLlOSU.png" alt="vxrail-6.png"></p>
+<ol start="6">
+<li>编辑主机的“安全配置文件”，开启 SSH 服务</li>
+</ol>
+<p><img src="https://i.loli.net/2019/08/27/qzC1fYjQyr6uLGW.png" alt="vxrail-4.png"></p>
+<ol start="7">
+<li>通过xshell连接到主机，并执行以下命令。清除记录并重启 BMC</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@ntzyy06:~] /tmp/vspexblue/bin/ipmitool sel clear</span><br><span class="line">[root@ntzyy06:~] /tmp/vspexblue/bin/ipmitool mc reset cold</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2019/08/27/WXjTnG2vw61IBEK.png" alt="vxrail-7.png"></p>
+<ol start="8">
+<li>再次登陆到 VXRail，并检查服务器还有没有警告。</li>
+</ol>
+<p><img src="https://i.loli.net/2019/08/27/aI83CvlnhJHbcuN.png" alt="vxrail-8.png"></p>
+<p>注：因为超融合服务器比较旧，每个月都会出现一次假警告</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2019/08/22/使用反向shell控制摄像头/">
-        <h1 class="post-title archive">
-            使用反向shell控制摄像头
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-22
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/08/08/hexo-next主题优化/">
-        <h1 class="post-title archive">
-            hexo-next主题优化
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-08
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/08/06/rsyslog服务器搭建/">
-        <h1 class="post-title archive">
-            rsyslog服务器搭建
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-06
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/08/06/搭建个人博客/">
-        <h1 class="post-title archive">
-            搭建个人博客
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-08-06
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
