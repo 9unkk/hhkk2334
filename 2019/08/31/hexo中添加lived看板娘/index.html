@@ -58,14 +58,14 @@
 </script>
 
   <meta name="description" content="小白水平 安装 live2d 模块  1npm install --save hexo-helper-live2d   在 hexo 根目录下创建 “ live2d_models “ 目录  克隆 Live2dDemo 项目   1git clone https://github.com/summerscar/live2dDemo.git   将 “ /live2dDemo/assets/ “ 目">
-<meta name="keywords" content="hexo">
+<meta name="keywords" content="hexo,theme-next">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo中添加lived看板娘">
 <meta property="og:url" content="http://yoursite.com/2019/08/31/hexo中添加lived看板娘/index.html">
 <meta property="og:site_name" content="Junk Blog">
 <meta property="og:description" content="小白水平 安装 live2d 模块  1npm install --save hexo-helper-live2d   在 hexo 根目录下创建 “ live2d_models “ 目录  克隆 Live2dDemo 项目   1git clone https://github.com/summerscar/live2dDemo.git   将 “ /live2dDemo/assets/ “ 目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-31T08:34:02.145Z">
+<meta property="og:updated_time" content="2019-08-31T15:12:22.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo中添加lived看板娘">
 <meta name="twitter:description" content="小白水平 安装 live2d 模块  1npm install --save hexo-helper-live2d   在 hexo 根目录下创建 “ live2d_models “ 目录  克隆 Live2dDemo 项目   1git clone https://github.com/summerscar/live2dDemo.git   将 “ /live2dDemo/assets/ “ 目">
@@ -278,7 +278,7 @@
                 
               
 
-              <time title="创建时间：2019-08-31 14:05:59 / 修改时间：16:34:02" itemprop="dateCreated datePublished" datetime="2019-08-31T14:05:59+08:00">2019-08-31</time>
+              <time title="创建时间：2019-08-31 14:05:59 / 修改时间：23:12:22" itemprop="dateCreated datePublished" datetime="2019-08-31T14:05:59+08:00">2019-08-31</time>
             </span>
           
             
@@ -396,6 +396,8 @@
         <div class="post-tags">
             <a href="/tags/hexo/" rel="tag"># hexo</a>
           
+            <a href="/tags/theme-next/" rel="tag"># theme-next</a>
+          
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
@@ -408,6 +410,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/31/hexo-next访客统计/" rel="prev" title="hexo-next访客统计">
+                hexo-next访客统计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
     </footer>
@@ -462,7 +468,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -654,14 +660,9 @@
                 console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
               })
           } else {
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
-                .done(function() {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function() {
-                  console.log('Failed to create');
-                });
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
             
           }
         })
