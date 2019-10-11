@@ -444,7 +444,7 @@
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是双查询？"><a href="#什么是双查询？" class="headerlink" title="什么是双查询？"></a>什么是双查询？</h2><p>双查询就是在 select 语句中再插入一个 select 语句，如下图所示：</p>
 <p><img src="https://i.loli.net/2019/10/02/1eMlHYmObKqn8GS.png" alt="5-1y.png"></p>
 <p>在查询的时候，会先执行 select database() 语句，然后再将该语句的执行结果传递给 count() 函数，从内到外依次执行。</p>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h3><p>对于双查询注入,需要先了解 count()、rand()、floor() 这三个函数的功能，以及 group by 的用法。</p>
+<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><p>对于双查询注入,需要先了解 count()、rand()、floor() 这三个函数的功能，以及 group by 的用法。</p>
 <p>floor()：去除小数</p>
 <p><img src="https://i.loli.net/2019/10/02/Hnob26tvASWx7wj.png" alt="5-4y.png"></p>
 <p>rand()：产生随机数</p>
@@ -452,9 +452,9 @@
 <p>count()：对表中的数据进行计数</p>
 <p><img src="https://i.loli.net/2019/10/02/ZIVn7QrcJPYe2ol.png" alt="5-2y.png"></p>
 <p>group by：根据规则，对数据进行分组处理。</p>
-<h3 id="双查询注入产生原因"><a href="#双查询注入产生原因" class="headerlink" title="双查询注入产生原因"></a>双查询注入产生原因</h3><p>使用 group by 子句结合 rand() 函数以及像 count（*） 这样的聚合函数，在 SQL 查询时会出现错误，这种错误是随机产生的，这就产生了双重查询注入。</p>
+<h2 id="双查询注入产生原因"><a href="#双查询注入产生原因" class="headerlink" title="双查询注入产生原因"></a>双查询注入产生原因</h2><p>使用 group by 子句结合 rand() 函数以及像 count（*） 这样的聚合函数，在 SQL 查询时会出现错误，这种错误是随机产生的，这就产生了双重查询注入。</p>
 <p><img src="https://i.loli.net/2019/10/02/4VhSFL5w6nruWyq.png" alt="5-5y.png"></p>
-<h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><p>以下面的查询语句为例：</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>以下面的查询语句为例：</p>
 <pre class=" language-mysql"><code class="language-mysql">select count(*),concat((select database()),floor(rand(0)*2))a from information_schema.columns group by a;</code></pre>
 <p><img src="https://i.loli.net/2019/10/03/5yvnlafeVmctWBJ.png" alt="5-7y.png"></p>
 <p>首先，rand(0)的查询结果几乎消除了rand()函数原有的随机性，连续查询几次，我们会发现它的规律如下(01101)</p>
@@ -553,7 +553,7 @@ table th:first-of-type {
 </tr>
 </tbody></table>
 <p>所以在使用 floor()、rand(0)、count()、group by 时，数据表中至少要有 3 条记录才会报错.</p>
-<h1 id="渗透步骤"><a href="#渗透步骤" class="headerlink" title="渗透步骤"></a>渗透步骤</h1><h2 id="双注入GET单引号字符型注入-从报错信息中获取数据"><a href="#双注入GET单引号字符型注入-从报错信息中获取数据" class="headerlink" title="双注入GET单引号字符型注入(从报错信息中获取数据)"></a>双注入GET单引号字符型注入(从报错信息中获取数据)</h2><ol>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="双注入GET单引号字符型注入"><a href="#双注入GET单引号字符型注入" class="headerlink" title="双注入GET单引号字符型注入"></a>双注入GET单引号字符型注入</h2><ol>
 <li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-5/?id=1' </code></pre><p><img src="https://i.loli.net/2019/09/28/r4PYNDvSRpHAQl1.png" alt="less5-2.png"></p>
@@ -661,14 +661,11 @@ table th:first-of-type {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">双注入GET双引号字符型注入(从报错信息中获取数据)
+                    <div class="summary">前言没有什么好解释的，同 Less5 ，只不过 “单引号” 换成了 “双引号”。
+注入步骤双注入GET双引号字符型注入
 输入字符使网页报错,判断执行的 SQL 语句
 
-http://192.168.150.128/sqli-labs-master/Less-6/?id=1"
-
-判断字段数
-
-http://</div>
+http://192.168.150.128/sqli-labs-mas</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-05
@@ -854,7 +851,7 @@ User’s browser 向 web App</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.8k</span>&nbsp;字
+                class="white-color">17.9k</span>&nbsp;字
                
             
 			

