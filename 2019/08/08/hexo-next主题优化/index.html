@@ -290,7 +290,7 @@ scheme: Pisces
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/11/cSHZ3N75tY9lwRu.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -423,7 +423,7 @@ scheme: Pisces
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        983
+                        1k
                     </div>
                     
 
@@ -480,11 +480,11 @@ INFO  Created: E:\My_Blog\source\categories\index.md</code></pre>
 <pre><code>---
 title: tags
 date: 2019-08-09 10:41:40
-type: &quot;tags&quot;
+type: "tags"
 ---</code></pre><pre><code>---
 title: categories
 date: 2019-08-09 10:43:31
-type: &quot;categories&quot;
+type: "categories"
 ---</code></pre><ol start="3">
 <li>检查页面配置<br>开启本地的 hexo 服务，并查看页面配置</li>
 </ol>
@@ -649,14 +649,32 @@ auto_excerpt:
   enable: true
   length: 150   # 文章预览的文本长度</code></pre>
 <h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E9%A1%B6%E9%83%A8%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%9D%A1/" target="_blank" rel="noopener">Hexo博客NexT主题美化之顶部加载进度条</a></p>
-<p><a href="https://github.com/theme-next/theme-next-pace" target="_blank" rel="noopener">theme-next-pace</a></p>
+<p><a href="https://github.com/theme-next/theme-next-pace">theme-next-pace</a></p>
 <p><a href="https://theme-next.org/docs/theme-settings/sidebar" target="_blank" rel="noopener">sidebar</a></p>
 <p><a href="https://blog.csdn.net/weixin_39345384/article/details/80785373" target="_blank" rel="noopener">Hexo框架下用NexT(v7.0+)主题美化博客</a></p>
 <p><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a></p>
 <p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">主题配置</a></p>
 <p><a href="https://hexo.io/plugins/" target="_blank" rel="noopener">hexo plugins</a></p>
 <p><a href="https://www.jianshu.com/p/393d067dba8d" target="_blank" rel="noopener">Hexo之next主题设置首页不显示全文(只显示预览)</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -677,7 +695,7 @@ auto_excerpt:
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">Junk Blog</a>
+                    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2019/08/08/hexo-next主题优化/" class="b-link-green">hexo-next主题优化</a>
                 </p>
@@ -707,8 +725,7 @@ auto_excerpt:
                 <a href="/2019/08/22/使用反向shell控制摄像头/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="使用反向shell控制摄像头">
+                        <img src="https://i.loli.net/2019/10/11/hTqaELPVx68zO5F.jpg" class="responsive-img" alt="使用反向shell控制摄像头">
                         
                         <span class="card-title">使用反向shell控制摄像头</span>
                     </div>
@@ -761,8 +778,7 @@ auto_excerpt:
                 <a href="/2019/08/06/rsyslog服务器搭建/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="rsyslog服务器搭建">
+                        <img src="https://i.loli.net/2019/10/11/5lBDbKC16v9wPAL.png" class="responsive-img" alt="rsyslog服务器搭建">
                         
                         <span class="card-title">rsyslog服务器搭建</span>
                     </div>
@@ -835,7 +851,7 @@ auto_excerpt:
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Junk Blog<br />'
-            + '作者: Trash Can<br />'
+            + '作者: Trash Can,Trash Can<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -898,16 +914,8 @@ auto_excerpt:
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.1k</span>
-            
-
+        <div class="col s12 m8 l8 copy-right" >
+    
             
 			
                 <br>
@@ -925,25 +933,6 @@ auto_excerpt:
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-</div>
     </div>
 </footer>
 

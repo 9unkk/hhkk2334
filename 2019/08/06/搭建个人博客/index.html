@@ -296,7 +296,7 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/11/fyKq7eUVAX25zcp.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -429,7 +429,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        384
+                        449
                     </div>
                     
 
@@ -454,7 +454,7 @@
             <div id="articleContent">
                 <h1 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h1><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li><a href="https://dcc.godaddy.com" target="_blank" rel="noopener">购买域名</a></li>
-<li><a href="https://github.com" target="_blank" rel="noopener">创建 github 帐号</a></li>
+<li><a href="https://github.com">创建 github 帐号</a></li>
 <li><a href="https://git-scm.com/" target="_blank" rel="noopener">安装 git</a></li>
 <li><a href="http://nodejs.org/download/" target="_blank" rel="noopener">安装 node</a></li>
 </ol>
@@ -564,9 +564,9 @@
 <li>输入 dns，测试网址是否搭建成功</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/uMrTSbWFKNOJBey.png" alt="github-7.png"></p>
-<h3 id="更换-hexo-主题"><a href="#更换-hexo-主题" class="headerlink" title="更换 hexo 主题"></a>更换 hexo 主题</h3><p>这里以 next 主题为例</p>
+<h3 id="更换-hexo-主题"><a href="#更换-hexo-主题" class="headerlink" title="更换 hexo 主题"></a>更换 hexo 主题</h3><p>这里以 next 主题为例，可在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo-thems</a> 下载自己喜欢的主题。</p>
 <ol>
-<li>克隆主题 </li>
+<li>克隆主题</li>
 </ol>
 <pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clone https://github.com/theme-next/hexo-theme-next themes/next</code></pre>
 <p><img src="https://i.loli.net/2019/08/06/ghrsk5MRVK91oib.png" alt="hexocg-1.png"></p>
@@ -596,9 +596,27 @@
 <pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
 <h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://blog.csdn.net/ainuser/article/details/77609180" target="_blank" rel="noopener">hexo+github搭建个人博客(超详细教程)</a></p>
 <p><a href="https://www.jianshu.com/p/5c6c6cf325cd" target="_blank" rel="noopener">hexo ERROR Deployer not found: github</a></p>
-<p><a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md" target="_blank" rel="noopener">theme-next</a></p>
+<p><a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md">theme-next</a></p>
 <p><a href="https://blog.csdn.net/y_z_w123/article/details/78801096" target="_blank" rel="noopener">hexo的安装和主题的替换</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -619,7 +637,7 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">Junk Blog</a>
+                    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2019/08/06/搭建个人博客/" class="b-link-green">搭建个人博客</a>
                 </p>
@@ -649,8 +667,7 @@
                 <a href="/2019/08/06/rsyslog服务器搭建/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="rsyslog服务器搭建">
+                        <img src="https://i.loli.net/2019/10/11/5lBDbKC16v9wPAL.png" class="responsive-img" alt="rsyslog服务器搭建">
                         
                         <span class="card-title">rsyslog服务器搭建</span>
                     </div>
@@ -699,8 +716,7 @@
                 <a href="/2019/08/06/搭建个人博客/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="搭建个人博客">
+                        <img src="https://i.loli.net/2019/10/11/fyKq7eUVAX25zcp.png" class="responsive-img" alt="搭建个人博客">
                         
                         <span class="card-title">搭建个人博客</span>
                     </div>
@@ -787,7 +803,7 @@
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: Junk Blog<br />'
-            + '作者: Trash Can<br />'
+            + '作者: Trash Can,Trash Can<br />'
             + '链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -850,16 +866,8 @@
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
-        <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">16.1k</span>
-            
-
+        <div class="col s12 m8 l8 copy-right" >
+    
             
 			
                 <br>
@@ -877,25 +885,6 @@
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
-</div>
     </div>
 </footer>
 
