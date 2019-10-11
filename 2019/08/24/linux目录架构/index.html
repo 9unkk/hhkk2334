@@ -417,7 +417,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        429
+                        481
                     </div>
                     
 
@@ -463,7 +463,25 @@
 <h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://blog.csdn.net/m0_38044196/article/details/72844025" target="_blank" rel="noopener">Linux目录结构及详细介绍</a></p>
 <p><a href="https://blog.csdn.net/wangyanlong0107/article/details/84926398" target="_blank" rel="noopener">【转】/mnt /media /dev 目录区别</a></p>
 <p><a href="https://blog.csdn.net/luckywang1103/article/details/25715101" target="_blank" rel="noopener">linux /sys目录下的各个子目录说明</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr/>
 
@@ -710,7 +728,16 @@ VXrail Manager 出现 MYSTIC028005 警报
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right" >
-    
+             Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://github.com/hhkk2334/hhkk2334.github.io" target="_blank">Trash Can,Trash Can</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">17.8k</span>&nbsp;字
+               
             
 			
                 <br>
@@ -728,6 +755,25 @@ VXrail Manager 出现 MYSTIC028005 警报
                 
             
         </div>
+		<div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
     </div>
 </footer>
 
