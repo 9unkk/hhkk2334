@@ -4,16 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo-next主题优化, Junk Blog">
-    <meta name="description" content="设置主题样式
-修改 themes\next\_config.yml
-
-# Schemes
-#scheme: Muse
-# scheme: Mist
-scheme: Pisces
-#scheme: Gemini
-添加标签（tags）和分类页面">
+    <meta name="keywords" content="netscaler 升级, Junk Blog">
+    <meta name="description" content="环境netscaler版本： 11.1（具体版本忘了）
+平台型号：NSMPX-5550
+客户需求：把 netscaler 升级到最新的 13.0 版本。
+升级前准备：保证 PC 机能够 ssh 到 netscaler 上。
+注： netsc">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +17,7 @@ scheme: Pisces
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo-next主题优化 | Junk Blog</title>
+    <title>netscaler 升级 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -290,13 +286,13 @@ scheme: Pisces
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/11/cSHZ3N75tY9lwRu.png')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/15/KCTYrULxcDp8bwA.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo-next主题优化
+                        netscaler 升级
                     </div>
                 </div>
             </div>
@@ -388,12 +384,8 @@ scheme: Pisces
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/" target="_blank">
-                                <span class="chip bg-color">hexo</span>
-                            </a>
-                        
-                            <a href="/tags/theme-next/" target="_blank">
-                                <span class="chip bg-color">theme-next</span>
+                            <a href="/tags/Netscaler-ADC/" target="_blank">
+                                <span class="chip bg-color">Netscaler(ADC)</span>
                             </a>
                         
                     </div>
@@ -404,8 +396,8 @@ scheme: Pisces
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Blog/" class="post-category" target="_blank">
-                                Blog
+                            <a href="/categories/Citrix/" class="post-category" target="_blank">
+                                Citrix
                             </a>
                         
                     </div>
@@ -416,21 +408,21 @@ scheme: Pisces
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-08
+                    2019-10-14
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        929
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        3 分
                     </div>
                     
                 
@@ -446,216 +438,116 @@ scheme: Pisces
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="设置主题样式"><a href="#设置主题样式" class="headerlink" title="设置主题样式"></a>设置主题样式</h1><ol>
-<li>修改 themes\next\_config.yml</li>
+                <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>netscaler版本：</strong> 11.1（具体版本忘了）</p>
+<p><strong>平台型号</strong>：NSMPX-5550</p>
+<p><strong>客户需求</strong>：把 netscaler 升级到最新的 13.0 版本。</p>
+<p><strong>升级前准备</strong>：保证 PC 机能够 ssh 到 netscaler 上。</p>
+<p><strong>注：</strong> netscaler 默认是开启 ssh 的，一般连接不上，是因为 PC 机到 netscaler 网络之间有防火墙或策略，阻断了 ssh 的通信。如果出现 ssh 通信没问题，但是 PC 机还是连接不上 ssh 的情况，很有可能是 netscaler 因为一些问题，自动关闭了 ssh 服务。</p>
+<h1 id="单台升级步骤"><a href="#单台升级步骤" class="headerlink" title="单台升级步骤"></a>单台升级步骤</h1><ol>
+<li>备份配置文件</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"># Schemes
-#scheme: Muse
-# scheme: Mist
-scheme: Pisces
-#scheme: Gemini</code></pre>
-<h1 id="添加标签（tags）和分类页面（categories）"><a href="#添加标签（tags）和分类页面（categories）" class="headerlink" title="添加标签（tags）和分类页面（categories）"></a>添加标签（tags）和分类页面（categories）</h1><ol>
-<li>开启 tags 和 categories<br>修改 themes\next\_config.yml ，将 tags 和 categories 前的 “#” 删掉</li>
-</ol>
-<pre class=" language-yml"><code class="language-yml">menu:
-  home: / || home
-  # about: /about/ || user
-  tags: /tags/ || tags
-  categories: /categories/ || th
-  archives: /archives/ || archive
-  # schedule: /schedule/ || calendar
-  # sitemap: /sitemap.xml || sitemap
-  # commonweal: /404/ || heartbeat</code></pre>
+<p><img src="https://i.loli.net/2019/10/14/UnYlSHcChJk74wy.png" alt="ADC-1.png"></p>
 <ol start="2">
-<li>生成页面</li>
+<li>查看 Citrix ADC 硬件平台型号</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo new page tags
-INFO  Created: E:\My_Blog\source\tags\index.md
-
-$ hexo new page categories
-INFO  Created: E:\My_Blog\source\categories\index.md</code></pre>
+<p><img src="https://i.loli.net/2019/10/14/1kPnRUpgZwWA8qa.png" alt="ADC-2.png"></p>
 <ol start="3">
-<li>分别修改 index.md</li>
+<li>根据 Citrix ADC 硬件平台的兼容性列表，下载 ADC 升级包</li>
 </ol>
-<pre><code>---
-title: tags
-date: 2019-08-09 10:41:40
-type: "tags"
----</code></pre><pre><code>---
-title: categories
-date: 2019-08-09 10:43:31
-type: "categories"
----</code></pre><ol start="3">
-<li>检查页面配置<br>开启本地的 hexo 服务，并查看页面配置</li>
+<p><strong>Citrix ADC MPX硬件-软件兼容性列表：</strong> <a href="https://docs.citrix.com/en-us/citrix-hardware-platforms/mpx/mpx-hardware-software-compatibility-matrix.html" target="_blank" rel="noopener">https://docs.citrix.com/en-us/citrix-hardware-platforms/mpx/mpx-hardware-software-compatibility-matrix.html</a></p>
+<p><strong>netscaler 升级包（可根据平台型号修改链接）：</strong> <a href="https://www.citrix.com/downloads/citrix-adc/firmware/release-13-0-build-36-27.html" target="_blank" rel="noopener">https://www.citrix.com/downloads/citrix-adc/firmware/release-13-0-build-36-27.html</a></p>
+<ol start="4">
+<li>使用 xshell 连接到 ADC</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo s</code></pre>
-<p>注：hexo 默认配置了首页（home）和归档（archives）页面，其他新开的页面需要自己手动生成。</p>
-<h1 id="添加本地搜索"><a href="#添加本地搜索" class="headerlink" title="添加本地搜索"></a>添加本地搜索</h1><ol>
-<li>安装 hexo-generator-search</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">$  <span class="token function">npm</span> <span class="token function">install</span> hexo-generator-search --save</code></pre>
-<ol start="2">
-<li>开启本地搜索，将 “enable: “ 的值改为 “true”</li>
-</ol>
-<pre class=" language-yml"><code class="language-yml"># Local search
-# Dependencies: https://github.com/theme-next/hexo-generator-searchdb
-local_search:
-  enable: true
-  # If auto, trigger search by changing input.
-  # If manual, trigger search by pressing enter key or search button.
-  trigger: auto
-  # Show top n results per article, show all results by setting to -1
-  top_n_per_article: 1
-  # Unescape html strings to the readable one.
-  unescape: false
-  # Preload the search data when the page loads.
-  preload: false</code></pre>
-<h1 id="添加背景特效"><a href="#添加背景特效" class="headerlink" title="添加背景特效"></a>添加背景特效</h1><ol>
-<li>安装 theme-next-canvas-nest</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> themes/next
-$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest</code></pre>
-<ol start="2">
-<li>开启 canvas_nest 背景特效，将 “enable: “ 的值改为 “true”</li>
-</ol>
-<pre class=" language-yml"><code class="language-yml">canvas_nest:
-  enable: true
-  onmobile: true # display on mobile or not
-  color: '0,0,255' # RGB values, use ',' to separate
-  opacity: 0.5 # the opacity of line: 0~1
-  zIndex: -1 # z-index property of the background
-  count: 99 # the number of lines</code></pre>
-<h1 id="设置加载进度样式"><a href="#设置加载进度样式" class="headerlink" title="设置加载进度样式"></a>设置加载进度样式</h1><ol>
-<li>安装 heme-next-pace</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> themes/next
-$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-pace source/lib/pace</code></pre>
-<ol start="2">
-<li>开启 pace ，”theme:” 设置进度条样式</li>
-</ol>
-<pre class=" language-yml"><code class="language-yml"># Progress bar in the top during page loading.
-# Dependencies: https://github.com/theme-next/theme-next-pace
-# For more information: https://github.com/HubSpot/pace
-pace:
-  enable: true
-  # Themes list:
-  # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
-  # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
-  theme: corner-indicator</code></pre>
-<h1 id="设置侧边栏"><a href="#设置侧边栏" class="headerlink" title="设置侧边栏"></a>设置侧边栏</h1><ol>
-<li>修改 themes\next\_config.yml</li>
-</ol>
-<pre class=" language-yml"><code class="language-yml">sidebar:
-  # 侧边栏位置
-  # Sidebar Position.
-  position: left
-  #position: right
+<pre class=" language-bash"><code class="language-bash">//** 进入 shell **//
+<span class="token operator">></span> shell
 
-  # 侧边栏大小
-  # Manual define the sidebar width. If commented, will be default for:
-  # Muse | Mist: 320
-  Pisces | Gemini: 400
-  width: 300</code></pre>
-<h1 id="添加头像"><a href="#添加头像" class="headerlink" title="添加头像"></a>添加头像</h1><ol>
-<li>修改 themes\next\_config.yml</li>
+//** 创建存放升级包目录 **//
+root@ns01<span class="token comment" spellcheck="true"># mkdir /var/nsinstall/13.0-36.27</span></code></pre>
+<ol start="5">
+<li>Xftp 连到ADC，将下载的升级包上传到安装目录下</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"># Sidebar Avatar
-avatar:
-  # In theme directory (source/images): /images/avatar.gif
-  # In site directory (source/uploads): /uploads/avatar.gif
-  # You can also use other linking images.
-  # 头像最好本地存放，存储位置在 themes\next\source\images
-  url: /images/tx1.jpg
-  # If true, the avatar would be dispalyed in circle.
-  rounded: false
-  # If true, the avatar would be rotated with the cursor.
-  rotated: false</code></pre>
-<ol start="2">
-<li>设置头像旋转效果</li>
+<p><img src="https://i.loli.net/2019/10/14/LvMuaD1iB5WjmPY.png" alt="ADC-3.png"></p>
+<ol start="6">
+<li>安装 netscaler 升级包</li>
 </ol>
-<p>将文件 themes\next\source\css_common\components\sidebar 的内容替换</p>
-<pre class=" language-yml"><code class="language-yml">.site-author-image {
-  display: block;
-  margin: 0 auto;
-  padding: $site-author-image-padding;
-  max-width: $site-author-image-width;
-  height: $site-author-image-height;
-  border: $site-author-image-border-width solid $site-author-image-border-color;
-  border-radius: 60%;
-  transition: 2.5s all;  
-}
+<pre class=" language-bash"><code class="language-bash">//** 进入安装目录 **//
+root@ns01<span class="token comment" spellcheck="true"># cd /var/nsinstall/13.0-36.27</span>
 
-.site-author-image:hover {
-    transform: rotate(360deg);
-}
+//** 解压升级包 **//
+root@ns01<span class="token comment" spellcheck="true"># tar -xzf build-13.0-36.27_nc_64.tgz</span>
 
+//** 查看安装脚本 <span class="token punctuation">(</span>可选<span class="token punctuation">)</span> **//
+root@ns01<span class="token comment" spellcheck="true"># ls installns</span>
+installns
 
-.site-author-name {
-  margin: $site-author-name-margin;
-  text-align: $site-author-name-align;
-  color: $site-author-name-color;
-  font-weight: $site-author-name-weight;
-}
+//** 执行安装脚本 **//
+root@ns01<span class="token comment" spellcheck="true"># installns</span>
+输出结果省略……
+Installation has completed.     //安装成功
 
-.site-description {
-  margin-top: $site-description-margin-top;
-  text-align: $site-description-align;
-  font-size: $site-description-font-size;
-  color: $site-description-color;
-}</code></pre>
-<h1 id="博客总访问量"><a href="#博客总访问量" class="headerlink" title="博客总访问量"></a>博客总访问量</h1><ol>
-<li>修改 themes\next\_config.yml<pre class=" language-yml"><code class="language-yml"># Show Views / Visitors of the website / page with busuanzi.
-# Get more information on http://ibruce.info/2015/04/04/busuanzi
-busuanzi_count:
-enable: true
-total_visitors: true
-total_visitors_icon: user
-total_views: true
-total_views_icon: eye
-post_views: true
-post_views_icon: eye</code></pre>
+Reboot NOW? <span class="token punctuation">[</span>Y/N<span class="token punctuation">]</span> y             //重启 ADC
+Rebooting <span class="token punctuation">..</span>.
+……</code></pre>
+<h1 id="netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）"><a href="#netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）" class="headerlink" title="netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）"></a>netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）</h1><ol>
+<li><p>下载好升级包</p>
 </li>
-<li>在 themes\next\layout\_partials\footer.swig 中添加如下内容</li>
+<li><p>升级前执行一次配置保存操作，并做好备份。</p>
+</li>
+<li><p>HA 环境下，我们需要先升级备机，再升级主机。升级之前，需要在主机上配置 Stay Primary，在备机上配置 Stay Secondary，并取消同步。</p>
+</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"><div>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container_site_pv" style='display:none'>
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    <span class="post-meta-divider">|</span>
-</span>
-<span id="busuanzi_container_site_uv" style='display:none'>
-    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
-</span>
-</div></code></pre>
-<h1 id="设置代码样式"><a href="#设置代码样式" class="headerlink" title="设置代码样式"></a>设置代码样式</h1><ol>
-<li>修改 themes\next\_config.yml</li>
+<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令： **//
+<span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus STAYPRIMARY
+save config</code></pre>
+<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
+<span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus STAYSECONDARY
+save config</code></pre>
+<ol start="4">
+<li>升级备机</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml">codeblock:
-  # Code Highlight theme
-  # Available values: normal | night | night eighties | night blue | night bright
-  # See: https://github.com/chriskempson/tomorrow-theme
-  highlight_theme: night
-  # Add copy button on codeblock
-  copy_button:
-    enable: true
-    # Show text copy result.
-    show_result: true
-    # Available values: default | flat | mac
-    style: flat</code></pre>
-<h3 id="hexo-next-主题将首页文章设为预览"><a href="#hexo-next-主题将首页文章设为预览" class="headerlink" title="hexo next 主题将首页文章设为预览"></a>hexo next 主题将首页文章设为预览</h3><p>编辑 themes/next 目录下的 _config.yml 文件,搜索 “auto_excerpt” 关键字，并修改位如下内容：</p>
-<pre class=" language-yml"><code class="language-yml"># Automatically Excerpt. Not recommand.
-# Please use <!-- more --> in the post to control excerpt accurately.
-auto_excerpt:
-  enable: true
-  length: 150   # 文章预览的文本长度</code></pre>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E9%A1%B6%E9%83%A8%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%9D%A1/" target="_blank" rel="noopener">Hexo博客NexT主题美化之顶部加载进度条</a></p>
-<p><a href="https://github.com/theme-next/theme-next-pace">theme-next-pace</a></p>
-<p><a href="https://theme-next.org/docs/theme-settings/sidebar" target="_blank" rel="noopener">sidebar</a></p>
-<p><a href="https://blog.csdn.net/weixin_39345384/article/details/80785373" target="_blank" rel="noopener">Hexo框架下用NexT(v7.0+)主题美化博客</a></p>
-<p><a href="https://www.jianshu.com/p/3a05351a37dc" target="_blank" rel="noopener">Hexo的Next主题详细配置</a></p>
-<p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">主题配置</a></p>
-<p><a href="https://hexo.io/plugins/" target="_blank" rel="noopener">hexo plugins</a></p>
-<p><a href="https://www.jianshu.com/p/393d067dba8d" target="_blank" rel="noopener">Hexo之next主题设置首页不显示全文(只显示预览)</a></p>
+<pre class=" language-bash"><code class="language-bash">//** 进入 shell **//
+shell
+
+//** 创建存放安装包目录 **//
+<span class="token function">mkdir</span> /var/nsinstall/11.1-56.19
+
+//** 利用 Winscp 工具将升级包上传到 /var/nsinstall/11.1-56.19 目录下 **//</code></pre>
+<pre class=" language-bash"><code class="language-bash">//** 返回命令行，继续运行如下命令 **//
+<span class="token function">cd</span> /var/nsinstall/11.1-56.19/
+
+//** 解压升级包 **//
+<span class="token function">tar</span> -xzf build-11.1-56.19_nc.tgz
+
+//** 执行安装脚本 **//
+installns</code></pre>
+<ol start="5">
+<li><p>当命令行提示升级完成，是否需要重启时，输入 Y；若升级过程出现任何异常，请联系思杰技术支持。</p>
+</li>
+<li><p>设备重启后，取消主备的 Stay Primary 以及 Stay Secondary 状态，以便进行 HA Failover 后升级另一台设备。</p>
+</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash">//** SSH 到升级后的备机，在命令行中输入如下命令: **//
+ <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED</code></pre>
+<pre class=" language-bash"><code class="language-bash">//** SSH 到未升级的主机，在命令行中输入如下命令 **//
+<span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED
+force failover</code></pre>
+<ol start="7">
+<li><p>现在新的主机是升级后的那一台设备了。访问一下业务，检查业务是否一切正常。</p>
+</li>
+<li><p>确定业务正常后，升级新的备机，重复步骤3-5即可。</p>
+</li>
+<li><p>恢复HA同步配置</p>
+</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令：**//
+<span class="token keyword">set</span> ha node -hasync ENABLED -haprop ENABLED -hastatus ENABLED
+save config</code></pre>
+<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
+<span class="token keyword">set</span> ha node -hasync ENABLED -haprop ENABLED -hastatus ENABLED
+save config</code></pre>
+<p>10.GUI 界面上查看下 HA 状态是否如下。若如下，则一切正常。</p>
+<p><img src="https://i.loli.net/2019/10/14/LoU5N4JT7Dc1npv.png" alt="ADC-HA.png"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -697,7 +589,7 @@ auto_excerpt:
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/08/08/hexo-next主题优化/" class="b-link-green">hexo-next主题优化</a>
+                    <a href="/2019/10/14/netscaler-升级/" class="b-link-green">netscaler 升级</a>
                 </p>
             </div>
         </div>
@@ -716,7 +608,7 @@ auto_excerpt:
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Aug 08 2019 14:14:45 GMT+0800',
+    id: 'Mon Oct 14 2019 22:13:12 GMT+0800',
     owner: '315053891',
     repo: 'hhkk2334.github.io',
     oauth: {
@@ -740,54 +632,47 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/22/使用反向shell控制摄像头/">
+                <a href="/2019/10/14/netscaler-升级/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/10/11/hTqaELPVx68zO5F.jpg" class="responsive-img" alt="使用反向shell控制摄像头">
+                        <img src="https://i.loli.net/2019/10/15/KCTYrULxcDp8bwA.jpg" class="responsive-img" alt="netscaler 升级">
                         
-                        <span class="card-title">使用反向shell控制摄像头</span>
+                        <span class="card-title">netscaler 升级</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">环境系统：Kali、windows 10 （电脑上带摄像头）
-软件：shellter（kali 默认安装）
-注：关闭防火墙和杀毒软件
-操作
-将任意 PE 软件，放到 Kali 系统中
-
-运行 shellter
-
-
-root@kali:/ho</div>
+                    <div class="summary">环境netscaler版本： 11.1（具体版本忘了）
+平台型号：NSMPX-5550
+客户需求：把 netscaler 升级到最新的 13.0 版本。
+升级前准备：保证 PC 机能够 ssh 到 netscaler 上。
+注： netsc</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/system-security/" class="post-category" target="_blank">
-                                    system security
+                            <a href="/categories/Citrix/" class="post-category" target="_blank">
+                                    Citrix
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/kali/" target="_blank">
-                        <span class="chip bg-color">kali</span>
-                    </a>
-                    
-                    <a href="/tags/shellter/" target="_blank">
-                        <span class="chip bg-color">shellter</span>
+                    <a href="/tags/Netscaler-ADC/" target="_blank">
+                        <span class="chip bg-color">Netscaler(ADC)</span>
                     </a>
                     
                 </div>
@@ -801,43 +686,31 @@ root@kali:/ho</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/06/rsyslog服务器搭建/">
+                <a href="/2019/10/13/我的博客/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/10/11/5lBDbKC16v9wPAL.png" class="responsive-img" alt="rsyslog服务器搭建">
+                        <img src="https://i.loli.net/2019/10/13/NTc7MfD3gyJsadO.jpg" class="responsive-img" alt="我的博客">
                         
-                        <span class="card-title">rsyslog服务器搭建</span>
+                        <span class="card-title">我的博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">环境服务器：centos6.5（默认安装rsyslog）IP：192.168.0.101
-客户端：centos6.5IP：192.168.0.105
-前提要配置好 服务器 和 客户端 的网络，让它们能上网
-操作服务器
-查看 rsyslog </div>
+                    <div class="summary">我为什么写博客？因为受朋友的影响，很早之前就在写笔记。写笔记的初衷是整合、巩固、记录自己学习的知识，如果有一天，我想回顾这些知识点，对照着曾经记录的笔记，会起到事半功倍的效果。但是时间长了，发现自己一直在偷懒，笔记写得囫囵吞枣，而且写着写着</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/linux/" class="post-category" target="_blank">
-                                    linux
+                            <a href="/categories/杂谈/" class="post-category" target="_blank">
+                                    杂谈
                                 </a>
                             
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/server/" target="_blank">
-                        <span class="chip bg-color">server</span>
-                    </a>
-                    
                 </div>
                 
             </div>
