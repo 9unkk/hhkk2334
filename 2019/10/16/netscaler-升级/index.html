@@ -32,7 +32,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -415,7 +416,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        930
+                        929
                     </div>
                     
 
@@ -438,12 +439,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>netscaler版本：</strong> 11.1（具体版本忘了）</p>
+                <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p><strong>netscaler版本：</strong> 11.1（具体版本忘了）</p>
 <p><strong>平台型号</strong>：NSMPX-5550</p>
 <p><strong>客户需求</strong>：把 netscaler 升级到最新的 13.0 版本。</p>
 <p><strong>升级前准备</strong>：保证 PC 机能够 ssh 到 netscaler 上。</p>
 <p><strong>注：</strong> netscaler 默认是开启 ssh 的，一般连接不上，是因为 PC 机到 netscaler 网络之间有防火墙或策略，阻断了 ssh 的通信。如果出现 ssh 通信没问题，但是 PC 机还是连接不上 ssh 的情况，很有可能是 netscaler 因为一些问题，自动关闭了 ssh 服务。</p>
-<h1 id="单台升级步骤"><a href="#单台升级步骤" class="headerlink" title="单台升级步骤"></a>单台升级步骤</h1><ol>
+<h2 id="单台升级步骤"><a href="#单台升级步骤" class="headerlink" title="单台升级步骤"></a>单台升级步骤</h2><ol>
 <li>备份配置文件</li>
 </ol>
 <p><img src="https://i.loli.net/2019/10/14/UnYlSHcChJk74wy.png" alt="ADC-1.png"></p>
@@ -459,11 +460,11 @@
 <ol start="4">
 <li>使用 xshell 连接到 ADC</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 进入 shell **//
-<span class="token operator">&gt;</span> shell
+<pre class="line-numbers language-bash"><code class="language-bash">//** 进入 shell **//
+<span class="token operator">></span> shell
 
 //** 创建存放升级包目录 **//
-root@ns01<span class="token comment" spellcheck="true"># mkdir /var/nsinstall/13.0-36.27</span></code></pre>
+root@ns01<span class="token comment" spellcheck="true"># mkdir /var/nsinstall/13.0-36.27</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
 <li>Xftp 连到ADC，将下载的升级包上传到安装目录下</li>
 </ol>
@@ -471,7 +472,7 @@ root@ns01<span class="token comment" spellcheck="true"># mkdir /var/nsinstall/13
 <ol start="6">
 <li>安装 netscaler 升级包</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 进入安装目录 **//
+<pre class="line-numbers language-bash"><code class="language-bash">//** 进入安装目录 **//
 root@ns01<span class="token comment" spellcheck="true"># cd /var/nsinstall/13.0-36.27</span>
 
 //** 解压升级包 **//
@@ -488,8 +489,8 @@ Installation has completed.     //安装成功
 
 Reboot NOW? <span class="token punctuation">[</span>Y/N<span class="token punctuation">]</span> y             //重启 ADC
 Rebooting <span class="token punctuation">..</span>.
-……</code></pre>
-<h1 id="netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）"><a href="#netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）" class="headerlink" title="netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）"></a>netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）</h1><ol>
+……<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）"><a href="#netscaler-HA-升级步骤（没有操作过，具体步骤以-400-发的文档为例）" class="headerlink" title="netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）"></a>netscaler HA 升级步骤（没有操作过，具体步骤以 400 发的文档为例）</h2><ol>
 <li><p>下载好升级包</p>
 </li>
 <li><p>升级前执行一次配置保存操作，并做好备份。</p>
@@ -497,41 +498,41 @@ Rebooting <span class="token punctuation">..</span>.
 <li><p>HA 环境下，我们需要先升级备机，再升级主机。升级之前，需要在主机上配置 Stay Primary，在备机上配置 Stay Secondary，并取消同步。</p>
 </li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令： **//
+<pre class="line-numbers language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令： **//
 <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus STAYPRIMARY
-save config</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
+save config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
 <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus STAYSECONDARY
-save config</code></pre>
+save config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li>升级备机</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 进入 shell **//
+<pre class="line-numbers language-bash"><code class="language-bash">//** 进入 shell **//
 shell
 
 //** 创建存放安装包目录 **//
 <span class="token function">mkdir</span> /var/nsinstall/11.1-56.19
 
-//** 利用 Winscp 工具将升级包上传到 /var/nsinstall/11.1-56.19 目录下 **//</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** 返回命令行，继续运行如下命令 **//
+//** 利用 Winscp 工具将升级包上传到 /var/nsinstall/11.1-56.19 目录下 **//<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">//** 返回命令行，继续运行如下命令 **//
 <span class="token function">cd</span> /var/nsinstall/11.1-56.19/
 
 //** 解压升级包 **//
 <span class="token function">tar</span> -xzf build-11.1-56.19_nc.tgz
 
 //** 执行安装脚本 **//
-installns</code></pre>
+installns<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
 <li><p>当命令行提示升级完成，是否需要重启时，输入 Y；若升级过程出现任何异常，请联系思杰技术支持。</p>
 </li>
 <li><p>设备重启后，取消主备的 Stay Primary 以及 Stay Secondary 状态，以便进行 HA Failover 后升级另一台设备。</p>
 </li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** SSH 到升级后的备机，在命令行中输入如下命令: **//
- <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** SSH 到未升级的主机，在命令行中输入如下命令 **//
+<pre class="line-numbers language-bash"><code class="language-bash">//** SSH 到升级后的备机，在命令行中输入如下命令: **//
+ <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">//** SSH 到未升级的主机，在命令行中输入如下命令 **//
 <span class="token keyword">set</span> ha node -hasync DISABLED -haprop DISABLED -hastatus ENABLED
-force failover</code></pre>
+force failover<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="7">
 <li><p>现在新的主机是升级后的那一台设备了。访问一下业务，检查业务是否一切正常。</p>
 </li>
@@ -540,12 +541,12 @@ force failover</code></pre>
 <li><p>恢复HA同步配置</p>
 </li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令：**//
+<pre class="line-numbers language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录主机，并运行如下命令：**//
 <span class="token keyword">set</span> ha node -hasync ENABLED -haprop ENABLED -hastatus ENABLED
-save config</code></pre>
-<pre class=" language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
+save config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">//** 通过 PUTTY 或其他工具 SSH 登录备机，并运行如下命令: **//
 <span class="token keyword">set</span> ha node -hasync ENABLED -haprop ENABLED -hastatus ENABLED
-save config</code></pre>
+save config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>10.GUI 界面上查看下 HA 状态是否如下。若如下，则一切正常。</p>
 <p><img src="https://i.loli.net/2019/10/14/LoU5N4JT7Dc1npv.png" alt="ADC-HA.png"></p>
 <script>
@@ -598,28 +599,6 @@ save config</code></pre>
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Wed Oct 16 2019 22:13:12 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-    
 
     
 
@@ -645,9 +624,10 @@ gitment.render('gitment-content');
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言这一关测试的是时间盲注，payload 语句结构和布尔盲注相似。
-基础知识IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false
-sleep(n)：</div>
+                    <div class="summary">基础知识IF(expr1,expr2,expr3)：如果 expr1 的值为 true，则返回 expr2 的值，如果 expr1 的值为 false
+sleep(n)：命令延时 n 秒后执行
+工作原理
+用 if()+ascii()+sub</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-19
@@ -904,5 +884,6 @@ sleep(n)：</div>
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

@@ -32,7 +32,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -415,7 +416,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        800
+                        793
                     </div>
                     
 
@@ -438,80 +439,80 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><h2 id="服务器："><a href="#服务器：" class="headerlink" title="服务器："></a>服务器：</h2><p>centos6.5（默认安装rsyslog）<br>IP：192.168.0.101</p>
-<h2 id="客户端："><a href="#客户端：" class="headerlink" title="客户端："></a>客户端：</h2><p>centos6.5<br>IP：192.168.0.105</p>
+                <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><h3 id="服务器："><a href="#服务器：" class="headerlink" title="服务器："></a>服务器：</h3><p>centos6.5（默认安装rsyslog）<br>IP：192.168.0.101</p>
+<h3 id="客户端："><a href="#客户端：" class="headerlink" title="客户端："></a>客户端：</h3><p>centos6.5<br>IP：192.168.0.105</p>
 <p>前提要配置好 服务器 和 客户端 的网络，让它们能上网</p>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ol>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><ol>
 <li>查看 rsyslog 的版本</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># rsyslogd -v</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># rsyslogd -v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>防火墙配置</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># vim /etc/sysconfig/iptables</span>
+<pre class="line-numbers language-bash"><code class="language-bash"> <span class="token comment" spellcheck="true"># vim /etc/sysconfig/iptables</span>
 //** 添加如下内容 **//
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 514 -j ACCEPT
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
--A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</code></pre>
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>重启防火墙</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># services iptables restart</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># services iptables restart</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="4">
 <li>关闭 selinux</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sed -i 's/enforcing/disabled/' /etc/selinux/config</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sed -i 's/enforcing/disabled/' /etc/selinux/config</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="5">
 <li>安装 lamp</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># yum install php php-mysql php-common php-gd php-mbstring php-mcrypt php-devel php-xml mysql mysql-server wget gcc c++ -y</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># yum install php php-mysql php-common php-gd php-mbstring php-mcrypt php-devel php-xml mysql mysql-server wget gcc c++ -y</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="6">
 <li>添加开机自启动项</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># chkconfig httpd on</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># chkconfig httpd on</span>
 <span class="token comment" spellcheck="true"># chkconfig mysqld on </span>
-<span class="token comment" spellcheck="true"># chkconfig rsyslog on </span></code></pre>
+<span class="token comment" spellcheck="true"># chkconfig rsyslog on </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="7">
 <li>配置 httpd</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># vim /etc/httpd/conf/httpd.conf</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># vim /etc/httpd/conf/httpd.conf</span>
 ServerName 127.0.0.1:80    //** 编辑 ServerName example.com:80 **//
 //** 在 639行添加如下内容 **//
 AddType application/x-httpd-php .php
-AddType application/x-httpd-php-source .phps</code></pre>
+AddType application/x-httpd-php-source .phps<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="8">
 <li>开启服务</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># service httpd start</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># service httpd start</span>
 <span class="token comment" spellcheck="true"># service mysqld start</span>
-<span class="token comment" spellcheck="true"># service rsyslog start</span></code></pre>
+<span class="token comment" spellcheck="true"># service rsyslog start</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="9">
 <li>安装Rsyslog支持数据库支持</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">yum <span class="token function">install</span> rsyslog-mysql -y</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">yum <span class="token function">install</span> rsyslog-mysql -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="10">
 <li>测试是不是支持php</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">vim /var/www/html/index.php 
+<pre class="line-numbers language-bash"><code class="language-bash">vim /var/www/html/index.php 
 <span class="token operator">&lt;</span>?php
 phpinfo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-?<span class="token operator">&gt;</span></code></pre>
+?<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="11">
 <li>在网页上输入服务器 IP 地址，测试 lamp 是否配置成功<br><img src="https://i.loli.net/2019/08/06/NM9VZP8LFJdcRBY.png" alt="rsylog-1.png"></li>
 </ol>
 <ol start="12">
 <li>查看是否有数据库文件 createDB.sql</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># ll /usr/share/doc/rsyslog-mysql-5.8.10/createDB.sql</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># ll /usr/share/doc/rsyslog-mysql-5.8.10/createDB.sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="13">
 <li>导入 createDB.sql 文件到数据库中</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">mysql -u root -p <span class="token operator">&lt;</span> /usr/share/doc/rsyslog-mysql-5.8.10/createDB.sql</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mysql -u root -p <span class="token operator">&lt;</span> /usr/share/doc/rsyslog-mysql-5.8.10/createDB.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="14">
 <li>进入数据库，查看是否有 Syslog 数据库</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># mysql -uroot -p</span>
-mysql<span class="token operator">&gt;</span> show databases<span class="token punctuation">;</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># mysql -uroot -p</span>
+mysql<span class="token operator">></span> show databases<span class="token punctuation">;</span>
 +--------------------+
 <span class="token operator">|</span> Database           <span class="token operator">|</span>
 +--------------------+
@@ -520,17 +521,17 @@ mysql<span class="token operator">&gt;</span> show databases<span class="token p
 <span class="token operator">|</span> mysql              <span class="token operator">|</span>
 <span class="token operator">|</span> <span class="token function">test</span>               <span class="token operator">|</span>
 +--------------------+
-4 rows <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.00 sec<span class="token punctuation">)</span></code></pre>
+4 rows <span class="token keyword">in</span> <span class="token keyword">set</span> <span class="token punctuation">(</span>0.00 sec<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="15">
 <li>Mysql数据库建立一个用户，并制授权用户给上面导入时建立的库Syslog所有权限</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">mysql<span class="token operator">&gt;</span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span> 
-mysql<span class="token operator">&gt;</span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'127.0.0.1'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span> 
-mysql<span class="token operator">&gt;</span> flush privileges<span class="token punctuation">;</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mysql<span class="token operator">></span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span> 
+mysql<span class="token operator">></span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'127.0.0.1'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> flush privileges<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="16">
 <li>修改 rsyslog 配置文件</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">//** 删除前面的 “\#” **//
+<pre class="line-numbers language-bash"><code class="language-bash">//** 删除前面的 “\#” **//
 <span class="token variable">$ModLoad</span> imtcp
 <span class="token variable">$InputTCPServerRun</span> 514
 
@@ -538,15 +539,15 @@ mysql<span class="token operator">&gt;</span> flush privileges<span class="token
 <span class="token variable">$ModLoad</span> ommysql
 *.* :ommysql:127.0.0.1,Syslog,rsyslog,syslogps  
 
-//** 这里的 *.* 表示任意用户名，127.0.0.1 数据库的 ip地址（根据自己的环境做调整） Syslog 是数据库，rsyslog 是数据库授权的用户名，syslogps 是密码。 **//</code></pre>
+//** 这里的 *.* 表示任意用户名，127.0.0.1 数据库的 ip地址（根据自己的环境做调整） Syslog 是数据库，rsyslog 是数据库授权的用户名，syslogps 是密码。 **//<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="17">
 <li>重启服务</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">service</span> rsyslog restart </code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">service</span> rsyslog restart <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="18">
 <li>安装loganalyzer软件</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># wget http://download.adiscon.com/loganalyzer/loganalyzer-3.6.3.tar.gz</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># wget http://download.adiscon.com/loganalyzer/loganalyzer-3.6.3.tar.gz</span>
 <span class="token comment" spellcheck="true"># tar xf loganalyzer-3.6.3.tar.gz</span>
 //** 这里会提示“是否覆盖文件 index.php” ，输入 y，回车。 **//
 <span class="token comment" spellcheck="true"># cp -r loganalyzer-3.6.3/src/* /var/www/html/   </span>
@@ -554,13 +555,13 @@ mysql<span class="token operator">&gt;</span> flush privileges<span class="token
 <span class="token comment" spellcheck="true"># cd /var/www/html/</span>
 <span class="token comment" spellcheck="true"># chmod 700 *.sh</span>
 <span class="token comment" spellcheck="true"># ./configure.sh</span>
-<span class="token comment" spellcheck="true"># chmod 777 /var/log/messages</span></code></pre>
+<span class="token comment" spellcheck="true"># chmod 777 /var/log/messages</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="19">
 <li>客户端配置</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># echo "*.* @@192.168.0.101:514" &gt;&gt; /etc/rsyslog.conf</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># echo "*.* @@192.168.0.101:514" >> /etc/rsyslog.conf</span>
 <span class="token comment" spellcheck="true"># service rsyslog restart</span>
-<span class="token comment" spellcheck="true"># service iptables stop</span></code></pre>
+<span class="token comment" spellcheck="true"># service iptables stop</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="网页安装-loganalyzer"><a href="#网页安装-loganalyzer" class="headerlink" title="网页安装 loganalyzer"></a>网页安装 loganalyzer</h2><ol>
 <li>点击 Next</li>
 </ol>
@@ -601,7 +602,7 @@ mysql<span class="token operator">&gt;</span> flush privileges<span class="token
 <li>登录界面</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/O3yhQYuqe6p9wPR.png" alt="rsylog-11.png"></p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="http://blog.51cto.com/2475296/1783864" target="_blank" rel="noopener">Centos6.5安装rsyslog+loganalyzer+mysql部署日志服务器</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="http://blog.51cto.com/2475296/1783864" target="_blank" rel="noopener">Centos6.5安装rsyslog+loganalyzer+mysql部署日志服务器</a></p>
 <p><a href="https://blog.csdn.net/qq_24038207/article/details/68065553" target="_blank" rel="noopener">centos6.5经典搭建lamp(详细教程)
 </a></p>
 <p><a href="https://www.jianshu.com/p/f4bcb808824d" target="_blank" rel="noopener">loganalyzer装完报错no syslog records found</a></p>
@@ -655,28 +656,6 @@ mysql<span class="token operator">&gt;</span> flush privileges<span class="token
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Aug 06 2019 16:42:20 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -759,7 +738,7 @@ scheme: Pisces
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">搭建个人博客准备工作
+                    <div class="summary">准备工作
 购买域名
 创建 github 帐号
 安装 git
@@ -773,7 +752,9 @@ scheme: Pisces
 
 
 
-检测 npm 环境配</div>
+检测 npm 环境配置
+
+ $ </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-06
@@ -994,5 +975,6 @@ scheme: Pisces
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

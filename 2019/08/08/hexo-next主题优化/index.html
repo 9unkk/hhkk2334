@@ -36,7 +36,8 @@ scheme: Pisces
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -423,7 +424,7 @@ scheme: Pisces
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        1.1k
                     </div>
                     
 
@@ -446,18 +447,18 @@ scheme: Pisces
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="设置主题样式"><a href="#设置主题样式" class="headerlink" title="设置主题样式"></a>设置主题样式</h1><ol>
+                <h2 id="设置主题样式"><a href="#设置主题样式" class="headerlink" title="设置主题样式"></a>设置主题样式</h2><ol>
 <li>修改 themes\next\_config.yml</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"># Schemes
+<pre class="line-numbers language-yml"><code class="language-yml"># Schemes
 #scheme: Muse
 # scheme: Mist
 scheme: Pisces
-#scheme: Gemini</code></pre>
-<h1 id="添加标签（tags）和分类页面（categories）"><a href="#添加标签（tags）和分类页面（categories）" class="headerlink" title="添加标签（tags）和分类页面（categories）"></a>添加标签（tags）和分类页面（categories）</h1><ol>
+#scheme: Gemini<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="添加标签（tags）和分类页面（categories）"><a href="#添加标签（tags）和分类页面（categories）" class="headerlink" title="添加标签（tags）和分类页面（categories）"></a>添加标签（tags）和分类页面（categories）</h2><ol>
 <li>开启 tags 和 categories<br>修改 themes\next\_config.yml ，将 tags 和 categories 前的 “#” 删掉</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml">menu:
+<pre class="line-numbers language-yml"><code class="language-yml">menu:
   home: / || home
   # about: /about/ || user
   tags: /tags/ || tags
@@ -465,39 +466,41 @@ scheme: Pisces
   archives: /archives/ || archive
   # schedule: /schedule/ || calendar
   # sitemap: /sitemap.xml || sitemap
-  # commonweal: /404/ || heartbeat</code></pre>
+  # commonweal: /404/ || heartbeat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>生成页面</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo new page tags
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo new page tags
 INFO  Created: E:\My_Blog\source\tags\index.md
 
 $ hexo new page categories
-INFO  Created: E:\My_Blog\source\categories\index.md</code></pre>
+INFO  Created: E:\My_Blog\source\categories\index.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>分别修改 index.md</li>
 </ol>
-<pre><code>---
+<pre class="line-numbers language-bash"><code class="language-bash">---
 title: tags
 date: 2019-08-09 10:41:40
-type: "tags"
----</code></pre><pre><code>---
+type: <span class="token string">"tags"</span>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">---
 title: categories
 date: 2019-08-09 10:43:31
-type: "categories"
----</code></pre><ol start="3">
+type: <span class="token string">"categories"</span>
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
 <li>检查页面配置<br>开启本地的 hexo 服务，并查看页面配置</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo s</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>注：hexo 默认配置了首页（home）和归档（archives）页面，其他新开的页面需要自己手动生成。</p>
-<h1 id="添加本地搜索"><a href="#添加本地搜索" class="headerlink" title="添加本地搜索"></a>添加本地搜索</h1><ol>
+<h2 id="添加本地搜索"><a href="#添加本地搜索" class="headerlink" title="添加本地搜索"></a>添加本地搜索</h2><ol>
 <li>安装 hexo-generator-search</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$  <span class="token function">npm</span> <span class="token function">install</span> hexo-generator-search --save</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$  <span class="token function">npm</span> <span class="token function">install</span> hexo-generator-search --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>开启本地搜索，将 “enable: “ 的值改为 “true”</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"># Local search
+<pre class="line-numbers language-yml"><code class="language-yml"># Local search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
   enable: true
@@ -509,31 +512,31 @@ local_search:
   # Unescape html strings to the readable one.
   unescape: false
   # Preload the search data when the page loads.
-  preload: false</code></pre>
-<h1 id="添加背景特效"><a href="#添加背景特效" class="headerlink" title="添加背景特效"></a>添加背景特效</h1><ol>
+  preload: false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="添加背景特效"><a href="#添加背景特效" class="headerlink" title="添加背景特效"></a>添加背景特效</h2><ol>
 <li>安装 theme-next-canvas-nest</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> themes/next
-$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">cd</span> themes/next
+$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>开启 canvas_nest 背景特效，将 “enable: “ 的值改为 “true”</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml">canvas_nest:
+<pre class="line-numbers language-yml"><code class="language-yml">canvas_nest:
   enable: true
   onmobile: true # display on mobile or not
   color: '0,0,255' # RGB values, use ',' to separate
   opacity: 0.5 # the opacity of line: 0~1
   zIndex: -1 # z-index property of the background
-  count: 99 # the number of lines</code></pre>
-<h1 id="设置加载进度样式"><a href="#设置加载进度样式" class="headerlink" title="设置加载进度样式"></a>设置加载进度样式</h1><ol>
+  count: 99 # the number of lines<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="设置加载进度样式"><a href="#设置加载进度样式" class="headerlink" title="设置加载进度样式"></a>设置加载进度样式</h2><ol>
 <li>安装 heme-next-pace</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> themes/next
-$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-pace source/lib/pace</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">cd</span> themes/next
+$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-pace source/lib/pace<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>开启 pace ，”theme:” 设置进度条样式</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"># Progress bar in the top during page loading.
+<pre class="line-numbers language-yml"><code class="language-yml"># Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
 # For more information: https://github.com/HubSpot/pace
 pace:
@@ -541,11 +544,11 @@ pace:
   # Themes list:
   # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
-  theme: corner-indicator</code></pre>
-<h1 id="设置侧边栏"><a href="#设置侧边栏" class="headerlink" title="设置侧边栏"></a>设置侧边栏</h1><ol>
+  theme: corner-indicator<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="设置侧边栏"><a href="#设置侧边栏" class="headerlink" title="设置侧边栏"></a>设置侧边栏</h2><ol>
 <li>修改 themes\next\_config.yml</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml">sidebar:
+<pre class="line-numbers language-yml"><code class="language-yml">sidebar:
   # 侧边栏位置
   # Sidebar Position.
   position: left
@@ -555,11 +558,11 @@ pace:
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
   Pisces | Gemini: 400
-  width: 300</code></pre>
-<h1 id="添加头像"><a href="#添加头像" class="headerlink" title="添加头像"></a>添加头像</h1><ol>
+  width: 300<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="添加头像"><a href="#添加头像" class="headerlink" title="添加头像"></a>添加头像</h2><ol>
 <li>修改 themes\next\_config.yml</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"># Sidebar Avatar
+<pre class="line-numbers language-yml"><code class="language-yml"># Sidebar Avatar
 avatar:
   # In theme directory (source/images): /images/avatar.gif
   # In site directory (source/uploads): /uploads/avatar.gif
@@ -569,12 +572,12 @@ avatar:
   # If true, the avatar would be dispalyed in circle.
   rounded: false
   # If true, the avatar would be rotated with the cursor.
-  rotated: false</code></pre>
+  rotated: false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>设置头像旋转效果</li>
 </ol>
 <p>将文件 themes\next\source\css_common\components\sidebar 的内容替换</p>
-<pre class=" language-yml"><code class="language-yml">.site-author-image {
+<pre class="line-numbers language-yml"><code class="language-yml">.site-author-image {
   display: block;
   margin: 0 auto;
   padding: $site-author-image-padding;
@@ -602,35 +605,35 @@ avatar:
   text-align: $site-description-align;
   font-size: $site-description-font-size;
   color: $site-description-color;
-}</code></pre>
-<h1 id="博客总访问量"><a href="#博客总访问量" class="headerlink" title="博客总访问量"></a>博客总访问量</h1><ol>
-<li>修改 themes\next\_config.yml<pre class=" language-yml"><code class="language-yml"># Show Views / Visitors of the website / page with busuanzi.
-# Get more information on http://ibruce.info/2015/04/04/busuanzi
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="博客总访问量"><a href="#博客总访问量" class="headerlink" title="博客总访问量"></a>博客总访问量</h2><ol>
+<li>修改 themes\next\_config.yml<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Show Views / Visitors of the website / page with busuanzi.</span>
+<span class="token comment" spellcheck="true"># Get more information on http://ibruce.info/2015/04/04/busuanzi</span>
 busuanzi_count:
-enable: true
-total_visitors: true
+enable: <span class="token boolean">true</span>
+total_visitors: <span class="token boolean">true</span>
 total_visitors_icon: user
-total_views: true
+total_views: <span class="token boolean">true</span>
 total_views_icon: eye
-post_views: true
-post_views_icon: eye</code></pre>
+post_views: <span class="token boolean">true</span>
+post_views_icon: eye<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>在 themes\next\layout\_partials\footer.swig 中添加如下内容</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml"><div>
-<script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container_site_pv" style="display:none">
-    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    <span class="post-meta-divider">|</span>
-</span>
-<span id="busuanzi_container_site_uv" style="display:none">
-    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
-</span>
-</div></code></pre>
-<h1 id="设置代码样式"><a href="#设置代码样式" class="headerlink" title="设置代码样式"></a>设置代码样式</h1><ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span>script async src<span class="token operator">=</span><span class="token string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span><span class="token operator">></span><span class="token operator">&lt;</span>/script<span class="token operator">></span>
+<span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"busuanzi_container_site_pv"</span> style<span class="token operator">=</span><span class="token string">'display:none'</span><span class="token operator">></span>
+    本站总访问量 <span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"busuanzi_value_site_pv"</span><span class="token operator">></span><span class="token operator">&lt;</span>/span<span class="token operator">></span> 次
+    <span class="token operator">&lt;</span>span class<span class="token operator">=</span><span class="token string">"post-meta-divider"</span><span class="token operator">></span><span class="token operator">|</span><span class="token operator">&lt;</span>/span<span class="token operator">></span>
+<span class="token operator">&lt;</span>/span<span class="token operator">></span>
+<span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"busuanzi_container_site_uv"</span> style<span class="token operator">=</span><span class="token string">'display:none'</span><span class="token operator">></span>
+    有<span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"busuanzi_value_site_uv"</span><span class="token operator">></span><span class="token operator">&lt;</span>/span<span class="token operator">></span>人看过我的博客啦
+<span class="token operator">&lt;</span>/span<span class="token operator">></span>
+<span class="token operator">&lt;</span>/div<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="设置代码样式"><a href="#设置代码样式" class="headerlink" title="设置代码样式"></a>设置代码样式</h2><ol>
 <li>修改 themes\next\_config.yml</li>
 </ol>
-<pre class=" language-yml"><code class="language-yml">codeblock:
+<pre class="line-numbers language-yml"><code class="language-yml">codeblock:
   # Code Highlight theme
   # Available values: normal | night | night eighties | night blue | night bright
   # See: https://github.com/chriskempson/tomorrow-theme
@@ -641,14 +644,14 @@ post_views_icon: eye</code></pre>
     # Show text copy result.
     show_result: true
     # Available values: default | flat | mac
-    style: flat</code></pre>
-<h3 id="hexo-next-主题将首页文章设为预览"><a href="#hexo-next-主题将首页文章设为预览" class="headerlink" title="hexo next 主题将首页文章设为预览"></a>hexo next 主题将首页文章设为预览</h3><p>编辑 themes/next 目录下的 _config.yml 文件,搜索 “auto_excerpt” 关键字，并修改位如下内容：</p>
-<pre class=" language-yml"><code class="language-yml"># Automatically Excerpt. Not recommand.
+    style: flat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="hexo-next-主题将首页文章设为预览"><a href="#hexo-next-主题将首页文章设为预览" class="headerlink" title="hexo next 主题将首页文章设为预览"></a>hexo next 主题将首页文章设为预览</h2><p>编辑 themes/next 目录下的 _config.yml 文件,搜索 “auto_excerpt” 关键字，并修改位如下内容：</p>
+<pre class="line-numbers language-yml"><code class="language-yml"># Automatically Excerpt. Not recommand.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
   enable: true
-  length: 150   # 文章预览的文本长度</code></pre>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E9%A1%B6%E9%83%A8%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%9D%A1/" target="_blank" rel="noopener">Hexo博客NexT主题美化之顶部加载进度条</a></p>
+  length: 150   # 文章预览的文本长度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.pangao.vip/Hexo%E5%8D%9A%E5%AE%A2NexT%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96%E4%B9%8B%E9%A1%B6%E9%83%A8%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%BA%A6%E6%9D%A1/" target="_blank" rel="noopener">Hexo博客NexT主题美化之顶部加载进度条</a></p>
 <p><a href="https://github.com/theme-next/theme-next-pace">theme-next-pace</a></p>
 <p><a href="https://theme-next.org/docs/theme-settings/sidebar" target="_blank" rel="noopener">sidebar</a></p>
 <p><a href="https://blog.csdn.net/weixin_39345384/article/details/80785373" target="_blank" rel="noopener">Hexo框架下用NexT(v7.0+)主题美化博客</a></p>
@@ -705,28 +708,6 @@ auto_excerpt:
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Thu Aug 08 2019 14:14:45 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -1031,5 +1012,6 @@ root@kali:/ho</div>
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

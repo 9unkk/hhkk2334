@@ -32,7 +32,8 @@ MULTICS 项目
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -434,8 +435,8 @@ MULTICS 项目
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="linux简介"><a href="#linux简介" class="headerlink" title="linux简介"></a>linux简介</h1><p>Linux 是一套免费使用和自由传播的类 Unix 操作系统。因为 linux 是借鉴 Unix 来开发的，与 unix 有许多相似之处，并且在一定程度上遵守 POSIX 规范。</p>
-<h1 id="Unix-起源"><a href="#Unix-起源" class="headerlink" title="Unix 起源"></a>Unix 起源</h1><ul>
+                <h2 id="linux简介"><a href="#linux简介" class="headerlink" title="linux简介"></a>linux简介</h2><p>Linux 是一套免费使用和自由传播的类 Unix 操作系统。因为 linux 是借鉴 Unix 来开发的，与 unix 有许多相似之处，并且在一定程度上遵守 POSIX 规范。</p>
+<h2 id="Unix-起源"><a href="#Unix-起源" class="headerlink" title="Unix 起源"></a>Unix 起源</h2><ul>
 <li>MULTICS 项目</li>
 </ul>
 <p>回顾 Unix 历史，我们就要说一下一个叫 MULTICS 的项目。上世纪六十年代时，大部份计算机都是采用批处理的方式（也就是说，当作业积累一定数量的时候，计算机才会进行处理）。那时，我们熟知的美国电话及电报公司（AT&amp;T）、通用电器公司（G.E.）及麻省理工学院（MIT）计划合作开发一个多用途、分时及多用户的操作系统，也就是这个 MULTICS，其被设计运行在 GE-645 大型主机上。不过，这个项目由于太过复杂，整个目标过于庞大，糅合了太多的特性，进展太慢，几年下来都没有任何成果，而且性能都很低。于是到了 1969 年 2 月，贝尔实验室决定退出这个项目。</p>
@@ -455,7 +456,7 @@ MULTICS 项目
 <li>Unix 发布</li>
 </ul>
 <p>Unix 的第一篇文章 “The UNIX Time Sharing System” 由 Ken Thompson 和 Dennis Ritchie 于1974年7月的 the Communications of the ACM 发表。这是 UNIX 与外界的首次接触。结果引起了学术界的广泛兴趣并对其源码索取，所以，Unix 第五版就以“仅用于教育目的”的协议，提供给各大学作为教学之用，成为当时操作系统课程中的范例教材。各大学公司开始通过 Unix 源码对 Unix 进行了各种各样的改进和扩展。于是，Unix 开始广泛流行。</p>
-<h2 id="Unix-分裂"><a href="#Unix-分裂" class="headerlink" title="Unix 分裂"></a>Unix 分裂</h2><ul>
+<h3 id="Unix-分裂"><a href="#Unix-分裂" class="headerlink" title="Unix 分裂"></a>Unix 分裂</h3><ul>
 <li>BSD 出现</li>
 </ul>
 <p>1978年，对 Unix 而言是革命性的一年；因为学术界的老大柏克利大学，推出了一份以第六版为基础，加上一些改进和新功能而成的 Unix。这就是著名的 “1 BSD（1st Berkeley Software Distribution）”，开创了 Unix 的另一个分支：BSD 系列。 同时期，AT&amp;T 成立 USG，将 Unix 变成商业化的产品。从此，BSD 的 Unix 便和 AT&amp;T 的 Unix 分庭抗礼，Unix 就分为 System IV 和 4.x BSD 这两大主流，各自蓬勃发展。</p>
@@ -489,7 +490,7 @@ MULTICS 项目
 <p>这桩诉讼最终在1994年1月了结，更多地满足了 BSDI 的利益。伯克利套件的 18，000 个文件中，只有 3 个文件要求删除，另有 70 个文件要求修改，并显示 USL 的版权说明。这项调解另外要求，USL 不得对 4。4BSD 提起诉讼，不管是用户还是 BSDI 代码的分发者。于是，BSD Unix 走上了复兴的道路。BSD 的开发也走向了几个不同的方向，并最终导致了 FreeBSD、OpenBSD 和 NetBSD 的出现。</p>
 <p>从 AT&amp;T 意识到了 Unix 的商业价值，不再将 Unix 源码授权给学术机构以来，到以后的几十年，Unix 仍在不断变化，其版权所有者不断变更，授权者的数量也在增加。Unix 的版权曾经为 AT&amp;T 所有，之后 Novell 拥有了 Unix，再之后 Novell 又将版权出售给了 SCO（这一事实双方尚存在争议，这里是最新进展）。有很多大公司在取得了 Unix 的授权之后，开发了自己的 Unix 产品。（几年前，据传闻微软为了限制 Linux，微软让 SCO 到法院告Linux 剽窃其源码）</p>
 <p>由于 Unix 是由 C 语言写的，所以修改和移植都很容易，因此，很多商业公司及学术机构均加入这个操作系统的研发，各个不同版本的 Unix 也开始蓬勃发展。这才产生了今天这么多的各式各样的 Unix 衍生产品。如 AIX、Solaris、HP-UX、IRIX、OSF、Ultrix 等等。（这些商业化的 Unix 基本上都是源于 AT&amp;T 授权的 Unix System V）</p>
-<h2 id="Unix-开源组织"><a href="#Unix-开源组织" class="headerlink" title="Unix 开源组织"></a>Unix 开源组织</h2><p>AT&amp;T 的这种商业态度，让当时许许多的 Unix 的爱好者和软件开发者们感到相当的痛心和忧虑，他们认为商业化的种种限制并不利于产生的发展，相反还能导制产品出现诸多的问题。随着商业化 Unix 的版本的种种限制和诸多问题，引起了大众的不满和反对。于是，大家开始有组织地结成“反叛联盟”以此对抗欺行罢市的 AT&amp;T 等商业化行为。<br>另一方面，关于“大教堂”（集权、封闭、受控、保密）和“集市”（分权、公开、精细的同僚复审）两种开发模式的对比成为了新思潮的中心思想。这个新思潮对 IT 业产生了非常深远影响。为整个计算机世界带来了革命性的价值观。</p>
+<h3 id="Unix-开源组织"><a href="#Unix-开源组织" class="headerlink" title="Unix 开源组织"></a>Unix 开源组织</h3><p>AT&amp;T 的这种商业态度，让当时许许多的 Unix 的爱好者和软件开发者们感到相当的痛心和忧虑，他们认为商业化的种种限制并不利于产生的发展，相反还能导制产品出现诸多的问题。随着商业化 Unix 的版本的种种限制和诸多问题，引起了大众的不满和反对。于是，大家开始有组织地结成“反叛联盟”以此对抗欺行罢市的 AT&amp;T 等商业化行为。<br>另一方面，关于“大教堂”（集权、封闭、受控、保密）和“集市”（分权、公开、精细的同僚复审）两种开发模式的对比成为了新思潮的中心思想。这个新思潮对 IT 业产生了非常深远影响。为整个计算机世界带来了革命性的价值观。</p>
 <ul>
 <li>Open Source</li>
 </ul>
@@ -500,7 +501,7 @@ MULTICS 项目
 <p>为了这个理想，Richard Stallman 于 1984 年创业了 GNU，计划开发一套与 Unix 相互兼容的的软件。1985 年 Richard Stallman 又创立了自由软件基金会（Free Software Foundation）来为 GNU 计划提供技术、法律以及财政支持。尽管 GNU 计划大部分时候是由个人自愿无偿贡献，但 FSF 有时还是会聘请程序员帮助编写。当 GNU 计划开始逐渐获得成功时，一些商业公司开始介入开发和技术支持。当中最著名的就是之后被 Red Hat 兼并的 Cygnus Solutions。</p>
 <p>GNU 组织的建立，延续了当年 Unix 刚出现时的情形，并为这种情形建立了可靠的法律和财务保障。GNU 工程十几年以来， 已经成为一个对软件开发主要的影响力量， 创造了无数的重要的工具。例如：强健的编译器，有力的文本编辑器，甚至一个全功能的操作系统。从那时开始，许多程序员聚集起来开始开发一个自由的、高质量、易理解的软件，让这使得 Unix 社区生机勃勃，一派繁荣景象。</p>
 <p>自90年代发起这个计划以来，GNU 开始大量的产生或收集各种系统所必备的组件，像是——函数库、编译器、调式工具、文本编辑器、网站服务器，以及一个 Unix 的使用者接口（Unix shell）等等，等等。但由于种种原因，GNU 一直没有开发操作系统的 kernel。正当 Richard Stallman在为操作系统内核伤脑筋的时候，Linux 出现了。</p>
-<h1 id="Linux-横空出世"><a href="#Linux-横空出世" class="headerlink" title="Linux 横空出世"></a>Linux 横空出世</h1><p>1990年，Linus Torvalds 还是芬兰赫尔辛基大学的一名学生，最初是用汇编语言写了一个在 80386 保护模式下处理多任务切换的程序，后来从 Minix 得到灵感，进一步产生了自认为狂妄的想法——写一个比 Minix 更好的 Minix，于是开始写了一些硬件的设备驱动程序，一个小的文件系统。这样0.0.1版本的 Linux 就出来了，但是它只具有操作系统内核的勉强的雏形，甚至不能运行，你必须在有 Minix 的机器上编译以后才能玩。这时候 Linus 已经完全着迷而不想停止，决定踢开 Minix，于是在1991年10 月5号发布 Linux 0.0.2 版本，在这个版本中已经可以运行 bash 和 gcc。</p>
+<h2 id="Linux-横空出世"><a href="#Linux-横空出世" class="headerlink" title="Linux 横空出世"></a>Linux 横空出世</h2><p>1990年，Linus Torvalds 还是芬兰赫尔辛基大学的一名学生，最初是用汇编语言写了一个在 80386 保护模式下处理多任务切换的程序，后来从 Minix 得到灵感，进一步产生了自认为狂妄的想法——写一个比 Minix 更好的 Minix，于是开始写了一些硬件的设备驱动程序，一个小的文件系统。这样0.0.1版本的 Linux 就出来了，但是它只具有操作系统内核的勉强的雏形，甚至不能运行，你必须在有 Minix 的机器上编译以后才能玩。这时候 Linus 已经完全着迷而不想停止，决定踢开 Minix，于是在1991年10 月5号发布 Linux 0.0.2 版本，在这个版本中已经可以运行 bash 和 gcc。</p>
 <ul>
 <li>Linux 1.0</li>
 </ul>
@@ -513,16 +514,16 @@ MULTICS 项目
 <p>严格来讲，Linux 这个词本身只表示 Linux 内核，但在实际上人们已经习惯了用 Linux 来形容整个基于 Linux 内核，并且使用 GNU 工程各种工具和应用程序的操作系统（也被称为 GNU/Linux）。基于这些组件的 Linux 软件被称为 Linux 发行版。一般来讲，一个 Linux 发行套件包含大量的软件，比如软件开发工具，数据库，Web 服务器（例如 Apache），X Window，桌面环境（比如 GNOME 和 KDE），办公套件（比如 OpenOffice.org），等等。</p>
 <p>1991 至 1995 年间，Linux 从概念型的 0.1 版本内核原型，发展成为能够在性能和特性上均堪媲美专有 Unix 的操作系统，并且在连续正常工作时间等重要统计数据上打败了这些 Unix 中的绝大部分。1995 年，Linux 找到了自己的杀手级应用——开源的 web 服务器 Apache。就像 Linux，Apache 出众地稳定和高效。很快，运行 Apache 的 Linux 机器成了全球 ISP 平台的首选。约 60% 的网站选用 Apache，轻松击败了另两个主要的专有型竞争对手。今天的 LAMP（Linux ， Apache， MySQL， PHP）已经成为了架构 Web 服务器的主要首选。<br>现如今的 Linux 不但可以装在几乎所有的主流服务器上，当然也包括桌面的 X86 系统中。其还常常被用于嵌入式系统，机顶盒、手机、交换机、游戏机、PDA、网络交换机、路由器、等等，都是因为 Linux 那精彩的内核。</p>
 <p>Linux 的出现，不仅仅给世界带来了一个免费的操作系统，也不仅仅是对 Unix 自由、共享的文化的延续，它的出现带给了计算机世界自 Unix、GNU 以来更为成熟的思想和文化。</p>
-<h2 id="Linux-——-今天的领袖"><a href="#Linux-——-今天的领袖" class="headerlink" title="Linux —— 今天的领袖"></a>Linux —— 今天的领袖</h2><p>Linux 和 GNU 关系是比较微妙的。那时，自由软件基金会编写的用户软件工具包铺平了一条摆脱高成本专有软件开发工具的前进道路。意识服从经济，而不是领导：一些新手加入了 RMS 的革命运动，高举 GPL 大旗，另一些人则更认同整体意义上的 Unix 传统，加入了反对 GPL 的阵营，但其他大部分人置身事外，一心编码。</p>
+<h3 id="Linux-——-今天的领袖"><a href="#Linux-——-今天的领袖" class="headerlink" title="Linux —— 今天的领袖"></a>Linux —— 今天的领袖</h3><p>Linux 和 GNU 关系是比较微妙的。那时，自由软件基金会编写的用户软件工具包铺平了一条摆脱高成本专有软件开发工具的前进道路。意识服从经济，而不是领导：一些新手加入了 RMS 的革命运动，高举 GPL 大旗，另一些人则更认同整体意义上的 Unix 传统，加入了反对 GPL 的阵营，但其他大部分人置身事外，一心编码。</p>
 <p>今天，我们也说不清楚是 GNU Linux 还是 Linux GNU。Linux 既不排斥开源，也不排斥商业化，Linus 认为好的软件是需要免费和商业化共同推进的。正是这种革命性的想法，造就了今天的 Linux 火红的局面。Linux 就像一股清泉流入了所有人的心中，引发了很多的启迪和思考。</p>
-<h2 id="Unix-的历史教训"><a href="#Unix-的历史教训" class="headerlink" title="Unix 的历史教训"></a>Unix 的历史教训</h2><p>在 Unix 历史中，最大的规律就是：<br>距开源越近就越繁荣。任何将 Unix 专有化的企图，只能陷入停滞和衰败。<br>回顾过去，我们早该认识到这一点。1984年至今，我们浪费了十年时间才学到这个教训。如果我们日后不思悔改，可能还得大吃苦头。</p>
+<h3 id="Unix-的历史教训"><a href="#Unix-的历史教训" class="headerlink" title="Unix 的历史教训"></a>Unix 的历史教训</h3><p>在 Unix 历史中，最大的规律就是：<br>距开源越近就越繁荣。任何将 Unix 专有化的企图，只能陷入停滞和衰败。<br>回顾过去，我们早该认识到这一点。1984年至今，我们浪费了十年时间才学到这个教训。如果我们日后不思悔改，可能还得大吃苦头。</p>
 <p>虽然我们在软件设计这个重要但狭窄的领域比其他人聪明，但这不能使我们摆脱对技术与经济相互作用影响的茫然，而这些就发生在我们的眼皮底下。即使 Unix 社区中最具洞察力、最具远见卓识的思想家，他们的眼光终究有限。对今后的教训就是：过度依赖任何一种技术或者商业模式都是错误的——相反，保持软件及其设计传统的的灵活性才是长存之道。</p>
 <p>另一个教训是：别和低价而灵活的方案较劲。或者，换句话说，低档的硬件只要数量足够，就能爬上性能曲线而最终获胜。经济学家 Clayton Christensen 称之为“破坏性技术”，他在《创新者窘境》一书中以磁盘驱动器、蒸汽挖土机和摩托车为例阐明了这种现象的发生。当小型机取代大型机、工作站和服务器取代小型机以及日用 Intel 机器又取代工作站和服务器时，我们也看到了这种现象。开源运动获得成功正是由于软件的大众化。Unix 要繁荣，就必须继续采用吸纳低价而灵活的方案的诀窍，而不是去反对它们。</p>
 <p>最后，旧学派的 Unix 社区因采用了传统的公司组织、财务和市场等命令机制而最终未能实现“职业化”。只有痴迷的“黑客”和具有创造力的怪人结成的反叛联盟才能把我们从愚蠢中拯救出来——他们接着教导我们，真正的专业和奉献精神，正是我们在屈服于世俗观念的“合理商业做法”之前的所作所为。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>在中国，我们被微软所创造的文化所笼罩里。就在 Unix 出现革命性的转变，在 Unix 影响计算机世界文化的那几年里，科班出生专业开发人员学习的是 MS-DOS 和微软的文化，我们犹如一个井底之蛙一样，对外面的番·习天覆地的变化无动于衷。微软创造的文化在我们这里尤其地根深蒂固，我们几乎忘记了另外一边的 Unix 。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>在中国，我们被微软所创造的文化所笼罩里。就在 Unix 出现革命性的转变，在 Unix 影响计算机世界文化的那几年里，科班出生专业开发人员学习的是 MS-DOS 和微软的文化，我们犹如一个井底之蛙一样，对外面的番·习天覆地的变化无动于衷。微软创造的文化在我们这里尤其地根深蒂固，我们几乎忘记了另外一边的 Unix 。</p>
 <p>在那充满激情的 Unix 的岁月里，大伙为了科研目的或个人兴趣在 Unix 上进行各种开发，并且不计较金钱利益，将这些源码公开，互相共享。在那里，开发和自由成为主题，正因为如此，当今的世界才如此丰富多采。在 40 年 Unix 文化和技术积淀的里面，蕴涵着比较纯正的计算机文化和思想。</p>
 <p>纵观整个 Unix 的历史过程中，许许多多的程序员、工程师前辈们在 Unix 中所摸爬滚打，他们的辛勤地、他们呕心沥血地跟随 Unix，努力建立一个繁荣的计算机世界的文明。Unix 不是一个简简单单的操作系统。有人说，Unix 是程序员设计给程序员的，一点没错。Unix 的近40年历史造就了它的博大精深，它给程序员们带来的绝不仅仅只是技术上的知识。它的失误，它的无奈，它的精神，它的荣耀，它从技术和思想上都启迪着我们。对于程序员来说，学习 Unix 就等同于向前辈程序学习。无论你是什么样的程序员，你都应该了解 Unix，这是开发人员的根，前面的开发者造就了它，而它又在引领后面的开发人员，它是前辈程序员们交给我们的一份礼物，一个接力棒，它是开发人员赖以生存的土壤，是上一辈程序员留给我们这一代程序员开启未来的钥匙。Unix 就像一个程序员教父一样，理当受到我们的尊敬和崇拜。</p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://blog.csdn.net/haoel/article/details/1542340" target="_blank" rel="noopener">Unix传奇（上篇）</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/haoel/article/details/1542340" target="_blank" rel="noopener">Unix传奇（上篇）</a></p>
 <p><a href="https://blog.csdn.net/iteye_3952/article/details/81440521" target="_blank" rel="noopener">Unix传奇（下篇）</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -573,28 +574,6 @@ MULTICS 项目
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Thu Aug 29 2019 00:04:28 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -907,5 +886,6 @@ VXrail Manager 出现 MYSTIC028005 警报
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

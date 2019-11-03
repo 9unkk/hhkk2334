@@ -28,7 +28,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -320,29 +321,29 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 
                 
                 
-                <a href="/categories/Blog/" title="Blog: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Blog
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/HCI/" title="HCI: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">HCI
+                            style="background-color: #F9EBEA;">HCI
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Web-security/" title="Web security: 17">
+                <a href="/categories/Blog/" title="Blog: 4">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D5F5E3;">Web security
-                        <span class="tag-length">17</span>
+                             chip-default "
+                            style="background-color: #F5EEF8;">Blog
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/linux/" title="linux: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">linux
+                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -356,11 +357,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/linux/" title="linux: 3">
+                <a href="/categories/Web-security/" title="Web security: 18">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">linux
-                        <span class="tag-length">3</span>
+                             chip-active "
+                            style="background-color: #FEF9E7;">Web security
+                        <span class="tag-length">18</span>
                     </span>
                 </a>
                 
@@ -374,20 +375,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/杂谈/" title="杂谈: 1">
+                <a href="/categories/system-security/" title="system security: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">杂谈
-                        <span class="tag-length">1</span>
+                            style="background-color: #82E0AA;">system security
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/system-security/" title="system security: 2">
+                <a href="/categories/杂谈/" title="杂谈: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">system security
-                        <span class="tag-length">2</span>
+                            style="background-color: #D7BDE2;">杂谈
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -410,6 +411,57 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/10/05/sqli-labs-Less6/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="https://i.loli.net/2019/10/10/mtHlswdMoJn5KWI.png" class="responsive-img" alt="sqli-labs-Less6">
+                            
+                            <span class="card-title">sqli-labs-Less6</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                前言没有什么好解释的，同 Less5 ，只不过 “单引号” 换成了 “双引号”。
+注入步骤双注入GET双引号字符型注入
+输入字符使网页报错,
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                    Web security
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/sqli-labs/" target="_blank">
+                            <span class="chip bg-color">sqli-labs</span>
+                        </a>
+                        
+                        <a href="/tags/SQL-Injection/" target="_blank">
+                            <span class="chip bg-color">SQL Injection</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -785,5 +837,6 @@ GET
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

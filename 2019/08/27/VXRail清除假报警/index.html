@@ -38,7 +38,8 @@ VXrail Manager 出现 MYSTIC028005 警报
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -444,11 +445,11 @@ VXrail Manager 出现 MYSTIC028005 警报
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><ol>
+                <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><ol>
 <li>VXRail 服务器闪黄灯</li>
 <li>VXrail Manager 出现 MYSTIC028005 警报</li>
 </ol>
-<h1 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h1><ol>
+<h2 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h2><ol>
 <li>登陆到 VXrail Manager，查看是哪个节点报错，并点击“感叹号”，找到相应的主机。</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/30/rgDWS8mOE9KIkCF.png" alt="vxrail-9.png"></p>
@@ -478,9 +479,9 @@ VXrail Manager 出现 MYSTIC028005 警报
 <ol start="7">
 <li>通过xshell连接到主机，并执行以下命令。清除记录并重启 BMC</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@ntzyy06:~<span class="token punctuation">]</span> /tmp/vspexblue/bin/ipmitool sel <span class="token function">clear</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@ntzyy06:~<span class="token punctuation">]</span> /tmp/vspexblue/bin/ipmitool sel <span class="token function">clear</span>
 <span class="token punctuation">[</span>root@ntzyy06:~<span class="token punctuation">]</span> /tmp/vspexblue/bin/ipmitool mc reset cold
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/27/WXjTnG2vw61IBEK.png" alt="vxrail-7.png"></p>
 <ol start="8">
 <li>再次登陆到 VXRail，并检查服务器还有没有警告。</li>
@@ -536,28 +537,6 @@ VXrail Manager 出现 MYSTIC028005 警报
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Aug 27 2019 15:01:08 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -627,8 +606,8 @@ MULTICS 项目
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">/
-├── bin -&gt; usr/bin                  //存放系统管理员及普通用户使用的命令和可执行的二进制文件
-├── boot                            //存放启动 linux </div>
+├── bin -> usr/bin                  //存放系统管理员及普通用户使用的命令和可执行的二进制文件
+├── boot                            //存放启动 linux 时使用</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-24
@@ -849,5 +828,6 @@ MULTICS 项目
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

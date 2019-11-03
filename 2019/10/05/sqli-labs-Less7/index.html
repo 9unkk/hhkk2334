@@ -29,7 +29,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -439,10 +440,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这次的标题是 dump into file 经过一些简单的测试，发现报错注入行不同，一些正常的注入也没有回显。所以结合标题 说明这题需要新的思路和手段。</p>
-<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>outfile：导出检索出的数据<br>loadfile：将表的内容导出为一个文本文件（一次导出一行）<br>dumpfile：将数据导入 MYSQL</p>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>这个原理其实比较简单。就是利用语句 <code>into outfile ” 路径（服务器）”</code> 可以把内容输出到，服务器上该路径的文本中。</p>
-<h1 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h1><h2 id="导出文件GET字符型注入"><a href="#导出文件GET字符型注入" class="headerlink" title="导出文件GET字符型注入"></a>导出文件GET字符型注入</h2><ol>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的标题是 dump into file 经过一些简单的测试，发现报错注入行不同，一些正常的注入也没有回显。所以结合标题 说明这题需要新的思路和手段。</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>outfile：导出检索出的数据<br>loadfile：将表的内容导出为一个文本文件（一次导出一行）<br>dumpfile：将数据导入 MYSQL</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个原理其实比较简单。就是利用语句 <code>into outfile ” 路径（服务器）”</code> 可以把内容输出到，服务器上该路径的文本中。</p>
+<h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><h3 id="导出文件GET字符型注入"><a href="#导出文件GET字符型注入" class="headerlink" title="导出文件GET字符型注入"></a>导出文件GET字符型注入</h3><ol>
 <li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
 </ol>
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1'</code></pre><p><img src="https://i.loli.net/2019/10/07/ESFlPXGr9OCgUK3.png" alt="less7-1.png"></p>
@@ -466,16 +467,16 @@
 <pre><code>http://192.168.150.128/sqli-labs-master/Less-7/?id=1')) and(select count(*) from mysql.user)&gt;0%23</code></pre><ol start="6">
 <li><strong>在服务器端修改 mysql 配置文件（开启 mysql 数据导入导出功能）</strong></li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">/** 编辑 my.cnf 文件 **/
+<pre class="line-numbers language-bash"><code class="language-bash">/** 编辑 my.cnf 文件 **/
 <span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/my.cnf</span>
 
 /** 在文件中添加如下内容，如下图所示 **/
-secure_file_priv<span class="token operator">=</span><span class="token string">''</span></code></pre>
+secure_file_priv<span class="token operator">=</span><span class="token string">''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/07/xX2aeIRbUfPiql9.png" alt="less7-5.png"></p>
-<pre class=" language-bash"><code class="language-bash">/** 重启 mariadb **/
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl restart mariadb</span></code></pre>
-<pre class=" language-bash"><code class="language-bash">/** 设置 /var/www 权限 **/
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chmod -R 777 /var/www</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">/** 重启 mariadb **/
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl restart mariadb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">/** 设置 /var/www 权限 **/
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chmod -R 777 /var/www</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>注：mysql 默认禁用数据导入导出功能。</p>
 <ol start="6">
 <li><strong>导出数据到 “/var/www/html/test” 中</strong></li>
@@ -486,7 +487,7 @@ secure_file_priv<span class="token operator">=</span><span class="token string">
 <li><strong>查看导出的数据</strong></li>
 </ol>
 <p><img src="https://i.loli.net/2019/10/07/oXuEFwiafHs3G6k.png" alt="less7-8.png"></p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.php.cn/mysql-tutorials-401995.html" target="_blank" rel="noopener">mysql5.7导出数据提示–secure-file-priv选项问题的解决方法</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.php.cn/mysql-tutorials-401995.html" target="_blank" rel="noopener">mysql5.7导出数据提示–secure-file-priv选项问题的解决方法</a></p>
 <p><a href="https://blog.csdn.net/baidu_37576427/article/details/76160309" target="_blank" rel="noopener">SQLI labs 第七课（神游太虚）</a></p>
 <p><a href="https://www.cnblogs.com/omnis/p/8315087.html" target="_blank" rel="noopener">【sqli-labs】 less7 GET - Dump into outfile - String (导出文件GET字符型注入)</a></p>
 <script>
@@ -538,28 +539,6 @@ secure_file_priv<span class="token operator">=</span><span class="token string">
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Sat Oct 05 2019 22:36:20 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -863,5 +842,6 @@ http://192.168.150.128/sqli-labs-mas</div>
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

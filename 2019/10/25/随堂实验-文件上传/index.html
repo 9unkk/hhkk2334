@@ -34,7 +34,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -444,14 +445,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h1><p>操作机：windows XP</p>
+                <h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>操作机：windows XP</p>
 <p>目标机：Centos6.5</p>
 <p>目标地址：<a href="http://172.16.12.2" target="_blank" rel="noopener">http://172.16.12.2</a></p>
-<h1 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h1><p>掌握上传绕过服务端 MIME 的原理</p>
+<h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>掌握上传绕过服务端 MIME 的原理</p>
 <p>掌握上传绕过服务端MIME的方法</p>
 <p>目标：</p>
 <p>获取web服务器根目录下的flag.php，获取 key 值</p>
-<h1 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h1><ol>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><ol>
 <li>打开 firefox，输入目标地址</li>
 </ol>
 <p><img src="https://i.loli.net/2019/10/25/nQLa8WSrU6ApxOP.png" alt="file_upload-1.png"></p>
@@ -573,28 +574,6 @@
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Fri Oct 25 2019 01:07:00 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-    
 
     
 
@@ -621,12 +600,11 @@ gitment.render('gitment-content');
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言本关和less11是类似的，只是在id 的参数的处理上有一定的不同。从标题上看可以知道这是一个双引号注入。
-注入步骤
+                    <div class="summary">注入步骤
 尝试输入 username:用户名+双引号，password:随便输
 
 
-注：从报错中可以判断出SQL语句：SELEC</div>
+注：从报错中可以判断出SQL语句：SELECT username, password FROM users WHERE username=(“admin”)</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-28
@@ -905,5 +883,6 @@ gitment.render('gitment-content');
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

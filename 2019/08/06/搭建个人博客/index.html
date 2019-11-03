@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="搭建个人博客, Junk Blog">
-    <meta name="description" content="搭建个人博客准备工作
+    <meta name="description" content="准备工作
 购买域名
 创建 github 帐号
 安装 git
@@ -19,7 +19,9 @@
 
 
 
-检测 npm 环境配">
+检测 npm 环境配置
+
+ $ ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -42,7 +44,8 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -429,7 +432,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        449
+                        443
                     </div>
                     
 
@@ -452,13 +455,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h1><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+                <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
 <li><a href="https://dcc.godaddy.com" target="_blank" rel="noopener">购买域名</a></li>
 <li><a href="https://github.com">创建 github 帐号</a></li>
 <li><a href="https://git-scm.com/" target="_blank" rel="noopener">安装 git</a></li>
 <li><a href="http://nodejs.org/download/" target="_blank" rel="noopener">安装 node</a></li>
 </ol>
-<h3 id="检测环境"><a href="#检测环境" class="headerlink" title="检测环境"></a>检测环境</h3><ol>
+<h2 id="检测环境"><a href="#检测环境" class="headerlink" title="检测环境"></a>检测环境</h2><ol>
 <li><p>在任意磁盘新建 My_Blog 文件夹（不建议放在 c 盘）</p>
 </li>
 <li><p>在 My_Blog 下，打开 git bash</p>
@@ -468,46 +471,46 @@
 <ol start="3">
 <li>检测 npm 环境配置</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"> $ <span class="token function">npm</span> -v</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"> $ <span class="token function">npm</span> -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/fEw4A8rSnqJBHTm.png" alt="npm-1.png"></p>
-<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><ol>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><ol>
 <li>安装 hexo</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> -g hexo</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> -g hexo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/BFCZcuL7lKdPGY6.png" alt="hexo-2.png"></p>
 <ol start="2">
 <li>初始化 hexo</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo init</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/QaBZCsWF1qIXhj9.png" alt="hexo-3.png"></p>
 <ol start="3">
-<li>安装项目依赖的模块<pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span></code></pre>
+<li>安装项目依赖的模块<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/e6ZIMEx419uv5Ot.png" alt="hexo-4.png"></p>
 <ol start="4">
-<li>开启 hexo服务<pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
+<li>开启 hexo服务<pre class="line-numbers language-bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/weuBq1LOzskljh7.png" alt="hexo-5.png"></p>
 <ol start="5">
 <li><p>清空静态界面(重新开一个git bash)</p>
-<pre class=" language-bash"><code class="language-bash">$ hexo clean</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/AqO9eblF2jEvdRH.png" alt="hexo-6.png"></p>
 </li>
 <li><p>生成静态界面</p>
-<pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/MmD8ckTnKGHwqUE.png" alt="hexo-7.png"></p>
 </li>
 <li><p>重新部署</p>
-<pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/5XV9RgEH2p8btm6.png" alt="hexo-8.png"></p>
 </li>
 <li><p><a href="http://localhost:4000" target="_blank" rel="noopener">测试网址</a></p>
 </li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/vSthBLGXYp96ki3.png" alt="hexo-9.png"></p>
-<h3 id="创建、配置-github-项目"><a href="#创建、配置-github-项目" class="headerlink" title="创建、配置 github 项目"></a>创建、配置 github 项目</h3><ol>
+<h2 id="创建、配置-github-项目"><a href="#创建、配置-github-项目" class="headerlink" title="创建、配置 github 项目"></a>创建、配置 github 项目</h2><ol>
 <li>新建仓库</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/8ynTV25hkmvOlpC.png" alt="github-1.png"></p>
@@ -520,7 +523,7 @@
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/O6TrKH28dzQkMhU.png" alt="hexo-10.png"></p>
 <ol start="4">
-<li>测试本地的 hexo 与 github 是否关联成功：<pre class=" language-bash"><code class="language-bash">$ hexo d</code></pre>
+<li>测试本地的 hexo 与 github 是否关联成功：<pre class="line-numbers language-bash"><code class="language-bash">$ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://i.loli.net/2019/08/06/X8sFTk9SRWUiNQl.png" alt="hexo-11.png"></li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/adOlg3nxBhQKsZG.png" alt="hexo-14.png"></p>
@@ -544,7 +547,7 @@
 <li>配置 DNS ，开启 https</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/8bSCvhOmRMwYFde.png" alt="github-6.png"></p>
-<h3 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h3><ol>
+<h2 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h2><ol>
 <li>管理 DNS</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/jnyNAemYIgBqDLU.png" alt="dns-1.png"></p>
@@ -564,11 +567,11 @@
 <li>输入 dns，测试网址是否搭建成功</li>
 </ol>
 <p><img src="https://i.loli.net/2019/08/06/uMrTSbWFKNOJBey.png" alt="github-7.png"></p>
-<h3 id="更换-hexo-主题"><a href="#更换-hexo-主题" class="headerlink" title="更换 hexo 主题"></a>更换 hexo 主题</h3><p>这里以 next 主题为例，可在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo-thems</a> 下载自己喜欢的主题。</p>
+<h2 id="更换-hexo-主题"><a href="#更换-hexo-主题" class="headerlink" title="更换 hexo 主题"></a>更换 hexo 主题</h2><p>这里以 next 主题为例，可在<a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo-thems</a> 下载自己喜欢的主题。</p>
 <ol>
 <li>克隆主题</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">git</span> clone https://github.com/theme-next/hexo-theme-next themes/next</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">git</span> clone https://github.com/theme-next/hexo-theme-next themes/next<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/08/06/ghrsk5MRVK91oib.png" alt="hexocg-1.png"></p>
 <ol start="2">
 <li>查看 themes 文件夹</li>
@@ -585,16 +588,16 @@
 <ol start="5">
 <li>清空静态页面</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo clean</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo clean<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="6">
 <li>生成静态页面</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="7">
 <li>重新部署 </li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p><a href="https://blog.csdn.net/ainuser/article/details/77609180" target="_blank" rel="noopener">hexo+github搭建个人博客(超详细教程)</a></p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/ainuser/article/details/77609180" target="_blank" rel="noopener">hexo+github搭建个人博客(超详细教程)</a></p>
 <p><a href="https://www.jianshu.com/p/5c6c6cf325cd" target="_blank" rel="noopener">hexo ERROR Deployer not found: github</a></p>
 <p><a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md">theme-next</a></p>
 <p><a href="https://blog.csdn.net/y_z_w123/article/details/78801096" target="_blank" rel="noopener">hexo的安装和主题的替换</a></p>
@@ -647,28 +650,6 @@
 
     
 
-    
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Aug 06 2019 00:18:02 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
     
 
     
@@ -743,7 +724,7 @@ gitment.render('gitment-content');
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">搭建个人博客准备工作
+                    <div class="summary">准备工作
 购买域名
 创建 github 帐号
 安装 git
@@ -757,7 +738,9 @@ gitment.render('gitment-content');
 
 
 
-检测 npm 环境配</div>
+检测 npm 环境配置
+
+ $ </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-06
@@ -979,5 +962,6 @@ gitment.render('gitment-content');
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>

