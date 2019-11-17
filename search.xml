@@ -663,6 +663,35 @@
     
     
     <entry>
+      <title>[漏洞复现]CVE-2019-0708</title>
+      <link href="/2019/09/16/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-CVE-2019-0708/"/>
+      <url>/2019/09/16/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-CVE-2019-0708/</url>
+      
+        <content type="html"><![CDATA[<p><strong></strong></p><center><strong>不得将本文用作违法犯罪目的，本文只用作技术分享交流学习使用。</strong></center><p></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2019 年 5 月 14 日微软官方发布安全补丁，其中修复了远程桌面协议（RDP）远程代码执行漏洞。未经身份验证的攻击者利用该漏洞，向目标Windows主机发送恶意构造请求，可以在目标系统上执行任意代码。由于该漏洞存在于 RDP 协议的预身份验证阶段，因此漏洞利用无需进行用户交互操作。该漏洞存在被不法分子利用进行蠕虫攻击的可能。该漏洞不会影响到 windows 8.1 和 windows 10。</p><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><p>测试机：parrot</p><p>靶机：win7 企业版 32 位（需要开启3389）</p><p>测试机IP：192.168.150.130</p><p>靶机IP：192.168.150.132</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h3 id="测试机"><a href="#测试机" class="headerlink" title="测试机"></a>测试机</h3><ul><li>下载 poc</li></ul><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/n1xbyte/CVE-2019-0708.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>安装执行 poc 的库</li></ul><pre class="line-numbers language-bash"><code class="language-bash">pip3 <span class="token function">install</span> impacket<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="靶机"><a href="#靶机" class="headerlink" title="靶机"></a>靶机</h3><p>开启 3389</p><p><img src="https://i.loli.net/2019/09/16/C4nDQa7jlzAZo52.png" alt="0708-1.png"></p><ol><li>更新 metasploit</li></ol><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># apt-get install metasploit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="2"><li>扫描 cve-2019-0708 漏洞</li></ol><p><img src="https://i.loli.net/2019/09/16/sJILcO5Hw8MmFah.png" alt="0708-2.png"><br><img src="https://i.loli.net/2019/09/16/IB5pQLR72TivONZ.png" alt="0708-3.png"></p><p>注：the target is vulnerable（目标存在这个漏洞）</p><ol start="3"><li>运行 poc 脚本</li></ol><p><img src="https://i.loli.net/2019/09/16/HgMjharwt8BmXAL.png" alt="0708-4.png"></p><ol start="4"><li>查看 win7 运行状况</li></ol><p><img src="https://i.loli.net/2019/09/16/E3ZAnJ5tU6jdlKk.png" alt="0708-5.png"></p><h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><ol><li><p>安装杀毒软件</p></li><li><p>更新系统，打补丁</p><p> 补丁地址：</p><p> <a href="https://support.microsoft.com/zh-cn/help/4500705/customer-guidance-for-cve-2019-0708" target="_blank" rel="noopener">Windows XP、Windows 2003</a></p><p> <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB4499175" target="_blank" rel="noopener">Windows 7、Windows 2008R2</a></p><p> <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB4499180" target="_blank" rel="noopener">Windows 2008</a></p></li><li><p>将 3389 设为 “网络身份认证”</p></li></ol><p><img src="https://i.loli.net/2019/09/16/qBTWYz8imMOZRH4.png" alt="0708-6.png"></p><ol start="4"><li><p>开启防火墙，阻止 3389 数据通过</p></li><li><p>关闭 3389 端口</p></li></ol><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.jianshu.com/p/2363c6364bb7" target="_blank" rel="noopener">【漏洞复现】CVE 2019-0708 漏洞利用</a></p><p><a href="https://blog.csdn.net/qq37724861/article/details/90286293" target="_blank" rel="noopener">CVE-2019-0708 微软补丁更新</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> system security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> windows </tag>
+            
+            <tag> cve-2019-0708 </tag>
+            
+            <tag> RDP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>sqli-labs-Less3</title>
       <link href="/2019/09/15/sqli-labs%20Less3/"/>
       <url>/2019/09/15/sqli-labs%20Less3/</url>
