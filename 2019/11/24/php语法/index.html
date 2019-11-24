@@ -15,7 +15,8 @@ php 脚本以 &amp;lt;?php 开始， 以 ?&amp;gt; 结束。
 echo &#34;hello word !&#34;;
 ?&gt;
 
-php 也允许使用短标记 &amp;lt;? 和 ?&amp;">
+
+php 也允许使用短标记 &amp;lt;? 和 ?">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -458,12 +459,15 @@ php 也允许使用短标记 &amp;lt;? 和 ?&amp;">
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">echo</span> <span class="token string">"hello word !"</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/24/J9MPnf8CNYQGpgq.png" alt="php-1.png"></p>
 <ul>
 <li>php 也允许使用短标记 <code>&lt;?</code> 和 <code>?&gt;</code> ，但是不建议使用。只有激活 php.ini 中的 <code>short_open_tag</code> 参数，php 才能使用短标记。</li>
 </ul>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?</span>
 <span class="token keyword">echo</span> <span class="token string">"hello word !"</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/24/QydPU74OhlxFapE.png" alt="php-2.png"></p>
+<p><img src="https://i.loli.net/2019/11/24/SZRK3yvDYsiMLeN.png" alt="php-3.png"></p>
 <ul>
 <li>如果文件内容是纯 php 代码，最好在文件末尾删除 php 结束标记。避免在 php 结束标记后不小心加入空格或换行，导致 php 输出这些空白。</li>
 </ul>
@@ -492,6 +496,7 @@ php 也允许使用短标记 &amp;lt;? 和 ?&amp;">
 <span class="token keyword">ECHO</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token keyword">Echo</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/24/wTzD2OMmgqukobX.png" alt="php-4.png"></p>
 <p>不过在 PHP 中，所有变量都对大小写敏感。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token variable">$color</span><span class="token operator">=</span><span class="token string">"red"</span><span class="token punctuation">;</span>
@@ -499,6 +504,7 @@ php 也允许使用短标记 &amp;lt;? 和 ?&amp;">
 <span class="token keyword">echo</span> <span class="token string">"my house is "</span> <span class="token punctuation">.</span> <span class="token variable">$COLOR</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$Color</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/24/IXgDxWe12RbzJnV.png" alt="php-5.png"></p>
 <h2 id="PHP-分隔符"><a href="#PHP-分隔符" class="headerlink" title="PHP 分隔符"></a>PHP 分隔符</h2><p>同 C 或 Perl 一样，PHP 需要在每个语句后用分号结束指令。一段 PHP 代码中的结束标记隐含表示了一个分号；在一个 PHP 代码段中的最后一行可以不用分号结束。如果后面还有新行，则代码段的结束标记包含了行结束。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
     <span class="token keyword">echo</span> <span class="token string">"This is a test"</span><span class="token punctuation">;</span>
@@ -595,7 +601,8 @@ php 脚本以 &lt;?php 开始， 以 ?&gt; 结束。
 echo "hello word !";
 ?>
 
-php 也允许使用短标记 &lt;? 和 ?&</div>
+
+php 也允许使用短标记 &lt;? 和 ?</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-24
