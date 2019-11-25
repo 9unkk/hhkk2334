@@ -577,58 +577,60 @@ php 也允许使用短标记 &amp;lt;? 和 ?">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/24/php语法/">
+                <a href="/2019/11/25/sqli-labs-Less21/">
                     <div class="card-image">
                         
-                        <img src="http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png" class="responsive-img" alt="PHP 语法">
                         
-                        <span class="card-title">PHP 语法</span>
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="sqli-labs Less21">
+                        
+                        <span class="card-title">sqli-labs Less21</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">PHP 标记
-php 脚本可以放在文档中的任何位置。
-
-php 脚本以 &lt;?php 开始， 以 ?&gt; 结束。
+                    <div class="summary">注入步骤
+正确登录到界面后，发现 cookie 值有些不同
 
 
-&lt;?php
-echo "hello word !";
-?>
+
+从输出的字符来看，cookie 是被加密了。
+
+YWRtaW4=
+
+看到加密字符串最后有一个 = ,首先想到的是 base64，尝试解密。
 
 
-php 也允许使用短标记 &lt;? 和 ?</div>
+
+
+使用 base64 将 p</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/编程/" class="post-category" target="_blank">
-                                    编程
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                    Web security
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web/" target="_blank">
-                        <span class="chip bg-color">Web</span>
+                    <a href="/tags/sqli-labs/" target="_blank">
+                        <span class="chip bg-color">sqli-labs</span>
                     </a>
                     
-                    <a href="/tags/php/" target="_blank">
-                        <span class="chip bg-color">php</span>
+                    <a href="/tags/SQL-Injection/" target="_blank">
+                        <span class="chip bg-color">SQL Injection</span>
                     </a>
                     
                 </div>
@@ -790,7 +792,7 @@ PHP（全称：PHP：Hypertext Preprocessor，即“ PHP：超文本预处理器
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42k</span>&nbsp;字
+                class="white-color">42.3k</span>&nbsp;字
                
             
 			
