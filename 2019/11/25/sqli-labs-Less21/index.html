@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="sqli-labs Less21, Junk Blog">
     <meta name="description" content="注入步骤
+
 正确登录到界面后，发现 cookie 值有些不同
 
 
@@ -19,7 +20,7 @@ YWRtaW4=
 
 
 
-使用 base64 将 p">
+使用 base64 将 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -430,7 +431,7 @@ YWRtaW4=
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        285
+                        286
                     </div>
                     
 
@@ -453,7 +454,8 @@ YWRtaW4=
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><ol>
+                <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><hr>
+<ol>
 <li><strong>正确登录到界面后，发现 cookie 值有些不同</strong></li>
 </ol>
 <p><img src="https://i.loli.net/2019/11/26/iOVvyM326TElYgn.png" alt="less21-1.png"></p>
@@ -506,7 +508,8 @@ base64：LWFkbWluJykgIFVOSU9OIFNFTEVDVCAxLDIsZ3JvdXBfY29uY2F0KGNvbHVtbl9uYW1lKSB
 <pre class="line-numbers language-text"><code class="language-text">payload：-admin')  UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users#
 base64：LWFkbWluJykgIFVOSU9OIFNFTEVDVCAxLGdyb3VwX2NvbmNhdCh1c2VybmFtZSksZ3JvdXBfY29uY2F0KHBhc3N3b3JkKSBGUk9NIHNlY3VyaXR5LnVzZXJzIw==<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/26/sZ52OUvYQ81Wrtj.png" alt="less21-11.png"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="http://www.pianshen.com/article/4049219913/" target="_blank" rel="noopener">Sqli-Lab | Less 21-23</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
+<p><a href="http://www.pianshen.com/article/4049219913/" target="_blank" rel="noopener">Sqli-Lab | Less 21-23</a></p>
 <p><a href="https://warwolf767.gitbooks.io/sqli-lab/content/less_21_-_less_30.html" target="_blank" rel="noopener">SQLI-LAB 的 实战记录(Less 21 - Less 30)</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -570,62 +573,42 @@ base64：LWFkbWluJykgIFVOSU9OIFNFTEVDVCAxLGdyb3VwX2NvbmNhdCh1c2VybmFtZSksZ3JvdXB
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/25/sqli-labs-Less21/">
+                <a href="/2019/11/26/base64编码/">
                     <div class="card-image">
                         
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.FZZR6ilAZD0RTVKhJAYFTAHaEo&amp;pid=15.1" class="responsive-img" alt="base64编码">
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="sqli-labs Less21">
-                        
-                        <span class="card-title">sqli-labs Less21</span>
+                        <span class="card-title">base64编码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">注入步骤
-正确登录到界面后，发现 cookie 值有些不同
-
-
-
-从输出的字符来看，cookie 是被加密了。
-
-YWRtaW4=
-
-看到加密字符串最后有一个 = ,首先想到的是 base64，尝试解密。
-
-
-
-
-使用 base64 将 p</div>
+                    <div class="summary">编码
+我们知道，所有的信息最终都表示为一个二进制的字符串，每一个二进制位（bit）有 0 和 1 两种状态。当我们需要把字符 ‘A’ 存入计算机时，我们可以将字符 ‘A’ 用 01000010（这个随便编的）二进制字符串表示，存入计算机；读</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                    Web security
+                            <a href="/categories/编码/" class="post-category" target="_blank">
+                                    编码
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqli-labs/" target="_blank">
-                        <span class="chip bg-color">sqli-labs</span>
-                    </a>
-                    
-                    <a href="/tags/SQL-Injection/" target="_blank">
-                        <span class="chip bg-color">SQL Injection</span>
+                    <a href="/tags/base64/" target="_blank">
+                        <span class="chip bg-color">base64</span>
                     </a>
                     
                 </div>
@@ -797,7 +780,7 @@ php 也允许使用短标记 &lt;? 和 ?</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.3k</span>&nbsp;字
+                class="white-color">43.8k</span>&nbsp;字
                
             
 			
