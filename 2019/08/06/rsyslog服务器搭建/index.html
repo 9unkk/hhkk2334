@@ -416,7 +416,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        793
+                        800
                     </div>
                     
 
@@ -496,7 +496,7 @@ AddType application/x-httpd-php-source .phps<span aria-hidden="true" class="line
 <pre class="line-numbers language-bash"><code class="language-bash">vim /var/www/html/index.php 
 <span class="token operator">&lt;</span>?php
 phpinfo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-?<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+?<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="11">
 <li>在网页上输入服务器 IP 地址，测试 lamp 是否配置成功<br><img src="https://i.loli.net/2019/08/06/NM9VZP8LFJdcRBY.png" alt="rsylog-1.png"></li>
 </ol>
@@ -512,7 +512,7 @@ phpinfo<span class="token punctuation">(</span><span class="token punctuation">)
 <li>进入数据库，查看是否有 Syslog 数据库</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># mysql -uroot -p</span>
-mysql<span class="token operator">></span> show databases<span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> show databases<span class="token punctuation">;</span>
 +--------------------+
 <span class="token operator">|</span> Database           <span class="token operator">|</span>
 +--------------------+
@@ -525,9 +525,9 @@ mysql<span class="token operator">></span> show databases<span class="token punc
 <ol start="15">
 <li>Mysql数据库建立一个用户，并制授权用户给上面导入时建立的库Syslog所有权限</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">mysql<span class="token operator">></span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span> 
-mysql<span class="token operator">></span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'127.0.0.1'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span>
-mysql<span class="token operator">></span> flush privileges<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mysql<span class="token operator">&gt;</span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span> 
+mysql<span class="token operator">&gt;</span> grant all privileges on Syslog.* to <span class="token string">'rsyslog'</span>@<span class="token string">'127.0.0.1'</span> identified by <span class="token string">'syslogps'</span><span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> flush privileges<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="16">
 <li>修改 rsyslog 配置文件</li>
 </ol>
@@ -559,7 +559,7 @@ mysql<span class="token operator">></span> flush privileges<span class="token pu
 <ol start="19">
 <li>客户端配置</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># echo "*.* @@192.168.0.101:514" >> /etc/rsyslog.conf</span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># echo "*.* @@192.168.0.101:514" &gt;&gt; /etc/rsyslog.conf</span>
 <span class="token comment" spellcheck="true"># service rsyslog restart</span>
 <span class="token comment" spellcheck="true"># service iptables stop</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="网页安装-loganalyzer"><a href="#网页安装-loganalyzer" class="headerlink" title="网页安装 loganalyzer"></a>网页安装 loganalyzer</h2><ol>
@@ -892,7 +892,7 @@ scheme: Pisces
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">45.8k</span>&nbsp;字
+                class="white-color">46.5k</span>&nbsp;字
                
             
 			

