@@ -10,7 +10,7 @@
 $x=true;
 $y=false;
 var_dump($x);
-echo &#34;&amp;lt;br&gt;&#34;;">
+echo &#34;&amp;lt;br&amp;gt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -421,7 +421,7 @@ echo &#34;&amp;lt;br&gt;&#34;;">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        726
+                        748
                     </div>
                     
 
@@ -449,9 +449,9 @@ echo &#34;&amp;lt;br&gt;&#34;;">
 <span class="token variable">$x</span><span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
 <span class="token variable">$y</span><span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$y</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/RBUnxtZQDszi1Ym.png" alt="php-boolean.png"></p>
 <h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><p>整数是没有小数的数字。</p>
 <p><strong>整数规则：</strong></p>
@@ -467,49 +467,49 @@ echo &#34;&amp;lt;br&gt;&#34;;">
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">5985</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span> 
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">345</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 负数</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span> 
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">0x8C</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 十六进制数</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">047</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 八进制数</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
 <span class="token variable">$x</span> <span class="token operator">=</span> 0b11111111<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 二进制数</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/rjBqGpTgf1AQREs.png" alt="php-int.png"></p>
 <h2 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h2><p>浮点数是有小数点或指数形式的数字。</p>
 <p><strong>示例:</strong></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">10.365</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span> 
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">2.4e3</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span> 
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token number">8E-5</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/UPszSkMHQJ2L1FX.png" alt="php-float.png"></p>
 <h2 id="字符串型"><a href="#字符串型" class="headerlink" title="字符串型"></a>字符串型</h2><p>字符串是字符序列，比如 “Hello world!”。字符串可以是引号内的任何文本,可以使用单引号或双引号。</p>
 <p><strong>示例：</strong></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token string">"Hello world!"</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token variable">$x</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span> 
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span> 
 <span class="token variable">$x</span> <span class="token operator">=</span> <span class="token string">'Hello world!'</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token variable">$x</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/zLNnQ9sTaf3dcOv.png" alt="php-string.png"></p>
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组在一个变量中存储多个值。</p>
 <p><strong>示例：</strong></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span> 
 <span class="token variable">$cars</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">"Volvo"</span><span class="token punctuation">,</span><span class="token string">"BMW"</span><span class="token punctuation">,</span><span class="token string">"SAAB"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$cars</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/QKa9npt6HuzD24y.png" alt="php-array.png"></p>
 <h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>类：可以理解为类别。例如：人是一类、汽车是一类、电脑是一类。类还包含了属性、方法、对象。</p>
 <ul>
@@ -532,9 +532,9 @@ echo &#34;&amp;lt;br&gt;&#34;;">
     <span class="token comment" spellcheck="true">//人的成员 say() 方法</span>
     <span class="token keyword">function</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        <span class="token keyword">echo</span> <span class="token string">"I am："</span><span class="token punctuation">.</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span><span class="token punctuation">.</span><span class="token string">"&lt;br />"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">"I am："</span><span class="token punctuation">.</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span><span class="token punctuation">.</span><span class="token string">"&lt;br /&gt;"</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">echo</span> <span class="token string">"我的年龄是："</span><span class="token punctuation">.</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token string">"我的年龄是："</span><span class="token punctuation">.</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">age</span><span class="token punctuation">;</span>
 
     <span class="token punctuation">}</span>
 
@@ -544,16 +544,16 @@ echo &#34;&amp;lt;br&gt;&#34;;">
 <span class="token variable">$zxn</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">//给 $zxn 对象属性赋值</span>
-<span class="token variable">$zxn</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span> <span class="token operator">=</span> <span class="token string">"赵喜娜"</span><span class="token punctuation">;</span>
+<span class="token variable">$zxn</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">name</span> <span class="token operator">=</span> <span class="token string">"赵喜娜"</span><span class="token punctuation">;</span>
 
-<span class="token variable">$zxn</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span> <span class="token operator">=</span> <span class="token string">'30'</span><span class="token punctuation">;</span>
+<span class="token variable">$zxn</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">age</span> <span class="token operator">=</span> <span class="token string">'30'</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">//调用对象中的 say()方法</span>
-<span class="token variable">$zxn</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token variable">$zxn</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// $zxn 的数据类型</span>
 <span class="token keyword">echo</span> <span class="token function">gettype</span><span class="token punctuation">(</span><span class="token variable">$zxn</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/8zHMOTQdlNsISGP.png" alt="php-object.png"></p>
 <h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>特殊的 NULL 值表示一个变量没有值。NULL 数据类型，唯一可能的值就是 NULL 。</p>
 <p>在下列情况下一个变量被认为是 NULL：</p>
@@ -567,7 +567,7 @@ echo &#34;&amp;lt;br&gt;&#34;;">
 <span class="token variable">$x</span><span class="token operator">=</span><span class="token string">"Hello world!"</span><span class="token punctuation">;</span>
 <span class="token variable">$x</span><span class="token operator">=</span><span class="token keyword">null</span><span class="token punctuation">;</span>
 <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/03/vVQUJdnWErs5KYM.png" alt="php-null.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
 <p><a href="https://www.w3school.com.cn/php/php_datatypes.asp" target="_blank" rel="noopener">PHP 数据类型</a></p>
@@ -635,30 +635,31 @@ echo &#34;&amp;lt;br&gt;&#34;;">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/03/PHP数据类型/">
+                <a href="/2019/12/03/PHP常量/">
                     <div class="card-image">
                         
-                        <img src="http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png" class="responsive-img" alt="PHP数据类型">
+                        <img src="http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png" class="responsive-img" alt="PHP常量">
                         
-                        <span class="card-title">PHP数据类型</span>
+                        <span class="card-title">PHP常量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">布尔型（Boolean）布尔类型只有两个值 true 或 false，即真与假的概念。两个值都不区分大小写，常用于条件测试。
-&lt;?php
-$x=true;
-$y=false;
-var_dump($x);
-echo "&lt;br>";</div>
+                    <div class="summary">常量特点
+
+常量是单个值的标识符（名称）。在脚本中无法改变该值。
+有效的常量名以字符或下划线开头（常量名称前面没有 $ 符号）。
+与变量不同，常量贯穿整个脚本是自动全局的。
+
+设置 PHP 常量
+使用 define() 函数定义常量，它使用</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -671,7 +672,6 @@ echo "&lt;br>";</div>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -842,7 +842,7 @@ echo "&lt;br>";</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">47.4k</span>&nbsp;字
+                class="white-color">49.9k</span>&nbsp;字
                
             
 			
