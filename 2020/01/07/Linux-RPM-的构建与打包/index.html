@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="PHP条件语句, Junk Blog">
-    <meta name="description" content="PHP 条件语句
-在 PHP 中，可以使用以下条件语句：
-
-if 语句：如果指定条件为真，则执行代码
-if…else 语句：如果条件为 true，则执行代码；如果条件为 false，则执行另一端代码
-if…elseif….else 语句：根">
+    <meta name="keywords" content="Linux RPM 的构建与打包, Junk Blog">
+    <meta name="description" content="
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@ if…elseif….else 语句：根">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>PHP条件语句 | Junk Blog</title>
+    <title>Linux RPM 的构建与打包 | Junk Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -288,13 +286,13 @@ if…elseif….else 语句：根">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        PHP条件语句
+                        Linux RPM 的构建与打包
                     </div>
                 </div>
             </div>
@@ -384,29 +382,12 @@ if…elseif….else 语句：根">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Web/" target="_blank">
-                                <span class="chip bg-color">Web</span>
-                            </a>
-                        
-                            <a href="/tags/php/" target="_blank">
-                                <span class="chip bg-color">php</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/编程/" class="post-category" target="_blank">
-                                编程
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -414,21 +395,21 @@ if…elseif….else 语句：根">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-05
+                    2020-01-07
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        589
+                        52
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        1 分
                     </div>
                     
                 
@@ -444,109 +425,7 @@ if…elseif….else 语句：根">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="PHP-条件语句"><a href="#PHP-条件语句" class="headerlink" title="PHP 条件语句"></a>PHP 条件语句</h2><hr>
-<p>在 PHP 中，可以使用以下条件语句：</p>
-<ul>
-<li>if 语句：如果指定条件为真，则执行代码</li>
-<li>if…else 语句：如果条件为 true，则执行代码；如果条件为 false，则执行另一端代码</li>
-<li>if…elseif….else 语句：根据两个以上的条件执行不同的代码块</li>
-<li>switch 语句：选择多个代码块之一来执行</li>
-</ul>
-<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><p>if 语句用于在指定条件为 true 时执行代码。</p>
-<hr>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  当条件为 <span class="token boolean">true</span> 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token variable">$t</span><span class="token operator">=</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"H"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$t</span><span class="token operator">&lt;</span><span class="token string">"20"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"Have a good day!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/12/11/qdPafJRVvXBehxE.png" alt="phpif-1.png"></p>
-<h2 id="if…else-语句"><a href="#if…else-语句" class="headerlink" title="if…else 语句"></a>if…else 语句</h2><p>if….else 语句在条件为 true 时执行代码，在条件为 false 时执行另一段代码。</p>
-<hr>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  条件为 <span class="token boolean">true</span> 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  条件为 <span class="token boolean">false</span> 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token variable">$t</span><span class="token operator">=</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"H"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$t</span><span class="token operator">&lt;</span><span class="token string">"20"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"Have a good day!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"Have a good night!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/12/11/qdPafJRVvXBehxE.png" alt="phpif-2.png"></p>
-<h2 id="if…elseif…else-语句"><a href="#if…elseif…else-语句" class="headerlink" title="if…elseif…else 语句"></a>if…elseif…else 语句</h2><p>if….elseif…else 语句来根据两个以上的条件执行不同的代码。</p>
-<hr>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span>条件<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  条件为 <span class="token boolean">true</span> 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  条件为 <span class="token boolean">true</span> 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  条件为 <span class="token boolean">false</span> 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token variable">$t</span><span class="token operator">=</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string">"H"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$t</span><span class="token operator">&lt;</span><span class="token string">"10"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"Have a good morning!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$t</span><span class="token operator">&lt;</span><span class="token string">"20"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"Have a good day!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"Have a good night!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token delimiter">?></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/12/11/8k4aDmiHJVCbonI.png" alt="phpif-3.png"></p>
-<h2 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h2><p>使用 Switch 语句可以避免冗长的 if..elseif..else 代码块。</p>
-<hr>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-<span class="token keyword">case</span> label1<span class="token punctuation">:</span>
-  expression <span class="token operator">=</span> label1 时执行的代码 <span class="token punctuation">;</span>
-  <span class="token keyword">break</span><span class="token punctuation">;</span>  
-<span class="token keyword">case</span> label2<span class="token punctuation">:</span>
-  expression <span class="token operator">=</span> label2 时执行的代码 <span class="token punctuation">;</span>
-  <span class="token keyword">break</span><span class="token punctuation">;</span>
-<span class="token keyword">default</span><span class="token punctuation">:</span>
-  表达式的值不等于 label1 及 label2 时执行的代码<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://i.loli.net/2019/12/11/2cKlETx7wRdrQBu.png" alt="phpif-3.png"></p>
-<p><strong>工作原理：</strong></p>
-<ol>
-<li>对表达式（通常是变量）进行一次计算</li>
-<li>把表达式的值与结构中 case 的值进行比较</li>
-<li>如果存在匹配，则执行与 case 关联的代码</li>
-<li>代码执行后，break 语句阻止代码跳入下一个 case 中继续执行</li>
-<li>如果没有 case 为真，则使用 default 语句</li>
-</ol>
-<h3 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token variable">$favfruit</span><span class="token operator">=</span><span class="token string">"orange"</span><span class="token punctuation">;</span>
-
-<span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$favfruit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">case</span> <span class="token string">"apple"</span><span class="token punctuation">:</span>
-     <span class="token keyword">echo</span> <span class="token string">"Your favorite fruit is apple!"</span><span class="token punctuation">;</span>
-     <span class="token keyword">break</span><span class="token punctuation">;</span>
-   <span class="token keyword">case</span> <span class="token string">"banana"</span><span class="token punctuation">:</span>
-     <span class="token keyword">echo</span> <span class="token string">"Your favorite fruit is banana!"</span><span class="token punctuation">;</span>
-     <span class="token keyword">break</span><span class="token punctuation">;</span>
-   <span class="token keyword">case</span> <span class="token string">"orange"</span><span class="token punctuation">:</span>
-     <span class="token keyword">echo</span> <span class="token string">"Your favorite fruit is orange!"</span><span class="token punctuation">;</span>
-     <span class="token keyword">break</span><span class="token punctuation">;</span>
-   <span class="token keyword">default</span><span class="token punctuation">:</span>
-     <span class="token keyword">echo</span> <span class="token string">"Your favorite fruit is neither apple, banana, or orange!"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
-<p><a href="https://www.w3school.com.cn/php/php_if_else.asp" target="_blank" rel="noopener">PHP if…else…elseif 语句</a></p>
-<p><a href="https://www.w3school.com.cn/php/php_switch.asp" target="_blank" rel="noopener">PHP Switch 语句</a></p>
-<script>
+                <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -587,7 +466,7 @@ if…elseif….else 语句：根">
                     </span>
                     <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/12/05/PHP-if语句/" class="b-link-green">PHP条件语句</a>
+                    <a href="/2020/01/07/Linux-RPM-的构建与打包/" class="b-link-green">Linux RPM 的构建与打包</a>
                 </p>
             </div>
         </div>
@@ -608,45 +487,38 @@ if…elseif….else 语句：根">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/07/什么是CDN/">
+                <a href="/2020/01/07/Linux-RPM-的构建与打包/">
                     <div class="card-image">
                         
-                        <img src="https://www.usa-idc.com/upfile/image/20170418/20170418141693949394.jpg" class="responsive-img" alt="什么是CDN">
                         
-                        <span class="card-title">什么是CDN</span>
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux RPM 的构建与打包">
+                        
+                        <span class="card-title">Linux RPM 的构建与打包</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">简介
-CDN 的全称是(Content Delivery Network)，即内容分发网络。其目的是通过在现有的 Internet 中增加一层新的 CACHE(缓存)层，将网站的内容发布到最接近用户的网络”边缘“的节点，使用户可以就近取得所</div>
+                    <div class="summary">
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-07
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/web/" class="post-category" target="_blank">
-                                    web
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            Trash Can,Trash Can
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/CDN/" target="_blank">
-                        <span class="chip bg-color">CDN</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -657,58 +529,28 @@ CDN 的全称是(Content Delivery Network)，即内容分发网络。其目的�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/04/PHP运算符/">
+                <a href="/2020/01/06/CVE-2018-4878复现/">
                     <div class="card-image">
                         
-                        <img src="http://www.developersacademy.org/blog/wp-content/uploads/2018/04/php-1024x538.png" class="responsive-img" alt="PHP运算符">
+                        <img src="https://i.loli.net/2020/01/06/LMRwiGfN6g7c2Ib.jpg" class="responsive-img" alt="CVE-2018-4878复现">
                         
-                        <span class="card-title">PHP运算符</span>
+                        <span class="card-title">CVE-2018-4878复现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">PHP 算数运算符
-
-
-
-运算符
-名称
-例子
-结果
-
-
-
-+
-加法
-$x+$y
-$x 与 $y 求和
-
-
--
-减法
-$x-$y
-$x 与 $y 的差数
-
-
-*
-乘法
-$x*$y
-$x 与 $y 的乘积
-
-
-/
-除法
-$x/$y
-$x 与 $</div>
+                    <div class="summary">漏洞概述
+2018 年 2 月 1 号，Adobe 官方发布安全通报（APSA18-01），声明 Adobe Flash 28.0.0.137 及其之前的版本，存在高危漏洞（CVE-2018-4878）。
+攻击者通过构造特殊的 Flash </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-04
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/编程/" class="post-category" target="_blank">
-                                    编程
+                            <a href="/categories/system-security/" class="post-category" target="_blank">
+                                    system security
                                 </a>
                             
                             
@@ -718,12 +560,8 @@ $x 与 $</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web/" target="_blank">
-                        <span class="chip bg-color">Web</span>
-                    </a>
-                    
-                    <a href="/tags/php/" target="_blank">
-                        <span class="chip bg-color">php</span>
+                    <a href="/tags/flash-player/" target="_blank">
+                        <span class="chip bg-color">flash player</span>
                     </a>
                     
                 </div>

@@ -417,7 +417,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        327
+                        508
                     </div>
                     
 
@@ -442,7 +442,10 @@
             <div id="articleContent">
                 <h2 id="什么是文件上传漏洞？"><a href="#什么是文件上传漏洞？" class="headerlink" title="什么是文件上传漏洞？"></a>什么是文件上传漏洞？</h2><hr>
 <p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者 WebShell 等。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
-<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><hr>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>第一关是在客户端使用 js 对上传的图片进行检查，简单来说就是只要骗过我自己的浏览器就可以上传文件。</p>
+<hr>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>表单中的 onsubmit 事件，会调用 js 函数来检查上传文件的扩展名。第一个方法就是把 onsubmit 事件删除。</p>
+<hr>
 <ol>
 <li><strong>检查 from 表单的属性和触发的事件</strong></li>
 </ol>
@@ -454,7 +457,30 @@
 </ol>
 <p><img src="https://i.loli.net/2019/12/02/MUYgtmuGSqaHzZO.png" alt="Pass01-2.png"></p>
 <p>注：从上图可以看到 php 文件已经上传成功</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>既然是调用 js 进行验证的，我把 js 禁用掉不就行了</p>
+<hr>
+<ol>
+<li><strong>禁止网站使用 js 脚本</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/01/07/hwVMFj7YRDuqg9Q.png" alt="Pass01-3.png"></p>
+<ol start="2">
+<li><strong>刷新网站，上传文件</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/01/07/jqFABxa3LliYrgN.png" alt="Pass01-4.png"></p>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>将文件后缀改为 png，然后再使用 burpsuite 抓包将后缀改为 php</p>
+<hr>
+<ol>
+<li><strong>抓包修改后缀</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/01/07/QJd1ezYgEZCnAK4.png" alt="Pass01-5.png"></p>
+<ol start="2">
+<li><strong>上传成功</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/01/07/BNwWiEzXDRFkPHe.png" alt="Pass01-6.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.jianshu.com/p/5ebba0482980" target="_blank" rel="noopener">文件上传漏洞 学习笔记</a></p>
+<p><a href="https://blog.csdn.net/u011377996/article/details/86776198" target="_blank" rel="noopener">upload-labs刷关记录</a></p>
+<p><a href="https://xz.aliyun.com/t/4029#toc-0" target="_blank" rel="noopener">Upload-labs 20关通关笔记</a></p>
+<p><a href="https://github.com/No-Github/1earn/blob/master/1earn/%E5%AE%89%E5%85%A8/%E5%AE%9E%E9%AA%8C/upload-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0.md">upload-labs 通关笔记</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -721,7 +747,7 @@ echo "&lt;br>";</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">59.7k</span>&nbsp;字
+                class="white-color">59.9k</span>&nbsp;字
                
             
 			
