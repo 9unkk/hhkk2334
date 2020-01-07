@@ -5,13 +5,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Pass-02, Junk Blog">
-    <meta name="description" content="操作步骤
-检查 from 表单的属性和触发的事件
-
-从 html 源码中可以看到 onsubmit 校验事件，尝试将 onsubmit 删除并上传 webshell ，但是上传失败。
+    <meta name="description" content="操作步骤第二关是服务端对数据包的 MIME 进行检查，简单来说就是检查 HTTP 头的 Content-Type 字段。
 
 
-再尝试使用 burpsuite 抓包并修改 Cont">
+选择好要上传的 webshell
+
+
+
+设置好 burpsuite 和 firefox
+
+
+
+
+
+点击 “上传”，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -422,7 +429,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        176
+                        164
                     </div>
                     
 
@@ -445,44 +452,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ol>
-<li><strong>检查 from 表单的属性和触发的事件</strong></li>
-</ol>
-<p>从 html 源码中可以看到 onsubmit 校验事件，尝试将 onsubmit 删除并上传 webshell ，但是上传失败。</p>
-<p><img src="https://i.loli.net/2019/12/26/RhXpFHmnDwW4IOy.png" alt="Pass02-1.png"></p>
-<ol start="2">
-<li><strong>再尝试使用 burpsuite 抓包并修改 Content-Type 字段</strong></li>
-</ol>
-<ul>
+                <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>第二关是服务端对数据包的 MIME 进行检查，简单来说就是检查 HTTP 头的 Content-Type 字段。</p>
+<hr>
+<ol>
 <li>选择好要上传的 webshell</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/wJx2NKV9tWrmDzQ.png" alt="Pass02-2.png"></p>
-<ul>
+<ol start="2">
 <li>设置好 burpsuite 和 firefox</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/IW7FdDQ8mC4J2Mp.png" alt="Pass02-3.png"></p>
 <p><img src="https://i.loli.net/2019/12/26/SwRk1t4XAnfYgar.png" alt="Pass02-4.png"></p>
 <p><img src="https://i.loli.net/2019/12/26/czQfE6FKlJ1YARG.png" alt="Pass02-5.png"></p>
-<ul>
+<ol start="3">
 <li>点击 “上传”，可以看到抓的数据包</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/8DLHIFwKUxlzkjp.png" alt="Pass02-6.png"></p>
-<ul>
+<ol start="4">
 <li>将 “Content-Type” 改为 “image/png”</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/JVDlty9aXrh7mSQ.png" alt="Pass02-7.png"></p>
-<ul>
+<ol start="5">
 <li>点击 “forward” 提交修改后数据包</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/q5ebfsFRdYQySnG.png" alt="Pass02-8.png"></p>
-<ul>
+<ol start="6">
 <li>关闭 “Intercept is off”</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/JDxiGZSQFWmNavb.png" alt="Pass02-9.png"></p>
-<ul>
+<ol start="7">
 <li>最后可以看到 webshell 上传成功</li>
-</ul>
+</ol>
 <p><img src="https://i.loli.net/2019/12/26/PTsA7yBX6urocmQ.png" alt="Pass02-10.png"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
+<p><a href="https://github.com/No-Github/1earn/blob/master/1earn/%E5%AE%89%E5%85%A8/%E5%AE%9E%E9%AA%8C/upload-labs%E9%80%9A%E5%85%B3%E7%AC%94%E8%AE%B0.md">upload-labs 通关笔记</a></p>
+<p><a href="https://xz.aliyun.com/t/4029#toc-0" target="_blank" rel="noopener">Upload-labs 20关通关笔记</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
