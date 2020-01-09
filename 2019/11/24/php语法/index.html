@@ -14,10 +14,10 @@ php 脚本以 &amp;lt;?php 开始， 以 ?&amp;gt; 结束。
 
 &amp;lt;?php
 echo &#34;hello word !&#34;;
-?&gt;
+?&amp;gt;
 
 
-php 也允许使用短标记 &amp;lt;? 和 ">
+php 也允许使用短标记 &amp;lt;?">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -428,7 +428,7 @@ php 也允许使用短标记 &amp;lt;? 和 ">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        674
+                        689
                     </div>
                     
 
@@ -460,14 +460,14 @@ php 也允许使用短标记 &amp;lt;? 和 ">
 </ul>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">echo</span> <span class="token string">"hello word !"</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/24/J9MPnf8CNYQGpgq.png" alt="php-1.png"></p>
 <ul>
 <li>php 也允许使用短标记 <code>&lt;?</code> 和 <code>?&gt;</code> ，但是不建议使用。只有激活 php.ini 中的 <code>short_open_tag</code> 参数，php 才能使用短标记。</li>
 </ul>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?</span>
 <span class="token keyword">echo</span> <span class="token string">"hello word !"</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/24/QydPU74OhlxFapE.png" alt="php-2.png"></p>
 <p><img src="https://i.loli.net/2019/11/24/SZRK3yvDYsiMLeN.png" alt="php-3.png"></p>
 <ul>
@@ -492,30 +492,30 @@ php 也允许使用短标记 &amp;lt;? 和 ">
 它横跨了
 多行
 */</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="PHP-大小写敏感"><a href="#PHP-大小写敏感" class="headerlink" title="PHP 大小写敏感"></a>PHP 大小写敏感</h2><hr>
 <p>在 PHP 中，所有用户定义的函数、类和关键词（例如 if、else、echo 等等）都对大小写不敏感。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token keyword">echo</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token keyword">ECHO</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token keyword">Echo</span> <span class="token string">"hello world!&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token string">"hello world!&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token keyword">ECHO</span> <span class="token string">"hello world!&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token keyword">Echo</span> <span class="token string">"hello world!&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/24/wTzD2OMmgqukobX.png" alt="php-4.png"></p>
 <p>不过在 PHP 中，所有变量都对大小写敏感。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token variable">$color</span><span class="token operator">=</span><span class="token string">"red"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$color</span> <span class="token punctuation">.</span><span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"my house is "</span> <span class="token punctuation">.</span> <span class="token variable">$COLOR</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$Color</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$color</span> <span class="token punctuation">.</span><span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"my house is "</span> <span class="token punctuation">.</span> <span class="token variable">$COLOR</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"my car is "</span> <span class="token punctuation">.</span> <span class="token variable">$Color</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/24/IXgDxWe12RbzJnV.png" alt="php-5.png"></p>
 <h2 id="PHP-分隔符"><a href="#PHP-分隔符" class="headerlink" title="PHP 分隔符"></a>PHP 分隔符</h2><hr>
 <p>同 C 或 Perl 一样，PHP 需要在每个语句后用分号结束指令。一段 PHP 代码中的结束标记隐含表示了一个分号；在一个 PHP 代码段中的最后一行可以不用分号结束。如果后面还有新行，则代码段的结束标记包含了行结束。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
     <span class="token keyword">echo</span> <span class="token string">"This is a test"</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span>
+<span class="token delimiter">?&gt;</span>
 
-<span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token string">"This is a test"</span> <span class="token delimiter">?></span>
+<span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token string">"This is a test"</span> <span class="token delimiter">?&gt;</span>
 
 <span class="token delimiter">&lt;?php</span> <span class="token keyword">echo</span> <span class="token string">'We omitted the last closing tag'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="PHP-echo-print"><a href="#PHP-echo-print" class="headerlink" title="PHP echo/print"></a>PHP echo/print</h2><hr>
@@ -527,9 +527,9 @@ php 也允许使用短标记 &amp;lt;? 和 ">
 </ul>
 <p>注：因为 echo 不返回值，所以 echo 执行速度比 print 稍快一些。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token keyword">echo</span> <span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 同时输出多个字符串</span>
+<span class="token keyword">echo</span> <span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c&lt;br&gt;'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 同时输出多个字符串</span>
 <span class="token keyword">print</span> <span class="token string">'a'</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// 只能输出一个字符串</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/30/cIJHy6Nf4xSwT3q.png" alt="php-6.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://www.php.net/manual/zh/language.basic-syntax.php" target="_blank" rel="noopener">PHP 手册-基本语法</a></p>
 <p><a href="https://www.w3school.com.cn/php/php_syntax.asp" target="_blank" rel="noopener">PHP 语法</a></p>
@@ -811,7 +811,7 @@ PHP（全称：PHP：Hypertext Preprocessor，即“ PHP：超文本预处理器
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">59.9k</span>&nbsp;字
+                class="white-color">61k</span>&nbsp;字
                
             
 			

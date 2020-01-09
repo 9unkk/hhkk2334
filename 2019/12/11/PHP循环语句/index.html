@@ -422,7 +422,7 @@ foreach - 遍历数组中的每个元素">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        589
+                        597
                     </div>
                     
 
@@ -463,10 +463,10 @@ foreach - 遍历数组中的每个元素">
 <span class="token variable">$x</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> 
 
 <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token variable">$x</span><span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"这个数字是：$x &lt;br>"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"这个数字是：$x &lt;br&gt;"</span><span class="token punctuation">;</span>
   <span class="token variable">$x</span><span class="token operator">++</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> 
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/12/nRhJ6fYjNtVEAug.png" alt="while.png"></p>
 <h2 id="do…while循环"><a href="#do…while循环" class="headerlink" title="do…while循环"></a>do…while循环</h2><p>do…while 循环首先会执行一次代码块，然后检查条件，如果指定条件为真，则重复循环。</p>
 <hr>
@@ -478,10 +478,10 @@ foreach - 遍历数组中的每个元素">
 <span class="token variable">$x</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> 
 
 <span class="token keyword">do</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"这个数字是：$x &lt;br>"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"这个数字是：$x &lt;br&gt;"</span><span class="token punctuation">;</span>
   <span class="token variable">$x</span><span class="token operator">++</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token variable">$x</span><span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/12/nRhJ6fYjNtVEAug.png" alt="do-while.png"></p>
 <h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>指定代码块循环执行的次数</p>
 <hr>
@@ -497,9 +497,9 @@ foreach - 遍历数组中的每个元素">
 <h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 从 0 循环到 10，并输出每次循环的结果</span>
 <span class="token delimiter">&lt;?php</span> 
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$x</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$x</span><span class="token operator">&lt;=</span><span class="token number">10</span><span class="token punctuation">;</span> <span class="token variable">$x</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"数字是：$x &lt;br>"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"数字是：$x &lt;br&gt;"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> 
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/12/kWXAxYRbz168ovj.png" alt="for.png"></p>
 <h2 id="foreach-循环"><a href="#foreach-循环" class="headerlink" title="foreach 循环"></a>foreach 循环</h2><p>foreach 循环只适用于数组，并用于遍历数组中的每个键/值对。</p>
 <hr>
@@ -511,9 +511,9 @@ foreach - 遍历数组中的每个元素">
 <span class="token variable">$colors</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string">"red"</span><span class="token punctuation">,</span><span class="token string">"green"</span><span class="token punctuation">,</span><span class="token string">"blue"</span><span class="token punctuation">,</span><span class="token string">"yellow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
 <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$colors</span> <span class="token keyword">as</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"$value &lt;br>"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"$value &lt;br&gt;"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/12/kdhcD5Rsm1XgWJn.png" alt="foreach.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
 <p><a href="https://www.w3school.com.cn/php/php_looping.asp" target="_blank" rel="noopener">PHP while 循环</a></p>
@@ -784,7 +784,7 @@ CDN 的全称是(Content Delivery Network)，即内容分发网络。其目的�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">59.9k</span>&nbsp;字
+                class="white-color">61k</span>&nbsp;字
                
             
 			
