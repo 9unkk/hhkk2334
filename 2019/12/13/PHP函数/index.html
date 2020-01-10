@@ -424,7 +424,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        665
+                        652
                     </div>
                     
 
@@ -468,7 +468,7 @@
 <span class="token punctuation">}</span>
 
 <span class="token function">sayhi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 调用函数</span>
-<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/13/NVIoUG5mTu4X2CM.png" alt="php1.png"></p>
 <h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><p>PHP 可以通过参数向函数传递信息，参数类似变量。</p>
 <p>参数被定义在函数之后的括号中。括号中可以添加任意多个参数，只要用逗号隔开就行。</p>
@@ -476,7 +476,7 @@
 <h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 下面的例子中的函数有一个参数（$fname）。当调用 familyName() 函数时，我们同时要传递一个名字（例如 Bill），这样会输出不同的名字，但是姓氏相同：</span>
 <span class="token delimiter">&lt;?php</span>
 <span class="token keyword">function</span> <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token variable">$fname</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"$fname Zhang.&lt;br&gt;"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"$fname Zhang.&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Li"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -484,30 +484,30 @@
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Tao"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Xiao Mei"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Jian"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/13/MWEBk1FsKOjXDYH.png" alt="php2.png"></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 下面的例子中的函数有两个参数（$fname 和 $year）</span>
 <span class="token delimiter">&lt;?php</span>
 <span class="token keyword">function</span> <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token variable">$fname</span><span class="token punctuation">,</span><span class="token variable">$year</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"$fname Zhang. Born in $year &lt;br&gt;"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"$fname Zhang. Born in $year &lt;br>"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Li"</span><span class="token punctuation">,</span><span class="token string">"1975"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Hong"</span><span class="token punctuation">,</span><span class="token string">"1978"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">familyName</span><span class="token punctuation">(</span><span class="token string">"Tao"</span><span class="token punctuation">,</span><span class="token string">"1983"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/13/GEtCLI2hkuWnDzS.png" alt="php3.png"></p>
 <h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 下面的例子展示了如何使用默认参数。如果我们调用没有参数的 setHeight() 函数，它的参数会取默认值：</span>
 <span class="token delimiter">&lt;?php</span>
 <span class="token keyword">function</span> <span class="token function">setHeight</span><span class="token punctuation">(</span><span class="token variable">$minheight</span><span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">"The height is : $minheight &lt;br&gt;"</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token string">"The height is : $minheight &lt;br>"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">setHeight</span><span class="token punctuation">(</span><span class="token number">350</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">setHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将使用默认值 50</span>
 <span class="token function">setHeight</span><span class="token punctuation">(</span><span class="token number">135</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">setHeight</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/13/JzOfiYrejP2psBI.png" alt="php4.png"></p>
 <h2 id="函数返回值"><a href="#函数返回值" class="headerlink" title="函数返回值"></a>函数返回值</h2><hr>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">// 使用 return 语句，使函数返回值。</span>
@@ -517,10 +517,10 @@
   <span class="token keyword">return</span> <span class="token variable">$z</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">echo</span> <span class="token string">"5 + 10 = "</span> <span class="token punctuation">.</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string">"7 + 13 = "</span> <span class="token punctuation">.</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"5 + 10 = "</span> <span class="token punctuation">.</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string">"7 + 13 = "</span> <span class="token punctuation">.</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token string">"2 + 4 = "</span> <span class="token punctuation">.</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/13/axg6Oihj7PUK4GI.png" alt="php5.png"></p>
 <h2 id="可变函数"><a href="#可变函数" class="headerlink" title="可变函数"></a>可变函数</h2><p>PHP 支持可变函数的概念。可变函数就是：如果一个变量名后有圆括号，PHP 将寻找与变量的值同名的函数，并且尝试执行它。</p>
 <hr>
@@ -528,11 +528,11 @@
 
 <span class="token delimiter">&lt;?php</span>
 <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">echo</span> <span class="token string">"In foo()&lt;br /&gt;\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string">"In foo()&lt;br />\n"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token variable">$arg</span> <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">echo</span> "In <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> argument was <span class="token string">'$arg'</span><span class="token punctuation">.</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span></span>\<span class="token package">n</span>"<span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> "In <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> argument was <span class="token string">'$arg'</span><span class="token punctuation">.</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span></span>\<span class="token package">n</span>"<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// 使用 echo 的包装函数</span>
@@ -549,7 +549,7 @@
 
 <span class="token variable">$func</span> <span class="token operator">=</span> <span class="token string">'echoit'</span><span class="token punctuation">;</span>
 <span class="token variable">$func</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 调用 echoit()</span>
-<span class="token delimiter">?&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/13/LuxTDQ2kA8heMXY.png" alt="php6.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
 <p><a href="https://www.php.net/manual/zh/language.functions.php" target="_blank" rel="noopener">函数</a></p>
@@ -828,7 +828,7 @@ foreach - 遍历数组中的每个元素</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61k</span>&nbsp;字
+                class="white-color">61.6k</span>&nbsp;字
                
             
 			

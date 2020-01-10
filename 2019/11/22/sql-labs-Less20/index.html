@@ -423,7 +423,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        7 分
                     </div>
                     
                 
@@ -472,19 +472,19 @@
                 <span class="token variable">$cookee</span> <span class="token operator">=</span> <span class="token variable">$row1</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$row1</span><span class="token punctuation">)</span>
                                 <span class="token punctuation">{</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 3 &gt;'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 3 >'</span><span class="token punctuation">;</span>
                                 <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token string">'uname'</span><span class="token punctuation">,</span> <span class="token variable">$cookee</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">3600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                                 <span class="token function">header</span> <span class="token punctuation">(</span><span class="token string">'Location: index.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                                 <span class="token keyword">echo</span> <span class="token string">"I LOVE YOU COOKIES"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#0000ff" font size = 3 &gt;'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#0000ff" font size = 3 >'</span><span class="token punctuation">;</span>
                                 <span class="token comment" spellcheck="true">//echo 'Your Cookie is: ' .$cookee;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
                                 <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token function">mysql_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;br&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/flag.jpg" /&gt;'</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;br>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/flag.jpg" />'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
                                 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li><strong>若 cookie 存在，又分两种情况， 第一种情况，你登陆过，cookie 还有效，你没按删除 cookie 的按钮，那么他就输出各种信息，包括删除 cookie 的按钮</strong></li>
@@ -495,23 +495,23 @@
                         <span class="token variable">$cookee</span> <span class="token operator">=</span> <span class="token variable">$_COOKIE</span><span class="token punctuation">[</span><span class="token string">'uname'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
                         <span class="token variable">$format</span> <span class="token operator">=</span> <span class="token string">'D d M Y - H:i:s'</span><span class="token punctuation">;</span>
                         <span class="token variable">$timestamp</span> <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">3600</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;center&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;br&gt;&lt;br&gt;&lt;br&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/Less-20.jpg" /&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;br&gt;&lt;b&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;br&gt;&lt;font color= "red" font size="4"&gt;'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;center>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;br>&lt;br>&lt;br>'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/Less-20.jpg" />'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;br>&lt;b>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;br>&lt;font color= "red" font size="4">'</span><span class="token punctuation">;</span>
                         <span class="token keyword">echo</span> <span class="token string">"YOUR USER AGENT IS : "</span><span class="token punctuation">.</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">'HTTP_USER_AGENT'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;&lt;br&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "cyan" font size="4"&gt;'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font>&lt;br>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "cyan" font size="4">'</span><span class="token punctuation">;</span>
                         <span class="token keyword">echo</span> <span class="token string">"YOUR IP ADDRESS IS : "</span><span class="token punctuation">.</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">'REMOTE_ADDR'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;&lt;br&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 4 &gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"DELETE YOUR COOKIE OR WAIT FOR IT TO EXPIRE &lt;br&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "orange" font size = 5 &gt;'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font>&lt;br>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 4 >'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"DELETE YOUR COOKIE OR WAIT FOR IT TO EXPIRE &lt;br>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "orange" font size = 5 >'</span><span class="token punctuation">;</span>
                         <span class="token keyword">echo</span> <span class="token string">"YOUR COOKIE : uname = $cookee and expires: "</span> <span class="token punctuation">.</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token variable">$format</span><span class="token punctuation">,</span> <span class="token variable">$timestamp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;/font&gt;"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;/font>"</span><span class="token punctuation">;</span>
                         <span class="token variable">$sql</span><span class="token operator">=</span><span class="token string">"SELECT * FROM users WHERE username='$cookee' LIMIT 0,1"</span><span class="token punctuation">;</span>
                         <span class="token variable">$result</span><span class="token operator">=</span><span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$result</span><span class="token punctuation">)</span>
@@ -521,45 +521,45 @@
                         <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysql_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$row</span><span class="token punctuation">)</span>
                                 <span class="token punctuation">{</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "pink" font size="5"&gt;'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "pink" font size="5">'</span><span class="token punctuation">;</span>
                                 <span class="token keyword">echo</span> <span class="token string">'Your Login name:'</span><span class="token punctuation">.</span> <span class="token variable">$row</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "grey" font size="5"&gt;'</span><span class="token punctuation">;</span>  
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "grey" font size="5">'</span><span class="token punctuation">;</span>  
                                 <span class="token keyword">echo</span> <span class="token string">'Your Password:'</span> <span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;&lt;/b&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font>&lt;/b>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
                                 <span class="token keyword">echo</span> <span class="token string">'Your ID:'</span> <span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
                                 <span class="token punctuation">}</span>
                         <span class="token keyword">else</span>
                                 <span class="token punctuation">{</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;center&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;br&gt;&lt;br&gt;&lt;br&gt;'</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/slap1.jpg" /&gt;'</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;br&gt;&lt;b&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token comment" spellcheck="true">//echo '&lt;img src="../images/Less-20.jpg" /&gt;';</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;center>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;br>&lt;br>&lt;br>'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/slap1.jpg" />'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;br>&lt;b>"</span><span class="token punctuation">;</span>
+                                <span class="token comment" spellcheck="true">//echo '&lt;img src="../images/Less-20.jpg" />';</span>
                                 <span class="token punctuation">}</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;center&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;form action="" method="post"&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;input  type="submit" name="submit" value="Delete Your Cookie!" /&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;/form&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;/center&gt;'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;center>'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;form action="" method="post">'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;input  type="submit" name="submit" value="Delete Your Cookie!" />'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;/form>'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;/center>'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li><strong>第二种情况，你按了删除cookie的按钮,后台就把cookie的时间设置为过期的时间，那么cookie就被删除了</strong></li>
 </ol>
 <pre class="line-numbers language-php"><code class="language-php">        <span class="token keyword">else</span>
                 <span class="token punctuation">{</span>
-                <span class="token keyword">echo</span> <span class="token string">'&lt;center&gt;'</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 6 &gt;'</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">'&lt;center>'</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 6 >'</span><span class="token punctuation">;</span>
                 <span class="token keyword">echo</span> <span class="token string">" Your Cookie is deleted"</span><span class="token punctuation">;</span>
                                 <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token string">'uname'</span><span class="token punctuation">,</span> <span class="token variable">$row1</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">3600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                                 <span class="token function">header</span> <span class="token punctuation">(</span><span class="token string">'Location: index.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">'&lt;/font&gt;&lt;/center&gt;&lt;/br&gt;'</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">'&lt;/font>&lt;/center>&lt;/br>'</span><span class="token punctuation">;</span>
 
                 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
@@ -850,7 +850,7 @@ PHP（全称：PHP：Hypertext Preprocessor，即“ PHP：超文本预处理器
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61k</span>&nbsp;字
+                class="white-color">61.6k</span>&nbsp;字
                
             
 			
