@@ -422,7 +422,7 @@ nmap --scanflags URGACKPSHRSTSYNFIN ">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.9k
+                        2k
                     </div>
                     
 
@@ -451,7 +451,7 @@ nmap --scanflags URGACKPSHRSTSYNFIN ">
 <li>-–scanflags (定制的TCP扫描)</li>
 </ol>
 <p>可以是 URG， ACK，PSH， RST，SYN，and FIN 的任何组合</p>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap --scanflags URGACKPSHRSTSYNFIN <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap --scanflags URGACKPSHRSTSYNFIN <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><hr>
 <ol>
 <li>列出开放了指定端口的主机列表</li>
@@ -460,55 +460,55 @@ nmap --scanflags URGACKPSHRSTSYNFIN ">
 <ol start="2">
 <li>扫一眼目标机器或目标C段都跑了什么服务</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -sV -sT -Pn --open -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -sV -sT -Pn --open -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>尝试先获取下目标机器各个服务更详细的 banner 信息,因为有些服务工具漏洞只能影响特定的版本</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -sT -Pn --open -v banner.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -sT -Pn --open -v banner.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="4">
 <li>无 ping 扫描(前提确认主机存活)</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -P0 -sS -sV <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -P0 -sS -sV <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="防火墙扫描"><a href="#防火墙扫描" class="headerlink" title="防火墙扫描"></a>防火墙扫描</h2><hr>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap --script<span class="token operator">=</span>firewalk --traceroute <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p80 --script http-waf-detect <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p80 --script http-waf-detect --script-args<span class="token operator">=</span>”http-waf-detect.detectBodyChanges” <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap --script<span class="token operator">=</span>firewalk --traceroute <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p80 --script http-waf-detect <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p80 --script http-waf-detect --script-args<span class="token operator">=</span>”http-waf-detect.detectBodyChanges” <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="绕过防火墙扫描"><a href="#绕过防火墙扫描" class="headerlink" title="绕过防火墙扫描"></a>绕过防火墙扫描</h2><hr>
 <ol>
 <li>碎片扫描</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -f <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -f <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap -mtu 8 <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+nmap -mtu 8 <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>诱饵扫描</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -D RND:10 <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -D RND:10 <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap –D decoy1,decoy2,decoy3 <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+nmap –D decoy1,decoy2,decoy3 <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>空闲扫描</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -P0 -sI <span class="token operator">&lt;</span>僵尸主机 IP<span class="token operator">></span> <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -P0 -sI <span class="token operator">&lt;</span>僵尸主机 IP<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="4">
 <li>随机数据长度</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap --data-length 25 <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap --data-length 25 <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap --randomize-hosts <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+nmap --randomize-hosts <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
 <li>欺骗扫描</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap --sT -PN --spoof-mac 0 <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap --sT -PN --spoof-mac 0 <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap --badsum <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+nmap --badsum <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap -g 80 -S www.baidu.com <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+nmap -g 80 -S www.baidu.com <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap -p80 --script http-methods --script-args http.useragent<span class="token operator">=</span><span class="token string">"Mozilla 5"</span> <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+nmap -p80 --script http-methods --script-args http.useragent<span class="token operator">=</span><span class="token string">"Mozilla 5"</span> <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="按脚本分类扫描"><a href="#按脚本分类扫描" class="headerlink" title="按脚本分类扫描"></a>按脚本分类扫描</h2><hr>
 <p>语法：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap --script<span class="token operator">=</span><span class="token operator">&lt;</span>脚本类型<span class="token operator">></span> <span class="token operator">&lt;</span>target IP<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap --script<span class="token operator">=</span><span class="token operator">&lt;</span>脚本类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>target IP<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash">auth: 负责处理鉴权证书（绕开鉴权）的脚本  
 broadcast: 在局域网内探查更多服务开启状况，如dhcp/dns/sqlserver等服务  
 brute: 提供暴力破解方式，针对常见的应用如http/snmp等  
@@ -523,14 +523,14 @@ safe: 此类与intrusive相反，属于安全性脚本
 version: 负责增强服务与版本扫描（Version Detection）功能的脚本  
 vuln: 负责检查目标机是否有常见的漏洞（Vulnerability），如是否有MS08_067<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="使用通配符进行扫描"><a href="#使用通配符进行扫描" class="headerlink" title="使用通配符进行扫描"></a>使用通配符进行扫描</h2><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 使用 http 系列的脚本进行扫描</span>
-nmap --script <span class="token string">"http-*"</span> <span class="token operator">&lt;</span>target<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+nmap --script <span class="token string">"http-*"</span> <span class="token operator">&lt;</span>target<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 使用 smb 系列的脚本进行扫描</span>
-nmap --script<span class="token operator">=</span><span class="token string">"smb*"</span> <span class="token operator">&lt;</span>target<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+nmap --script<span class="token operator">=</span><span class="token string">"smb*"</span> <span class="token operator">&lt;</span>target<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="详细的脚本扫描"><a href="#详细的脚本扫描" class="headerlink" title="详细的脚本扫描"></a>详细的脚本扫描</h2><hr>
 <h3 id="永恒之蓝漏洞扫描"><a href="#永恒之蓝漏洞扫描" class="headerlink" title="永恒之蓝漏洞扫描"></a>永恒之蓝漏洞扫描</h3><p>普通扫描：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 --script smb-vuln-ms17-010 <span class="token operator">&lt;</span>target<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 --script smb-vuln-ms17-010 <span class="token operator">&lt;</span>target<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>禁 ping 扫描：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 -Pn --script smb-vuln-ms17-010 <span class="token operator">&lt;</span>target<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 -Pn --script smb-vuln-ms17-010 <span class="token operator">&lt;</span>target<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>指定多 IP 扫描：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 --script smb-vuln-ms17-010 192.168.1.100 192.168.1.101 192.168.1.102<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>指定网段扫描：</p>
@@ -539,75 +539,75 @@ nmap --script<span class="token operator">=</span><span class="token string">"sm
 <h3 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h3><ol>
 <li>检查目标 ftp 是否允许匿名登录,光能登陆还不够,它还会自动检测目录是否可读写,如,批量 ftp 抓鸡</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-anon.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-anon.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>ftp爆破脚本 [只会尝试一些比较简单的弱口令]</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-brute.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-brute.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>ProFTPD 1.3.3c之前的netio.c文件中的pr_netio_telnet_gets函数中存在多个栈溢出</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-vuln-cve2010-4221.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-vuln-cve2010-4221.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="4">
 <li>ProFTPD 1.3.3c 被人插后门</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-vuln-cve2010-4221.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-vuln-cve2010-4221.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="5">
 <li>VSFTPD v2.3.4 跟Proftp同样的问题,被人插了后门</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-vsftpd-backdoor.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 21 --script ftp-vsftpd-backdoor.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="6">
 <li>使用自定义爆破字典进行爆破</li>
 </ol>
 <pre><code>nmap -p21 -sT –script ftp-brute.nse –script-args userdb=./user.txt,passdb=./pass.txt &lt;target ip&gt;</code></pre><h3 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h3><p>telnet 爆破</p>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p23 –script telnet-brute.nse –script-args userdb<span class="token operator">=</span>./user.txt,passdb<span class="token operator">=</span>./pass.txt <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p23 –script telnet-brute.nse –script-args userdb<span class="token operator">=</span>./user.txt,passdb<span class="token operator">=</span>./pass.txt <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="和各种数据库相关的一些扫描脚本"><a href="#和各种数据库相关的一些扫描脚本" class="headerlink" title="和各种数据库相关的一些扫描脚本"></a>和各种数据库相关的一些扫描脚本</h3><ol>
 <li>informix 爆破</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 9088 --script informix-brute.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 9088 --script informix-brute.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>mysql 扫描 root 空密码</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-empty-password.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-empty-password.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>mysql root弱口令简单爆破</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-brute.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-brute.nse -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="4">
 <li>导出mysql中所有用户的hash</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-dump-hashes --script-args<span class="token operator">=</span><span class="token string">'username=root,password=root'</span> <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-dump-hashes --script-args<span class="token operator">=</span><span class="token string">'username=root,password=root'</span> <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="5">
 <li>Mysql 身份认证漏洞[MariaDB and MySQL  5.1.61,5.2.11, 5.3.5, 5.5.22],利用条件有些苛刻 [需要目标的 mysql 是自己源码编译安装的,这样的成功率相对较高]</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-vuln-cve2012-2122.nse  -v <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 3306 --script mysql-vuln-cve2012-2122.nse  -v <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
 
-nmap -p 445 --script ms-sql-info.nse -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">></span>      
+nmap -p 445 --script ms-sql-info.nse -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">&gt;</span>      
 
 ms-sql-info.nse 扫描C段mssql
-nmap -p 1433 --script ms-sql-info.nse --script-args mssql.instance-port<span class="token operator">=</span>1433 -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+nmap -p 1433 --script ms-sql-info.nse --script-args mssql.instance-port<span class="token operator">=</span>1433 -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="6">
 <li>扫描 mssql sa 空密码</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1433 --script ms-sql-empty-password.nse -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1433 --script ms-sql-empty-password.nse -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="7">
 <li>sa弱口令爆破</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1433 --script ms-sql-brute.nse -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1433 --script ms-sql-brute.nse -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="8">
 <li>利用 xp_cmdshell 远程执行系统命令</li>
 </ol>
 <pre><code>nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=sa,mssql.password=sa,ms-sql-xp-cmdshell.cmd=net user test test add &lt;network/netmask&gt;</code></pre><ol start="9">
 <li>导出 mssql 中所有的数据库用户及密码 hash</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1433 --script ms-sql-dump-hashes -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1433 --script ms-sql-dump-hashes -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="10">
 <li>尝试爆破 postgresql</li>
 </ol>
 <pre><code>nmap -p 5432 --script pgsql-brute -v &lt;network/netmask&gt;</code></pre><ol start="11">
 <li>尝试爆破 oracle</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap --script oracle-brute-stealth -p 1521 --script-args oracle-brute-stealth.sid<span class="token operator">=</span>ORCL  -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap --script oracle-brute-stealth -p 1521 --script-args oracle-brute-stealth.sid<span class="token operator">=</span>ORCL  -v <span class="token operator">&lt;</span>network/netmask<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="12">
 <li>oracle-brute.nse</li>
 </ol>
@@ -620,18 +620,18 @@ nmap -p 1433 --script ms-sql-info.nse --script-args mssql.instance-port<span cla
 <pre><code>nmap -p 6379 --script redis-brute.nse &lt;network/netmask&gt;</code></pre><ol start="15">
 <li>指定字典爆破 mysql</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p3306 –script mysql-brute.nse –script-args userdb<span class="token operator">=</span>./user.txt,passdb<span class="token operator">=</span>./pass.txt <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p3306 –script mysql-brute.nse –script-args userdb<span class="token operator">=</span>./user.txt,passdb<span class="token operator">=</span>./pass.txt <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="smb"><a href="#smb" class="headerlink" title="smb"></a>smb</h3><ol>
 <li>爆破 smb</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 –script smb-brute.nse –script-args userdb<span class="token operator">=</span>./user.txt,passdb<span class="token operator">=</span>./pass.txt <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 –script smb-brute.nse –script-args userdb<span class="token operator">=</span>./user.txt,passdb<span class="token operator">=</span>./pass.txt <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>smb 漏洞扫描</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 --script smb-vuln-ms17-010.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
-nmap -p445 --script smb-vuln-ms08-067.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
-nmap -p445 --script smb-vuln-ms10-054.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span>
-nmap -p445 --script smb-vuln-ms10-061.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 --script smb-vuln-ms17-010.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
+nmap -p445 --script smb-vuln-ms08-067.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
+nmap -p445 --script smb-vuln-ms10-054.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span>
+nmap -p445 --script smb-vuln-ms10-061.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="僵尸主机扫描"><a href="#僵尸主机扫描" class="headerlink" title="僵尸主机扫描"></a>僵尸主机扫描</h3><pre class="line-numbers language-bash"><code class="language-bash">nmap -p445 192.168.86.132 --script<span class="token operator">=</span>ipidseq.nse<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="web漏洞扫描"><a href="#web漏洞扫描" class="headerlink" title="web漏洞扫描"></a>web漏洞扫描</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /usr/share/nmap/scripts/  
 <span class="token function">wget</span> http://www.computec.ch/projekte/vulscan/download/nmap_nse_vulscan-2.0.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> xzf nmap_nse_vulscan-2.0.tar.gz  
@@ -647,23 +647,23 @@ nmap -PN -sS -sV --script<span class="token operator">=</span>all –script-args
 <h3 id="工控扫描"><a href="#工控扫描" class="headerlink" title="工控扫描"></a>工控扫描</h3><ol>
 <li>探测modbus协议的设备</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -sV –script modbus-discover <span class="token operator">&lt;</span>target ip<span class="token operator">></span> -p 502<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -sV –script modbus-discover <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span> -p 502<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>探测EthernetIP协议的设备</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 44818 –script enip-enumerate.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 44818 –script enip-enumerate.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>探测 CoDeSyS 协议的设备</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1200,2455 –script codesys-v2-discover <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1200,2455 –script codesys-v2-discover <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="4">
 <li>探测 NiagaraFox 协议的设备</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1911 –script fox-info <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 1911 –script fox-info <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="5">
 <li>探测S7协议的设备</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 102 –script s7-enumerate.nse <span class="token operator">&lt;</span>target ip<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">nmap -p 102 –script s7-enumerate.nse <span class="token operator">&lt;</span>target ip<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="6">
 <li>检查宿主是否感染了 stuxnet 蠕虫漏洞</li>
 </ol>
@@ -949,7 +949,7 @@ Vim 是从 vi 发展出来的一个文本编辑器。代码补全、编译及错
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61k</span>&nbsp;字
+                class="white-color">61.4k</span>&nbsp;字
                
             
 			

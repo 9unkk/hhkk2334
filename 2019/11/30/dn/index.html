@@ -7,7 +7,7 @@
     <meta name="keywords" content="dn, Junk Blog">
     <meta name="description" content="安装
 [root@localhost ~]# git colne https://github.com/tomlockwood/dn.git
-[root@localhost ~]#cd dn &amp;amp;&amp;amp; cat dn &gt;&gt; ~/.">
+[root@localhost ~]#cd dn &amp;amp;&amp;amp; cat dn &amp;gt;&amp;g">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -422,7 +422,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        696
+                        702
                     </div>
                     
 
@@ -447,7 +447,7 @@
             <div id="articleContent">
                 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># git colne https://github.com/tomlockwood/dn.git</span>
-<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#cd dn &amp;&amp; cat dn >> ~/.bashrc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#cd dn &amp;&amp; cat dn &gt;&gt; ~/.bashrc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><hr>
 <p>dn：创建笔记（以日期来命名）</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost dn<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># dn "The same thing we do every night"</span>
@@ -499,7 +499,7 @@
 <span class="token comment" spellcheck="true"># The same thing we do every night 就是第一个参数值。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 输出"* 【第一个参数值】" 并追加到 ~/dn/2019-11-30 中</span>
 dn<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">" * <span class="token variable">$1</span>"</span> <span class="token operator">>></span> <span class="token variable">$DN_PATH</span>/<span class="token punctuation">$(</span>date <span class="token string">"+%Y-%m-%d"</span><span class="token punctuation">)</span>
+  <span class="token keyword">echo</span> <span class="token string">" * <span class="token variable">$1</span>"</span> <span class="token operator">&gt;&gt;</span> <span class="token variable">$DN_PATH</span>/<span class="token punctuation">$(</span>date <span class="token string">"+%Y-%m-%d"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="dno"><a href="#dno" class="headerlink" title="dno"></a>dno</h3><ul>
 <li>$2；表示从命令行接收第二个参数<br>例如：</li>
@@ -509,7 +509,7 @@ dn<span class="token punctuation">(</span><span class="token punctuation">)</spa
 <span class="token comment" spellcheck="true"># fuck 第二个参数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 输出"* 【dno 命令的第二个参数值】" 并追加到 ~/dn/【dno 命令的第一个参数值】 中</span>
 dno<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">echo</span> <span class="token string">" * <span class="token variable">$2</span>"</span> <span class="token operator">>></span> <span class="token variable">$DN_PATH</span>/<span class="token variable">$1</span>
+  <span class="token keyword">echo</span> <span class="token string">" * <span class="token variable">$2</span>"</span> <span class="token operator">&gt;&gt;</span> <span class="token variable">$DN_PATH</span>/<span class="token variable">$1</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="dnoe"><a href="#dnoe" class="headerlink" title="dnoe"></a>dnoe</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 编辑 ~/dn/【dnoe 命令的第一个参数值】文件</span>
 dnoe<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -812,7 +812,7 @@ dnview<span class="token punctuation">(</span><span class="token punctuation">)<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61k</span>&nbsp;字
+                class="white-color">61.4k</span>&nbsp;字
                
             
 			
