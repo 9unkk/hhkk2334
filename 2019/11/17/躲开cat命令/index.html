@@ -417,7 +417,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        537
+                        534
                     </div>
                     
 
@@ -445,7 +445,7 @@
 <ol>
 <li>编写一个 python 脚本</li>
 </ol>
-<pre class="line-numbers language-python"><code class="language-python">cmd_h <span class="token operator">=</span> <span class="token string">"echo 'You forgot to check `cat -A`!' &gt; oops"</span> <span class="token comment" spellcheck="true"># hidden</span>
+<pre class="line-numbers language-python"><code class="language-python">cmd_h <span class="token operator">=</span> <span class="token string">"echo 'You forgot to check `cat -A`!' > oops"</span> <span class="token comment" spellcheck="true"># hidden</span>
 cmd_v <span class="token operator">=</span> <span class="token string">"echo 'Hello world!'"</span>                         <span class="token comment" spellcheck="true"># visible</span>
 
 <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"test.sh"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
@@ -470,7 +470,7 @@ cmd_v <span class="token operator">=</span> <span class="token string">"echo 'He
 <span class="token comment" spellcheck="true">#!/bin/sh</span>
 <span class="token keyword">echo</span> <span class="token string">'Hello world!'</span>                   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>但是实际运行的字符串如下：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">'You forgot to check <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> -A<span class="token variable">`</span></span>!'</span> <span class="token operator">&gt;</span> oops
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">'You forgot to check <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> -A<span class="token variable">`</span></span>!'</span> <span class="token operator">></span> oops
 <span class="token keyword">echo</span> <span class="token string">'Hello world!'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>不经意执行 test.sh</li>
@@ -490,7 +490,7 @@ You forgot to check <span class="token variable"><span class="token variable">`<
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost command<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  cat -A test.sh</span>
 <span class="token comment" spellcheck="true">#!/bin/sh$</span>
-<span class="token keyword">echo</span> <span class="token string">'You forgot to check <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> -A<span class="token variable">`</span></span>!'</span> <span class="token operator">&gt;</span> oops<span class="token punctuation">;</span><span class="token keyword">echo</span> <span class="token string">'Hello world!'</span> <span class="token comment" spellcheck="true">#^Mecho 'Hello world!'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token string">'You forgot to check <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> -A<span class="token variable">`</span></span>!'</span> <span class="token operator">></span> oops<span class="token punctuation">;</span><span class="token keyword">echo</span> <span class="token string">'Hello world!'</span> <span class="token comment" spellcheck="true">#^Mecho 'Hello world!'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://ura.d3npa.dev/posts/hiding-from-cats.md" target="_blank" rel="noopener">Hiding from cats</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -751,7 +751,7 @@ You forgot to check <span class="token variable"><span class="token variable">`<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61.4k</span>&nbsp;字
+                class="white-color">61.7k</span>&nbsp;字
                
             
 			

