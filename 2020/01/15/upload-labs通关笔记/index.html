@@ -449,7 +449,7 @@
 <ol>
 <li><strong>检查 from 表单的属性和触发的事件</strong></li>
 </ol>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">onsubmit</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>return checkFile()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">onsubmit</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>return checkFile()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://i.loli.net/2019/12/02/8AR4GDrsPghZyVN.png" alt="Pass01-1.png"></p>
 <p>onsubmit 表示表单提交时验证的事件，它是在表单中的确认按钮被点击时出发的，一般是 js 函数。</p>
 <ol start="2">
@@ -531,18 +531,18 @@ AddType application/x-httpd-php .php .phtml .phps .php5 .pht<span aria-hidden="t
 LoadModule rewrite_module modules/mod_rewrite.so
 
 <span class="token comment" spellcheck="true"># AllowOverride 从字面上解释是允许覆盖的意思，即 Apache 允许另一配置文件覆盖现有配置文件。</span>
-<span class="token operator">&lt;</span>Directory <span class="token string">"/var/www/html"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>Directory <span class="token string">"/var/www/html"</span><span class="token operator">&gt;</span>
 AllowOverride All
-<span class="token operator">&lt;</span>/Directory<span class="token operator">></span>
+<span class="token operator">&lt;</span>/Directory<span class="token operator">&gt;</span>
 
 <span class="token comment" spellcheck="true"># 在文件末尾添加，指定 .htaccess 文件</span>
 AccessFileName web.htaccess<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li><strong>编写 .htaccess 文件</strong></li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>FilesMatch <span class="token string">"webshell.png"</span><span class="token operator">></span>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&lt;</span>FilesMatch <span class="token string">"webshell.png"</span><span class="token operator">&gt;</span>
   SetHandler application/x-httpd-php
-<span class="token operator">&lt;</span>/FilesMatch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&lt;</span>/FilesMatch<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li><strong>成功上传文件，效果如下图所示：</strong></li>
 </ol>
@@ -932,7 +932,7 @@ nmap --scanflags URGACKPSHRSTSYNFIN </div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">66.4k</span>&nbsp;字
+                class="white-color">68k</span>&nbsp;字
                
             
 			
