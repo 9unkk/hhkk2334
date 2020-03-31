@@ -1,0 +1,1209 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="linux 学习笔记, Junk Blog">
+    <meta name="description" content="linux简介Linux 是一套免费使用和自由传播的类 Unix 操作系统。因为 linux 是借鉴 Unix 来开发的，与 unix 有许多相似之处，并且在一定程度上遵守 POSIX 规范。
+
+Unix 起源
+MULTICS 项目
+
+回顾">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>linux 学习笔记 | Junk Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">Junk Blog</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Junk Blog</div>
+        <div class="logo-desc">
+            
+            一息尚存，此志不容稍懈。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <div class="social-link">
+    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/hhkk2334/hhkk2334.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('https://i.loli.net/2019/11/16/AgsfOjrSumEdUwz.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        linux 学习笔记
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/linux/" target="_blank">
+                                <span class="chip bg-color">linux</span>
+                            </a>
+                        
+                            <a href="/tags/centos/" target="_blank">
+                                <span class="chip bg-color">centos</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/linux/" class="post-category" target="_blank">
+                                linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-31
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        9.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        34 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="linux简介"><a href="#linux简介" class="headerlink" title="linux简介"></a>linux简介</h2><p>Linux 是一套免费使用和自由传播的类 Unix 操作系统。因为 linux 是借鉴 Unix 来开发的，与 unix 有许多相似之处，并且在一定程度上遵守 POSIX 规范。</p>
+<hr>
+<h3 id="Unix-起源"><a href="#Unix-起源" class="headerlink" title="Unix 起源"></a>Unix 起源</h3><ul>
+<li>MULTICS 项目</li>
+</ul>
+<p>回顾 Unix 历史，我们就要说一下一个叫 MULTICS 的项目。上世纪六十年代时，大部份计算机都是采用批处理的方式（也就是说，当作业积累一定数量的时候，计算机才会进行处理）。那时，我们熟知的美国电话及电报公司（AT&amp;T）、通用电器公司（G.E.）及麻省理工学院（MIT）计划合作开发一个多用途、分时及多用户的操作系统，也就是这个 MULTICS，其被设计运行在 GE-645 大型主机上。不过，这个项目由于太过复杂，整个目标过于庞大，糅合了太多的特性，进展太慢，几年下来都没有任何成果，而且性能都很低。于是到了 1969 年 2 月，贝尔实验室决定退出这个项目。</p>
+<ul>
+<li>Space Travel</li>
+</ul>
+<p>熟悉这段历史的人都知道，贝尔实验室中的有个叫 Ken Thompson 的人，他为 MULTICS 这个操作系统写了个游戏叫 “Space Travel” 的游戏，在 MULTICS 上经过实际运行后，他发现游戏速度很慢而且耗费昂贵 —— 每次运行会花费 75 美元。退出这个项目以后。他为了让这个游戏能玩，所以他找来 Dennis Ritchie 为这个游戏开发一个极其简单的操作系统。这就是后来的 Unix。（值得一提的是，当时他们本想在 DEC-10 上写，后来没有申请到，只好在实验室的土·啬角边找了一台被人遗弃的 Digital PDP-7 的迷你计算机进行他们的计划，这台计算机上连个操作系统都没有，于是他们用汇编语言仅一个月的时间就开发了一个操作系统的原型）他们的同事 Brian Kernighan 非常不喜欢这个系统，嘲笑 Ken Thompson 说：“你写的系统好真差劲，干脆叫 Unics 算了。” Unics 的名字就是相对于 MULTICS 的一种戏称，后业改成了 Unix。于是，Unix 就在这样被游戏和玩笑创造了，当时是1969年8 月。也就是这一年，Linux 之父 Linus Torvalds 在芬兰出生了。</p>
+<ul>
+<li>Unix 第一版出现</li>
+</ul>
+<p>1971年，Ken Thompson 写了充分长篇的申请报告，申请到了一台 PDP-11/24 的机器。于是 Unix 第一版出来了。在一台 PDP-11/24 的机器上完成。这台电脑只有 24KB 的物理内存和 500K 磁盘空间。Unix 占用了 12KB 的内存，剩下的一半内存可以支持两用户进行 Space Travel 的游戏。而著名的 fork() 系统调用也就是在这时出现的。</p>
+<ul>
+<li>C 语言出现</li>
+</ul>
+<p>到了 1973 年的时候，Ken Thompson 与 Dennis Ritchie 感到用汇编语言做移植太过于头痛，他们想用高级语言来完成第三版，对于当时完全以汇编语言来开发程序的年代，他们的想法算是相当的疯狂。一开始他们想尝试用 Fortran，可是失败了。后来他们用一个叫 BCPL 的语言开发，他们整合了BCPL 形成 B 语言，后来 Dennis Ritchie 觉得 B 语言还是不能满足要求，就是就改良了 B 语言，这就是今天的大名鼎鼎的 C 语言。于是，Ken Thompson 与 Dennis Ritchie 成功地用 C 语言重写了 Unix 的第三版内核。至此，Unix 这个操作系统修改、移植相当便利，为 Unix 日后的普及打下了坚实的基础。而 Unix 和 C 完美地结合成为一个统一体，C 与 Unix 很快成为世界的主导。</p>
+<ul>
+<li>Unix 发布</li>
+</ul>
+<p>Unix 的第一篇文章 “The UNIX Time Sharing System” 由 Ken Thompson 和 Dennis Ritchie 于1974年7月的 the Communications of the ACM 发表。这是 UNIX 与外界的首次接触。结果引起了学术界的广泛兴趣并对其源码索取，所以，Unix 第五版就以“仅用于教育目的”的协议，提供给各大学作为教学之用，成为当时操作系统课程中的范例教材。各大学公司开始通过 Unix 源码对 Unix 进行了各种各样的改进和扩展。于是，Unix 开始广泛流行。</p>
+<h4 id="Unix-分裂"><a href="#Unix-分裂" class="headerlink" title="Unix 分裂"></a>Unix 分裂</h4><ul>
+<li>BSD 出现</li>
+</ul>
+<p>1978年，对 Unix 而言是革命性的一年；因为学术界的老大柏克利大学，推出了一份以第六版为基础，加上一些改进和新功能而成的 Unix。这就是著名的 “1 BSD（1st Berkeley Software Distribution）”，开创了 Unix 的另一个分支：BSD 系列。 同时期，AT&amp;T 成立 USG，将 Unix 变成商业化的产品。从此，BSD 的 Unix 便和 AT&amp;T 的 Unix 分庭抗礼，Unix 就分为 System IV 和 4.x BSD 这两大主流，各自蓬勃发展。</p>
+<ul>
+<li>“最后一个真正的Unix”</li>
+</ul>
+<p>1979 年发布的 Unix 第七版被称为是“最后一个真正的 Unix”，这个版本的 Unix 内核只有 40K bytes。后来这个版本被移植到 VAX 机上。20世纪80年代相继发布的 8、9、10 版本只授权给了少数大学。</p>
+<ul>
+<li>TCP/IP</li>
+</ul>
+<p>1982 年，AT&amp;T 基于版本 7 开发了 UNIX System Ⅲ 的第一个版本，这是一个商业版本仅供出售。为了解决混乱的 UNIX 版本情况，AT&amp;T 综合了其他大学和公司开发的各种 UNIX，开发了 UNIX System V Release 1。这个新的 UNIX 商业发布版本不再包含源代码，所以加州大学 Berkeley 分校继续开发 BSD UNIX，作为 UNIX System III 和 V 的替代选择。BSD 对 UNIX 最重要的贡献之一是 TCP/IP。BSD 有 8 个主要的发行版中包含了 TCP/IP：4.1c、4.2、4.3、4.3-Tahoe、4.3-Reno、Net2、4.4以及 4.4-lite。这些发布版中的 TCP/IP 代码几乎是现在所有系统中 TCP/IP 实现的前辈，包括 AT&amp;T System V UNIX 和 Microsoft Windows中 的 TCP/IP 都参照了 BSD 的源码。</p>
+<ul>
+<li>sun</li>
+</ul>
+<p>同时，其他一些公司也开始为其自己的小型机或工作站提供商业版本的 UNIX 系统，有些选择 System V 作为基础版本，有些则选择了 BSD。BSD 的一名主要开发者，Bill Joy，在 BSD 基础上开发了 SunOS，并最终创办了 Sun Microsystems。</p>
+<ul>
+<li>386BSD</li>
+</ul>
+<p>1991年，一群 BSD开发者（Donn Seeley、Mike Karels、Bill Jolitz 和 Trent Hein）离开了加州大学，创办了 Berkeley Software Design， Inc （BSDI）。BSDI 是第一家在便宜常见的 Intel 平台上提供全功能商业 BSD UNIX 的厂商。后来 Bill Jolitz 离开了 BSDI，开始了 386BSD 的工作。386BSD 被认为是 FreeBSD、OpenBSD 和 NetBSD、DragonFlyBSD 的先辈。</p>
+<ul>
+<li>POSIX 标准</li>
+</ul>
+<p>这是一个 AT&amp;T 妄图私有化的 Unix 的时代。为了私有化 Unix，1986 年 IEEE 指定了一个委员会制定了一个一个开放作业系统的标准，称为 POSIX （Portable Operating Systems Interface）。最后加上个 X，不知道是为了好听，还是因为这本质上是 UNIX 的标准。当然，AT&amp;T 的 Unix 取得了这个标准制订战争的胜利，还取得了 Unix 这个注册商标。此时 BSD 的拥护者自喻为冷酷无情的公司帝国的反抗军。就销售量来说，AT&amp;T UNIX 始终赶不上 BSD/Sun。到 1990 年，AT&amp;T 与 BSD 版本已难明显区分，因为彼此都有采用对方的新发明。</p>
+<p>这段时期，从实验室出来的被全世界所分享的 Unix，正处于被私有化的关键时期。</p>
+<ul>
+<li>Unix 的法律纠纷</li>
+</ul>
+<p>BSDI 很快就与 AT&amp;T 的 UNIX Systems Laboratories（USL）附属公司产生了法律纠纷，USL 是 AT&amp;T 注册的公司。AT&amp;T 为了拥有 System V 版权，以及 Unix 商标，为了垄断 Unix，1992年，USL 正式对 BSDI 提起诉讼，说 BSD 剽窃他的源码。而最终了结了好评如潮的 BSD 系统。</p>
+<p>由于最后判决悬而未决，这桩法律诉讼将 BSD 后裔的开发，特别是自由软件，延迟了两年，这导致没有法律问题的 Linux 内核获得了极大的支持。Linux 跟 386BSD 的开发几乎同时起步，Linus 说，当时如果有自由的基于 386 的 Unix-like 操作系统，他就可能不会创造 Linux。尽管无法预料这给以后的软件业究竟造成了什么样的影响（如果没有这个法律纠纷，很有可能没有今天的革命性的 Linux），但有一点可以肯定，Linux 更加丰富了这块土壤。</p>
+<p>这场官司一直打到  AT&amp;T 将自己的 Unix 系统实验室卖掉，新接手的 Novell 公司采取了一种比较开明的做法，允许 BSDI 自由发布自己的 BSD，但是前提是必须将来自于 AT&amp;T 的代码完全删除，于是诞生了 4。4 BSD Lite 版，由于这个版本不存在法律问题，4。4BSD Lite 成为了现代 BSD 系统的基础版本。</p>
+<p>这桩诉讼最终在1994年1月了结，更多地满足了 BSDI 的利益。伯克利套件的 18，000 个文件中，只有 3 个文件要求删除，另有 70 个文件要求修改，并显示 USL 的版权说明。这项调解另外要求，USL 不得对 4。4BSD 提起诉讼，不管是用户还是 BSDI 代码的分发者。于是，BSD Unix 走上了复兴的道路。BSD 的开发也走向了几个不同的方向，并最终导致了 FreeBSD、OpenBSD 和 NetBSD 的出现。</p>
+<p>从 AT&amp;T 意识到了 Unix 的商业价值，不再将 Unix 源码授权给学术机构以来，到以后的几十年，Unix 仍在不断变化，其版权所有者不断变更，授权者的数量也在增加。Unix 的版权曾经为 AT&amp;T 所有，之后 Novell 拥有了 Unix，再之后 Novell 又将版权出售给了 SCO（这一事实双方尚存在争议，这里是最新进展）。有很多大公司在取得了 Unix 的授权之后，开发了自己的 Unix 产品。（几年前，据传闻微软为了限制 Linux，微软让 SCO 到法院告Linux 剽窃其源码）</p>
+<p>由于 Unix 是由 C 语言写的，所以修改和移植都很容易，因此，很多商业公司及学术机构均加入这个操作系统的研发，各个不同版本的 Unix 也开始蓬勃发展。这才产生了今天这么多的各式各样的 Unix 衍生产品。如 AIX、Solaris、HP-UX、IRIX、OSF、Ultrix 等等。（这些商业化的 Unix 基本上都是源于 AT&amp;T 授权的 Unix System V）</p>
+<h4 id="Unix-开源组织"><a href="#Unix-开源组织" class="headerlink" title="Unix 开源组织"></a>Unix 开源组织</h4><p>AT&amp;T 的这种商业态度，让当时许许多的 Unix 的爱好者和软件开发者们感到相当的痛心和忧虑，他们认为商业化的种种限制并不利于产生的发展，相反还能导制产品出现诸多的问题。随着商业化 Unix 的版本的种种限制和诸多问题，引起了大众的不满和反对。于是，大家开始有组织地结成“反叛联盟”以此对抗欺行罢市的 AT&amp;T 等商业化行为。<br>另一方面，关于“大教堂”（集权、封闭、受控、保密）和“集市”（分权、公开、精细的同僚复审）两种开发模式的对比成为了新思潮的中心思想。这个新思潮对 IT 业产生了非常深远影响。为整个计算机世界带来了革命性的价值观。</p>
+<ul>
+<li>Open Source</li>
+</ul>
+<p>此时，一个名叫 Richard Stallman 的领袖出现了，他认为 Unix 是一个相当好的操作系统，如果大家都能够将自己所学贡献出来，那么这个系统将会更加的优异！他倡导的 Open Source 的概念，就是针对 Unix 这一事实反对实验室里的产品商业化私有化。尽管 Stallman 既不是、也从来没有成为一个 Unix 程序员，但在后 1980 的大环境下，实现一个仿 Unix 操作系统成了他追求的明确战略目标。Richard Stallman 早期的捐助者大都是新踏入 Unix 土地的老牌 ARPANET 黑客，他们对代码共享的使命感甚至比那些有更多 Unix 背景的人强烈。</p>
+<ul>
+<li>GNU</li>
+</ul>
+<p>为了这个理想，Richard Stallman 于 1984 年创业了 GNU，计划开发一套与 Unix 相互兼容的的软件。1985 年 Richard Stallman 又创立了自由软件基金会（Free Software Foundation）来为 GNU 计划提供技术、法律以及财政支持。尽管 GNU 计划大部分时候是由个人自愿无偿贡献，但 FSF 有时还是会聘请程序员帮助编写。当 GNU 计划开始逐渐获得成功时，一些商业公司开始介入开发和技术支持。当中最著名的就是之后被 Red Hat 兼并的 Cygnus Solutions。</p>
+<p>GNU 组织的建立，延续了当年 Unix 刚出现时的情形，并为这种情形建立了可靠的法律和财务保障。GNU 工程十几年以来， 已经成为一个对软件开发主要的影响力量， 创造了无数的重要的工具。例如：强健的编译器，有力的文本编辑器，甚至一个全功能的操作系统。从那时开始，许多程序员聚集起来开始开发一个自由的、高质量、易理解的软件，让这使得 Unix 社区生机勃勃，一派繁荣景象。</p>
+<p>自90年代发起这个计划以来，GNU 开始大量的产生或收集各种系统所必备的组件，像是——函数库、编译器、调式工具、文本编辑器、网站服务器，以及一个 Unix 的使用者接口（Unix shell）等等，等等。但由于种种原因，GNU 一直没有开发操作系统的 kernel。正当 Richard Stallman在为操作系统内核伤脑筋的时候，Linux 出现了。</p>
+<h3 id="Linux-横空出世"><a href="#Linux-横空出世" class="headerlink" title="Linux 横空出世"></a>Linux 横空出世</h3><p>1990年，Linus Torvalds 还是芬兰赫尔辛基大学的一名学生，最初是用汇编语言写了一个在 80386 保护模式下处理多任务切换的程序，后来从 Minix 得到灵感，进一步产生了自认为狂妄的想法——写一个比 Minix 更好的 Minix，于是开始写了一些硬件的设备驱动程序，一个小的文件系统。这样0.0.1版本的 Linux 就出来了，但是它只具有操作系统内核的勉强的雏形，甚至不能运行，你必须在有 Minix 的机器上编译以后才能玩。这时候 Linus 已经完全着迷而不想停止，决定踢开 Minix，于是在1991年10 月5号发布 Linux 0.0.2 版本，在这个版本中已经可以运行 bash 和 gcc。</p>
+<ul>
+<li>Linux 1.0</li>
+</ul>
+<p>从一开始，Linus 就决定自由扩散 Linux，包括原代码，随即 Linux 引起黑客们的注意，通过计算机网络加入了 Linux 的内核开发。Linux 倾向于成为一个黑客的系统——直到今天，在 Linux 社区里内核的开发被认为是真正的编程。由于一批高水平黑客的加入，使 Linux 发展迅猛，几乎一两个礼拜就有新版或修正版的出现，到1993年底94年初，Linux 1.0 终于诞生了！</p>
+<p>Linux 1.0 已经是一个功能完备的操作系统，而且内核写得紧凑高效，可以充分发挥硬件的性能，在 4M 内存的 80386 机器上也表现得非常好，至今人们还在津津乐道。时至今日，kernel 的版本已经出到 2.6。Linux 的发展不像传统的软件工程，它完全是透过网络，集合世界各地的高手而成的一套操作系统，在这里我们也可以见识到网络快速传播的威力。Linux 初次让整个世界感觉到了开源力量和网络力量的如此强大。（Linux 的标志和吉祥物是一只名字叫做 Tux 的企鹅，标志的由来是因为Linus在澳洲时曾被一只动物园里的企鹅咬了一口，便选择了企鹅作为Linux的标志。）</p>
+<ul>
+<li>Red Hat</li>
+</ul>
+<p>Linux 的历史是和 GNU 紧密联系在一起的。从1983年开始的 GNU 计划致力于开发一个自由并且完整的类 Unix 操作系统，包括软件开发工具和各种应用程序。到 1991年 Linux 内核发布的时候，GNU 已经几乎完成了除了系统内核之外的各种必备软件的开发。在 Linus Torvalds 和其它开发人员的努力下，GNU 组件可以运行于 Linux 内核之上。整个内核是基于 GNU 通用公共许可，也就是 GPL（GNU General Public License，GNU通用公共许可证）的，但是 Linux 内核并不是 GNU 计划的一部分。1994年3月，Linux1.0 版正式发布，Marc Ewing 成立了 Red Hat 软件公司，成为最著名的 Linux 分销商之一。</p>
+<p>严格来讲，Linux 这个词本身只表示 Linux 内核，但在实际上人们已经习惯了用 Linux 来形容整个基于 Linux 内核，并且使用 GNU 工程各种工具和应用程序的操作系统（也被称为 GNU/Linux）。基于这些组件的 Linux 软件被称为 Linux 发行版。一般来讲，一个 Linux 发行套件包含大量的软件，比如软件开发工具，数据库，Web 服务器（例如 Apache），X Window，桌面环境（比如 GNOME 和 KDE），办公套件（比如 OpenOffice.org），等等。</p>
+<p>1991 至 1995 年间，Linux 从概念型的 0.1 版本内核原型，发展成为能够在性能和特性上均堪媲美专有 Unix 的操作系统，并且在连续正常工作时间等重要统计数据上打败了这些 Unix 中的绝大部分。1995 年，Linux 找到了自己的杀手级应用——开源的 web 服务器 Apache。就像 Linux，Apache 出众地稳定和高效。很快，运行 Apache 的 Linux 机器成了全球 ISP 平台的首选。约 60% 的网站选用 Apache，轻松击败了另两个主要的专有型竞争对手。今天的 LAMP（Linux ， Apache， MySQL， PHP）已经成为了架构 Web 服务器的主要首选。<br>现如今的 Linux 不但可以装在几乎所有的主流服务器上，当然也包括桌面的 X86 系统中。其还常常被用于嵌入式系统，机顶盒、手机、交换机、游戏机、PDA、网络交换机、路由器、等等，都是因为 Linux 那精彩的内核。</p>
+<p>Linux 的出现，不仅仅给世界带来了一个免费的操作系统，也不仅仅是对 Unix 自由、共享的文化的延续，它的出现带给了计算机世界自 Unix、GNU 以来更为成熟的思想和文化。</p>
+<h4 id="Linux-——-今天的领袖"><a href="#Linux-——-今天的领袖" class="headerlink" title="Linux —— 今天的领袖"></a>Linux —— 今天的领袖</h4><p>Linux 和 GNU 关系是比较微妙的。那时，自由软件基金会编写的用户软件工具包铺平了一条摆脱高成本专有软件开发工具的前进道路。意识服从经济，而不是领导：一些新手加入了 RMS 的革命运动，高举 GPL 大旗，另一些人则更认同整体意义上的 Unix 传统，加入了反对 GPL 的阵营，但其他大部分人置身事外，一心编码。</p>
+<p>今天，我们也说不清楚是 GNU Linux 还是 Linux GNU。Linux 既不排斥开源，也不排斥商业化，Linus 认为好的软件是需要免费和商业化共同推进的。正是这种革命性的想法，造就了今天的 Linux 火红的局面。Linux 就像一股清泉流入了所有人的心中，引发了很多的启迪和思考。</p>
+<h4 id="Unix-的历史教训"><a href="#Unix-的历史教训" class="headerlink" title="Unix 的历史教训"></a>Unix 的历史教训</h4><p>在 Unix 历史中，最大的规律就是：<br>距开源越近就越繁荣。任何将 Unix 专有化的企图，只能陷入停滞和衰败。<br>回顾过去，我们早该认识到这一点。1984年至今，我们浪费了十年时间才学到这个教训。如果我们日后不思悔改，可能还得大吃苦头。</p>
+<p>虽然我们在软件设计这个重要但狭窄的领域比其他人聪明，但这不能使我们摆脱对技术与经济相互作用影响的茫然，而这些就发生在我们的眼皮底下。即使 Unix 社区中最具洞察力、最具远见卓识的思想家，他们的眼光终究有限。对今后的教训就是：过度依赖任何一种技术或者商业模式都是错误的——相反，保持软件及其设计传统的的灵活性才是长存之道。</p>
+<p>另一个教训是：别和低价而灵活的方案较劲。或者，换句话说，低档的硬件只要数量足够，就能爬上性能曲线而最终获胜。经济学家 Clayton Christensen 称之为“破坏性技术”，他在《创新者窘境》一书中以磁盘驱动器、蒸汽挖土机和摩托车为例阐明了这种现象的发生。当小型机取代大型机、工作站和服务器取代小型机以及日用 Intel 机器又取代工作站和服务器时，我们也看到了这种现象。开源运动获得成功正是由于软件的大众化。Unix 要繁荣，就必须继续采用吸纳低价而灵活的方案的诀窍，而不是去反对它们。</p>
+<p>最后，旧学派的 Unix 社区因采用了传统的公司组织、财务和市场等命令机制而最终未能实现“职业化”。只有痴迷的“黑客”和具有创造力的怪人结成的反叛联盟才能把我们从愚蠢中拯救出来——他们接着教导我们，真正的专业和奉献精神，正是我们在屈服于世俗观念的“合理商业做法”之前的所作所为。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在中国，我们被微软所创造的文化所笼罩里。就在 Unix 出现革命性的转变，在 Unix 影响计算机世界文化的那几年里，科班出生专业开发人员学习的是 MS-DOS 和微软的文化，我们犹如一个井底之蛙一样，对外面的番·习天覆地的变化无动于衷。微软创造的文化在我们这里尤其地根深蒂固，我们几乎忘记了另外一边的 Unix 。</p>
+<p>在那充满激情的 Unix 的岁月里，大伙为了科研目的或个人兴趣在 Unix 上进行各种开发，并且不计较金钱利益，将这些源码公开，互相共享。在那里，开发和自由成为主题，正因为如此，当今的世界才如此丰富多采。在 40 年 Unix 文化和技术积淀的里面，蕴涵着比较纯正的计算机文化和思想。</p>
+<p>纵观整个 Unix 的历史过程中，许许多多的程序员、工程师前辈们在 Unix 中所摸爬滚打，他们的辛勤地、他们呕心沥血地跟随 Unix，努力建立一个繁荣的计算机世界的文明。Unix 不是一个简简单单的操作系统。有人说，Unix 是程序员设计给程序员的，一点没错。Unix 的近40年历史造就了它的博大精深，它给程序员们带来的绝不仅仅只是技术上的知识。它的失误，它的无奈，它的精神，它的荣耀，它从技术和思想上都启迪着我们。对于程序员来说，学习 Unix 就等同于向前辈程序学习。无论你是什么样的程序员，你都应该了解 Unix，这是开发人员的根，前面的开发者造就了它，而它又在引领后面的开发人员，它是前辈程序员们交给我们的一份礼物，一个接力棒，它是开发人员赖以生存的土壤，是上一辈程序员留给我们这一代程序员开启未来的钥匙。Unix 就像一个程序员教父一样，理当受到我们的尊敬和崇拜。</p>
+<h2 id="linux-文件系统"><a href="#linux-文件系统" class="headerlink" title="linux 文件系统"></a>linux 文件系统</h2><p>在 LINUX 系统中有一个重要的概念：一切皆文件。其实这是 UNIX 哲学的一个体现，而 Linux 是重写 UNIX 而来，所以这个概念也就传承了下来。在 UNIX 系统中，把一切资源都看作是文件，包括硬件设备。UNIX 系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。</p>
+<hr>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><table>
+<thead>
+<tr>
+<th align="center">文件属性</th>
+<th align="center">文件类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-</td>
+<td align="center">普通文件（二进制文件，xml文件，db文件等等）</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td align="center">目录文件</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">块设备（存储设备），如：硬盘，光盘，U盘等设备</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">字符设备，如：鼠标、键盘等设备</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">套接字文件，使两个进程之间（跨计算机）互相通信</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">符号链接文件，可以简单理解为 linux 文件的快捷方式</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">命名管道文件，让同一主机之间的两个进程通信</td>
+</tr>
+</tbody></table>
+<h3 id="目录架构"><a href="#目录架构" class="headerlink" title="目录架构"></a>目录架构</h3><p>linux 目录是树形结构，主要目的是方便文件系统的管理和维护，想象一下，如果所有的文件都放在一个目录下，其文件系统的管理和维护将变成一场噩梦。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">/
+├── bin -<span class="token operator">></span> usr/bin            //存放系统管理员及普通用户使用的命令和可执行的二进制文件
+├── boot                      //存放启动 linux 时使用的一些内核文件和引导程序文件
+├── dev                       //访问外部设备文件的接口（相当于识别出设备，但无法访问）
+├── etc                       //存放系统配置文件和子目录
+├── home                      //存放系统用户目录
+├── lib -<span class="token operator">></span> usr/lib            //存放 32 位系统使用函数库目录（类似 windows 中的 DLL 文件）
+├── lib64 -<span class="token operator">></span> usr/lib64        //存放 64 位系统使用函数库目录
+├── media                     //自动识别挂载设备（如：U盘、移动硬盘等）
+├── mnt                       //让管理员手动挂载临时媒体设备
+├── opt                       //存放系统额外安装的软件
+├── proc                      //它是一个虚拟目录，映射系统的内存信息，通常直接访问这个目录来获取系统信息。
+├── root                      //超级用户主目录
+├── run                       //一个临时文件系统，存储系统启动的信息，当系统重启时，这个目录下的文件会被删掉除。
+├── sbin -<span class="token operator">></span> usr/sbin          //存放系统管理员使用的可执行命令
+├── srv                       //存放一些服务启动之后需要提取的数据（例如www服务启动后，数据就会存放在/srv/www内）
+├── sys                       //存放sysfs文件系统，用户科通过访问这个目录，来查看内核驱动及设备等
+├── tmp                       //存放临时文件
+├── usr                       //用户的应用程序存放目录
+└── var                       //存放系统执行过程中经常变化的文件（如：日志文件、登录文件、邮件文件等）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="linux-权限管理"><a href="#linux-权限管理" class="headerlink" title="linux 权限管理"></a>linux 权限管理</h2><p>所谓权限管理，其实就是指对不同的用户，设置不同的文件访问权限，包括对文件的读、写、删除等，在 Linux 系统中，每个用户都具有不同的权限，拿非 root 用户来说，它们只能在自己的主目录下才具有写权限，而在主目录之外，只具有访问和读权限。</p>
+<hr>
+<h3 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h3><ul>
+<li>UID</li>
+</ul>
+<p>root用户（即超级用户）拥有极高的系统所有权，能够管理系统的各项功能。而 root 只是一个名字，真正让他成为 “超级用户” 的是 UID 的值。每个用户都有一个对应的 UID 值，就像是我们的身份证号码。</p>
+<p>超级用户 UID（0）：root用户默认为 0</p>
+<p>系统用户 UID（1~999）：系统中的系统服务由不同的用户运行，这样更加安全，默认被限制登录系统</p>
+<p>普通用户 UID（1000~）：管理员创建的用于日常工作而不能管理系统的普通用户</p>
+<p>注：UID 不能一样</p>
+<ul>
+<li>GID</li>
+</ul>
+<p>GID 可将多用户加入到某个组中，方便工作。</p>
+<p>注：每个用户在被创建的时候都会创建一个默认组（其 GID 和 UID 相同，俗称基本组），而后加入的叫扩展组。</p>
+<p>用户组名称 与 GID 保存在 /etc/group 文件中。</p>
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l test.txt 
+-rwxr-xr-x. 1 fuck fuck 38 11月 15 15:04 test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>第一个字段：</strong></p>
+<ul>
+<li><p>-：表示普通文件</p>
+</li>
+<li><p>rwx 所有者权限</p>
+</li>
+<li><p>r-x 所属组权限</p>
+</li>
+<li><p>r-x 其他人权限。</p>
+</li>
+<li><p>r：读权限，整数值为4；</p>
+</li>
+<li><p>w：写权限，整数值为2；</p>
+</li>
+<li><p>x：执行权限，整数值为 1</p>
+</li>
+</ul>
+<p>注：没有权限的地方会用 - 来表示</p>
+<p><strong>第二个字段</strong></p>
+<p>1：文件的硬链接个数</p>
+<p><strong>第三个字段</strong></p>
+<p>fuck：所有者，就是创建这个目录的用户</p>
+<p><strong>第四个字段</strong></p>
+<p>fuck：用户组，创建这个文件时所在的组就是用户组</p>
+<p><strong>第五个字段</strong></p>
+<p>38 11月 15 15:04：文件修改日期，上次文件执行、修改内容、权限、文件名等等的时间</p>
+<p><strong>第六个字段</strong><br>test.txt：文件名</p>
+<h4 id="读权限"><a href="#读权限" class="headerlink" title="读权限"></a>读权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l test.txt 
+-r--------. 1 fuck fuck 43 11月 15 13:19 test.txt
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim test.txt         <span class="token comment" spellcheck="true">#可以强制修改保存文件</span>
+
+<span class="token comment" spellcheck="true">#查看文件</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cat</span> test.txt 
+<span class="token comment" spellcheck="true">#!/bin/bash</span>
+<span class="token keyword">echo</span> <span class="token string">"SB > Sb > sB > sb"</span>
+sssss<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以查看信息、修改文件（有警告信息）、查看文件详细信息</p>
+<h4 id="写权限"><a href="#写权限" class="headerlink" title="写权限"></a>写权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l test.txt 
+--w-------. 1 fuck fuck 43 11月 15 13:19 test.txt
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim test.txt 
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cat</span> test.txt 
+cat: test.txt: 权限不够 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>只能查看自己的信息，如果强行修改文件的话，旧文件内容会被你新内容覆盖</p>
+<h4 id="执行权限"><a href="#执行权限" class="headerlink" title="执行权限"></a>执行权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l test.txt 
+---x------. 1 fuck fuck 9 11月 15 13:22 test.txt
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ ./test.txt 
+bash: ./test.txt: 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cat</span> test.txt 
+cat: test.txt: 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim test.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>只能查看自己的信息，同样强制修改会覆盖旧内容</p>
+<h4 id="读和执行"><a href="#读和执行" class="headerlink" title="读和执行"></a>读和执行</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l test.txt 
+-r-x------. 1 fuck fuck 28 11月 15 14:48 test.txt
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim test.txt 
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ ./test.txt 
+njndkjdn
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cat</span> test.txt 
+<span class="token comment" spellcheck="true">#!/bin/bash</span>
+<span class="token keyword">echo</span> <span class="token string">"njndkjdn"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以对文件进行修改（有警告信息）、执行、查看</p>
+<h4 id="读和写"><a href="#读和写" class="headerlink" title="读和写"></a>读和写</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l test.txt 
+-rw-------. 1 fuck fuck 28 11月 15 14:48 test.txt
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim test.txt 
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cat</span> test.txt 
+<span class="token comment" spellcheck="true">#!/bin/bash</span>
+<span class="token keyword">echo</span> <span class="token string">"njndkjdn"</span>
+<span class="token keyword">echo</span> <span class="token string">"sb"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以对文件进行修改（无警告信息）、查看</p>
+<h4 id="写和执行"><a href="#写和执行" class="headerlink" title="写和执行"></a>写和执行</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">chmod</span> 300 test.txt 
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cat</span> test.txt 
+cat: test.txt: 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim test.txt 
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ ./test.txt 
+/bin/bash: ./test.txt: 权限不够<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以强制修改文件内容，同样会覆盖旧文件内容</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先文件必须有读的权限，不然无法对文件进行任何操作。写权限就是对文件进行修改，执行权限就是执行文件</p>
+<h3 id="目录权限"><a href="#目录权限" class="headerlink" title="目录权限"></a>目录权限</h3><pre class="line-numbers language-bash"><code class="language-bash">root@master hello<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls -l</span>
+总用量 4
+drwxr-xr-x. 2 fuck fuck   6 11月 12 11:11 fuck<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>第一个字段</strong></p>
+<ul>
+<li><p>d：表示目录</p>
+</li>
+<li><p>rwx 所有者权限</p>
+</li>
+<li><p>r-x 所属组权限</p>
+</li>
+<li><p>r-x 其他人权限。</p>
+</li>
+</ul>
+<p>r：读权限，w：写权限，x：执行权限（没有这个权限会用 - 来表示）</p>
+<p><strong>第二个字段</strong></p>
+<ul>
+<li><p>目录内所含的文件，目录数量</p>
+</li>
+<li><p>每个目录默认会包含两个目录，分别是 .（当前目录） ..（父目录）</p>
+</li>
+</ul>
+<p><strong>第三个字段</strong></p>
+<p>root：所有者，就是创建这个目录的用户</p>
+<p><strong>第四个字段</strong>    </p>
+<p>root：用户组，创建这个目录时所在的组就是用户组</p>
+<p><strong>第四个字段</strong></p>
+<p>6 11月 12 11:11：目录修改日期，上次进入目录、更改目录名的时间</p>
+<p><strong>第五个字段</strong></p>
+<p>fuck：目录名</p>
+<h4 id="目录读权限"><a href="#目录读权限" class="headerlink" title="目录读权限"></a>目录读权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#查看目录信心</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l
+总用量 0
+dr--------. 3 fuck fuck 50 11月 14 21:17 hello
+
+<span class="token comment" spellcheck="true">#进入目录</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cd</span> hello/
+-bash: cd: hello/: 权限不够
+
+<span class="token comment" spellcheck="true">#查看目录里的文件和目录信息</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+ls: 无法访问hello/file1.txt: 权限不够
+ls: 无法访问hello/file2.txt: 权限不够
+ls: 无法访问hello/Hi: 权限不够
+总用量 0
+-????????? ? ? ? ?            ? file1.txt
+-????????? ? ? ? ?            ? file2.txt
+d????????? ? ? ? ?            ? Hi
+
+<span class="token comment" spellcheck="true">#编辑目录下的文件</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ vim hello/file1.txt 
+~                                                                                                                                
+~                                                                                                                                
+~                                                                                                                                
+~                                                                                                                                
+<span class="token string">"hello/file1.txt"</span> <span class="token punctuation">[</span>权限不足<span class="token punctuation">]</span> 
+
+<span class="token comment" spellcheck="true">#移动目录下的文件</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">mv</span> hello/file1.txt <span class="token keyword">.</span>
+mv: 无法获取<span class="token string">"hello/file1.txt"</span> 的文件状态<span class="token punctuation">(</span>stat<span class="token punctuation">)</span>: 权限不够
+
+<span class="token comment" spellcheck="true">#删除文件</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">rm</span> -r hello/file1.txt 
+rm: 无法删除<span class="token string">"hello/file1.txt"</span><span class="token keyword">:</span> 权限不够
+
+<span class="token comment" spellcheck="true">#复制文件</span>
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cp</span> hello/file1.txt <span class="token keyword">.</span>
+cp: 无法获取<span class="token string">"hello/file1.txt"</span> 的文件状态<span class="token punctuation">(</span>stat<span class="token punctuation">)</span>: 权限不够<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>只可以查看自己的信息。</p>
+<h4 id="目录写权限"><a href="#目录写权限" class="headerlink" title="目录写权限"></a>目录写权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l
+总用量 0
+d-w-------. 3 fuck fuck 50 11月 14 21:34 hello
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+ls: 无法打开目录hello/: 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cd</span> hello/
+-bash: cd: hello/: 权限不够
+
+
+~                                                                                                                              
+~                                                                                                                              
+~                                                                                                                              
+~                                                                                                                              
+~                                                                                                                              
+~                                                                                                                              
+<span class="token string">"hello/file1.txt"</span> <span class="token punctuation">[</span>权限不足<span class="token punctuation">]</span>                                                                  0,0-1        全部<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>同样只能查看自己的信息</p>
+<h4 id="目录执行权限"><a href="#目录执行权限" class="headerlink" title="目录执行权限"></a>目录执行权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l
+总用量 0
+d--x------. 3 fuck fuck 50 11月 14 21:34 hello
+
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cd</span> hello/
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">cd</span> <span class="token punctuation">..</span>
+
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+ls: 无法打开目录hello/: 权限不够
+
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ vim file1.txt
+123456789
+~                                                                                                                              
+~    
+~                                                                                                                              
+~                                                                                                                              
+<span class="token string">"file1.txt"</span> 1L, 10C                                                                1,1          全部
+
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">rm</span> -r file1.txt
+rm: 无法删除<span class="token string">"file1.txt"</span><span class="token keyword">:</span> 权限不够
+
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">mv</span> file1.txt ~
+mv: 无法将<span class="token string">"file1.txt"</span> 移动至<span class="token string">"/home/fuck/file1.txt"</span><span class="token keyword">:</span> 权限不够<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以进入目录、对文件进行查看、修改操作（前提是这个文件要有这个权限，文件名无法用tab补全）</p>
+<h4 id="目录读和执行权限"><a href="#目录读和执行权限" class="headerlink" title="目录读和执行权限"></a>目录读和执行权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l
+总用量 0
+dr-x------. 3 fuck fuck 50 11月 14 22:41 hello
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+总用量 8
+-rw-rw-r--. 1 fuck fuck 10 11月 14 21:16 file1.txt
+-rw-rw-r--. 1 fuck fuck 11 11月 14 21:17 file2.txt
+drwxrwxr-x. 2 fuck fuck  6 11月 14 21:17 Hi
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cd</span> hello/
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">cat</span> file1.txt 
+123456789
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ vim file1.txt 
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">rm</span> -r file1.txt 
+rm: 无法删除<span class="token string">"file1.txt"</span><span class="token keyword">:</span> 权限不够
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">touch</span> file3.txt
+touch: 无法创建<span class="token string">"file3.txt"</span><span class="token keyword">:</span> 权限不够<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>只可以查看文件详情，修改文件，进入目录</p>
+<h4 id="目录写和执行权限"><a href="#目录写和执行权限" class="headerlink" title="目录写和执行权限"></a>目录写和执行权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l
+总用量 0
+d-wx------. 3 fuck fuck 50 11月 14 23:10 hello
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+ls: 无法打开目录hello/: 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cd</span> hello/
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">touch</span> file3.txt
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">rm</span> file1.txt
+<span class="token punctuation">[</span>fuck@master hello<span class="token punctuation">]</span>$ <span class="token function">rm</span>  -r file1.txt
+rm: 无法删除<span class="token string">"file1.txt"</span><span class="token keyword">:</span> 没有那个文件或目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以进入目录，修改、查看、创建，删除文件</p>
+<h4 id="目录读写权限"><a href="#目录读写权限" class="headerlink" title="目录读写权限"></a>目录读写权限</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l
+总用量 0
+drw-------. 3 fuck fuck 50 11月 14 23:10 hello
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">cd</span> hello/
+-bash: cd: hello/: 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">touch</span> hello/file5.txt
+touch: 无法创建<span class="token string">"hello/file5.txt"</span><span class="token keyword">:</span> 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">rm</span> -r hello/file2.txt
+rm: 无法删除<span class="token string">"hello/file2.txt"</span><span class="token keyword">:</span> 权限不够
+<span class="token punctuation">[</span>fuck@master ~<span class="token punctuation">]</span>$ <span class="token function">ls</span> -l hello/
+ls: 无法访问hello/file2.txt: 权限不够
+ls: 无法访问hello/Hi: 权限不够
+ls: 无法访问hello/file3.txt: 权限不够
+总用量 0
+-????????? ? ? ? ?            ? file2.txt
+-????????? ? ? ? ?            ? file3.txt
+d????????? ? ? ? ?            ? Hi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>只能查看自己的信息</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>修改目录中的文件首先需要有进入目录的权限（即执行权限X），写权限可以创建和删除文件（前提是要有执行权限），读权限可以查看目录内的文件的详细信息。</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/haoel/article/details/1542340" target="_blank" rel="noopener">Unix传奇（上篇）</a></p>
+<p><a href="https://blog.csdn.net/iteye_3952/article/details/81440521" target="_blank" rel="noopener">Unix传奇（下篇）</a></p>
+<p><a href="https://blog.csdn.net/m0_38044196/article/details/72844025" target="_blank" rel="noopener">Linux目录结构及详细介绍</a></p>
+<p><a href="https://blog.csdn.net/wangyanlong0107/article/details/84926398" target="_blank" rel="noopener">【转】/mnt /media /dev 目录区别</a></p>
+<p><a href="https://blog.csdn.net/luckywang1103/article/details/25715101" target="_blank" rel="noopener">linux /sys目录下的各个子目录说明</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/33641576" target="_blank" rel="noopener">为什么应该在 Linux 上使用命名管道</a></p>
+<p><a href="https://www.zhihu.com/question/29637351/answer/110219546" target="_blank" rel="noopener">socket编程到底是什么？</a></p>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/10430642.html" target="_blank" rel="noopener">搞懂Linux下的几种文件类型</a></p>
+<p><a href="https://blog.csdn.net/bonnshore/article/details/7860997" target="_blank" rel="noopener">Linux字符设备与块设备的区别与比较</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/70364688" target="_blank" rel="noopener">理解Linux操作系统中的块设备</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="b-link-green">Junk Blog</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2020/03/31/linux-学习笔记/" class="b-link-green">linux 学习笔记</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/03/31/linux-学习笔记/">
+                    <div class="card-image">
+                        
+                        <img src="https://i.loli.net/2019/11/16/AgsfOjrSumEdUwz.jpg" class="responsive-img" alt="linux 学习笔记">
+                        
+                        <span class="card-title">linux 学习笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">linux简介Linux 是一套免费使用和自由传播的类 Unix 操作系统。因为 linux 是借鉴 Unix 来开发的，与 unix 有许多相似之处，并且在一定程度上遵守 POSIX 规范。
+
+Unix 起源
+MULTICS 项目
+
+回顾</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category" target="_blank">
+                                    linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/linux/" target="_blank">
+                        <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/centos/" target="_blank">
+                        <span class="chip bg-color">centos</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/21/xss-labs通关笔记/">
+                    <div class="card-image">
+                        
+                        <img src="https://i.loli.net/2020/03/22/uSflaqOVEc24hrA.png" class="responsive-img" alt="xss-labs通关笔记">
+                        
+                        <span class="card-title">xss-labs通关笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">简介xss 表示 Cross Site Scripting (跨站脚本攻击)，它与 SQL 注入攻击类似，SQL 注入攻击中以 SQL 语句作为用户输入，从而达到查询/修改/删除数据的目的，而在 xss 攻击中，通过插入恶意脚本，实现对用户</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web-security/" class="post-category" target="_blank">
+                                    Web security
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/xss/" target="_blank">
+                        <span class="chip bg-color">xss</span>
+                    </a>
+                    
+                    <a href="/tags/xss-labs/" target="_blank">
+                        <span class="chip bg-color">xss-labs</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Junk Blog<br />'
+            + '作者: Trash Can,Trash Can<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right" >
+             Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="https://github.com/hhkk2334/hhkk2334.github.io" target="_blank">Trash Can,Trash Can</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">68.9k</span>&nbsp;字
+               
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+		<div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/hhkk2334/hhkk2334.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=RHZxdXFydXJ9dHEENTVqJysp" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2515616905" class="tooltipped" data-tooltip="QQ联系我: 2515616905" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/live2d-widget/autoload.js"></script>
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+</body>
+</html>
