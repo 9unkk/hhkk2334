@@ -421,14 +421,14 @@ MULTICS 项目
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        9.1k
+                        10.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        34 分
+                        39 分
                     </div>
                     
                 
@@ -592,6 +592,48 @@ MULTICS 项目
 ├── tmp                       //存放临时文件
 ├── usr                       //用户的应用程序存放目录
 └── var                       //存放系统执行过程中经常变化的文件（如：日志文件、登录文件、邮件文件等）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="深入理解-linux-文件类型"><a href="#深入理解-linux-文件类型" class="headerlink" title="深入理解 linux 文件类型"></a>深入理解 linux 文件类型</h3><h4 id="符号链接设备"><a href="#符号链接设备" class="headerlink" title="符号链接设备"></a>符号链接设备</h4><ol>
+<li>linux 文件获取过程<br>我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。元数据中有一个 inode 号（索引节点号），它的作用就是<font color="red">告诉计算机文件的真实数据存放在硬盘的哪个位置。</font><font color="red">inode 号才是文件的唯一标识</font>，而文件名只是为了方便人们记忆和使用，统或程序通过 inode 号寻找正确的文件数据块。图 1.展示了程序通过文件名获取文件内容的过程。</li>
+</ol>
+<p><img src="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/image001.jpg" alt="文件读取流程"></p>
+<ol start="2">
+<li><p>硬链接<br>符号链接文件分为两种：硬链接和软链接。在一般情况下文件名和 inode 号是“一一对应”的关系。但是，Unix/Linux 系统允许多个文件名指向同一个 inode 号码。<br>这意味着，可以用不同的文件名访问同样的内容；对文件内容进行修改，会影响到所有文件名；但是，删除一个文件名，不影响另一个文件名的访问。这种情况就被称为”硬链接”（hard link）。</p>
+</li>
+<li><p>软链接<br>就相当于 Windows 的快捷方式，软连接的内容是目标文件的绝对路径。一旦将文件删除，软连接就无法使用。</p>
+</li>
+<li><p>软链接和硬链接的区别</p>
+<ul>
+<li><p>硬链接</p>
+<ol>
+<li>只能对已存在文件创建</li>
+<li>不能跨文件系统</li>
+<li>创建硬链接不会占用 inode 号和磁盘空间，会增加链接计数</li>
+<li>不能对目录创建</li>
+<li>删除文件时，会先删除硬链接，最后再删除文件</li>
+</ol>
+</li>
+<li><p>软连接</p>
+<ol>
+<li>有自己的文件属性及权限等</li>
+<li>可以对不存在的文件进行创建</li>
+<li>可以跨文件系统创建</li>
+<li>可以对文件或目录进行创建</li>
+<li>删除软链接不会对文件有影响，删除文件软链接将无法使用</li>
+<li>创建软链接会占用 inode 号和磁盘空间，不会增加链接计数</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="块设备"><a href="#块设备" class="headerlink" title="块设备"></a>块设备</h4><p>应用程序可以随机访问设备数据，程序可自行确定读取数据的位置。硬盘是典型的块设备，应用程序可以寻址磁盘上的任何位置，并由此读取数据。此外，数据的读写只能以块(通常是512B)的倍数进行。与字符设备不同，块设备并不支持基于字符的寻址。</p>
+<h4 id="字符设备"><a href="#字符设备" class="headerlink" title="字符设备"></a>字符设备</h4><p>提供连续的数据流，应用程序可以顺序读取，通常不支持随机存取。相反，此类设备支持按字节/字符来读写数据。举例来说，鼠标、键盘、调制解调器是典型的字符设备。</p>
+<h4 id="套接字文件"><a href="#套接字文件" class="headerlink" title="套接字文件"></a>套接字文件</h4><p>先举个简单的例子：电风扇中有各种零件（如扇叶，马达等），插座也是由各种零件组成，将插头插入插座对应的插孔才能使电风扇转起来，其中的插头和插座的插孔才是真正使电风扇转起来的东西。这个例子中的各个零件可以理解为网络中的 TCP/IP 协议栈，电风扇的插头和插座的插孔可以理解为 socket（套接字），其中的 socket 才是实现两个计算机互相通信的东西。</p>
+<p>从上面的例子中可以了解到，Socket 跟 TCP/IP 协议没有必然的联系。socket（套接字）并不是一种协议，而是 TCP/IP 的一个编程接口。Socket 编程接口在设计的时候，就希望也能适应其他的网络协议，Socket 只是使得用 TCP/IP 协议栈更方便而已。套接字用（IP地址：端口号）表示，区分不同应用程序进程间的网络通信和连接,主要有3个参数：通信的目的 IP 地址、使用的传输层协议(TCP 或 UDP)和使用的端口号。</p>
+<p>套接字分为三种，一个是监听套接字，在服务端负责一直监听着客户端是否有请求发来；一种是客户端套接字，负责与服务端建立联系并收发信息；最后一种是对等连接套接字，是在服务端和客户端负责收发信息。</p>
+<p><img src="https://img-blog.csdn.net/20181018154936760?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d6eWFpd2w=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<h4 id="命名管道文件"><a href="#命名管道文件" class="headerlink" title="命名管道文件"></a>命名管道文件</h4><p>“|” 管道符号将数据从一个进程传输到另一个进程的操作。它使用户能简便地从一个命令输出数据到另一个命令，并筛选出想要的数据而无须写脚本进行选择、重新格式化等操作。</p>
+<p>命名管道 和 “ | ” 的功能是一样的，它们的主要区别就是命名管道是以文件形式实实在在地存在于文件系统中的，命名管道的表现形式就是文件。但是与其它文件不同的是，命名管道文件似乎从来没有文件内容。即使用户往命名管道中写入大量数据，该文件看起来还是空的。这其实是因为命名管道的内容驻留在内存中而不是被写到硬盘上。</p>
+<p>命名管道的作用：通过使用命名管道，用户可以创建一个进程写入管道并且另外一个进程读取管道的流程，而不用关心协调二者时间上的同步。</p>
 <h2 id="linux-权限管理"><a href="#linux-权限管理" class="headerlink" title="linux 权限管理"></a>linux 权限管理</h2><p>所谓权限管理，其实就是指对不同的用户，设置不同的文件访问权限，包括对文件的读、写、删除等，在 Linux 系统中，每个用户都具有不同的权限，拿非 root 用户来说，它们只能在自己的主目录下才具有写权限，而在主目录之外，只具有访问和读权限。</p>
 <hr>
 <h3 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h3><ul>
@@ -854,6 +896,11 @@ d????????? ? ? ? ?            ? Hi<span aria-hidden="true" class="line-numbers-r
 <p><a href="https://www.cnblogs.com/f-ck-need-u/p/10430642.html" target="_blank" rel="noopener">搞懂Linux下的几种文件类型</a></p>
 <p><a href="https://blog.csdn.net/bonnshore/article/details/7860997" target="_blank" rel="noopener">Linux字符设备与块设备的区别与比较</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/70364688" target="_blank" rel="noopener">理解Linux操作系统中的块设备</a></p>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html" target="_blank" rel="noopener">理解 Linux 的硬链接与软链接</a></p>
+<p><a href="https://blog.csdn.net/haiross/article/details/39157885" target="_blank" rel="noopener">理解Linux文件系统之inode</a></p>
+<p><a href="https://www.cnblogs.com/longwhite/p/10397697.html" target="_blank" rel="noopener">套接字详解（socket）</a></p>
+<p><a href="https://segmentfault.com/a/1190000014044351" target="_blank" rel="noopener">一篇搞懂TCP、HTTP、Socket、Socket连接池</a></p>
+<p><a href="https://segmentfault.com/a/1190000009528245" target="_blank" rel="noopener">Linux 管道pipe的实现原理</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1122,7 +1169,7 @@ MULTICS 项目
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">68.9k</span>&nbsp;字
+                class="white-color">70.4k</span>&nbsp;字
                
             
 			
