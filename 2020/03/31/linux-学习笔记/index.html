@@ -421,14 +421,14 @@ MULTICS 项目
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        10.6k
+                        12.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        39 分
+                        47 分
                     </div>
                     
                 
@@ -533,107 +533,6 @@ MULTICS 项目
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在中国，我们被微软所创造的文化所笼罩里。就在 Unix 出现革命性的转变，在 Unix 影响计算机世界文化的那几年里，科班出生专业开发人员学习的是 MS-DOS 和微软的文化，我们犹如一个井底之蛙一样，对外面的番·习天覆地的变化无动于衷。微软创造的文化在我们这里尤其地根深蒂固，我们几乎忘记了另外一边的 Unix 。</p>
 <p>在那充满激情的 Unix 的岁月里，大伙为了科研目的或个人兴趣在 Unix 上进行各种开发，并且不计较金钱利益，将这些源码公开，互相共享。在那里，开发和自由成为主题，正因为如此，当今的世界才如此丰富多采。在 40 年 Unix 文化和技术积淀的里面，蕴涵着比较纯正的计算机文化和思想。</p>
 <p>纵观整个 Unix 的历史过程中，许许多多的程序员、工程师前辈们在 Unix 中所摸爬滚打，他们的辛勤地、他们呕心沥血地跟随 Unix，努力建立一个繁荣的计算机世界的文明。Unix 不是一个简简单单的操作系统。有人说，Unix 是程序员设计给程序员的，一点没错。Unix 的近40年历史造就了它的博大精深，它给程序员们带来的绝不仅仅只是技术上的知识。它的失误，它的无奈，它的精神，它的荣耀，它从技术和思想上都启迪着我们。对于程序员来说，学习 Unix 就等同于向前辈程序学习。无论你是什么样的程序员，你都应该了解 Unix，这是开发人员的根，前面的开发者造就了它，而它又在引领后面的开发人员，它是前辈程序员们交给我们的一份礼物，一个接力棒，它是开发人员赖以生存的土壤，是上一辈程序员留给我们这一代程序员开启未来的钥匙。Unix 就像一个程序员教父一样，理当受到我们的尊敬和崇拜。</p>
-<h2 id="linux-文件系统"><a href="#linux-文件系统" class="headerlink" title="linux 文件系统"></a>linux 文件系统</h2><p>在 LINUX 系统中有一个重要的概念：一切皆文件。其实这是 UNIX 哲学的一个体现，而 Linux 是重写 UNIX 而来，所以这个概念也就传承了下来。在 UNIX 系统中，把一切资源都看作是文件，包括硬件设备。UNIX 系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。</p>
-<hr>
-<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><table>
-<thead>
-<tr>
-<th align="center">文件属性</th>
-<th align="center">文件类型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-</td>
-<td align="center">普通文件（二进制文件，xml文件，db文件等等）</td>
-</tr>
-<tr>
-<td align="center">d</td>
-<td align="center">目录文件</td>
-</tr>
-<tr>
-<td align="center">b</td>
-<td align="center">块设备（存储设备），如：硬盘，光盘，U盘等设备</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">字符设备，如：鼠标、键盘等设备</td>
-</tr>
-<tr>
-<td align="center">s</td>
-<td align="center">套接字文件，使两个进程之间（跨计算机）互相通信</td>
-</tr>
-<tr>
-<td align="center">l</td>
-<td align="center">符号链接文件，可以简单理解为 linux 文件的快捷方式</td>
-</tr>
-<tr>
-<td align="center">p</td>
-<td align="center">命名管道文件，让同一主机之间的两个进程通信</td>
-</tr>
-</tbody></table>
-<h3 id="目录架构"><a href="#目录架构" class="headerlink" title="目录架构"></a>目录架构</h3><p>linux 目录是树形结构，主要目的是方便文件系统的管理和维护，想象一下，如果所有的文件都放在一个目录下，其文件系统的管理和维护将变成一场噩梦。</p>
-<pre class="line-numbers language-bash"><code class="language-bash">/
-├── bin -<span class="token operator">></span> usr/bin            //存放系统管理员及普通用户使用的命令和可执行的二进制文件
-├── boot                      //存放启动 linux 时使用的一些内核文件和引导程序文件
-├── dev                       //访问外部设备文件的接口（相当于识别出设备，但无法访问）
-├── etc                       //存放系统配置文件和子目录
-├── home                      //存放系统用户目录
-├── lib -<span class="token operator">></span> usr/lib            //存放 32 位系统使用函数库目录（类似 windows 中的 DLL 文件）
-├── lib64 -<span class="token operator">></span> usr/lib64        //存放 64 位系统使用函数库目录
-├── media                     //自动识别挂载设备（如：U盘、移动硬盘等）
-├── mnt                       //让管理员手动挂载临时媒体设备
-├── opt                       //存放系统额外安装的软件
-├── proc                      //它是一个虚拟目录，映射系统的内存信息，通常直接访问这个目录来获取系统信息。
-├── root                      //超级用户主目录
-├── run                       //一个临时文件系统，存储系统启动的信息，当系统重启时，这个目录下的文件会被删掉除。
-├── sbin -<span class="token operator">></span> usr/sbin          //存放系统管理员使用的可执行命令
-├── srv                       //存放一些服务启动之后需要提取的数据（例如www服务启动后，数据就会存放在/srv/www内）
-├── sys                       //存放sysfs文件系统，用户科通过访问这个目录，来查看内核驱动及设备等
-├── tmp                       //存放临时文件
-├── usr                       //用户的应用程序存放目录
-└── var                       //存放系统执行过程中经常变化的文件（如：日志文件、登录文件、邮件文件等）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="深入理解-linux-文件类型"><a href="#深入理解-linux-文件类型" class="headerlink" title="深入理解 linux 文件类型"></a>深入理解 linux 文件类型</h3><h4 id="符号链接设备"><a href="#符号链接设备" class="headerlink" title="符号链接设备"></a>符号链接设备</h4><ol>
-<li>linux 文件获取过程<br>我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。元数据中有一个 inode 号（索引节点号），它的作用就是<font color="red">告诉计算机文件的真实数据存放在硬盘的哪个位置。</font><font color="red">inode 号才是文件的唯一标识</font>，而文件名只是为了方便人们记忆和使用，统或程序通过 inode 号寻找正确的文件数据块。图 1.展示了程序通过文件名获取文件内容的过程。</li>
-</ol>
-<p><img src="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/image001.jpg" alt="文件读取流程"></p>
-<ol start="2">
-<li><p>硬链接<br>符号链接文件分为两种：硬链接和软链接。在一般情况下文件名和 inode 号是“一一对应”的关系。但是，Unix/Linux 系统允许多个文件名指向同一个 inode 号码。<br>这意味着，可以用不同的文件名访问同样的内容；对文件内容进行修改，会影响到所有文件名；但是，删除一个文件名，不影响另一个文件名的访问。这种情况就被称为”硬链接”（hard link）。</p>
-</li>
-<li><p>软链接<br>就相当于 Windows 的快捷方式，软连接的内容是目标文件的绝对路径。一旦将文件删除，软连接就无法使用。</p>
-</li>
-<li><p>软链接和硬链接的区别</p>
-<ul>
-<li><p>硬链接</p>
-<ol>
-<li>只能对已存在文件创建</li>
-<li>不能跨文件系统</li>
-<li>创建硬链接不会占用 inode 号和磁盘空间，会增加链接计数</li>
-<li>不能对目录创建</li>
-<li>删除文件时，会先删除硬链接，最后再删除文件</li>
-</ol>
-</li>
-<li><p>软连接</p>
-<ol>
-<li>有自己的文件属性及权限等</li>
-<li>可以对不存在的文件进行创建</li>
-<li>可以跨文件系统创建</li>
-<li>可以对文件或目录进行创建</li>
-<li>删除软链接不会对文件有影响，删除文件软链接将无法使用</li>
-<li>创建软链接会占用 inode 号和磁盘空间，不会增加链接计数</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="块设备"><a href="#块设备" class="headerlink" title="块设备"></a>块设备</h4><p>应用程序可以随机访问设备数据，程序可自行确定读取数据的位置。硬盘是典型的块设备，应用程序可以寻址磁盘上的任何位置，并由此读取数据。此外，数据的读写只能以块(通常是512B)的倍数进行。与字符设备不同，块设备并不支持基于字符的寻址。</p>
-<h4 id="字符设备"><a href="#字符设备" class="headerlink" title="字符设备"></a>字符设备</h4><p>提供连续的数据流，应用程序可以顺序读取，通常不支持随机存取。相反，此类设备支持按字节/字符来读写数据。举例来说，鼠标、键盘、调制解调器是典型的字符设备。</p>
-<h4 id="套接字文件"><a href="#套接字文件" class="headerlink" title="套接字文件"></a>套接字文件</h4><p>先举个简单的例子：电风扇中有各种零件（如扇叶，马达等），插座也是由各种零件组成，将插头插入插座对应的插孔才能使电风扇转起来，其中的插头和插座的插孔才是真正使电风扇转起来的东西。这个例子中的各个零件可以理解为网络中的 TCP/IP 协议栈，电风扇的插头和插座的插孔可以理解为 socket（套接字），其中的 socket 才是实现两个计算机互相通信的东西。</p>
-<p>从上面的例子中可以了解到，Socket 跟 TCP/IP 协议没有必然的联系。socket（套接字）并不是一种协议，而是 TCP/IP 的一个编程接口。Socket 编程接口在设计的时候，就希望也能适应其他的网络协议，Socket 只是使得用 TCP/IP 协议栈更方便而已。套接字用（IP地址：端口号）表示，区分不同应用程序进程间的网络通信和连接,主要有3个参数：通信的目的 IP 地址、使用的传输层协议(TCP 或 UDP)和使用的端口号。</p>
-<p>套接字分为三种，一个是监听套接字，在服务端负责一直监听着客户端是否有请求发来；一种是客户端套接字，负责与服务端建立联系并收发信息；最后一种是对等连接套接字，是在服务端和客户端负责收发信息。</p>
-<p><img src="https://img-blog.csdn.net/20181018154936760?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d6eWFpd2w=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
-<h4 id="命名管道文件"><a href="#命名管道文件" class="headerlink" title="命名管道文件"></a>命名管道文件</h4><p>“|” 管道符号将数据从一个进程传输到另一个进程的操作。它使用户能简便地从一个命令输出数据到另一个命令，并筛选出想要的数据而无须写脚本进行选择、重新格式化等操作。</p>
-<p>命名管道 和 “ | ” 的功能是一样的，它们的主要区别就是命名管道是以文件形式实实在在地存在于文件系统中的，命名管道的表现形式就是文件。但是与其它文件不同的是，命名管道文件似乎从来没有文件内容。即使用户往命名管道中写入大量数据，该文件看起来还是空的。这其实是因为命名管道的内容驻留在内存中而不是被写到硬盘上。</p>
-<p>命名管道的作用：通过使用命名管道，用户可以创建一个进程写入管道并且另外一个进程读取管道的流程，而不用关心协调二者时间上的同步。</p>
 <h2 id="linux-权限管理"><a href="#linux-权限管理" class="headerlink" title="linux 权限管理"></a>linux 权限管理</h2><p>所谓权限管理，其实就是指对不同的用户，设置不同的文件访问权限，包括对文件的读、写、删除等，在 Linux 系统中，每个用户都具有不同的权限，拿非 root 用户来说，它们只能在自己的主目录下才具有写权限，而在主目录之外，只具有访问和读权限。</p>
 <hr>
 <h3 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h3><ul>
@@ -886,6 +785,291 @@ ls: 无法访问hello/file3.txt: 权限不够
 d????????? ? ? ? ?            ? Hi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>只能查看自己的信息</p>
 <h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>修改目录中的文件首先需要有进入目录的权限（即执行权限X），写权限可以创建和删除文件（前提是要有执行权限），读权限可以查看目录内的文件的详细信息。</p>
+<h3 id="特殊权限"><a href="#特殊权限" class="headerlink" title="特殊权限"></a>特殊权限</h3><h4 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a>SUID</h4><p>SUID（set uid ID upon execution）特殊权限只能对可执行的二进制文件进行设置。SUID 特殊权限以 s 权限覆盖所有者的 x 的权限。</p>
+<p>作用：只要用户对设有 SUID 的文件有执行权限，那么当用户执行此文件时，普通用户会变成文件所有者，一旦文件执行结束，身份的切换也随之消失。</p>
+<p>例如：修改密码的 passwd 命令，该文件的所有者是 root，但是任何用户都可以使用 passwd 命令修改自己的密码。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls -l /usr/bin/passwd </span>
+-rwsr-xr-x. 1 root root 27832 6月  10 2014 /usr/bin/passwd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这就是因为 passwd 文件有 SUID 权限，任何一个用户都可以用文件所有者，也就是 root 的身份去执行 passwd 命令。</p>
+<ul>
+<li>权限设置<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chmod 4755 filename</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<p>PS：SUID 的权限值为 4 ，权限设置位置在第一位。</p>
+<h4 id="SGID"><a href="#SGID" class="headerlink" title="SGID"></a>SGID</h4><p>SGID（set group ID upon execution）特殊权限能对可执行文件和目录进行设置。SUID 特殊权限以 s 权限覆盖所属组的 x 的权限。</p>
+<h5 id="对文件的作用"><a href="#对文件的作用" class="headerlink" title="对文件的作用"></a>对文件的作用</h5><p>只要用户对设有 SUID 的文件有执行权限，那么当用户执行此文件时，普通所属组会变成文件所属组的身份去执行此文件，一旦文件执行结束，身份的切换也随之消失。</p>
+<p>例如：查询文件的 locate 命令, /usr/bin/locate 文件被赋予了 SGID 的特殊权限，这就意味着，当普通用户使用 locate 命令时，该用户的所属组会直接变为 locate 命令的所属组，也就是 slocate。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll /usr/bin/locate </span>
+-rwx--s--x 1 root <span class="token function">slocate</span> 40520 4月  11 2018 /usr/bin/locate<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>locate 命令是用于在系统中按照文件名查找符合条件的文件的，当执行搜索操作时，它会通过搜索 /var/lib/mlocate/mlocate.db 这个数据库中的数据找到答案</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll /var/lib/mlocate/mlocate.db</span>
+-rw-r----- 1 root <span class="token function">slocate</span> 1815005 4月   5 09:02 /var/lib/mlocate/mlocate.db<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>mlocate.db 文件的所属组为 slocate，虽然对文件只拥有 r 权限，但对于普通用户执行 locate 命令来说，已经足够了。一方面，普通用户对 locate命令拥有执行权限，其次，locate 命令拥有 SGID 权限，这使得普通用户在执行 locate 命令时，所属组身份会变为 slocate，而 slocate 对 mlocate.db 数据库文件拥有 r 权限，所以即便是普通用户，也可以成功执行 locate 命令。</p>
+<h5 id="对目录的作用"><a href="#对目录的作用" class="headerlink" title="对目录的作用"></a>对目录的作用</h5><p>当一个目录被赋予 SGID 权限后，进入此目录的普通用户，其有效群组会变为该目录的所属组，会就使得用户在创建文件（或目录）时，该文件（或目录）的所属组将不再是用户的所属组，而使用的是目录的所属组。</p>
+<p>也就是说，只有当普通用户对具有 SGID 权限的目录有 rwx 权限时，SGID 的功能才能完全发挥。比如说，如果用户对该目录仅有 rx 权限，则用户进入此目录后，虽然其有效群组变为此目录的所属组，但由于没有 x 权限，用户无法在目录中创建文件或目录，SGID 权限也就无法发挥它的作用。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 赋予目录 775 权限，但普通用户无法做任何操作</span>
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ ll -d /root/dirtest
+drwxrwsr-x 2 root root 6 4月   6 23:04 /root/dirtest
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ <span class="token function">mkdir</span> /root/dirtest/test1
+mkdir: 无法创建目录<span class="token string">"/root/dirtest/test1"</span><span class="token keyword">:</span> 权限不够
+
+<span class="token comment" spellcheck="true"># 赋予目录 773 权限，但普通用户只能创建文件、目录，不能读文件。test 用户文件的所属组是 root</span>
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ ll -d dirtest/
+drwxrws-wx 2 root root 6 4月   6 23:04 dirtest/
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ ll -d /root/dirtest/test1
+drwxrwsr-x 2 <span class="token function">test</span> root 6 4月   6 23:16 /root/dirtest/test1
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ ll  /root/dirtest/ 
+ls: 无法打开目录/root/dirtest/: 权限不够<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="SBIT"><a href="#SBIT" class="headerlink" title="SBIT"></a>SBIT</h4><p>SBIT（Sticky BIT） 特殊权限仅对目录有效，一旦目录设定了 SBIT 权限，则用户在此目录下创建的文件或目录，就只有自己和 root 才有权利修改或删除该文件。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># root 用户创建的文件，同时赋予 777 权限，但是 test 用户无法删除 test1 文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll -d dirtest/     </span>
+drwxrwsrwt 2 root root 6 4月   7 00:36 dirtest/
+<span class="token punctuation">[</span>root@localhost dirtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll test1 </span>
+-rwxrwxrwx 1 root root 0 4月   7 00:39 test1
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ <span class="token function">rm</span> -rf /root/dirtest/test1
+rm: 无法删除<span class="token string">"/root/dirtest/test1"</span><span class="token keyword">:</span> 不允许的操作
+
+<span class="token comment" spellcheck="true"># test 用户创建的文件，同时赋予 664 权限。test 用户可以删除 test2 文件</span>
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ <span class="token function">touch</span> /root/dirtest/test2
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ ll /root/dirtest/test2 
+-rw-rw-r-- 1 <span class="token function">test</span> root 0 4月   7 00:42 /root/dirtest/test2
+<span class="token punctuation">[</span>test@localhost ~<span class="token punctuation">]</span>$ <span class="token function">rm</span> -rf /root/dirtest/test2 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="隐藏权限"><a href="#隐藏权限" class="headerlink" title="隐藏权限"></a>隐藏权限</h3><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td align="left">如果对文件设置 i 属性，那么不允许对文件进行删除、改名，也不能添加和修改数据；<br> 如果对目录设置 i 属性，那么只能修改目录下文件中的数据，但不允许建立和删除文件；</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="left">如果对文件设置 a 属性，那么只能在文件中増加数据，但是不能删除和修改数据；<br> 如果对目录设置 a 属性，那么只允许在目录中建立和修改文件，但是不允许删除文件；</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="left">设置此属性的文件或目录，在删除时，其内容会被保存，以保证后期能够恢复，常用来防止意外删除文件或目录。</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="left">和 u 相反，删除文件或目录时，会被彻底删除（直接从硬盘上删除，然后用 0 填充所占用的区域），不可恢复。</td>
+</tr>
+</tbody></table>
+<p><strong>PS：</strong> ext2、ext3、ext4、xfs文件不支持 u 和 s 权限</p>
+<h4 id="i-权限"><a href="#i-权限" class="headerlink" title="i 权限"></a>i 权限</h4><ol>
+<li>给文件赋予 i 属性</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 创建测试文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># touch ftest</span>
+
+<span class="token comment" spellcheck="true"># 添加 i 属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chattr +i ftest</span>
+
+<span class="token comment" spellcheck="true"># 查看文件的隐藏属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># lsattr -a ftest </span>
+----i----------- ftest
+
+<span class="token comment" spellcheck="true"># 无法删除文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rm -rf ftest </span>
+rm: 无法删除<span class="token string">"ftest"</span><span class="token keyword">:</span> 不允许的操作
+
+<span class="token comment" spellcheck="true"># 无法写入数据</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo 111>ftest </span>
+-bash: ftest: 权限不够
+
+<span class="token comment" spellcheck="true"># 无法重命名文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mv ftest ftest1</span>
+mv: 无法将<span class="token string">"ftest"</span> 移动至<span class="token string">"ftest1"</span><span class="token keyword">:</span> 不允许的操作<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>给目录赋予 i 权限</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 创建测试目录</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mkdir dtest</span>
+
+<span class="token comment" spellcheck="true"># 创建测试文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># touch dtest/test1</span>
+
+<span class="token comment" spellcheck="true"># 赋予目录 i 属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chattr +i dtest/</span>
+
+<span class="token comment" spellcheck="true"># 查看目录隐藏属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># lsattr -d dtest/</span>
+----i----------- dtest/
+
+<span class="token comment" spellcheck="true"># 无法创建文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd dtest/</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># touch test2</span>
+touch: 无法创建<span class="token string">"test2"</span><span class="token keyword">:</span> 权限不够
+
+<span class="token comment" spellcheck="true"># 无法删除文件</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rm -rf test1</span>
+rm: 无法删除<span class="token string">"test1"</span><span class="token keyword">:</span> 权限不够
+
+<span class="token comment" spellcheck="true"># 无法重命名文件</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mv test1 test2</span>
+mv: 无法将<span class="token string">"test1"</span> 移动至<span class="token string">"test2"</span><span class="token keyword">:</span> 权限不够
+
+<span class="token comment" spellcheck="true"># 可以修改文件数据</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo ll>>test1 </span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat test1 </span>
+ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="a-权限"><a href="#a-权限" class="headerlink" title="a 权限"></a>a 权限</h4><ol>
+<li>给文件赋予 a 权限</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 添加 a 属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chattr +a ftest </span>
+
+<span class="token comment" spellcheck="true"># 查看隐藏属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># lsattr -a ftest </span>
+-----a---------- ftest
+
+<span class="token comment" spellcheck="true"># 无法删除文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rm -rf ftest </span>
+rm: 无法删除<span class="token string">"ftest"</span><span class="token keyword">:</span> 不允许的操作
+
+<span class="token comment" spellcheck="true"># 无法修改数据</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo ll> ftest </span>
+-bash: ftest: 不允许的操作
+
+<span class="token comment" spellcheck="true"># 可以添加数据</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo ll>> ftest </span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat ftest </span>
+ll
+
+<span class="token comment" spellcheck="true"># 无法重命名文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mv ftest ftest1</span>
+mv: 无法将<span class="token string">"ftest"</span> 移动至<span class="token string">"ftest1"</span><span class="token keyword">:</span> 不允许的操作<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>给目录赋予 a 权限</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 添加 a 属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chattr +a dtest/</span>
+
+<span class="token comment" spellcheck="true"># 查看隐藏属性</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># lsattr -d dtest/</span>
+-----a---------- dtest/
+
+<span class="token comment" spellcheck="true"># 可以创建文件，修改、添加数据</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd dtest/</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># touch test2</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo aaa>test1</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo bbb>>test2</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat test1 test2 </span>
+aaa
+bbb
+
+<span class="token comment" spellcheck="true"># 无法删除文件</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rm -rf test1 test2 </span>
+rm: 无法删除<span class="token string">"test1"</span><span class="token keyword">:</span> 不允许的操作
+rm: 无法删除<span class="token string">"test2"</span><span class="token keyword">:</span> 不允许的操作
+
+<span class="token comment" spellcheck="true"># 无法重命名文件</span>
+<span class="token punctuation">[</span>root@localhost dtest<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mv test1 test3</span>
+mv: 无法将<span class="token string">"test1"</span> 移动至<span class="token string">"test3"</span><span class="token keyword">:</span> 不允许的操作<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="linux-文件目录管理"><a href="#linux-文件目录管理" class="headerlink" title="linux 文件目录管理"></a>linux 文件目录管理</h2><p>在 LINUX 系统中有一个重要的概念：一切皆文件。其实这是 UNIX 哲学的一个体现，而 Linux 是重写 UNIX 而来，所以这个概念也就传承了下来。在 UNIX 系统中，把一切资源都看作是文件，包括硬件设备。UNIX 系统把每个硬件都看成是一个文件，通常称为设备文件，这样用户就可以用读写文件的方式实现对硬件的访问。</p>
+<hr>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><table>
+<thead>
+<tr>
+<th align="center">文件属性</th>
+<th align="center">文件类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-</td>
+<td align="center">普通文件（二进制文件，xml文件，db文件等等）</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td align="center">目录文件</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td align="center">块设备（存储设备），如：硬盘，光盘，U盘等设备</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">字符设备，如：鼠标、键盘等设备</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">套接字文件，使两个进程之间（跨计算机）互相通信</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">符号链接文件，可以简单理解为 linux 文件的快捷方式</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">命名管道文件，让同一主机之间的两个进程通信</td>
+</tr>
+</tbody></table>
+<h3 id="目录架构"><a href="#目录架构" class="headerlink" title="目录架构"></a>目录架构</h3><p>linux 目录是树形结构，主要目的是方便文件系统的管理和维护，想象一下，如果所有的文件都放在一个目录下，其文件系统的管理和维护将变成一场噩梦。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">/
+├── bin -<span class="token operator">></span> usr/bin            //存放系统管理员及普通用户使用的命令和可执行的二进制文件
+├── boot                      //存放启动 linux 时使用的一些内核文件和引导程序文件
+├── dev                       //访问外部设备文件的接口（相当于识别出设备，但无法访问）
+├── etc                       //存放系统配置文件和子目录
+├── home                      //存放系统用户目录
+├── lib -<span class="token operator">></span> usr/lib            //存放 32 位系统使用函数库目录（类似 windows 中的 DLL 文件）
+├── lib64 -<span class="token operator">></span> usr/lib64        //存放 64 位系统使用函数库目录
+├── media                     //自动识别挂载设备（如：U盘、移动硬盘等）
+├── mnt                       //让管理员手动挂载临时媒体设备
+├── opt                       //存放系统额外安装的软件
+├── proc                      //它是一个虚拟目录，映射系统的内存信息，通常直接访问这个目录来获取系统信息。
+├── root                      //超级用户主目录
+├── run                       //一个临时文件系统，存储系统启动的信息，当系统重启时，这个目录下的文件会被删掉除。
+├── sbin -<span class="token operator">></span> usr/sbin          //存放系统管理员使用的可执行命令
+├── srv                       //存放一些服务启动之后需要提取的数据（例如www服务启动后，数据就会存放在/srv/www内）
+├── sys                       //存放sysfs文件系统，用户科通过访问这个目录，来查看内核驱动及设备等
+├── tmp                       //存放临时文件
+├── usr                       //用户的应用程序存放目录
+└── var                       //存放系统执行过程中经常变化的文件（如：日志文件、登录文件、邮件文件等）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="深入理解-linux-文件类型"><a href="#深入理解-linux-文件类型" class="headerlink" title="深入理解 linux 文件类型"></a>深入理解 linux 文件类型</h3><h4 id="符号链接设备"><a href="#符号链接设备" class="headerlink" title="符号链接设备"></a>符号链接设备</h4><ol>
+<li>linux 文件获取过程<br>我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。元数据中有一个 inode 号（索引节点号），它的作用就是<font color="red">告诉计算机文件的真实数据存放在硬盘的哪个位置。</font><font color="red">inode 号才是文件的唯一标识</font>，而文件名只是为了方便人们记忆和使用，统或程序通过 inode 号寻找正确的文件数据块。图 1.展示了程序通过文件名获取文件内容的过程。</li>
+</ol>
+<p><img src="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/image001.jpg" alt="文件读取流程"></p>
+<ol start="2">
+<li><p>硬链接<br>符号链接文件分为两种：硬链接和软链接。在一般情况下文件名和 inode 号是“一一对应”的关系。但是，Unix/Linux 系统允许多个文件名指向同一个 inode 号码。<br>这意味着，可以用不同的文件名访问同样的内容；对文件内容进行修改，会影响到所有文件名；但是，删除一个文件名，不影响另一个文件名的访问。这种情况就被称为”硬链接”（hard link）。</p>
+</li>
+<li><p>软链接<br>就相当于 Windows 的快捷方式，软连接的内容是目标文件的绝对路径。一旦将文件删除，软连接就无法使用。</p>
+</li>
+<li><p>软链接和硬链接的区别</p>
+<ul>
+<li><p>硬链接</p>
+<ol>
+<li>只能对已存在文件创建</li>
+<li>不能跨文件系统</li>
+<li>创建硬链接不会占用 inode 号和磁盘空间，会增加链接计数</li>
+<li>不能对目录创建</li>
+<li>删除文件时，会先删除硬链接，最后再删除文件</li>
+</ol>
+</li>
+<li><p>软连接</p>
+<ol>
+<li>有自己的文件属性及权限等</li>
+<li>可以对不存在的文件进行创建</li>
+<li>可以跨文件系统创建</li>
+<li>可以对文件或目录进行创建</li>
+<li>删除软链接不会对文件有影响，删除文件软链接将无法使用</li>
+<li>创建软链接会占用 inode 号和磁盘空间，不会增加链接计数</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="块设备"><a href="#块设备" class="headerlink" title="块设备"></a>块设备</h4><p>应用程序可以随机访问设备数据，程序可自行确定读取数据的位置。硬盘是典型的块设备，应用程序可以寻址磁盘上的任何位置，并由此读取数据。此外，数据的读写只能以块(通常是512B)的倍数进行。与字符设备不同，块设备并不支持基于字符的寻址。</p>
+<h4 id="字符设备"><a href="#字符设备" class="headerlink" title="字符设备"></a>字符设备</h4><p>提供连续的数据流，应用程序可以顺序读取，通常不支持随机存取。相反，此类设备支持按字节/字符来读写数据。举例来说，鼠标、键盘、调制解调器是典型的字符设备。</p>
+<h4 id="套接字文件"><a href="#套接字文件" class="headerlink" title="套接字文件"></a>套接字文件</h4><p>先举个简单的例子：电风扇中有各种零件（如扇叶，马达等），插座也是由各种零件组成，将插头插入插座对应的插孔才能使电风扇转起来，其中的插头和插座的插孔才是真正使电风扇转起来的东西。这个例子中的各个零件可以理解为网络中的 TCP/IP 协议栈，电风扇的插头和插座的插孔可以理解为 socket（套接字），其中的 socket 才是实现两个计算机互相通信的东西。</p>
+<p>从上面的例子中可以了解到，Socket 跟 TCP/IP 协议没有必然的联系。socket（套接字）并不是一种协议，而是 TCP/IP 的一个编程接口。Socket 编程接口在设计的时候，就希望也能适应其他的网络协议，Socket 只是使得用 TCP/IP 协议栈更方便而已。套接字用（IP地址：端口号）表示，区分不同应用程序进程间的网络通信和连接,主要有3个参数：通信的目的 IP 地址、使用的传输层协议(TCP 或 UDP)和使用的端口号。</p>
+<p>套接字分为三种，一个是监听套接字，在服务端负责一直监听着客户端是否有请求发来；一种是客户端套接字，负责与服务端建立联系并收发信息；最后一种是对等连接套接字，是在服务端和客户端负责收发信息。</p>
+<p><img src="https://img-blog.csdn.net/20181018154936760?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d6eWFpd2w=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""></p>
+<h4 id="命名管道文件"><a href="#命名管道文件" class="headerlink" title="命名管道文件"></a>命名管道文件</h4><p>“|” 管道符号将数据从一个进程传输到另一个进程的操作。它使用户能简便地从一个命令输出数据到另一个命令，并筛选出想要的数据而无须写脚本进行选择、重新格式化等操作。</p>
+<p>命名管道 和 “ | ” 的功能是一样的，它们的主要区别就是命名管道是以文件形式实实在在地存在于文件系统中的，命名管道的表现形式就是文件。但是与其它文件不同的是，命名管道文件似乎从来没有文件内容。即使用户往命名管道中写入大量数据，该文件看起来还是空的。这其实是因为命名管道的内容驻留在内存中而不是被写到硬盘上。</p>
+<p>命名管道的作用：通过使用命名管道，用户可以创建一个进程写入管道并且另外一个进程读取管道的流程，而不用关心协调二者时间上的同步。</p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/haoel/article/details/1542340" target="_blank" rel="noopener">Unix传奇（上篇）</a></p>
 <p><a href="https://blog.csdn.net/iteye_3952/article/details/81440521" target="_blank" rel="noopener">Unix传奇（下篇）</a></p>
 <p><a href="https://blog.csdn.net/m0_38044196/article/details/72844025" target="_blank" rel="noopener">Linux目录结构及详细介绍</a></p>
@@ -901,6 +1085,7 @@ d????????? ? ? ? ?            ? Hi<span aria-hidden="true" class="line-numbers-r
 <p><a href="https://www.cnblogs.com/longwhite/p/10397697.html" target="_blank" rel="noopener">套接字详解（socket）</a></p>
 <p><a href="https://segmentfault.com/a/1190000014044351" target="_blank" rel="noopener">一篇搞懂TCP、HTTP、Socket、Socket连接池</a></p>
 <p><a href="https://segmentfault.com/a/1190000009528245" target="_blank" rel="noopener">Linux 管道pipe的实现原理</a></p>
+<p><a href="http://c.biancheng.net/view/874.html" target="_blank" rel="noopener">Linux chattr命令详解：修改文件系统的权限属性</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1169,7 +1354,7 @@ MULTICS 项目
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">70.4k</span>&nbsp;字
+                class="white-color">72.4k</span>&nbsp;字
                
             
 			
