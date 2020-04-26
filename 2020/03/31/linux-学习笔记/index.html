@@ -421,14 +421,14 @@ MULTICS 项目
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        12.5k
+                        14.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        47 分
+                        59 分
                     </div>
                     
                 
@@ -1070,6 +1070,324 @@ mv: 无法将<span class="token string">"test1"</span> 移动至<span class="tok
 <h4 id="命名管道文件"><a href="#命名管道文件" class="headerlink" title="命名管道文件"></a>命名管道文件</h4><p>“|” 管道符号将数据从一个进程传输到另一个进程的操作。它使用户能简便地从一个命令输出数据到另一个命令，并筛选出想要的数据而无须写脚本进行选择、重新格式化等操作。</p>
 <p>命名管道 和 “ | ” 的功能是一样的，它们的主要区别就是命名管道是以文件形式实实在在地存在于文件系统中的，命名管道的表现形式就是文件。但是与其它文件不同的是，命名管道文件似乎从来没有文件内容。即使用户往命名管道中写入大量数据，该文件看起来还是空的。这其实是因为命名管道的内容驻留在内存中而不是被写到硬盘上。</p>
 <p>命名管道的作用：通过使用命名管道，用户可以创建一个进程写入管道并且另外一个进程读取管道的流程，而不用关心协调二者时间上的同步。</p>
+<h2 id="服务器搭建"><a href="#服务器搭建" class="headerlink" title="服务器搭建"></a>服务器搭建</h2><h3 id="Elastic-Stack-日志系统"><a href="#Elastic-Stack-日志系统" class="headerlink" title="Elastic Stack 日志系统"></a>Elastic Stack 日志系统</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li>什么是 Elastic Stack </li>
+</ul>
+<p>Elastic Stack  是一套技术解决方案简称为 ELK，是 Elastic 公司的一套开源项目。Elastic Stack 的原名是 ELK Stack  ，因为 5.0 版本后加入了小弟  Beats ，因此更名为 Elastic Stack。</p>
+<p>ELK 指的是三个开源软件的首字母大写，即：Elasticsearch、Logstash 和 Kibana。</p>
+<ul>
+<li>Elasticsearch 是一个搜索和分析引擎（负责日志检索和存储）</li>
+<li>Logstash 是一个服务器端的数据处理管道，可以同时从多个源获取数据，将其转换为 Elasticsearch 之类的“stash”。（负责日志的收集和分析、处理）</li>
+<li>Kibana 允许用户在 Elasticsearch 中使用图表和图表可视化数据。</li>
+</ul>
+<p>业界，经常会组合使用 Elasticsearch、Logstash 和 Kibana 这三种技术，来实现分布式系统的日志管理及可视化，所以，这三种技术的组合就被称为“ELK Stack”。（负责日志的可视化）</p>
+<p><img src="https://waylau.com/images/post/20171221-elk.jpg" alt="ELK Stack"></p>
+<h4 id="Centos7-部署-ELK-7-6"><a href="#Centos7-部署-ELK-7-6" class="headerlink" title="Centos7 部署 ELK 7.6"></a>Centos7 部署 ELK 7.6</h4><h5 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h5><ol>
+<li>安装配置 JDK</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装 JDK11（最低版本要求 JDK1.8）</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  yum -y install java-11</span>
+
+<span class="token comment" spellcheck="true"># 配置 JAVA 环境变量</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  vim /etc/profile</span>
+<span class="token comment" spellcheck="true"># JAVA（在文件末尾添加如下内容）</span>
+JAVA_HOME<span class="token operator">=</span><span class="token string">"/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64"</span>
+PATH<span class="token operator">=</span><span class="token string">"<span class="token variable">$JAVA_HOME</span>/bin:<span class="token variable">$PATH</span>"</span>
+<span class="token function">export</span> JAVA_HOME PATH
+
+<span class="token comment" spellcheck="true"># 重新加载配置文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># source  /etc/profile</span>
+
+<span class="token comment" spellcheck="true"># 查看 JAVA 版本</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># java -version</span>
+openjdk version <span class="token string">"11.0.6"</span> 2020-01-14 LTS
+OpenJDK Runtime Environment 18.9 <span class="token punctuation">(</span>build 11.0.6+10-LTS<span class="token punctuation">)</span>
+OpenJDK 64-Bit Server VM 18.9 <span class="token punctuation">(</span>build 11.0.6+10-LTS, mixed mode, sharing<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><p>下载 <a href="https://www.elastic.co/cn/downloads/elasticsearch" target="_blank" rel="noopener">Elasticsearch</a>、<a href="https://www.elastic.co/cn/downloads/kibana" target="_blank" rel="noopener">Kibana</a>、<a href="https://www.elastic.co/cn/downloads/logstash" target="_blank" rel="noopener">Logstash</a> rpm 包</p>
+</li>
+<li><p>关闭防火墙</p>
+</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl stop firewalld</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl disable firewalld</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="安装部署-Elasticsearch"><a href="#安装部署-Elasticsearch" class="headerlink" title="安装部署 Elasticsearch"></a>安装部署 Elasticsearch</h4><ol>
+<li>安装并启动 Elasticsearch 服务</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装 Elasticsearch </span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  rpm -ivh elasticsearch-7.6.2-x86_64.rpm </span>
+
+<span class="token comment" spellcheck="true"># 重载所有修改过的配置文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  systemctl daemon-reload</span>
+
+<span class="token comment" spellcheck="true"># 启动 elasticsearch 服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  systemctl start elasticsearch</span>
+
+<span class="token comment" spellcheck="true"># 将 elasticsearch 设为开机启动</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  systemctl enable elasticsearch</span>
+
+<span class="token comment" spellcheck="true"># 查看 elasticsearch 运行状态</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  systemctl status elasticsearch</span>
+● elasticsearch.service - Elasticsearch
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/elasticsearch.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: disabled<span class="token punctuation">)</span>
+   Active: active <span class="token punctuation">(</span>running<span class="token punctuation">)</span> since 六 2020-04-25 09:49:31 CST<span class="token punctuation">;</span> 55min ago
+     Docs: http://www.elastic.co
+ Main PID: 14806 <span class="token punctuation">(</span>java<span class="token punctuation">)</span>
+   CGroup: /system.slice/elasticsearch.service
+           ├─14806 /usr/share/elasticsearch/jdk/bin/java -Des.networkaddress.cache.ttl<span class="token operator">=</span>60 -Des.networkaddress.cache.negative.tt<span class="token punctuation">..</span>.
+           └─14885 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+4月 25 09:48:54 localhost.localdomain systemd<span class="token punctuation">[</span>1<span class="token punctuation">]</span>: Starting Elasticsearch<span class="token punctuation">..</span>.
+4月 25 09:48:56 localhost.localdomain elasticsearch<span class="token punctuation">[</span>14806<span class="token punctuation">]</span>: OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC wa<span class="token punctuation">..</span>.ase.
+4月 25 09:49:31 localhost.localdomain systemd<span class="token punctuation">[</span>1<span class="token punctuation">]</span>: Started Elasticsearch.
+Hint: Some lines were ellipsized, use -l to show <span class="token keyword">in</span> full.
+
+<span class="token comment" spellcheck="true"># 尝试请求服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#  curl localhost:9200</span>
+<span class="token punctuation">{</span>
+  <span class="token string">"name"</span> <span class="token keyword">:</span> <span class="token string">"master"</span>,
+  <span class="token string">"cluster_name"</span> <span class="token keyword">:</span> <span class="token string">"my-application"</span>,
+  <span class="token string">"cluster_uuid"</span> <span class="token keyword">:</span> <span class="token string">"WdIwT67ZRQKinMUJOPXWoQ"</span>,
+  <span class="token string">"version"</span> <span class="token keyword">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"number"</span> <span class="token keyword">:</span> <span class="token string">"7.6.2"</span>,
+    <span class="token string">"build_flavor"</span> <span class="token keyword">:</span> <span class="token string">"default"</span>,
+    <span class="token string">"build_type"</span> <span class="token keyword">:</span> <span class="token string">"rpm"</span>,
+    <span class="token string">"build_hash"</span> <span class="token keyword">:</span> <span class="token string">"ef48eb35cf30adf4db14086e8aabd07ef6fb113f"</span>,
+    <span class="token string">"build_date"</span> <span class="token keyword">:</span> <span class="token string">"2020-03-26T06:34:37.794943Z"</span>,
+    <span class="token string">"build_snapshot"</span> <span class="token keyword">:</span> false,
+    <span class="token string">"lucene_version"</span> <span class="token keyword">:</span> <span class="token string">"8.4.0"</span>,
+    <span class="token string">"minimum_wire_compatibility_version"</span> <span class="token keyword">:</span> <span class="token string">"6.8.0"</span>,
+    <span class="token string">"minimum_index_compatibility_version"</span> <span class="token keyword">:</span> <span class="token string">"6.0.0-beta1"</span>
+  <span class="token punctuation">}</span>,
+  <span class="token string">"tagline"</span> <span class="token keyword">:</span> <span class="token string">"You Know, for Search"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>配置 Elasticsearch  服务</li>
+</ol>
+<ul>
+<li>允许其他机器访问（默认只能本机访问）</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/elasticsearch/elasticsearch.yml</span>
+<span class="token comment" spellcheck="true"># line 17（修改如下行）</span>
+cluster.name: my-application
+<span class="token comment" spellcheck="true"># line 23</span>
+node.name: master
+<span class="token comment" spellcheck="true">#line 55</span>
+network.host: 0.0.0.0
+<span class="token comment" spellcheck="true"># line 59</span>
+http.port: 9200
+<span class="token comment" spellcheck="true">#line 72</span>
+cluster.initial_master_nodes: <span class="token punctuation">[</span><span class="token string">"master"</span>, <span class="token string">"node-2"</span><span class="token punctuation">]</span>
+
+ <span class="token comment" spellcheck="true"># 重启 elasticsearch 服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl restart elasticsearch</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在其他电脑上访问（<a href="http://IP:9200/），查看是否配置成功" target="_blank" rel="noopener">http://IP:9200/），查看是否配置成功</a><br><img src="https://i.loli.net/2020/04/27/YaW8VfTqojdGB4i.png" alt="elasticsearch.png"></p>
+<h4 id="部署-Kibana"><a href="#部署-Kibana" class="headerlink" title="部署 Kibana"></a>部署 Kibana</h4><ol>
+<li>安装并启动 kibana 服务</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装 kibana</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rpm -ivh kibana-7.6.2-x86_64.rpm</span>
+
+<span class="token comment" spellcheck="true"># 启动 kibana 服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl start kibana</span>
+
+<span class="token comment" spellcheck="true"># 设置开机启动</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl enable kibana</span>
+
+<span class="token comment" spellcheck="true"># 查看 kibana 服务的运行状态</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl status kibana</span>
+
+<span class="token comment" spellcheck="true"># 测试访问（服务启得有点慢，需要多试几次）</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># curl localhost:5601 -L</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>配置 kibana 服务</li>
+</ol>
+<ul>
+<li>允许其他机器访问（默认只能本机访问）</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/kibana/kibana.yml </span>
+<span class="token comment" spellcheck="true"># line 2（修改如下行）</span>
+server.port: 5601
+<span class="token comment" spellcheck="true"># line 7</span>
+server.host: <span class="token string">"0.0.0.0"</span>
+<span class="token comment" spellcheck="true"># line 28</span>
+elasticsearch.hosts: <span class="token punctuation">[</span><span class="token string">"http://localhost:9200"</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 重启 kibana 服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl restart kibana</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在其他电脑上访问（<a href="http://IP:5601/），查看是否配置成功（服务启动得慢，需要多试几次）" target="_blank" rel="noopener">http://IP:5601/），查看是否配置成功（服务启动得慢，需要多试几次）</a><br><img src="https://i.loli.net/2020/04/27/G9fOP6LlJkFXYaI.png" alt="kibana.png"></p>
+<h4 id="部署-Logstash-服务"><a href="#部署-Logstash-服务" class="headerlink" title="部署 Logstash 服务"></a>部署 Logstash 服务</h4><ol>
+<li>更换 jdk 环境（服务安装完后，记得换成 jdk11，不然 Elasticsearch 服务重启报错）</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 修改配置文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/profile</span>
+<span class="token comment" spellcheck="true">#JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64"</span>
+JAVA_HOME<span class="token operator">=</span><span class="token string">"/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/jre/"</span>
+PATH<span class="token operator">=</span><span class="token string">"<span class="token variable">$JAVA_HOME</span>/bin:<span class="token variable">$PATH</span>"</span>
+<span class="token function">export</span> JAVA_HOME PATH
+
+<span class="token comment" spellcheck="true"># 重新加载配置文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># source /etc/profile</span>
+
+<span class="token comment" spellcheck="true"># 查看 java 环境</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># java -version</span>
+openjdk version <span class="token string">"1.8.0_232"</span>
+OpenJDK Runtime Environment <span class="token punctuation">(</span>build 1.8.0_232-b09<span class="token punctuation">)</span>
+OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>build 25.232-b09, mixed mode<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>安装 logstash</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装 logstash 服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rpm -ivh logstash-7.6.2.rpm </span>
+
+<span class="token comment" spellcheck="true"># 启动 logstash 服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl start logstash</span>
+
+<span class="token comment" spellcheck="true"># 查看 logstash 服务状态</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl status logstash</span>
+● logstash.service - logstash
+   Loaded: loaded <span class="token punctuation">(</span>/etc/systemd/system/logstash.service<span class="token punctuation">;</span> enabled<span class="token punctuation">;</span> vendor preset: disabled<span class="token punctuation">)</span>
+   Active: active <span class="token punctuation">(</span>running<span class="token punctuation">)</span> since 六 2020-04-25 14:03:25 CST<span class="token punctuation">;</span> 33s ago
+ Main PID: 17832 <span class="token punctuation">(</span>java<span class="token punctuation">)</span>
+   CGroup: /system.slice/logstash.service
+           └─17832 /bin/java -Xms1g -Xmx1g -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction<span class="token operator">=</span>75 -XX:+UseCMSInitiatingOccupancyOnly -Djava.awt.headless<span class="token operator">=</span>true -Dfile.encoding<span class="token operator">=</span>UTF-8 -Djruby.compile.invokedynamic<span class="token operator">=</span>true -Djruby.jit.threshold<span class="token operator">=</span>0 -Djruby<span class="token punctuation">..</span>.
+
+4月 25 14:03:25 localhost.localdomain systemd<span class="token punctuation">[</span>1<span class="token punctuation">]</span>: Started logstash.
+4月 25 14:03:25 localhost.localdomain systemd<span class="token punctuation">[</span>1<span class="token punctuation">]</span>: Starting logstash<span class="token punctuation">..</span>.
+4月 25 14:03:25 localhost.localdomain logstash<span class="token punctuation">[</span>17832<span class="token punctuation">]</span>: OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, <span class="token keyword">then</span> you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads<span class="token operator">=</span>N
+4月 25 14:03:58 localhost.localdomain logstash<span class="token punctuation">[</span>17832<span class="token punctuation">]</span>: Sending Logstash logs to /var/log/logstash <span class="token function">which</span> is now configured via log4j2.properties
+Hint: Some lines were ellipsized, use -l to show <span class="token keyword">in</span> full.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h5 id="报错：Unable-to-install-system-startup-script-for-Logstash"><a href="#报错：Unable-to-install-system-startup-script-for-Logstash" class="headerlink" title="报错：Unable to install system startup script for Logstash."></a>报错：Unable to install system startup script for Logstash.</h5><p><img src="https://i.loli.net/2020/04/27/7Ye4URWMzPxswja.png" alt="logstash-error.png"><br>解决方法：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 自动生成 logstash.service  启动程序</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>问题原因：<br>Centos 7 使用 systemd，但是 logstash 包的安装后脚本错误地试图生成一个启动脚本。</p>
+<h3 id="Centos6-源码安装-zabbix4-0"><a href="#Centos6-源码安装-zabbix4-0" class="headerlink" title="Centos6 源码安装 zabbix4.0"></a>Centos6 源码安装 zabbix4.0</h3><h4 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h4><p>OS：CentOS6.5<br>zabbix：4.0.6<br>apche ：2.2.15（1.3.12或以上）<br>mysql：5.1.73（5.0.3或以上 ）<br>php：5.6（5.4.0或以上）</p>
+<h4 id="配置-LAMP"><a href="#配置-LAMP" class="headerlink" title="配置 LAMP"></a>配置 LAMP</h4><ol>
+<li>安装 httpd 和 mysql</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># yum -y install httpd mysql mysql-devel mysql-server</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chown apache:apache /var/www/html</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chkconfig httpd on</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chkconfig httpd on</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>安装 php56</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装php56</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># yum install -y php56w php56w-opcache php56w-xml php56w-mcrypt php56w-gd php56w-devel php56w-mysql php56w-intl php56w-mbstring php56w-bcmath php56w-ldap</span>
+
+<span class="token comment" spellcheck="true"># 配置 php56（修改如下参数）</span>
+<span class="token punctuation">[</span>root@192 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/php.ini</span>
+post_max_size <span class="token operator">=</span> 16M
+max_execution_time <span class="token operator">=</span> 300
+max_input_time <span class="token operator">=</span> 300
+date.timezone <span class="token operator">=</span> PRC
+always_populate_raw_post_data <span class="token operator">=</span> -1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>关闭防火墙和selinux</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># service iptables stop</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># service iptables disable</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># reboot</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="安装-zabbix"><a href="#安装-zabbix" class="headerlink" title="安装 zabbix"></a>安装 zabbix</h4><ol>
+<li>创建用户</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># groupadd zabbix</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># useradd -g zabbix zabbix</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>配置安装目录</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mkdir /usr/local/zabbix</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mkdir /usr/local/zabbix/log</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chown zabbix:zabbix /usr/local/zabbix</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>下载 <a href="https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/4.0.6/zabbix-4.0.6.tar.gz" target="_blank" rel="noopener">zabbix-4.0.6 </a> 源码包</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># wget https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/4.0.6/zabbix-4.0.6.tar.gz</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># tar xvzf zabbix-4.0.6.tar.gz</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># yum install libxml2-devel net-snmp-devel libevent-devel curl-devel pcre*</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>安装 zabbix</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 解压安装zabbix</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd zabbix-4.0.6</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --enable-proxy --with-mysql=/usr/bin/mysql_config --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># make install</span>
+
+<span class="token comment" spellcheck="true"># copy命令到系统命令存放处（方便调用）</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cp /usr/local/zabbix/sbin/* /usr/sbin/</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cp /usr/local/zabbix/bin/* /usr/bin/</span>
+
+<span class="token comment" spellcheck="true"># 配置mysql</span>
+mysql<span class="token operator">></span> create database zabbix character <span class="token keyword">set</span> utf8<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> grant all on zabbix.* to zabbix@localhost identified by <span class="token string">'zabbix@qaz'</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> flush privileges<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true"># 导入配置文件</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd database/mysql</span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysql -u zabbix -pzabbix@qaz -h localhost zabbix &lt; schema.sql </span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysql -u zabbix -pzabbix@qaz -h localhost zabbix &lt; images.sql</span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># mysql -u zabbix -pzabbix@qaz -h localhost zabbix &lt; data.sql</span>
+
+
+
+<span class="token comment" spellcheck="true"># 编辑配置文件</span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /usr/local/zabbix/etc/zabbix_server.conf</span>
+LogFile<span class="token operator">=</span>/usr/local/zabbix/log/zabbix_server.log        //日志文件存放的路径
+PidFile<span class="token operator">=</span>/usr/local/zabbix/zabbix_server.pid        //pid文件存放的路径
+DBHost<span class="token operator">=</span>localhost        //数据库服务器地址
+DBName<span class="token operator">=</span>zabbix        //数据库名字
+DBUser<span class="token operator">=</span>zabbix        //连接数据库的用户名
+DBPassword<span class="token operator">=</span>zabbix@qaz        //连接数据库用户的密码
+DBSocket<span class="token operator">=</span>/var/lib/mysql/mysql.sock        //指定连接mysql的socket，mysql配置的client sock文件路径
+DBPort<span class="token operator">=</span>3306        //数据库端口
+Timeout<span class="token operator">=</span>4        //超时时间
+LogSlowQueries<span class="token operator">=</span>3000        //慢查询记录的时间
+
+
+<span class="token comment" spellcheck="true"># 启动zabbix_server</span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/local/zabbix/sbin/zabbix_server -c /usr/local/zabbix/etc/zabbix_server.conf</span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># netstat -nlutp |grep zabbix_server</span>
+tcp        0      0 0.0.0.0:10051               0.0.0.0:*                   LISTEN      17003/zabbix_server
+
+<span class="token comment" spellcheck="true"># 添加启动脚本</span>
+<span class="token punctuation">[</span>root@192 mysql<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cd ../../</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cp misc/init.d/fedora/core/zabbix_server /etc/init.d/</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cp misc/init.d/fedora/core/zabbix_agentd /etc/init.d/</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chmod +x /etc/init.d/zabbix_server </span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chmod +x /etc/init.d/zabbix_agentd </span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chkconfig --add zabbix_server</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chkconfig --add zabbix_agentd</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chkconfig zabbix_server on</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># chkconfig zabbix_agentd on</span>
+
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/init.d/zabbix_server        //编辑服务端配置文件</span>
+BASEDIR<span class="token operator">=</span>/usr/local/zabbix/        //zabbix安装路径
+PIDFILE<span class="token operator">=</span>/usr/local/zabbix/<span class="token variable">$BINARY_NAME</span>.pid        //pid文件路径
+
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim /etc/init.d/zabbix_agentd        //编辑客户端配置文件</span>
+BASEDIR<span class="token operator">=</span>/usr/local/zabbix/        //zabbix安装路径
+PIDFILE<span class="token operator">=</span>/usr/local/zabbix/<span class="token variable">$BINARY_NAME</span>.pid        //pid文件路径
+
+<span class="token comment" spellcheck="true"># 测试</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /etc/init.d/zabbix_server start </span>
+Starting zabbix_server:                                    <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /etc/init.d/zabbix_agentd start </span>
+Starting zabbix_agentd:                                    <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 开始配置web界面</span>
+<span class="token punctuation">[</span>root@192 zabbix-4.0.6<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cp -a  /root/zabbix-4.0.6/frontends/php/* /var/www/html/zabbix/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="zabbix-web设置"><a href="#zabbix-web设置" class="headerlink" title="zabbix web设置"></a>zabbix web设置</h4><p><img src="https://i.loli.net/2020/04/27/uC8afTv9pD4VgOI.png" alt="zabbix.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/NXxbmvTkzZGwiSR.png" alt="zabbix-1.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/bBkKMpWD3qJto8d.png" alt="zabbix-2.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/bKIvns8TVUY5Pyz.png" alt="zabbix-3.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/lqmXxNGTC12w7bt.png" alt="zabbix-4.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/NgbSxaq9QvKsp3W.png" alt="zabbix-5.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/zrohbfO2RLd6puI.png" alt="zabbix-6.png"></p>
+<p><img src="https://i.loli.net/2020/04/27/k1KFiB9Vunyq6mZ.png" alt="zabbix-7.png"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.csdn.net/haoel/article/details/1542340" target="_blank" rel="noopener">Unix传奇（上篇）</a></p>
 <p><a href="https://blog.csdn.net/iteye_3952/article/details/81440521" target="_blank" rel="noopener">Unix传奇（下篇）</a></p>
 <p><a href="https://blog.csdn.net/m0_38044196/article/details/72844025" target="_blank" rel="noopener">Linux目录结构及详细介绍</a></p>
@@ -1086,6 +1404,12 @@ mv: 无法将<span class="token string">"test1"</span> 移动至<span class="tok
 <p><a href="https://segmentfault.com/a/1190000014044351" target="_blank" rel="noopener">一篇搞懂TCP、HTTP、Socket、Socket连接池</a></p>
 <p><a href="https://segmentfault.com/a/1190000009528245" target="_blank" rel="noopener">Linux 管道pipe的实现原理</a></p>
 <p><a href="http://c.biancheng.net/view/874.html" target="_blank" rel="noopener">Linux chattr命令详解：修改文件系统的权限属性</a></p>
+<p><a href="https://waylau.com/elk-statck-and-elastic-stack/" target="_blank" rel="noopener">ELK Stack 与 Elastic Stack 的异同点</a></p>
+<p><a href="https://www.voidking.com/dev-centos7-install-elk/" target="_blank" rel="noopener">CentOS7安装部署ELK</a></p>
+<p><a href="https://www.cnblogs.com/yanjieli/p/10736327.html" target="_blank" rel="noopener">zabbix–4.0源码安装</a></p>
+<p><a href="https://discuss.elastic.co/t/logstash-service-unit-not-found-centos-7/138446" target="_blank" rel="noopener">Logstash.service: Unit not found (CentOS 7)</a></p>
+<p><a href="https://alanhou.org/centos-6-x-update-php/" target="_blank" rel="noopener">CentOS 6.x 上如何升级php</a></p>
+<p><a href="https://www.centos.bz/2018/05/centos-6-7-%E5%8D%87%E7%BA%A7-php-5-6-%E5%88%B0-7-1-7-2/" target="_blank" rel="noopener">Centos 6/7 升级 PHP 5.6 到 7.1/7.2</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1348,7 +1672,7 @@ mv: 无法将<span class="token string">"test1"</span> 移动至<span class="tok
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">74.7k</span>&nbsp;字
+                class="white-color">77.3k</span>&nbsp;字
                
             
 			

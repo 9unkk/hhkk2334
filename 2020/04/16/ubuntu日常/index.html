@@ -410,14 +410,14 @@ d">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        8 分
                     </div>
                     
                 
@@ -543,6 +543,38 @@ deb-src http://mirrors.aliyun.com/ubuntu/ eoan-proposed main restricted universe
 <span class="token function">wget</span> http://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.qq.im/deepin.com.qq.im_9.1.8deepin0_i386.deb
 <span class="token function">sudo</span> dpkg -i deepin.com.qq.im_9.1.8deepin0_i386.deb
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="QQ-无法加载图片"><a href="#QQ-无法加载图片" class="headerlink" title="QQ 无法加载图片"></a>QQ 无法加载图片</h4><ol>
+<li>禁用 ipv6 - 方案 1</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 1、修改系统信息配置文件</span>
+<span class="token function">sudo</span> vim /etc/sysctl.conf
+
+<span class="token comment" spellcheck="true"># 2、在文件中添加如下内容</span>
+<span class="token comment" spellcheck="true"># IPv6 disabled</span>
+net.ipv6.conf.all.disable_ipv6 <span class="token operator">=</span>1
+net.ipv6.conf.default.disable_ipv6 <span class="token operator">=</span>1
+net.ipv6.conf.lo.disable_ipv6 <span class="token operator">=</span>1
+
+<span class="token comment" spellcheck="true"># 3、重新加载配置文件</span>
+<span class="token function">sudo</span> sysctl -p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>禁用 ipv6-方案 2</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 1、修改 gurb 文件</span>
+<span class="token function">sudo</span>  vim /etc/default/grub
+
+<span class="token comment" spellcheck="true"># 2、添加如下内容</span>
+GRUB_CMDLINE_LINUX<span class="token operator">=</span><span class="token string">"ipv6.disable=1"</span>
+
+<span class="token comment" spellcheck="true"># 3、重新生成 gurb</span>
+<span class="token function">sudo</span> update-grub2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>删除 deepin-QQ 缓存文件</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> -rf ~/.deepinwine/Deepin-QQ<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="4">
+<li>重启系统并登录 deepin-QQ</li>
+</ol>
 <h3 id="安装-telegrame"><a href="#安装-telegrame" class="headerlink" title="安装 telegrame"></a>安装 telegrame</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> telegram-desktop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="安装-WPSOffice"><a href="#安装-WPSOffice" class="headerlink" title="安装 WPSOffice"></a>安装 WPSOffice</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">wget</span> https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/9505/wps-office_11.1.0.9505_amd64.deb
 <span class="token function">sudo</span> dpkg -i wps-office_11.1.0.9505_amd64.deb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -589,6 +621,41 @@ YY5EA-00XDJ-480RP-35QQV-XY8F6
 
 VA510-23F57-M85PY-7FN7C-MCRG0
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="安装-secureCRT"><a href="#安装-secureCRT" class="headerlink" title="安装 secureCRT"></a>安装 secureCRT</h3><h4 id="安装-amp-amp-激活"><a href="#安装-amp-amp-激活" class="headerlink" title="安装 &amp;&amp; 激活"></a>安装 &amp;&amp; 激活</h4><ol>
+<li>安装 ssh 服务</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openssh-server <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="2">
+<li><p>下载 secureCRT<br>到官网下载 <a href="https://www.vandyke.com/download/index.html" target="_blank" rel="noopener">secureCRT</a>，我这里下载的是 8.3 版本的 deb 包。</p>
+</li>
+<li><p>安装 secureCRT</p>
+</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> dpkg -i scrt-sfx-8.3.4-1699.ubuntu16-64.x86_64.deb
+<span class="token function">apt-get</span> <span class="token function">install</span> -f <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>激活 CRT</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">Name： ygeR
+
+Company: TEAM ZWT
+
+Serial Number：03-77-119256
+
+License Key: ABH2MJ 9YVAC5 Z17QF7 4ZAS7Z ABGYJH CZ5EU3 V4MN88 T18NCT
+
+Issue Date: 06-03-2017<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="secureCRT-运行报错：SecureCRT-error-while-loading-shared-libraries-libpng12-so-0-cannot-open-shared-object-file-No-such-file-or-directory"><a href="#secureCRT-运行报错：SecureCRT-error-while-loading-shared-libraries-libpng12-so-0-cannot-open-shared-object-file-No-such-file-or-directory" class="headerlink" title="secureCRT  运行报错：SecureCRT: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory"></a>secureCRT  运行报错：SecureCRT: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory</h4><p>解决方法：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> libpng12-0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="安装-sudo-apt-install-libpng12-0-报错：无法安装-lib-x86-64-linux-gnu-libpng12-so-0-的新版本-没有那个文件或目录"><a href="#安装-sudo-apt-install-libpng12-0-报错：无法安装-lib-x86-64-linux-gnu-libpng12-so-0-的新版本-没有那个文件或目录" class="headerlink" title="安装 sudo apt install libpng12-0 报错：无法安装 /lib/x86_64-linux-gnu/libpng12.so.0 的新版本: 没有那个文件或目录"></a>安装 sudo apt install libpng12-0 报错：无法安装 /lib/x86_64-linux-gnu/libpng12.so.0 的新版本: 没有那个文件或目录</h4><p>解决方法：</p>
+<ul>
+<li><p>下载文件<br>下载 <a href="https://blog.csdn.net/qq_39762401/article/details/99777593" target="_blank" rel="noopener">libpng12-0</a></p>
+</li>
+<li><p>复制文件</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cp</span> libpng12.so.0 /lib/x86_64-linux-gnu<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>问题原因：<br>因为 /lib/x86_64-linux-gnu 目录作用的 libpng 是 16 版本，所以低版本的 libpng12.so.0  无法自动安装到目录中</p>
 <h3 id="安装-deepin-wine-软件"><a href="#安装-deepin-wine-软件" class="headerlink" title="安装 deepin-wine 软件"></a>安装 deepin-wine 软件</h3><p><a href="http://mirrors.aliyun.com/deepin/pool/non-free/d/" target="_blank" rel="noopener">deepin软件源</a></p>
 <p><a href="https://www.cnblogs.com/zyrblog/p/11024194.html" target="_blank" rel="noopener">在Ubuntu18.04.2LTS上使用wine安装qq，微信，迅雷，百度网盘，网易云音乐等软件</a></p>
 <p><a href="https://dstore-appstore.deepin.cn/china/index" target="_blank" rel="noopener">deepin应用商店</a></p>
@@ -907,7 +974,7 @@ d</div>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">74.7k</span>&nbsp;字
+                class="white-color">77.3k</span>&nbsp;字
                
             
 			
