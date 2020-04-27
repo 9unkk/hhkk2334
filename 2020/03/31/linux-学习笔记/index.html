@@ -421,14 +421,14 @@ MULTICS 项目
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        14.8k
+                        15.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        59 分
+                        63 分
                     </div>
                     
                 
@@ -1257,10 +1257,169 @@ OpenJDK 64-Bit Server VM <span class="token punctuation">(</span>build 25.232-b0
 4月 25 14:03:25 localhost.localdomain logstash<span class="token punctuation">[</span>17832<span class="token punctuation">]</span>: OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, <span class="token keyword">then</span> you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads<span class="token operator">=</span>N
 4月 25 14:03:58 localhost.localdomain logstash<span class="token punctuation">[</span>17832<span class="token punctuation">]</span>: Sending Logstash logs to /var/log/logstash <span class="token function">which</span> is now configured via log4j2.properties
 Hint: Some lines were ellipsized, use -l to show <span class="token keyword">in</span> full.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="报错：Unable-to-install-system-startup-script-for-Logstash"><a href="#报错：Unable-to-install-system-startup-script-for-Logstash" class="headerlink" title="报错：Unable to install system startup script for Logstash."></a>报错：Unable to install system startup script for Logstash.</h5><p><img src="https://i.loli.net/2020/04/27/7Ye4URWMzPxswja.png" alt="logstash-error.png"><br>解决方法：</p>
+<p>logstash 通过管道来处理数据，标准的管道包含 input、filter 和 output。</p>
+<h4 id="管道写入配置文件"><a href="#管道写入配置文件" class="headerlink" title="管道写入配置文件"></a>管道写入配置文件</h4><ol>
+<li>从 shell 中读取信息</li>
+</ol>
+<p>新建配置文件 std.conf ，内容为：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 脚本的作用是，将用户在 shell 中输入的字符，作为管道输入；将 shell 的输出作为管道输出</span>
+input <span class="token punctuation">{</span> 
+    stdin <span class="token punctuation">{</span> <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span> 
+output <span class="token punctuation">{</span> 
+    stdout <span class="token punctuation">{</span><span class="token punctuation">}</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试配置文件并启动</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 检测 std.conf  配置文件是否有语法错误</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/logstash -f std.conf --config.test_and_exit</span>
+
+<span class="token comment" spellcheck="true"># 执行管道配置文件</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/logstash -f std.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/04/27/Myaufr3FYWQ7vtG.png" alt="logstash-conf.png"></p>
+<ol start="2">
+<li>从日志文件中读取信息</li>
+</ol>
+<p>新建/usr/local/test.log文件，内容为：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">hello logstash<span class="token operator">!</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>新建 test.conf，内容为：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 指定要读取的文件，并以 ruby 程序输出</span>
+input <span class="token punctuation">{</span>
+    <span class="token function">file</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true"># 指定文件路径</span>
+        path <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"/usr/local/test.log"</span><span class="token punctuation">]</span>
+      <span class="token comment" spellcheck="true"># 将 sincedb 临时文件删除</span>
+        sincedb_path <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"/dev/null"</span>
+       <span class="token comment" spellcheck="true"># 从头开始读取文件 </span>
+        start_position <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"beginning"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+filter <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+output <span class="token punctuation">{</span>
+    stdout <span class="token punctuation">{</span>
+        codec <span class="token operator">=</span><span class="token operator">></span> rubydebug
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>启动 Logstash</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/logstash -f test.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/04/27/oGQdpKiTP6IgwYy.png" alt="logstash-conf1.png"></p>
+<ol start="3">
+<li>从日志文件中读取信息，并输出到执行的文件中</li>
+</ol>
+<p>修改test.conf为：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">input <span class="token punctuation">{</span>
+    <span class="token function">file</span> <span class="token punctuation">{</span>
+        path <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"/usr/local/test.log"</span><span class="token punctuation">]</span>
+        sincedb_path <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"/dev/null"</span>
+        start_position <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"beginning"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+filter <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+output <span class="token punctuation">{</span>
+    <span class="token function">file</span> <span class="token punctuation">{</span>
+        path <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"/usr/local/test.log.out"</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>启动Logstash</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/logstash -f test.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>启动后，/usr/local/目录下多了test.log.out文件。</p>
+<p><img src="https://i.loli.net/2020/04/27/rHuz8YRqpM5Ahfw.png" alt="logstash-conf2.png"></p>
+<h4 id="Logstash-关联-Elasticsearch-和-Kibana"><a href="#Logstash-关联-Elasticsearch-和-Kibana" class="headerlink" title="Logstash 关联 Elasticsearch 和 Kibana"></a>Logstash 关联 Elasticsearch 和 Kibana</h4><ol>
+<li>Logstash 收集到了数据，并传递显示给 Elasticsearch 和 Kibana </li>
+</ol>
+<p>修改test.conf为：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">input <span class="token punctuation">{</span>
+    <span class="token function">file</span> <span class="token punctuation">{</span>
+        path <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"/usr/local/test.log"</span><span class="token punctuation">]</span>
+        sincedb_path <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"/dev/null"</span>
+        start_position <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"beginning"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+filter <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+output <span class="token punctuation">{</span>
+    elasticsearch <span class="token punctuation">{</span>
+        hosts <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"http://192.168.56.128:9200"</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>启动Logstash</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/logstash -f ~/test.conf</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li>查看索引</li>
+</ol>
+<p>浏览器访问 <a href="http://192.168.56.128:9200/_cat/indices?v" target="_blank" rel="noopener">http://192.168.56.128:9200/_cat/indices?v</a></p>
+<p><img src="https://i.loli.net/2020/04/27/l8CEsd9zXqeVuLB.png" alt="logstash-conf3.png"></p>
+<p>其中有个索引是logstash的，这就是我们想要查看的数据索引。</p>
+<ol start="4">
+<li>查看数据<br>浏览器访问 <a href="http://192.168.56.128:9200/logstash-2020.04.27-000001/_search" target="_blank" rel="noopener">http://192.168.56.128:9200/logstash-2020.04.27-000001/_search</a></li>
+</ol>
+<p><img src="https://i.loli.net/2020/04/27/NsaBrdHEhvCPQi3.png" alt="logstash-conf4.png"></p>
+<p>看到了 hello logstash! ，说明数据已经成功传递到了 Elasticsearch。链接后添加 ?pretty 参数，可以进行格式化显示。</p>
+<ol start="5">
+<li>点击页面上的Logs<br>浏览器访问 Kibana <a href="http://192.168.56.128:5601" target="_blank" rel="noopener">http://192.168.56.128:5601</a></li>
+</ol>
+<p><img src="https://i.loli.net/2020/04/28/egQuGF8acVxPEpX.png" alt="logstash-conf5.png"></p>
+<ol start="6">
+<li>配置日志显示</li>
+</ol>
+<p><img src="https://i.loli.net/2020/04/28/vstIcjUNnBPkTHQ.png" alt="logstash-conf6.png"></p>
+<ol start="7">
+<li>填写indices相关信息。</li>
+</ol>
+<p><img src="https://i.loli.net/2020/04/28/cqCNr2JEWkpaH3m.png" alt="logstash-conf7.png"></p>
+<ol start="8">
+<li><p>查看日志显示<br><img src="https://i.loli.net/2020/04/28/o8IfbhmkjHBGteL.png" alt="logstash-conf8.png"></p>
+</li>
+<li><p>修改test.log为</p>
+</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">hello logstash<span class="token operator">!</span>
+the log has been updated.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>再次查看 Kibana 的日志显示，可以看到更新。</p>
+<p><img src="https://i.loli.net/2020/04/28/yWmr3z5FnbdjCSM.png" alt="logstash-conf10.png"></p>
+<h5 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h5><p><strong><font size="4" color="red">Unable to install system startup script for Logstash. </font></strong></p>
+<p><img src="https://i.loli.net/2020/04/27/7Ye4URWMzPxswja.png" alt="logstash-error.png"></p>
+<p><strong>解决方法：</strong></p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 自动生成 logstash.service  启动程序</span>
 <span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>问题原因：<br>Centos 7 使用 systemd，但是 logstash 包的安装后脚本错误地试图生成一个启动脚本。</p>
+<p><strong>问题原因：</strong></p>
+<p>Centos 7 使用 systemd，但是 logstash 包的安装后脚本错误地试图生成一个启动脚本。</p>
+<p><strong><font size="4" color="red">Logstash could not be started because there is already another instance using the configured data directory.  If you wish to run multiple instances, you must change the “path.data” setting.</font></strong></p>
+<p><img src="https://i.loli.net/2020/04/27/rNoj3QspOnGm9C7.png" alt="logstash-error1.png"></p>
+<p><strong>方法一：</strong><br>指定数据存放路径</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># /usr/share/logstash/bin/logstash -f test.conf --path.data=/root/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>方法二：</strong><br> 关闭当前的 logstatsh 服务</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 方法一：直接关闭服务</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># systemctl stop logstash</span>
+
+<span class="token comment" spellcheck="true"># 方法二：杀死 logstash 进程</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ps -aux |grep logstash</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># kill -9 PID</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>问题原因：</strong><br>logstash 服务已经在运行了，所以无法在同一个目录下存储多个数据，如果要存储多个数据，需要指定到其他的目录才行</p>
+<p><strong><font size="4" color="red">elasticsearch - Could not index event to Elasticsearch.</font></strong></p>
+<p><img src="https://i.loli.net/2020/04/27/8NGyDez4XjvR3CA.png" alt="logstash-error2.png"></p>
+<p><strong>解决方法：</strong><br>获取 mapping 的配置：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">curl -XGET http://192.168.56.128:9200/logstash/_mapping<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://i.loli.net/2020/04/27/yx4Lskrf9lq3TjX.png" alt="logstash-error2-1.png"></p>
+<p>对比配置文件的配置</p>
+<pre class="line-numbers language-bash"><code class="language-bash">input <span class="token punctuation">{</span>
+    <span class="token function">file</span> <span class="token punctuation">{</span>
+        path <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"/usr/local/test.log"</span><span class="token punctuation">]</span>
+        sincedb_path <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"/dev/null"</span>
+        start_position <span class="token operator">=</span><span class="token operator">></span> <span class="token string">"beginning"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+filter <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+output <span class="token punctuation">{</span>
+    elasticsearch <span class="token punctuation">{</span>
+        hosts <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">"http://localhost:9200"</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从上面的输出可以看到  <code>hosts =&gt; ["http://localhost:9200"]</code>  这个字段有问题，这里的 localhost 应该改成 IP 地址。<code>hosts =&gt; ["http://192.168.56.128:9200"]</code></p>
 <h3 id="Centos6-源码安装-zabbix4-0"><a href="#Centos6-源码安装-zabbix4-0" class="headerlink" title="Centos6 源码安装 zabbix4.0"></a>Centos6 源码安装 zabbix4.0</h3><h4 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h4><p>OS：CentOS6.5<br>zabbix：4.0.6<br>apche ：2.2.15（1.3.12或以上）<br>mysql：5.1.73（5.0.3或以上 ）<br>php：5.6（5.4.0或以上）</p>
 <h4 id="配置-LAMP"><a href="#配置-LAMP" class="headerlink" title="配置 LAMP"></a>配置 LAMP</h4><ol>
 <li>安装 httpd 和 mysql</li>
@@ -1410,6 +1569,8 @@ Starting zabbix_agentd:                                    <span class="token pu
 <p><a href="https://discuss.elastic.co/t/logstash-service-unit-not-found-centos-7/138446" target="_blank" rel="noopener">Logstash.service: Unit not found (CentOS 7)</a></p>
 <p><a href="https://alanhou.org/centos-6-x-update-php/" target="_blank" rel="noopener">CentOS 6.x 上如何升级php</a></p>
 <p><a href="https://www.centos.bz/2018/05/centos-6-7-%E5%8D%87%E7%BA%A7-php-5-6-%E5%88%B0-7-1-7-2/" target="_blank" rel="noopener">Centos 6/7 升级 PHP 5.6 到 7.1/7.2</a></p>
+<p><a href="https://blog.csdn.net/sxf_123456/article/details/78863949" target="_blank" rel="noopener">使用logstash 运行配置文件，出现you must change the “path.data” setting</a></p>
+<p><a href="https://discuss.elastic.co/t/could-not-index-event-to-elasticsearch-error/106584/2" target="_blank" rel="noopener"> Could Not Index Event to Elasticsearch Error? </a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1672,7 +1833,7 @@ Starting zabbix_agentd:                                    <span class="token pu
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">77.3k</span>&nbsp;字
+                class="white-color">78.2k</span>&nbsp;字
                
             
 			
